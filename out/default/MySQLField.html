@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Docs For Class MySQLField</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+  <script src="../media/lib/classTree.js"></script>
+<link id="webfx-tab-style-sheet" type="text/css" rel="stylesheet" href="../media/lib/tab.webfx.css" />
+<script type="text/javascript" src="../media/lib/tabpane.js"></script>
+  <script language="javascript" type="text/javascript" src="../media/lib/ua.js"></script>
+<script language="javascript" type="text/javascript">
+	var imgPlus = new Image();
+	var imgMinus = new Image();
+	imgPlus.src = "../media/images/plus.gif";
+	imgMinus.src = "../media/images/minus.gif";
+	
+	function showNode(Node){
+        switch(navigator.family){
+        	case 'nn4':
+        		// Nav 4.x code fork...
+				var oTable = document.layers["span" + Node];
+				var oImg = document.layers["img" + Node];
+        		break;
+        	case 'ie4':
+        		// IE 4/5 code fork...
+				var oTable = document.all["span" + Node];
+				var oImg = document.all["img" + Node];
+        		break;
+        	case 'gecko':
+        		// Standards Compliant code fork...
+				var oTable = document.getElementById("span" + Node);
+				var oImg = document.getElementById("img" + Node);
+        		break;
+        }
+		oImg.src = imgMinus.src;
+		oTable.style.display = "block";
+	}
+	
+	function hideNode(Node){
+        switch(navigator.family){
+        	case 'nn4':
+        		// Nav 4.x code fork...
+				var oTable = document.layers["span" + Node];
+				var oImg = document.layers["img" + Node];
+        		break;
+        	case 'ie4':
+        		// IE 4/5 code fork...
+				var oTable = document.all["span" + Node];
+				var oImg = document.all["img" + Node];
+        		break;
+        	case 'gecko':
+        		// Standards Compliant code fork...
+				var oTable = document.getElementById("span" + Node);
+				var oImg = document.getElementById("img" + Node);
+        		break;
+        }
+		oImg.src = imgPlus.src;
+		oTable.style.display = "none";
+	}
+	
+	function nodeIsVisible(Node){
+        switch(navigator.family){
+        	case 'nn4':
+        		// Nav 4.x code fork...
+				var oTable = document.layers["span" + Node];
+        		break;
+        	case 'ie4':
+        		// IE 4/5 code fork...
+				var oTable = document.all["span" + Node];
+        		break;
+        	case 'gecko':
+        		// Standards Compliant code fork...
+				var oTable = document.getElementById("span" + Node);
+        		break;
+        }
+		return (oTable && oTable.style.display == "block");
+	}
+	
+	function toggleNodeVisibility(Node){
+		if (nodeIsVisible(Node)){
+			hideNode(Node);
+		}else{
+			showNode(Node);
+		}
+	}
+</script>
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><!-- Start of Class Data -->
+<h2>
+	Êëàññ MySQLField
+</h2> (line <span class="linenumber"><a href="../__filesource/fsource_default__enginelibsMySQL.php.html#a26">26</a></span>)
+<div class="tab-pane" id="tabPane1">
+<script type="text/javascript">
+tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
+</script>
+
+<div class="tab-page" id="Description">
+<h2 class="tab">Îïèñàíèå</h2>
+<pre>
+<a href="../default/MySQLTypeEnumerator.html">MySQLTypeEnumerator</a>
+   |
+   --MySQLField</pre>
+<p>
+	<b><i>Ðàñïîëîæåí â ôàéëå: <a href="_engine---libs---MySQL.php.html">/engine/libs/MySQL.php</a></i></b><br>
+</p>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Êëàññ ñîçäàâàåìûõ ïîëåé</h5>
+<div class="desc"><p>Êëàññ ñîçäàâàåìûõ ïîëåé</p></div>
+<ul>
+	</ul>
+<br /><hr />
+</div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "Description" ) );</script>
+<div class="tab-page" id="tabPage1">
+
+<h2 class="tab">Ïåðåìåííûå êëàññà</h2>
+<!-- ============ VARIABLE DETAIL =========== -->
+<strong>Èíôîðìàöèÿ:</strong><br />
+<div class="var-title">
+    <span class="var-type">Bool</span>
+    <a href="#var$auto_inc" title="details" class="property"><strong>$auto_inc</strong></a>
+</div>
+<div class="var-title">
+    <span class="var-type">String</span>
+    <a href="#var$max_length" title="details" class="property"><strong>$max_length</strong></a>
+</div>
+<div class="var-title">
+    <span class="var-type">String</span>
+    <a href="#var$name" title="details" class="property"><strong>$name</strong></a>
+</div>
+<div class="var-title">
+    <span class="var-type">Bool</span>
+    <a href="#var$not_null" title="details" class="property"><strong>$not_null</strong></a>
+</div>
+<div class="var-title">
+    <span class="var-type">Bool</span>
+    <a href="#var$primary_key" title="details" class="property"><strong>$primary_key</strong></a>
+</div>
+<div class="var-title">
+    <span class="var-type">MySQLMySQLTypeEnumerator</span>
+    <a href="#var$type" title="details" class="property"><strong>$type</strong></a>
+</div>
+<hr />
+<a name="var$auto_inc" id="var$auto_inc"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$auto_inc</strong> (line <span class="linenumber"><a href="../__filesource/fsource_default__enginelibsMySQL.php.html#a58">58</a></span>)
+ </h4>
+<h4>Data type : Bool</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>ßâëÿåòñÿ auto_increment</h5>
+<div class="desc"><p>ßâëÿåòñÿ auto_increment</p></div>
+<ul>
+		<li><strong>access:</strong> - public</li>
+	</ul>
+</div>
+<a name="var$max_length" id="var$max_length"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$max_length = &quot;255&quot;</strong> (line <span class="linenumber"><a href="../__filesource/fsource_default__enginelibsMySQL.php.html#a43">43</a></span>)
+ </h4>
+<h4>Data type : String</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Ìàêñèìàëüíàÿ äëèíà äëÿ òåêñòîâîãî ïîëÿ</h5>
+<div class="desc"><p>Ìàêñèìàëüíàÿ äëèíà äëÿ òåêñòîâîãî ïîëÿ</p></div>
+<ul>
+		<li><strong>access:</strong> - public</li>
+	</ul>
+</div>
+<a name="var$name" id="var$name"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$name</strong> (line <span class="linenumber"><a href="../__filesource/fsource_default__enginelibsMySQL.php.html#a33">33</a></span>)
+ </h4>
+<h4>Data type : String</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Èìÿ ïîëÿ</h5>
+<div class="desc"><p>Èìÿ ïîëÿ</p></div>
+<ul>
+		<li><strong>access:</strong> - public</li>
+	</ul>
+</div>
+<a name="var$not_null" id="var$not_null"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$not_null</strong> (line <span class="linenumber"><a href="../__filesource/fsource_default__enginelibsMySQL.php.html#a48">48</a></span>)
+ </h4>
+<h4>Data type : Bool</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>ßâëÿåòñÿ NOT NULL</h5>
+<div class="desc"><p>ßâëÿåòñÿ NOT NULL</p></div>
+<ul>
+		<li><strong>access:</strong> - public</li>
+	</ul>
+</div>
+<a name="var$primary_key" id="var$primary_key"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$primary_key</strong> (line <span class="linenumber"><a href="../__filesource/fsource_default__enginelibsMySQL.php.html#a53">53</a></span>)
+ </h4>
+<h4>Data type : Bool</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>ßâëÿåòñÿ Êëþ÷åâûì</h5>
+<div class="desc"><p>ßâëÿåòñÿ Êëþ÷åâûì</p></div>
+<ul>
+		<li><strong>access:</strong> - public</li>
+	</ul>
+</div>
+<a name="var$type" id="var$type"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$type</strong> (line <span class="linenumber"><a href="../__filesource/fsource_default__enginelibsMySQL.php.html#a38">38</a></span>)
+ </h4>
+<h4>Data type : MySQLMySQLTypeEnumerator</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Òèï ñîçäàâàåìîãî ïîëÿ</h5>
+<div class="desc"><p>Òèï ñîçäàâàåìîãî ïîëÿ</p></div>
+<ul>
+		<li><strong>access:</strong> - public</li>
+	</ul>
+</div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage1" ) );</script>
+</div>
+<div class="tab-page" id="constantsTabpage">
+
+<h2 class="tab">Êîíñòàíòû êëàññà</h2>
+<!-- ============ VARIABLE DETAIL =========== -->
+<strong>Èíôîðìàöèÿ:</strong><br />
+<div class="const-title">
+    <a href="#constEXCEPTION_WRONG_TYPE" title="details" class="property"><strong>EXCEPTION_WRONG_TYPE</strong></a>
+</div>
+<hr />
+<a name="constEXCEPTION_WRONG_TYPE" id="constEXCEPTION_WRONG_TYPE"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">EXCEPTION_WRONG_TYPE = &quot;Wrong type of field&quot;</strong> (line <span class="linenumber"><a href="../__filesource/fsource_default__enginelibsMySQL.php.html#a28">28</a></span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "constantsTabpage" ) );</script>
+</div>
+<div class="tab-page" id="tabPage2">
+<h2 class="tab">Ìåòîäû</h2>
+<!-- ============ METHOD DETAIL =========== -->
+<strong>Èíôîðìàöèÿ:</strong><br />
+<div class="method-summary">
+    <div class="method-definition">
+            <span class="method-result"><a href="../default/MySQLField.html">MySQLField</a></span>
+        <a href="#method__construct" title="details" class="method-name">__construct</a>
+        (<span class="var-type">String</span>&nbsp;<span class="var-name">$name</span>, <span class="var-type">MySQLMySQLTypeEnumerator</span>&nbsp;<span class="var-name">$type</span>, [<span class="var-type">Bool</span>&nbsp;<span class="var-name">$not_null</span> = <span class="var-default">false</span>], [<span class="var-type">Bool</span>&nbsp;<span class="var-name">$primary_key</span> = <span class="var-default">false</span>], [<span class="var-type">Bool</span>&nbsp;<span class="var-name">$auto_inc</span> = <span class="var-default">false</span>])
+        </div>
+    <div class="method-definition">
+            <span class="method-result">String</span>
+        <a href="#methodGetFieldString" title="details" class="method-name">GetFieldString</a>
+        ()
+        </div>
+</div>
+<hr />
+<A NAME='method_detail'></A>
+
+
+<a name="method__construct" id="method__construct"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/Êîíñòðóêòîð.gif" border="0" /> <strong class="method">Êîíñòðóêòîð __construct</strong> (line <span class="linenumber"><a href="../__filesource/fsource_default__enginelibsMySQL.php.html#a68">68</a></span>)
+ </h4> 
+<h4><i><a href="../default/MySQLField.html">MySQLField</a></i> <strong>__construct(
+String
+$name, MySQLMySQLTypeEnumerator
+$type, [Bool
+$not_null = false], [Bool
+$primary_key = false], [Bool
+$auto_inc = false])</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Êîíñòðóêòîð</h5>
+<div class="desc"><p>Êîíñòðóêòîð</p></div>
+		<h4>Ïàðàìåòðû</h4>
+	<ul>
+			<li><strong>String $name</strong>: Èìÿ ïîëÿ</li>
+			<li><strong>MySQLMySQLTypeEnumerator $type</strong>: Òèï ïîëÿ</li>
+			<li><strong>Bool $not_null</strong>: ßâëÿåòñÿ NOT NULL</li>
+			<li><strong>Bool $primary_key</strong>: ßâëÿåòñÿ Êëþ÷åâûì</li>
+			<li><strong>Bool $auto_inc</strong>: ßâëÿåòñÿ auto_increment</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodGetFieldString" id="methodGetFieldString"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/Public üóåðùâ.gif" border="0" /> <strong class="method">Method GetFieldString</strong> (line <span class="linenumber"><a href="../__filesource/fsource_default__enginelibsMySQL.php.html#a125">125</a></span>)
+ </h4> 
+<h4><i>String</i> <strong>GetFieldString(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Ôîðìèðóåò ñòðîêó ñîçäàíèÿ ïîëÿ â òàáëèöå</h5>
+<div class="desc"><p>Ôîðìèðóåò ñòðîêó ñîçäàíèÿ ïîëÿ â òàáëèöå</p></div>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage2" ) );</script></div>
+<div class="tab-page" id="iVars">
+<h2 class="tab">Íàñëåäîâàííûå ïåðåìåííûå</h2>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "iVars" ) );</script>
+<!-- =========== VAR INHERITED SUMMARY =========== -->
+<A NAME='var_inherited_summary'><!-- --></A>
+<h3>Íàñëåäóåìûå ïåðåìåííûå êëàññîâ</h3>
+
+	</div>
+<div class="tab-page" id="iMethods">
+<h2 class="tab">Íàñëåäîâàííûå ìåòîäû</h2>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "iMethods" ) );</script>
+<!-- =========== INHERITED METHOD SUMMARY =========== -->
+<A NAME='functions_inherited'><!-- --></A>
+<h3>Íàñëåäóåìûå ìåòîäû</h3>
+
+	</div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+
+setupAllTabs();
+
+//]]>
+</script>
+	<div id="credit">
+		<hr />
+		Äîêóìåíòàöèÿ ñãåíåðèðîâàíà Sun, 22 Aug 2010 18:50:22 +0400 <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</div>
+</body>
+</html>

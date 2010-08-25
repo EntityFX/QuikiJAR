@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Èñõîäíèêè shared.make_timestamp.php</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><h1 align="center">Èñõîäíèêè shared.make_timestamp.php</h1>
+<p>Äîêóìåíòàöèÿ äîñòóïíà â <a href="../Smarty/plugins/_engine---libs---smarty---plugins---shared.make_timestamp.php.html">shared.make_timestamp.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><strong>&lt;?php</strong></div></li>
+<li><div class="src-line"><a name="a2"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a3"></a><font color="#009999">&nbsp;*&nbsp;Smarty&nbsp;shared&nbsp;plugin</font></div></li>
+<li><div class="src-line"><a name="a4"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@package</font></strong><font color="#009999">&nbsp;Smarty</font></div></li>
+<li><div class="src-line"><a name="a5"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@subpackage</font></strong><font color="#009999">&nbsp;plugins</font></div></li>
+<li><div class="src-line"><a name="a6"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a7"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a8"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a9"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a10"></a><font color="#009999">&nbsp;*&nbsp;Function:&nbsp;smarty_make_timestamp&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a11"></a><font color="#009999">&nbsp;*&nbsp;Purpose:&nbsp;&nbsp;used&nbsp;by&nbsp;other&nbsp;smarty&nbsp;functions&nbsp;to&nbsp;make&nbsp;a&nbsp;timestamp</font></div></li>
+<li><div class="src-line"><a name="a12"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;a&nbsp;string.</font></div></li>
+<li><div class="src-line"><a name="a13"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@author</font></strong><font color="#009999">&nbsp;&nbsp;&nbsp;Monte&nbsp;Ohrt&nbsp;&lt;monte&nbsp;at&nbsp;ohrt&nbsp;dot&nbsp;com&gt;</font></div></li>
+<li><div class="src-line"><a name="a14"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>string&nbsp;</em></div></li>
+<li><div class="src-line"><a name="a15"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@return&nbsp;</font></strong><em>string&nbsp;</em></div></li>
+<li><div class="src-line"><a name="a16"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a17"></a><font color="blue">function&nbsp;</font><a href="../Smarty/plugins/_engine---libs---smarty---plugins---shared.make_timestamp.php.html#functionsmarty_make_timestamp">smarty_make_timestamp</a><strong>(</strong><strong>$string</strong><strong>)</strong></div></li>
+<li><div class="src-line"><a name="a18"></a><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a19"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if</font><strong>(</strong>empty<strong>(</strong><strong>$string</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a20"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">//&nbsp;use&nbsp;&quot;now&quot;:</font></div></li>
+<li><div class="src-line"><a name="a21"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$time&nbsp;</strong>=&nbsp;<a href="http://www.php.net/time">time</a><strong>(</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a22"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a23"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>elseif&nbsp;<strong>(</strong><a href="http://www.php.net/preg_match">preg_match</a><strong>(</strong><font color="#66cccc">'/^\d{14}$/'</font><strong>,&nbsp;</strong><strong>$string</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a24"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">//&nbsp;it&nbsp;is&nbsp;mysql&nbsp;timestamp&nbsp;format&nbsp;of&nbsp;YYYYMMDDHHMMSS?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a25"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$time&nbsp;</strong>=&nbsp;<a href="http://www.php.net/mktime">mktime</a><strong>(</strong><a href="http://www.php.net/substr">substr</a><strong>(</strong><strong>$string</strong><strong>,&nbsp;</strong>8<strong>,&nbsp;</strong>2<strong>)</strong><strong>,</strong><a href="http://www.php.net/substr">substr</a><strong>(</strong><strong>$string</strong><strong>,&nbsp;</strong>10<strong>,&nbsp;</strong>2<strong>)</strong><strong>,</strong><a href="http://www.php.net/substr">substr</a><strong>(</strong><strong>$string</strong><strong>,&nbsp;</strong>12<strong>,&nbsp;</strong>2<strong>)</strong><strong>,</strong></div></li>
+<li><div class="src-line"><a name="a26"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/substr">substr</a><strong>(</strong><strong>$string</strong><strong>,&nbsp;</strong>4<strong>,&nbsp;</strong>2<strong>)</strong><strong>,</strong><a href="http://www.php.net/substr">substr</a><strong>(</strong><strong>$string</strong><strong>,&nbsp;</strong>6<strong>,&nbsp;</strong>2<strong>)</strong><strong>,</strong><a href="http://www.php.net/substr">substr</a><strong>(</strong><strong>$string</strong><strong>,&nbsp;</strong>0<strong>,&nbsp;</strong>4<strong>))</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a27"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a28"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>elseif&nbsp;<strong>(</strong><a href="http://www.php.net/is_numeric">is_numeric</a><strong>(</strong><strong>$string</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a29"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">//&nbsp;it&nbsp;is&nbsp;a&nbsp;numeric&nbsp;string,&nbsp;we&nbsp;handle&nbsp;it&nbsp;as&nbsp;timestamp</font></div></li>
+<li><div class="src-line"><a name="a30"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$time&nbsp;</strong>=&nbsp;(int)<strong>$string</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a31"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a32"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a33"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">//&nbsp;strtotime&nbsp;should&nbsp;handle&nbsp;it</font></div></li>
+<li><div class="src-line"><a name="a34"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$time&nbsp;</strong>=&nbsp;<a href="http://www.php.net/strtotime">strtotime</a><strong>(</strong><strong>$string</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a35"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>$time&nbsp;</strong>==&nbsp;-1&nbsp;||&nbsp;<strong>$time&nbsp;</strong>===&nbsp;false<strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a36"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">//&nbsp;strtotime()&nbsp;was&nbsp;not&nbsp;able&nbsp;to&nbsp;parse&nbsp;$string,&nbsp;use&nbsp;&quot;now&quot;:</font></div></li>
+<li><div class="src-line"><a name="a37"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$time&nbsp;</strong>=&nbsp;<a href="http://www.php.net/time">time</a><strong>(</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a38"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a39"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><strong>$time</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a41"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a42"></a><strong>}</strong></div></li>
+<li><div class="src-line"><a name="a43"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a44"></a><font color="green">/*&nbsp;vim:&nbsp;set&nbsp;expandtab:&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a45"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a46"></a><strong>?&gt;</strong></div></li>
+</ol></div>
+</div>
+	<div id="credit">
+		<hr />
+		Äîêóìåíòàöèÿ ñãåíåðèðîâàíà Sun, 22 Aug 2010 18:50:26 +0400 <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</div>
+</body>
+</html>

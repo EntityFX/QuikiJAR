@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Èñõîäíèêè function.html_image.php</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><h1 align="center">Èñõîäíèêè function.html_image.php</h1>
+<p>Äîêóìåíòàöèÿ äîñòóïíà â <a href="../Smarty/plugins/_engine---libs---smarty---plugins---function.html_image.php.html">function.html_image.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><strong>&lt;?php</strong></div></li>
+<li><div class="src-line"><a name="a2"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a3"></a><font color="#009999">&nbsp;*&nbsp;Smarty&nbsp;plugin</font></div></li>
+<li><div class="src-line"><a name="a4"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@package</font></strong><font color="#009999">&nbsp;Smarty</font></div></li>
+<li><div class="src-line"><a name="a5"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@subpackage</font></strong><font color="#009999">&nbsp;plugins</font></div></li>
+<li><div class="src-line"><a name="a6"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a7"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a8"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a9"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a10"></a><font color="#009999">&nbsp;*&nbsp;Smarty&nbsp;{html_image}&nbsp;function&nbsp;plugin</font></div></li>
+<li><div class="src-line"><a name="a11"></a><font color="#009999">&nbsp;*</font></div></li>
+<li><div class="src-line"><a name="a12"></a><font color="#009999">&nbsp;*&nbsp;Type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a13"></a><font color="#009999">&nbsp;*&nbsp;Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;html_image&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a14"></a><font color="#009999">&nbsp;*&nbsp;Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Feb&nbsp;24,&nbsp;2003&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a15"></a><font color="#009999">&nbsp;*&nbsp;Purpose:&nbsp;&nbsp;format&nbsp;HTML&nbsp;tags&nbsp;for&nbsp;the&nbsp;image&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a16"></a><font color="#009999">&nbsp;*&nbsp;Input:&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a17"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;file&nbsp;=&nbsp;file&nbsp;(and&nbsp;path)&nbsp;of&nbsp;image&nbsp;(required)</font></div></li>
+<li><div class="src-line"><a name="a18"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;height&nbsp;=&nbsp;image&nbsp;height&nbsp;(optional,&nbsp;default&nbsp;actual&nbsp;height)</font></div></li>
+<li><div class="src-line"><a name="a19"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;width&nbsp;=&nbsp;image&nbsp;width&nbsp;(optional,&nbsp;default&nbsp;actual&nbsp;width)</font></div></li>
+<li><div class="src-line"><a name="a20"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;basedir&nbsp;=&nbsp;base&nbsp;directory&nbsp;for&nbsp;absolute&nbsp;paths,&nbsp;default</font></div></li>
+<li><div class="src-line"><a name="a21"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is&nbsp;environment&nbsp;variable&nbsp;DOCUMENT_ROOT</font></div></li>
+<li><div class="src-line"><a name="a22"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;path_prefix&nbsp;=&nbsp;prefix&nbsp;for&nbsp;path&nbsp;output&nbsp;(optional,&nbsp;default&nbsp;empty)</font></div></li>
+<li><div class="src-line"><a name="a23"></a><font color="#009999">&nbsp;*</font></div></li>
+<li><div class="src-line"><a name="a24"></a><font color="#009999">&nbsp;*&nbsp;Examples:&nbsp;{html_image&nbsp;file=&quot;/images/masthead.gif&quot;}</font></div></li>
+<li><div class="src-line"><a name="a25"></a><font color="#009999">&nbsp;*&nbsp;Output:&nbsp;&nbsp;&nbsp;&lt;img&nbsp;src=&quot;/images/masthead.gif&quot;&nbsp;width=400&nbsp;height=23&gt;</font></div></li>
+<li><div class="src-line"><a name="a26"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@link</font></strong><font color="#009999">&nbsp;http://smarty.php.net/manual/en/language.function.html.image.php&nbsp;{html_image}</font></div></li>
+<li><div class="src-line"><a name="a27"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Smarty&nbsp;online&nbsp;manual)</font></div></li>
+<li><div class="src-line"><a name="a28"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@author</font></strong><font color="#009999">&nbsp;&nbsp;&nbsp;Monte&nbsp;Ohrt&nbsp;&lt;monte&nbsp;at&nbsp;ohrt&nbsp;dot&nbsp;com&gt;</font></div></li>
+<li><div class="src-line"><a name="a29"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@author</font></strong><font color="#009999">&nbsp;credits&nbsp;to&nbsp;Duda&nbsp;&lt;duda@big.hu&gt;&nbsp;-&nbsp;wrote&nbsp;first&nbsp;image&nbsp;function</font></div></li>
+<li><div class="src-line"><a name="a30"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in&nbsp;repository,&nbsp;helped&nbsp;with&nbsp;lots&nbsp;of&nbsp;functionality</font></div></li>
+<li><div class="src-line"><a name="a31"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@version</font></strong><font color="#009999">&nbsp;&nbsp;1.0</font></div></li>
+<li><div class="src-line"><a name="a32"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>array&nbsp;</em></div></li>
+<li><div class="src-line"><a name="a33"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>Smarty&nbsp;</em></div></li>
+<li><div class="src-line"><a name="a34"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@return&nbsp;</font></strong><em>string&nbsp;</em></div></li>
+<li><div class="src-line"><a name="a35"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@uses</font></strong><font color="#009999">&nbsp;smarty_function_escape_special_chars()</font></div></li>
+<li><div class="src-line"><a name="a36"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a37"></a><font color="blue">function&nbsp;</font><a href="../Smarty/plugins/_engine---libs---smarty---plugins---function.html_image.php.html#functionsmarty_function_html_image">smarty_function_html_image</a><strong>(</strong><strong>$params</strong><strong>,&nbsp;</strong><strong>&amp;</strong><strong>$smarty</strong><strong>)</strong></div></li>
+<li><div class="src-line"><a name="a38"></a><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a39"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">require_once&nbsp;</font><strong>$smarty</strong><strong>-&gt;</strong>_get_plugin_filepath<strong>(</strong><font color="#66cccc">'shared'</font><strong>,</strong><font color="#66cccc">'escape_special_chars'</font><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a41"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$alt&nbsp;</strong>=&nbsp;<font color="#66cccc">''</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a42"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$file&nbsp;</strong>=&nbsp;<font color="#66cccc">''</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a43"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$height&nbsp;</strong>=&nbsp;<font color="#66cccc">''</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a44"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$width&nbsp;</strong>=&nbsp;<font color="#66cccc">''</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a45"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$extra&nbsp;</strong>=&nbsp;<font color="#66cccc">''</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$prefix&nbsp;</strong>=&nbsp;<font color="#66cccc">''</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$suffix&nbsp;</strong>=&nbsp;<font color="#66cccc">''</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$path_prefix&nbsp;</strong>=&nbsp;<font color="#66cccc">''</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a49"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$server_vars&nbsp;</strong>=&nbsp;<strong>(</strong><strong>$smarty</strong><strong>-&gt;</strong>request_use_auto_globals<strong>)&nbsp;</strong>?&nbsp;<strong>$_SERVER&nbsp;</strong>:&nbsp;<strong>$GLOBALS</strong><strong>[</strong><font color="#66cccc">'HTTP_SERVER_VARS'</font><strong>]</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a50"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$basedir&nbsp;</strong>=&nbsp;isset<strong>(</strong><strong>$server_vars</strong><strong>[</strong><font color="#66cccc">'DOCUMENT_ROOT'</font><strong>]</strong><strong>)&nbsp;</strong>?&nbsp;<strong>$server_vars</strong><strong>[</strong><font color="#66cccc">'DOCUMENT_ROOT'</font><strong>]&nbsp;</strong>:&nbsp;<font color="#66cccc">''</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a51"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">foreach</font><strong>(</strong><strong>$params&nbsp;</strong>as&nbsp;<strong>$_key&nbsp;</strong>=&gt;&nbsp;<strong>$_val</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a52"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">switch</font><strong>(</strong><strong>$_key</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a53"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'file'</font>:</div></li>
+<li><div class="src-line"><a name="a54"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'height'</font>:</div></li>
+<li><div class="src-line"><a name="a55"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'width'</font>:</div></li>
+<li><div class="src-line"><a name="a56"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'dpi'</font>:</div></li>
+<li><div class="src-line"><a name="a57"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'path_prefix'</font>:</div></li>
+<li><div class="src-line"><a name="a58"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'basedir'</font>:</div></li>
+<li><div class="src-line"><a name="a59"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$<strong>$_key&nbsp;</strong>=&nbsp;<strong>$_val</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a60"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a61"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a62"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'alt'</font>:</div></li>
+<li><div class="src-line"><a name="a63"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if</font><strong>(</strong><strong>!</strong><a href="http://www.php.net/is_array">is_array</a><strong>(</strong><strong>$_val</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a64"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$<strong>$_key&nbsp;</strong>=&nbsp;<a href="../Smarty/plugins/_engine---libs---smarty---plugins---shared.escape_special_chars.php.html#functionsmarty_function_escape_special_chars">smarty_function_escape_special_chars</a><strong>(</strong><strong>$_val</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a65"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a66"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong><a href="http://www.php.net/trigger_error">trigger_error</a><strong>(</strong><font color="#66cccc">&quot;</font><font color="#66cccc">html_image:&nbsp;extra&nbsp;attribute&nbsp;'<strong>$_key</strong>'&nbsp;cannot&nbsp;be&nbsp;an&nbsp;array</font><font color="#66cccc">&quot;</font><strong>,&nbsp;</strong>E_USER_NOTICE<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a67"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a68"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a69"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a70"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'link'</font>:</div></li>
+<li><div class="src-line"><a name="a71"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'href'</font>:</div></li>
+<li><div class="src-line"><a name="a72"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$prefix&nbsp;</strong>=&nbsp;<font color="#66cccc">'&lt;a&nbsp;href=&quot;'&nbsp;</font>.&nbsp;<strong>$_val&nbsp;</strong>.&nbsp;<font color="#66cccc">'&quot;&gt;'</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a73"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$suffix&nbsp;</strong>=&nbsp;<font color="#66cccc">'&lt;/a&gt;'</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a74"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a75"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a76"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default:</div></li>
+<li><div class="src-line"><a name="a77"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if</font><strong>(</strong><strong>!</strong><a href="http://www.php.net/is_array">is_array</a><strong>(</strong><strong>$_val</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a78"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$extra&nbsp;</strong>.=&nbsp;<font color="#66cccc">'&nbsp;'</font>.<strong>$_key</strong>.<font color="#66cccc">'=&quot;'</font>.<a href="../Smarty/plugins/_engine---libs---smarty---plugins---shared.escape_special_chars.php.html#functionsmarty_function_escape_special_chars">smarty_function_escape_special_chars</a><strong>(</strong><strong>$_val</strong><strong>)</strong>.<font color="#66cccc">'&quot;'</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a79"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a80"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong><a href="http://www.php.net/trigger_error">trigger_error</a><strong>(</strong><font color="#66cccc">&quot;</font><font color="#66cccc">html_image:&nbsp;extra&nbsp;attribute&nbsp;'<strong>$_key</strong>'&nbsp;cannot&nbsp;be&nbsp;an&nbsp;array</font><font color="#66cccc">&quot;</font><strong>,&nbsp;</strong>E_USER_NOTICE<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a81"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a82"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a83"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a84"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a85"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a86"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong>empty<strong>(</strong><strong>$file</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a87"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong><a href="http://www.php.net/trigger_error">trigger_error</a><strong>(</strong><font color="#66cccc">&quot;html_image:&nbsp;missing&nbsp;'file'&nbsp;parameter&quot;</font><strong>,&nbsp;</strong>E_USER_NOTICE<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a88"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a89"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a90"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a91"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><a href="http://www.php.net/substr">substr</a><strong>(</strong><strong>$file</strong><strong>,</strong>0<strong>,</strong>1<strong>)&nbsp;</strong>==&nbsp;<font color="#66cccc">'/'</font><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a92"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_image_path&nbsp;</strong>=&nbsp;<strong>$basedir&nbsp;</strong>.&nbsp;<strong>$file</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a93"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a94"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_image_path&nbsp;</strong>=&nbsp;<strong>$file</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a95"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a96"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a97"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if</font><strong>(</strong><strong>!</strong>isset<strong>(</strong><strong>$params</strong><strong>[</strong><font color="#66cccc">'width'</font><strong>]</strong><strong>)&nbsp;</strong>||&nbsp;<strong>!</strong>isset<strong>(</strong><strong>$params</strong><strong>[</strong><font color="#66cccc">'height'</font><strong>]</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a98"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if</font><strong>(</strong><strong>!</strong><strong>$_image_data&nbsp;</strong>=&nbsp;<strong>@</strong><a href="http://www.php.net/getimagesize">getimagesize</a><strong>(</strong><strong>$_image_path</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a99"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if</font><strong>(</strong><strong>!</strong><a href="http://www.php.net/file_exists">file_exists</a><strong>(</strong><strong>$_image_path</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a100"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong><a href="http://www.php.net/trigger_error">trigger_error</a><strong>(</strong><font color="#66cccc">&quot;</font><font color="#66cccc">html_image:&nbsp;unable&nbsp;to&nbsp;find&nbsp;'<strong>$_image_path</strong>'</font><font color="#66cccc">&quot;</font><strong>,&nbsp;</strong>E_USER_NOTICE<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a101"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a102"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<font color="blue">if</font><strong>(</strong><strong>!</strong><a href="http://www.php.net/is_readable">is_readable</a><strong>(</strong><strong>$_image_path</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a103"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong><a href="http://www.php.net/trigger_error">trigger_error</a><strong>(</strong><font color="#66cccc">&quot;</font><font color="#66cccc">html_image:&nbsp;unable&nbsp;to&nbsp;read&nbsp;'<strong>$_image_path</strong>'</font><font color="#66cccc">&quot;</font><strong>,&nbsp;</strong>E_USER_NOTICE<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a104"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a105"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a106"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong><a href="http://www.php.net/trigger_error">trigger_error</a><strong>(</strong><font color="#66cccc">&quot;</font><font color="#66cccc">html_image:&nbsp;'<strong>$_image_path</strong>'&nbsp;is&nbsp;not&nbsp;a&nbsp;valid&nbsp;image&nbsp;file</font><font color="#66cccc">&quot;</font><strong>,&nbsp;</strong>E_USER_NOTICE<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a107"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a108"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a109"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a110"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>$smarty</strong><strong>-&gt;</strong>security&nbsp;&amp;&amp;</div></li>
+<li><div class="src-line"><a name="a111"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>(</strong><strong>$_params&nbsp;</strong>=&nbsp;array<strong>(</strong><font color="#66cccc">'resource_type'&nbsp;</font>=&gt;&nbsp;<font color="#66cccc">'file'</font><strong>,&nbsp;</strong><font color="#66cccc">'resource_name'&nbsp;</font>=&gt;&nbsp;<strong>$_image_path</strong><strong>))&nbsp;</strong>&amp;&amp;</div></li>
+<li><div class="src-line"><a name="a112"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>(</strong><font color="blue">require_once</font><strong>(</strong><a href="../Smarty/_engine---libs---smarty---Smarty.class.php.html#defineSMARTY_CORE_DIR">SMARTY_CORE_DIR</a>&nbsp;.&nbsp;<font color="#66cccc">'core.is_secure.php'</font><strong>))&nbsp;</strong>&amp;&amp;</div></li>
+<li><div class="src-line"><a name="a113"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>(</strong><strong>!</strong><a href="../Smarty/plugins/_engine---libs---smarty---internals---core.is_secure.php.html#functionsmarty_core_is_secure">smarty_core_is_secure</a><strong>(</strong><strong>$_params</strong><strong>,&nbsp;</strong><strong>$smarty</strong><strong>))&nbsp;)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a114"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong><a href="http://www.php.net/trigger_error">trigger_error</a><strong>(</strong><font color="#66cccc">&quot;</font><font color="#66cccc">html_image:&nbsp;(secure)&nbsp;'<strong>$_image_path</strong>'&nbsp;not&nbsp;in&nbsp;secure&nbsp;directory</font><font color="#66cccc">&quot;</font><strong>,&nbsp;</strong>E_USER_NOTICE<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a115"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></div></li>
+<li><div class="src-line"><a name="a116"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a117"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if</font><strong>(</strong><strong>!</strong>isset<strong>(</strong><strong>$params</strong><strong>[</strong><font color="#66cccc">'width'</font><strong>]</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a118"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$width&nbsp;</strong>=&nbsp;<strong>$_image_data</strong><strong>[</strong>0<strong>]</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a119"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a120"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if</font><strong>(</strong><strong>!</strong>isset<strong>(</strong><strong>$params</strong><strong>[</strong><font color="#66cccc">'height'</font><strong>]</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a121"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$height&nbsp;</strong>=&nbsp;<strong>$_image_data</strong><strong>[</strong>1<strong>]</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a122"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a123"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a124"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a125"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a126"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if</font><strong>(</strong>isset<strong>(</strong><strong>$params</strong><strong>[</strong><font color="#66cccc">'dpi'</font><strong>]</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a127"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if</font><strong>(</strong><a href="http://www.php.net/strstr">strstr</a><strong>(</strong><strong>$server_vars</strong><strong>[</strong><font color="#66cccc">'HTTP_USER_AGENT'</font><strong>]</strong><strong>,&nbsp;</strong><font color="#66cccc">'Mac'</font><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a128"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$dpi_default&nbsp;</strong>=&nbsp;72<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a129"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a130"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$dpi_default&nbsp;</strong>=&nbsp;96<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a131"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a132"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_resize&nbsp;</strong>=&nbsp;<strong>$dpi_default</strong>/<strong>$params</strong><strong>[</strong><font color="#66cccc">'dpi'</font><strong>]</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a133"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$width&nbsp;</strong>=&nbsp;<a href="http://www.php.net/round">round</a><strong>(</strong><strong>$width&nbsp;</strong>*&nbsp;<strong>$_resize</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a134"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$height&nbsp;</strong>=&nbsp;<a href="http://www.php.net/round">round</a><strong>(</strong><strong>$height&nbsp;</strong>*&nbsp;<strong>$_resize</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a135"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a136"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a137"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><strong>$prefix&nbsp;</strong>.&nbsp;<font color="#66cccc">'&lt;img&nbsp;src=&quot;'</font>.<strong>$path_prefix</strong>.<strong>$file</strong>.<font color="#66cccc">'&quot;&nbsp;alt=&quot;'</font>.<strong>$alt</strong>.<font color="#66cccc">'&quot;&nbsp;width=&quot;'</font>.<strong>$width</strong>.<font color="#66cccc">'&quot;&nbsp;height=&quot;'</font>.<strong>$height</strong>.<font color="#66cccc">'&quot;'</font>.<strong>$extra</strong>.<font color="#66cccc">'&nbsp;/&gt;'&nbsp;</font>.&nbsp;<strong>$suffix</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a138"></a><strong>}</strong></div></li>
+<li><div class="src-line"><a name="a139"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a140"></a><font color="green">/*&nbsp;vim:&nbsp;set&nbsp;expandtab:&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a141"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a142"></a><strong>?&gt;</strong></div></li>
+</ol></div>
+</div>
+	<div id="credit">
+		<hr />
+		Äîêóìåíòàöèÿ ñãåíåðèðîâàíà Sun, 22 Aug 2010 18:50:11 +0400 <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</div>
+</body>
+</html>

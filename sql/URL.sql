@@ -1,0 +1,10 @@
+CREATE TABLE `URL` (
+`id` INT NOT NULL AUTO_INCREMENT ,
+`link` VARCHAR( 255 ) DEFAULT '/' NOT NULL ,
+`title` VARCHAR( 100 ) NOT NULL ,
+`title_tag` VARCHAR( 255 ) NOT NULL ,
+`module` INT NOT NULL ,
+`position` INT NOT NULL ,
+`pid` INT NOT NULL ,
+PRIMARY KEY ( `id` )
+);

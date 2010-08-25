@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Docs For Class ModuleLoader</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+  <script src="../media/lib/classTree.js"></script>
+<link id="webfx-tab-style-sheet" type="text/css" rel="stylesheet" href="../media/lib/tab.webfx.css" />
+<script type="text/javascript" src="../media/lib/tabpane.js"></script>
+  <script language="javascript" type="text/javascript" src="../media/lib/ua.js"></script>
+<script language="javascript" type="text/javascript">
+	var imgPlus = new Image();
+	var imgMinus = new Image();
+	imgPlus.src = "../media/images/plus.gif";
+	imgMinus.src = "../media/images/minus.gif";
+	
+	function showNode(Node){
+        switch(navigator.family){
+        	case 'nn4':
+        		// Nav 4.x code fork...
+				var oTable = document.layers["span" + Node];
+				var oImg = document.layers["img" + Node];
+        		break;
+        	case 'ie4':
+        		// IE 4/5 code fork...
+				var oTable = document.all["span" + Node];
+				var oImg = document.all["img" + Node];
+        		break;
+        	case 'gecko':
+        		// Standards Compliant code fork...
+				var oTable = document.getElementById("span" + Node);
+				var oImg = document.getElementById("img" + Node);
+        		break;
+        }
+		oImg.src = imgMinus.src;
+		oTable.style.display = "block";
+	}
+	
+	function hideNode(Node){
+        switch(navigator.family){
+        	case 'nn4':
+        		// Nav 4.x code fork...
+				var oTable = document.layers["span" + Node];
+				var oImg = document.layers["img" + Node];
+        		break;
+        	case 'ie4':
+        		// IE 4/5 code fork...
+				var oTable = document.all["span" + Node];
+				var oImg = document.all["img" + Node];
+        		break;
+        	case 'gecko':
+        		// Standards Compliant code fork...
+				var oTable = document.getElementById("span" + Node);
+				var oImg = document.getElementById("img" + Node);
+        		break;
+        }
+		oImg.src = imgPlus.src;
+		oTable.style.display = "none";
+	}
+	
+	function nodeIsVisible(Node){
+        switch(navigator.family){
+        	case 'nn4':
+        		// Nav 4.x code fork...
+				var oTable = document.layers["span" + Node];
+        		break;
+        	case 'ie4':
+        		// IE 4/5 code fork...
+				var oTable = document.all["span" + Node];
+        		break;
+        	case 'gecko':
+        		// Standards Compliant code fork...
+				var oTable = document.getElementById("span" + Node);
+        		break;
+        }
+		return (oTable && oTable.style.display == "block");
+	}
+	
+	function toggleNodeVisibility(Node){
+		if (nodeIsVisible(Node)){
+			hideNode(Node);
+		}else{
+			showNode(Node);
+		}
+	}
+</script>
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><!-- Start of Class Data -->
+<h2>
+	Êëàññ ModuleLoader
+</h2> (line <span class="linenumber"><a href="../__filesource/fsource_engine-kernel__enginekernelModuleLoader.php.html#a15">15</a></span>)
+<div class="tab-pane" id="tabPane1">
+<script type="text/javascript">
+tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
+</script>
+
+<div class="tab-page" id="Description">
+<h2 class="tab">Îïèñàíèå</h2>
+<pre>
+</pre>
+<p>
+	<b><i>Ðàñïîëîæåí â ôàéëå: <a href="_engine---kernel---ModuleLoader.php.html">/engine/kernel/ModuleLoader.php</a></i></b><br>
+</p>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Âûïîëíÿåò çàãðóçêó ìîäóëåé è ïåðåäà¸ò óïðàâëåíèå èì</h5>
+<div class="desc"><p>Âûïîëíÿåò çàãðóçêó ìîäóëåé è ïåðåäà¸ò óïðàâëåíèå èì</p></div>
+<ul>
+		<li><strong>author:</strong> - Solopiy Artem</li>
+	</ul>
+<br /><hr />
+</div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "Description" ) );</script>
+<div class="tab-page" id="tabPage1">
+
+<h2 class="tab">Ïåðåìåííûå êëàññà</h2>
+<!-- ============ VARIABLE DETAIL =========== -->
+<strong>Èíôîðìàöèÿ:</strong><br />
+<div class="var-title">
+    <span class="var-type">mixed</span>
+    <a href="#var$_data" title="details" class="property"><strong>$_data</strong></a>
+</div>
+<div class="var-title">
+    <span class="var-type">mixed</span>
+    <a href="#var$_output" title="details" class="property"><strong>$_output</strong></a>
+</div>
+<hr />
+<a name="var$_data" id="var$_data"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$_data</strong> (line <span class="linenumber"><a href="../__filesource/fsource_engine-kernel__enginekernelModuleLoader.php.html#a34">34</a></span>)
+ </h4>
+<h4>Data type : mixed</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Âõîäíûå äàííûå</h5>
+<div class="desc"><p>Âõîäíûå äàííûå</p></div>
+<ul>
+		<li><strong>access:</strong> - private</li>
+	</ul>
+</div>
+<a name="var$_output" id="var$_output"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$_output</strong> (line <span class="linenumber"><a href="../__filesource/fsource_engine-kernel__enginekernelModuleLoader.php.html#a27">27</a></span>)
+ </h4>
+<h4>Data type : mixed</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Âûõîäíûå äàííûå</h5>
+<div class="desc"><p>Âûõîäíûå äàííûå</p></div>
+<ul>
+		<li><strong>access:</strong> - private</li>
+	</ul>
+</div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage1" ) );</script>
+</div>
+<div class="tab-page" id="constantsTabpage">
+
+<h2 class="tab">Êîíñòàíòû êëàññà</h2>
+<!-- ============ VARIABLE DETAIL =========== -->
+<strong>Èíôîðìàöèÿ:</strong><br />
+<div class="const-title">
+    <a href="#constMODULE_PATH" title="details" class="property"><strong>MODULE_PATH</strong></a>
+</div>
+<hr />
+<a name="constMODULE_PATH" id="constMODULE_PATH"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">MODULE_PATH = &quot;engine/modules/&quot;</strong> (line <span class="linenumber"><a href="../__filesource/fsource_engine-kernel__enginekernelModuleLoader.php.html#a20">20</a></span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Êîíñòàíòà ñîäåðæèò ïî-óìîë÷àíèþ ïóòü ê ìîäóëÿì</h5>
+<div class="desc"><p>Êîíñòàíòà ñîäåðæèò ïî-óìîë÷àíèþ ïóòü ê ìîäóëÿì</p></div>
+<ul>
+	</ul>
+</div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "constantsTabpage" ) );</script>
+</div>
+<div class="tab-page" id="tabPage2">
+<h2 class="tab">Ìåòîäû</h2>
+<!-- ============ METHOD DETAIL =========== -->
+<strong>Èíôîðìàöèÿ:</strong><br />
+<div class="method-summary">
+    <div class="method-definition">
+            <span class="method-result"><a href="../engine-kernel/ModuleLoader.html">ModuleLoader</a></span>
+        <a href="#method__construct" title="details" class="method-name">__construct</a>
+        (<span class="var-type">Integer</span>&nbsp;<span class="var-name">$type</span>, [<span class="var-type">Array</span>&nbsp;<span class="var-name">$data</span> = <span class="var-default">NULL</span>])
+        </div>
+    <div class="method-definition">
+            <span class="method-result">void</span>
+        <a href="#methodgetOutput" title="details" class="method-name">getOutput</a>
+        ()
+        </div>
+    <div class="method-definition">
+            <span class="method-result">void</span>
+        <a href="#methodloadModule" title="details" class="method-name">loadModule</a>
+        (<span class="var-type">Integer</span>&nbsp;<span class="var-name">$type</span>, [<span class="var-type">Array</span>&nbsp;<span class="var-name">$data</span> = <span class="var-default">NULL</span>])
+        </div>
+</div>
+<hr />
+<A NAME='method_detail'></A>
+
+
+<a name="method__construct" id="method__construct"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/Êîíñòðóêòîð.gif" border="0" /> <strong class="method">Êîíñòðóêòîð __construct</strong> (line <span class="linenumber"><a href="../__filesource/fsource_engine-kernel__enginekernelModuleLoader.php.html#a43">43</a></span>)
+ </h4> 
+<h4><i><a href="../engine-kernel/ModuleLoader.html">ModuleLoader</a></i> <strong>__construct(
+Integer
+$type, [Array
+$data = NULL])</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Êîíñòðóêòîð</h5>
+<div class="desc"><p>Êîíñòðóêòîð</p></div>
+		<h4>Ïàðàìåòðû</h4>
+	<ul>
+			<li><strong>Integer $type</strong>: Òèï ìîäóëÿ</li>
+			<li><strong>Array $data</strong>: Ìàññèâ ñ ïåðåäàâàåìûìè äàííûìè â ìîäóëü</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodgetOutput" id="methodgetOutput"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/Public üóåðùâ.gif" border="0" /> <strong class="method">Method getOutput</strong> (line <span class="linenumber"><a href="../__filesource/fsource_engine-kernel__enginekernelModuleLoader.php.html#a74">74</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>getOutput(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodloadModule" id="methodloadModule"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/Public üóåðùâ.gif" border="0" /> <strong class="method">Method loadModule</strong> (line <span class="linenumber"><a href="../__filesource/fsource_engine-kernel__enginekernelModuleLoader.php.html#a55">55</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>loadModule(
+Integer
+$type, [Array
+$data = NULL])</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Çàãðóæàåò ìîäóëü è ïåðåäà¸ò åìó óïðàâëåíèå</h5>
+<div class="desc"><p>Çàãðóæàåò ìîäóëü è ïåðåäà¸ò åìó óïðàâëåíèå</p></div>
+		<h4>Ïàðàìåòðû</h4>
+	<ul>
+			<li><strong>Integer $type</strong>: ID ìîäóëÿ</li>
+			<li><strong>Array $data</strong>: ïåðåäàâàåìûå äàííûå</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>throws</strong> - Exception Ôôéë ìîäóëÿ íå ñóùåñòâóåò</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage2" ) );</script></div>
+<div class="tab-page" id="iVars">
+<h2 class="tab">Íàñëåäîâàííûå ïåðåìåííûå</h2>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "iVars" ) );</script>
+<!-- =========== VAR INHERITED SUMMARY =========== -->
+<A NAME='var_inherited_summary'><!-- --></A>
+<h3>Íàñëåäóåìûå ïåðåìåííûå êëàññîâ</h3>
+
+	</div>
+<div class="tab-page" id="iMethods">
+<h2 class="tab">Íàñëåäîâàííûå ìåòîäû</h2>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "iMethods" ) );</script>
+<!-- =========== INHERITED METHOD SUMMARY =========== -->
+<A NAME='functions_inherited'><!-- --></A>
+<h3>Íàñëåäóåìûå ìåòîäû</h3>
+
+	</div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+
+setupAllTabs();
+
+//]]>
+</script>
+	<div id="credit">
+		<hr />
+		Äîêóìåíòàöèÿ ñãåíåðèðîâàíà Sun, 22 Aug 2010 18:50:20 +0400 <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</div>
+</body>
+</html>

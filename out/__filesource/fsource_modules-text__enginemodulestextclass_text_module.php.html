@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Èñõîäíèêè class_text_module.php</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><h1 align="center">Èñõîäíèêè class_text_module.php</h1>
+<p>Äîêóìåíòàöèÿ äîñòóïíà â <a href="../modules-text/_engine---modules---text---class_text_module.php.html">class_text_module.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><strong>&lt;?</strong></div></li>
+<li><div class="src-line"><a name="a2"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a3"></a><font color="#009999">*&nbsp;Òåêñòîâûé&nbsp;ìîäóëü</font></div></li>
+<li><div class="src-line"><a name="a4"></a><font color="#009999">*&nbsp;</font><strong><font color = "#0099FF">@package</font></strong><font color="#009999">&nbsp;modules.text</font></div></li>
+<li><div class="src-line"><a name="a5"></a><font color="#009999">*&nbsp;</font><strong><font color = "#0099FF">@author</font></strong><font color="#009999">&nbsp;Solopiy&nbsp;Artem</font></div></li>
+<li><div class="src-line"><a name="a6"></a><font color="#009999">*&nbsp;</font><strong><font color = "#0099FF">@version</font></strong><font color="#009999">&nbsp;0.9&nbsp;Beta</font></div></li>
+<li><div class="src-line"><a name="a7"></a><font color="#009999">*&nbsp;</font><strong><font color = "#0099FF">@copyright</font></strong><font color="#009999">&nbsp;Idel&nbsp;Media&nbsp;Group:&nbsp;Developers&nbsp;Team&nbsp;(Solopiy&nbsp;Artem,&nbsp;Jusupziyanov&nbsp;Timur)&nbsp;©&nbsp;2010</font></div></li>
+<li><div class="src-line"><a name="a8"></a><font color="#009999">*/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a9"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">class&nbsp;</font><a href="../modules-text/TextModule.html">TextModule</a></div></li>
+<li><div class="src-line"><a name="a10"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a11"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">public&nbsp;</font><font color="blue">function&nbsp;</font><a href="../modules-text/TextModule.html#methodgetText">getText</a><strong>(</strong><strong>$sectionId</strong><strong>)</strong></div></li>
+<li><div class="src-line"><a name="a12"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a13"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$sql</strong>=new&nbsp;<a href="../default/MySQL.html">MySQL</a><strong>(</strong>DB_SERVER<strong>,</strong>DB_USER<strong>,</strong>DB_PASSWORD<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a14"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$sql</strong><strong>-&gt;</strong>selectDB<strong>(</strong>DB_NAME<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a15"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$result</strong>=<strong>$sql</strong><strong>-&gt;</strong>query<strong>(</strong><font color="#66cccc">&quot;</font><font color="#66cccc">SELECT&nbsp;*&nbsp;FROM&nbsp;`TEXT_MODULE`&nbsp;WHERE&nbsp;`id`&nbsp;=&nbsp;<strong>$sectionId</strong></font><font color="#66cccc">&quot;</font><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a16"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>$array</strong>=<strong>$sql</strong><strong>-&gt;</strong>fetchArr<strong>(</strong><strong>))</strong></div></li>
+<li><div class="src-line"><a name="a17"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a18"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><strong>$array</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a19"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a20"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else</div></li>
+<li><div class="src-line"><a name="a21"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a22"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;Exception<strong>(</strong><font color="#66cccc">&quot;Çàïèñè&nbsp;îòñóòñòâóþò&quot;</font><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a23"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></div></li>
+<li><div class="src-line"><a name="a24"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a25"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a26"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a27"></a><strong>?&gt;</strong></div></li>
+</ol></div>
+</div>
+	<div id="credit">
+		<hr />
+		Äîêóìåíòàöèÿ ñãåíåðèðîâàíà Sun, 22 Aug 2010 18:49:57 +0400 <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</div>
+</body>
+</html>

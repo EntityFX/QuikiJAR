@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Èñõîäíèêè outputfilter.trimwhitespace.php</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><h1 align="center">Èñõîäíèêè outputfilter.trimwhitespace.php</h1>
+<p>Äîêóìåíòàöèÿ äîñòóïíà â <a href="../Smarty/plugins/_engine---libs---smarty---plugins---outputfilter.trimwhitespace.php.html">outputfilter.trimwhitespace.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><strong>&lt;?php</strong></div></li>
+<li><div class="src-line"><a name="a2"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a3"></a><font color="#009999">&nbsp;*&nbsp;Smarty&nbsp;plugin</font></div></li>
+<li><div class="src-line"><a name="a4"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@package</font></strong><font color="#009999">&nbsp;Smarty</font></div></li>
+<li><div class="src-line"><a name="a5"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@subpackage</font></strong><font color="#009999">&nbsp;plugins</font></div></li>
+<li><div class="src-line"><a name="a6"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a7"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a8"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a9"></a><font color="#009999">&nbsp;*&nbsp;Smarty&nbsp;trimwhitespace&nbsp;outputfilter&nbsp;plugin</font></div></li>
+<li><div class="src-line"><a name="a10"></a><font color="#009999">&nbsp;*</font></div></li>
+<li><div class="src-line"><a name="a11"></a><font color="#009999">&nbsp;*&nbsp;File:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;outputfilter.trimwhitespace.php&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a12"></a><font color="#009999">&nbsp;*&nbsp;Type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;outputfilter&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a13"></a><font color="#009999">&nbsp;*&nbsp;Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trimwhitespace&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a14"></a><font color="#009999">&nbsp;*&nbsp;Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jan&nbsp;25,&nbsp;2003&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a15"></a><font color="#009999">&nbsp;*&nbsp;Purpose:&nbsp;&nbsp;trim&nbsp;leading&nbsp;white&nbsp;space&nbsp;and&nbsp;blank&nbsp;lines&nbsp;from</font></div></li>
+<li><div class="src-line"><a name="a16"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;template&nbsp;source&nbsp;after&nbsp;it&nbsp;gets&nbsp;interpreted,&nbsp;cleaning</font></div></li>
+<li><div class="src-line"><a name="a17"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;up&nbsp;code&nbsp;and&nbsp;saving&nbsp;bandwidth.&nbsp;Does&nbsp;not&nbsp;affect</font></div></li>
+<li><div class="src-line"><a name="a18"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;&lt;PRE&gt;&gt;&lt;/PRE&gt;&nbsp;and&nbsp;&lt;SCRIPT&gt;&lt;/SCRIPT&gt;&nbsp;blocks.&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a19"></a><font color="#009999">&nbsp;*&nbsp;Install:&nbsp;&nbsp;Drop&nbsp;into&nbsp;the&nbsp;plugin&nbsp;directory,&nbsp;call</font></div></li>
+<li><div class="src-line"><a name="a20"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;code&gt;$smarty-&gt;load_filter('output','trimwhitespace');&lt;/code&gt;</font></div></li>
+<li><div class="src-line"><a name="a21"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;application.</font></div></li>
+<li><div class="src-line"><a name="a22"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@author</font></strong><font color="#009999">&nbsp;&nbsp;&nbsp;Monte&nbsp;Ohrt&nbsp;&lt;monte&nbsp;at&nbsp;ohrt&nbsp;dot&nbsp;com&gt;</font></div></li>
+<li><div class="src-line"><a name="a23"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@author</font></strong><font color="#009999">&nbsp;Contributions&nbsp;from&nbsp;Lars&nbsp;Noschinski&nbsp;&lt;lars@usenet.noschinski.de&gt;</font></div></li>
+<li><div class="src-line"><a name="a24"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@version</font></strong><font color="#009999">&nbsp;&nbsp;1.3</font></div></li>
+<li><div class="src-line"><a name="a25"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>string&nbsp;</em></div></li>
+<li><div class="src-line"><a name="a26"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>Smarty&nbsp;</em></div></li>
+<li><div class="src-line"><a name="a27"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a28"></a><font color="blue">function&nbsp;</font><a href="../Smarty/plugins/_engine---libs---smarty---plugins---outputfilter.trimwhitespace.php.html#functionsmarty_outputfilter_trimwhitespace">smarty_outputfilter_trimwhitespace</a><strong>(</strong><strong>$source</strong><strong>,&nbsp;</strong><strong>&amp;</strong><strong>$smarty</strong><strong>)</strong></div></li>
+<li><div class="src-line"><a name="a29"></a><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a30"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">//&nbsp;Pull&nbsp;out&nbsp;the&nbsp;script&nbsp;blocks</font></div></li>
+<li><div class="src-line"><a name="a31"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/preg_match_all">preg_match_all</a><strong>(</strong><font color="#66cccc">&quot;!&lt;script[^&gt;]*?&gt;.*?&lt;/script&gt;!is&quot;</font><strong>,&nbsp;</strong><strong>$source</strong><strong>,&nbsp;</strong><strong>$match</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a32"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_script_blocks&nbsp;</strong>=&nbsp;<strong>$match</strong><strong>[</strong>0<strong>]</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a33"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$source&nbsp;</strong>=&nbsp;<a href="http://www.php.net/preg_replace">preg_replace</a><strong>(</strong><font color="#66cccc">&quot;!&lt;script[^&gt;]*?&gt;.*?&lt;/script&gt;!is&quot;</font><strong>,</strong></div></li>
+<li><div class="src-line"><a name="a34"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#66cccc">'@@@SMARTY:TRIM:SCRIPT@@@'</font><strong>,&nbsp;</strong><strong>$source</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a35"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a36"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">//&nbsp;Pull&nbsp;out&nbsp;the&nbsp;pre&nbsp;blocks</font></div></li>
+<li><div class="src-line"><a name="a37"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/preg_match_all">preg_match_all</a><strong>(</strong><font color="#66cccc">&quot;!&lt;pre[^&gt;]*?&gt;.*?&lt;/pre&gt;!is&quot;</font><strong>,&nbsp;</strong><strong>$source</strong><strong>,&nbsp;</strong><strong>$match</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a38"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_pre_blocks&nbsp;</strong>=&nbsp;<strong>$match</strong><strong>[</strong>0<strong>]</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a39"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$source&nbsp;</strong>=&nbsp;<a href="http://www.php.net/preg_replace">preg_replace</a><strong>(</strong><font color="#66cccc">&quot;!&lt;pre[^&gt;]*?&gt;.*?&lt;/pre&gt;!is&quot;</font><strong>,</strong></div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#66cccc">'@@@SMARTY:TRIM:PRE@@@'</font><strong>,&nbsp;</strong><strong>$source</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a41"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a42"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">//&nbsp;Pull&nbsp;out&nbsp;the&nbsp;textarea&nbsp;blocks</font></div></li>
+<li><div class="src-line"><a name="a43"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/preg_match_all">preg_match_all</a><strong>(</strong><font color="#66cccc">&quot;!&lt;textarea[^&gt;]*?&gt;.*?&lt;/textarea&gt;!is&quot;</font><strong>,&nbsp;</strong><strong>$source</strong><strong>,&nbsp;</strong><strong>$match</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a44"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_textarea_blocks&nbsp;</strong>=&nbsp;<strong>$match</strong><strong>[</strong>0<strong>]</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a45"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$source&nbsp;</strong>=&nbsp;<a href="http://www.php.net/preg_replace">preg_replace</a><strong>(</strong><font color="#66cccc">&quot;!&lt;textarea[^&gt;]*?&gt;.*?&lt;/textarea&gt;!is&quot;</font><strong>,</strong></div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#66cccc">'@@@SMARTY:TRIM:TEXTAREA@@@'</font><strong>,&nbsp;</strong><strong>$source</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a47"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">//&nbsp;remove&nbsp;all&nbsp;leading&nbsp;spaces,&nbsp;tabs&nbsp;and&nbsp;carriage&nbsp;returns&nbsp;NOT</font></div></li>
+<li><div class="src-line"><a name="a49"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">//&nbsp;preceeded&nbsp;by&nbsp;a&nbsp;php&nbsp;close&nbsp;tag.</font></div></li>
+<li><div class="src-line"><a name="a50"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$source&nbsp;</strong>=&nbsp;<a href="http://www.php.net/trim">trim</a><strong>(</strong><a href="http://www.php.net/preg_replace">preg_replace</a><strong>(</strong><font color="#66cccc">'/((?&lt;!\?&gt;)\n)[\s]+/m'</font><strong>,&nbsp;</strong><font color="#66cccc">'\1'</font><strong>,&nbsp;</strong><strong>$source</strong><strong>))</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a51"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a52"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">//&nbsp;replace&nbsp;textarea&nbsp;blocks</font></div></li>
+<li><div class="src-line"><a name="a53"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../Smarty/plugins/_engine---libs---smarty---plugins---outputfilter.trimwhitespace.php.html#functionsmarty_outputfilter_trimwhitespace_replace">smarty_outputfilter_trimwhitespace_replace</a><strong>(</strong><font color="#66cccc">&quot;@@@SMARTY:TRIM:TEXTAREA@@@&quot;</font><strong>,</strong><strong>$_textarea_blocks</strong><strong>,&nbsp;</strong><strong>$source</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a54"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a55"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">//&nbsp;replace&nbsp;pre&nbsp;blocks</font></div></li>
+<li><div class="src-line"><a name="a56"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../Smarty/plugins/_engine---libs---smarty---plugins---outputfilter.trimwhitespace.php.html#functionsmarty_outputfilter_trimwhitespace_replace">smarty_outputfilter_trimwhitespace_replace</a><strong>(</strong><font color="#66cccc">&quot;@@@SMARTY:TRIM:PRE@@@&quot;</font><strong>,</strong><strong>$_pre_blocks</strong><strong>,&nbsp;</strong><strong>$source</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a57"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a58"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">//&nbsp;replace&nbsp;script&nbsp;blocks</font></div></li>
+<li><div class="src-line"><a name="a59"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../Smarty/plugins/_engine---libs---smarty---plugins---outputfilter.trimwhitespace.php.html#functionsmarty_outputfilter_trimwhitespace_replace">smarty_outputfilter_trimwhitespace_replace</a><strong>(</strong><font color="#66cccc">&quot;@@@SMARTY:TRIM:SCRIPT@@@&quot;</font><strong>,</strong><strong>$_script_blocks</strong><strong>,&nbsp;</strong><strong>$source</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a60"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a61"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><strong>$source</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a62"></a><strong>}</strong></div></li>
+<li><div class="src-line"><a name="a63"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a64"></a><font color="blue">function&nbsp;</font><a href="../Smarty/plugins/_engine---libs---smarty---plugins---outputfilter.trimwhitespace.php.html#functionsmarty_outputfilter_trimwhitespace_replace">smarty_outputfilter_trimwhitespace_replace</a><strong>(</strong><strong>$search_str</strong><strong>,&nbsp;</strong><strong>$replace</strong><strong>,&nbsp;</strong><strong>&amp;</strong><strong>$subject</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a65"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_len&nbsp;</strong>=&nbsp;<a href="http://www.php.net/strlen">strlen</a><strong>(</strong><strong>$search_str</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a66"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_pos&nbsp;</strong>=&nbsp;0<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a67"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">for&nbsp;</font><strong>(</strong><strong>$_i</strong>=0<strong>,&nbsp;</strong><strong>$_count</strong>=<a href="http://www.php.net/count">count</a><strong>(</strong><strong>$replace</strong><strong>)</strong><strong>;&nbsp;</strong><strong>$_i</strong>&lt;<strong>$_count</strong><strong>;&nbsp;</strong><strong>$_i</strong>++<strong>)</strong></div></li>
+<li><div class="src-line"><a name="a68"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>((</strong><strong>$_pos</strong>=<a href="http://www.php.net/strpos">strpos</a><strong>(</strong><strong>$subject</strong><strong>,&nbsp;</strong><strong>$search_str</strong><strong>,&nbsp;</strong><strong>$_pos</strong><strong>))</strong>!==false<strong>)</strong></div></li>
+<li><div class="src-line"><a name="a69"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$subject&nbsp;</strong>=&nbsp;<a href="http://www.php.net/substr_replace">substr_replace</a><strong>(</strong><strong>$subject</strong><strong>,&nbsp;</strong><strong>$replace</strong><strong>[</strong><strong>$_i</strong><strong>]</strong><strong>,&nbsp;</strong><strong>$_pos</strong><strong>,&nbsp;</strong><strong>$_len</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a70"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else</div></li>
+<li><div class="src-line"><a name="a71"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a72"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a73"></a><strong>}</strong></div></li>
+<li><div class="src-line"><a name="a74"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a75"></a><strong>?&gt;</strong></div></li>
+</ol></div>
+</div>
+	<div id="credit">
+		<hr />
+		Äîêóìåíòàöèÿ ñãåíåðèðîâàíà Sun, 22 Aug 2010 18:50:25 +0400 <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</div>
+</body>
+</html>

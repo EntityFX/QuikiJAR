@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Èñõîäíèêè modifier.escape.php</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><h1 align="center">Èñõîäíèêè modifier.escape.php</h1>
+<p>Äîêóìåíòàöèÿ äîñòóïíà â <a href="../Smarty/plugins/_engine---libs---smarty---plugins---modifier.escape.php.html">modifier.escape.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><strong>&lt;?php</strong></div></li>
+<li><div class="src-line"><a name="a2"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a3"></a><font color="#009999">&nbsp;*&nbsp;Smarty&nbsp;plugin</font></div></li>
+<li><div class="src-line"><a name="a4"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@package</font></strong><font color="#009999">&nbsp;Smarty</font></div></li>
+<li><div class="src-line"><a name="a5"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@subpackage</font></strong><font color="#009999">&nbsp;plugins</font></div></li>
+<li><div class="src-line"><a name="a6"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a7"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a8"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a9"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a10"></a><font color="#009999">&nbsp;*&nbsp;Smarty&nbsp;escape&nbsp;modifier&nbsp;plugin</font></div></li>
+<li><div class="src-line"><a name="a11"></a><font color="#009999">&nbsp;*</font></div></li>
+<li><div class="src-line"><a name="a12"></a><font color="#009999">&nbsp;*&nbsp;Type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modifier&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a13"></a><font color="#009999">&nbsp;*&nbsp;Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;escape&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a14"></a><font color="#009999">&nbsp;*&nbsp;Purpose:&nbsp;&nbsp;Escape&nbsp;the&nbsp;string&nbsp;according&nbsp;to&nbsp;escapement&nbsp;type</font></div></li>
+<li><div class="src-line"><a name="a15"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@link</font></strong><font color="#009999">&nbsp;http://smarty.php.net/manual/en/language.modifier.escape.php</font></div></li>
+<li><div class="src-line"><a name="a16"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;escape&nbsp;(Smarty&nbsp;online&nbsp;manual)</font></div></li>
+<li><div class="src-line"><a name="a17"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@author</font></strong><font color="#009999">&nbsp;&nbsp;&nbsp;Monte&nbsp;Ohrt&nbsp;&lt;monte&nbsp;at&nbsp;ohrt&nbsp;dot&nbsp;com&gt;</font></div></li>
+<li><div class="src-line"><a name="a18"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>string&nbsp;</em></div></li>
+<li><div class="src-line"><a name="a19"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>html</em><font color="#009999">|</font><em>htmlall</em><font color="#009999">|</font><em>url</em><font color="#009999">|</font><em>quotes</em><font color="#009999">|</font><em>hex</em><font color="#009999">|</font><em>hexentity</em><font color="#009999">|</font><em>javascript</em></div></li>
+<li><div class="src-line"><a name="a20"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@return&nbsp;</font></strong><em>string&nbsp;</em></div></li>
+<li><div class="src-line"><a name="a21"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a22"></a><font color="blue">function&nbsp;</font><a href="../Smarty/plugins/_engine---libs---smarty---plugins---modifier.escape.php.html#functionsmarty_modifier_escape">smarty_modifier_escape</a><strong>(</strong><strong>$string</strong><strong>,&nbsp;</strong><strong>$esc_type&nbsp;</strong>=&nbsp;<font color="#66cccc">'html'</font><strong>,&nbsp;</strong><strong>$char_set&nbsp;</strong>=&nbsp;<font color="#66cccc">'ISO-8859-1'</font><strong>)</strong></div></li>
+<li><div class="src-line"><a name="a23"></a><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a24"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">switch&nbsp;</font><strong>(</strong><strong>$esc_type</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a25"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'html'</font>:</div></li>
+<li><div class="src-line"><a name="a26"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><a href="http://www.php.net/htmlspecialchars">htmlspecialchars</a><strong>(</strong><strong>$string</strong><strong>,&nbsp;</strong>ENT_QUOTES<strong>,&nbsp;</strong><strong>$char_set</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a27"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a28"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'htmlall'</font>:</div></li>
+<li><div class="src-line"><a name="a29"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><a href="http://www.php.net/htmlentities">htmlentities</a><strong>(</strong><strong>$string</strong><strong>,&nbsp;</strong>ENT_QUOTES<strong>,&nbsp;</strong><strong>$char_set</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a30"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a31"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'url'</font>:</div></li>
+<li><div class="src-line"><a name="a32"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><a href="http://www.php.net/rawurlencode">rawurlencode</a><strong>(</strong><strong>$string</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a33"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a34"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'urlpathinfo'</font>:</div></li>
+<li><div class="src-line"><a name="a35"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><a href="http://www.php.net/str_replace">str_replace</a><strong>(</strong><font color="#66cccc">'%2F'</font><strong>,</strong><font color="#66cccc">'/'</font><strong>,</strong><a href="http://www.php.net/rawurlencode">rawurlencode</a><strong>(</strong><strong>$string</strong><strong>))</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a36"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a37"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'quotes'</font>:</div></li>
+<li><div class="src-line"><a name="a38"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">//&nbsp;escape&nbsp;unescaped&nbsp;single&nbsp;quotes</font></div></li>
+<li><div class="src-line"><a name="a39"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><a href="http://www.php.net/preg_replace">preg_replace</a><strong>(</strong><font color="#66cccc">&quot;%(?&lt;!\\\\)'%&quot;</font><strong>,&nbsp;</strong><font color="#66cccc">&quot;\\'&quot;</font><strong>,&nbsp;</strong><strong>$string</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a41"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'hex'</font>:</div></li>
+<li><div class="src-line"><a name="a42"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">//&nbsp;escape&nbsp;every&nbsp;character&nbsp;into&nbsp;hex</font></div></li>
+<li><div class="src-line"><a name="a43"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$return&nbsp;</strong>=&nbsp;<font color="#66cccc">''</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a44"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">for&nbsp;</font><strong>(</strong><strong>$x</strong>=0<strong>;&nbsp;</strong><strong>$x&nbsp;</strong>&lt;&nbsp;<a href="http://www.php.net/strlen">strlen</a><strong>(</strong><strong>$string</strong><strong>)</strong><strong>;&nbsp;</strong><strong>$x</strong>++<strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a45"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$return&nbsp;</strong>.=&nbsp;<font color="#66cccc">'%'&nbsp;</font>.&nbsp;<a href="http://www.php.net/bin2hex">bin2hex</a><strong>(</strong><strong>$string</strong><strong>[</strong><strong>$x</strong><strong>]</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><strong>$return</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a49"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'hexentity'</font>:</div></li>
+<li><div class="src-line"><a name="a50"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$return&nbsp;</strong>=&nbsp;<font color="#66cccc">''</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a51"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">for&nbsp;</font><strong>(</strong><strong>$x</strong>=0<strong>;&nbsp;</strong><strong>$x&nbsp;</strong>&lt;&nbsp;<a href="http://www.php.net/strlen">strlen</a><strong>(</strong><strong>$string</strong><strong>)</strong><strong>;&nbsp;</strong><strong>$x</strong>++<strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a52"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$return&nbsp;</strong>.=&nbsp;<font color="#66cccc">'&amp;#x'&nbsp;</font>.&nbsp;<a href="http://www.php.net/bin2hex">bin2hex</a><strong>(</strong><strong>$string</strong><strong>[</strong><strong>$x</strong><strong>]</strong><strong>)&nbsp;</strong>.&nbsp;<font color="#66cccc">';'</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a53"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a54"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><strong>$return</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a55"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a56"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'decentity'</font>:</div></li>
+<li><div class="src-line"><a name="a57"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$return&nbsp;</strong>=&nbsp;<font color="#66cccc">''</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a58"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">for&nbsp;</font><strong>(</strong><strong>$x</strong>=0<strong>;&nbsp;</strong><strong>$x&nbsp;</strong>&lt;&nbsp;<a href="http://www.php.net/strlen">strlen</a><strong>(</strong><strong>$string</strong><strong>)</strong><strong>;&nbsp;</strong><strong>$x</strong>++<strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a59"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$return&nbsp;</strong>.=&nbsp;<font color="#66cccc">'&amp;#'&nbsp;</font>.&nbsp;<a href="http://www.php.net/ord">ord</a><strong>(</strong><strong>$string</strong><strong>[</strong><strong>$x</strong><strong>]</strong><strong>)&nbsp;</strong>.&nbsp;<font color="#66cccc">';'</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a60"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a61"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><strong>$return</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a62"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a63"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'javascript'</font>:</div></li>
+<li><div class="src-line"><a name="a64"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">//&nbsp;escape&nbsp;quotes&nbsp;and&nbsp;backslashes,&nbsp;newlines,&nbsp;etc.</font></div></li>
+<li><div class="src-line"><a name="a65"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><a href="http://www.php.net/strtr">strtr</a><strong>(</strong><strong>$string</strong><strong>,&nbsp;</strong>array<strong>(</strong><font color="#66cccc">'\\'</font>=&gt;<font color="#66cccc">'\\\\'</font><strong>,</strong><font color="#66cccc">&quot;'&quot;</font>=&gt;<font color="#66cccc">&quot;\\'&quot;</font><strong>,</strong><font color="#66cccc">'&quot;'</font>=&gt;<font color="#66cccc">'\\&quot;'</font><strong>,</strong><font color="#66cccc">&quot;\r&quot;</font>=&gt;<font color="#66cccc">'\\r'</font><strong>,</strong><font color="#66cccc">&quot;\n&quot;</font>=&gt;<font color="#66cccc">'\\n'</font><strong>,</strong><font color="#66cccc">'&lt;/'</font>=&gt;<font color="#66cccc">'&lt;\/'</font><strong>))</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a66"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a67"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'mail'</font>:</div></li>
+<li><div class="src-line"><a name="a68"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">//&nbsp;safe&nbsp;way&nbsp;to&nbsp;display&nbsp;e-mail&nbsp;address&nbsp;on&nbsp;a&nbsp;web&nbsp;page</font></div></li>
+<li><div class="src-line"><a name="a69"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><a href="http://www.php.net/str_replace">str_replace</a><strong>(</strong>array<strong>(</strong><font color="#66cccc">'@'</font><strong>,&nbsp;</strong><font color="#66cccc">'.'</font><strong>)</strong><strong>,</strong>array<strong>(</strong><font color="#66cccc">'&nbsp;[AT]&nbsp;'</font><strong>,&nbsp;</strong><font color="#66cccc">'&nbsp;[DOT]&nbsp;'</font><strong>)</strong><strong>,&nbsp;</strong><strong>$string</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a70"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a71"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'nonstd'</font>:</div></li>
+<li><div class="src-line"><a name="a72"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">//&nbsp;escape&nbsp;non-standard&nbsp;chars,&nbsp;such&nbsp;as&nbsp;ms&nbsp;document&nbsp;quotes</font></div></li>
+<li><div class="src-line"><a name="a73"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_res&nbsp;</strong>=&nbsp;<font color="#66cccc">''</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a74"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">for</font><strong>(</strong><strong>$_i&nbsp;</strong>=&nbsp;0<strong>,&nbsp;</strong><strong>$_len&nbsp;</strong>=&nbsp;<a href="http://www.php.net/strlen">strlen</a><strong>(</strong><strong>$string</strong><strong>)</strong><strong>;&nbsp;</strong><strong>$_i&nbsp;</strong>&lt;&nbsp;<strong>$_len</strong><strong>;&nbsp;</strong><strong>$_i</strong>++<strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a75"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_ord&nbsp;</strong>=&nbsp;<a href="http://www.php.net/ord">ord</a><strong>(</strong><a href="http://www.php.net/substr">substr</a><strong>(</strong><strong>$string</strong><strong>,&nbsp;</strong><strong>$_i</strong><strong>,&nbsp;</strong>1<strong>))</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a76"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">//&nbsp;non-standard&nbsp;char,&nbsp;escape&nbsp;it</font></div></li>
+<li><div class="src-line"><a name="a77"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if</font><strong>(</strong><strong>$_ord&nbsp;</strong>&gt;=&nbsp;126<strong>)</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a78"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_res&nbsp;</strong>.=&nbsp;<font color="#66cccc">'&amp;#'&nbsp;</font>.&nbsp;<strong>$_ord&nbsp;</strong>.&nbsp;<font color="#66cccc">';'</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a79"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a80"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a81"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_res&nbsp;</strong>.=&nbsp;<a href="http://www.php.net/substr">substr</a><strong>(</strong><strong>$string</strong><strong>,&nbsp;</strong><strong>$_i</strong><strong>,&nbsp;</strong>1<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a82"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a83"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a84"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><strong>$_res</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a85"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a86"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default:</div></li>
+<li><div class="src-line"><a name="a87"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><strong>$string</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a88"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a89"></a><strong>}</strong></div></li>
+<li><div class="src-line"><a name="a90"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a91"></a><font color="green">/*&nbsp;vim:&nbsp;set&nbsp;expandtab:&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a92"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a93"></a><strong>?&gt;</strong></div></li>
+</ol></div>
+</div>
+	<div id="credit">
+		<hr />
+		Äîêóìåíòàöèÿ ñãåíåðèðîâàíà Sun, 22 Aug 2010 18:50:18 +0400 <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</div>
+</body>
+</html>

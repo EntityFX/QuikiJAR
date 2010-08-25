@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Èñõîäíèêè core.get_microtime.php</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><h1 align="center">Èñõîäíèêè core.get_microtime.php</h1>
+<p>Äîêóìåíòàöèÿ äîñòóïíà â <a href="../Smarty/plugins/_engine---libs---smarty---internals---core.get_microtime.php.html">core.get_microtime.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><strong>&lt;?php</strong></div></li>
+<li><div class="src-line"><a name="a2"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a3"></a><font color="#009999">&nbsp;*&nbsp;Smarty&nbsp;plugin</font></div></li>
+<li><div class="src-line"><a name="a4"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@package</font></strong><font color="#009999">&nbsp;Smarty</font></div></li>
+<li><div class="src-line"><a name="a5"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@subpackage</font></strong><font color="#009999">&nbsp;plugins</font></div></li>
+<li><div class="src-line"><a name="a6"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a7"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a8"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a9"></a><font color="#009999">&nbsp;*&nbsp;Get&nbsp;seconds&nbsp;and&nbsp;microseconds</font></div></li>
+<li><div class="src-line"><a name="a10"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@return&nbsp;</font></strong><em>double&nbsp;</em></div></li>
+<li><div class="src-line"><a name="a11"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a12"></a><font color="blue">function&nbsp;</font><a href="../Smarty/plugins/_engine---libs---smarty---internals---core.get_microtime.php.html#functionsmarty_core_get_microtime">smarty_core_get_microtime</a><strong>(</strong><strong>$params</strong><strong>,&nbsp;</strong><strong>&amp;</strong><strong>$smarty</strong><strong>)</strong></div></li>
+<li><div class="src-line"><a name="a13"></a><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a14"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$mtime&nbsp;</strong>=&nbsp;<a href="http://www.php.net/microtime">microtime</a><strong>(</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a15"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$mtime&nbsp;</strong>=&nbsp;<a href="http://www.php.net/explode">explode</a><strong>(</strong><font color="#66cccc">&quot;&nbsp;&quot;</font><strong>,&nbsp;</strong><strong>$mtime</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a16"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$mtime&nbsp;</strong>=&nbsp;(double)<strong>(</strong><strong>$mtime</strong><strong>[</strong>1<strong>]</strong><strong>)&nbsp;</strong>+&nbsp;(double)<strong>(</strong><strong>$mtime</strong><strong>[</strong>0<strong>]</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a17"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><strong>(</strong><strong>$mtime</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a18"></a><strong>}</strong></div></li>
+<li><div class="src-line"><a name="a19"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a20"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a21"></a><font color="green">/*&nbsp;vim:&nbsp;set&nbsp;expandtab:&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a22"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a23"></a><strong>?&gt;</strong></div></li>
+</ol></div>
+</div>
+	<div id="credit">
+		<hr />
+		Äîêóìåíòàöèÿ ñãåíåðèðîâàíà Sun, 22 Aug 2010 18:50:01 +0400 <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</div>
+</body>
+</html>

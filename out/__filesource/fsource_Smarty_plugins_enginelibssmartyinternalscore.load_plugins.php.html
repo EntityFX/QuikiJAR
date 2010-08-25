@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Èñõîäíèêè core.load_plugins.php</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><h1 align="center">Èñõîäíèêè core.load_plugins.php</h1>
+<p>Äîêóìåíòàöèÿ äîñòóïíà â <a href="../Smarty/plugins/_engine---libs---smarty---internals---core.load_plugins.php.html">core.load_plugins.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><strong>&lt;?php</strong></div></li>
+<li><div class="src-line"><a name="a2"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a3"></a><font color="#009999">&nbsp;*&nbsp;Smarty&nbsp;plugin</font></div></li>
+<li><div class="src-line"><a name="a4"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@package</font></strong><font color="#009999">&nbsp;Smarty</font></div></li>
+<li><div class="src-line"><a name="a5"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@subpackage</font></strong><font color="#009999">&nbsp;plugins</font></div></li>
+<li><div class="src-line"><a name="a6"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a7"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a8"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a9"></a><font color="#009999">&nbsp;*&nbsp;Load&nbsp;requested&nbsp;plugins</font></div></li>
+<li><div class="src-line"><a name="a10"></a><font color="#009999">&nbsp;*</font></div></li>
+<li><div class="src-line"><a name="a11"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>array&nbsp;</em><strong>$plugins&nbsp;</strong></div></li>
+<li><div class="src-line"><a name="a12"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a13"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a14"></a><font color="green">//&nbsp;$plugins</font></div></li>
+<li><div class="src-line"><a name="a15"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a16"></a><font color="blue">function&nbsp;</font><a href="../Smarty/plugins/_engine---libs---smarty---internals---core.load_plugins.php.html#functionsmarty_core_load_plugins">smarty_core_load_plugins</a><strong>(</strong><strong>$params</strong><strong>,&nbsp;</strong><strong>&amp;</strong><strong>$smarty</strong><strong>)</strong></div></li>
+<li><div class="src-line"><a name="a17"></a><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a18"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a19"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">foreach&nbsp;</font><strong>(</strong><strong>$params</strong><strong>[</strong><font color="#66cccc">'plugins'</font><strong>]&nbsp;</strong>as&nbsp;<strong>$_plugin_info</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a20"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list<strong>(</strong><strong>$_type</strong><strong>,&nbsp;</strong><strong>$_name</strong><strong>,&nbsp;</strong><strong>$_tpl_file</strong><strong>,&nbsp;</strong><strong>$_tpl_line</strong><strong>,&nbsp;</strong><strong>$_delayed_loading</strong><strong>)&nbsp;</strong>=&nbsp;<strong>$_plugin_info</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a21"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_plugin&nbsp;</strong>=&nbsp;<strong>&amp;</strong><strong>$smarty</strong><strong>-&gt;</strong>_plugins<strong>[</strong><strong>$_type</strong><strong>]</strong><strong>[</strong><strong>$_name</strong><strong>]</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a22"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a23"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">/*</font></div></li>
+<li><div class="src-line"><a name="a24"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;We&nbsp;do&nbsp;not&nbsp;load&nbsp;plugin&nbsp;more&nbsp;than&nbsp;once&nbsp;for&nbsp;each&nbsp;instance&nbsp;of&nbsp;Smarty.</font></div></li>
+<li><div class="src-line"><a name="a25"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;The&nbsp;following&nbsp;code&nbsp;checks&nbsp;for&nbsp;that.&nbsp;The&nbsp;plugin&nbsp;can&nbsp;also&nbsp;be</font></div></li>
+<li><div class="src-line"><a name="a26"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;registered&nbsp;dynamically&nbsp;at&nbsp;runtime,&nbsp;in&nbsp;which&nbsp;case&nbsp;template&nbsp;file</font></div></li>
+<li><div class="src-line"><a name="a27"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;and&nbsp;line&nbsp;number&nbsp;will&nbsp;be&nbsp;unknown,&nbsp;so&nbsp;we&nbsp;fill&nbsp;them&nbsp;in.</font></div></li>
+<li><div class="src-line"><a name="a28"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</font></div></li>
+<li><div class="src-line"><a name="a29"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;The&nbsp;final&nbsp;element&nbsp;of&nbsp;the&nbsp;info&nbsp;array&nbsp;is&nbsp;a&nbsp;flag&nbsp;that&nbsp;indicates</font></div></li>
+<li><div class="src-line"><a name="a30"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;whether&nbsp;the&nbsp;dynamically&nbsp;registered&nbsp;plugin&nbsp;function&nbsp;has&nbsp;been</font></div></li>
+<li><div class="src-line"><a name="a31"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;checked&nbsp;for&nbsp;existence&nbsp;yet&nbsp;or&nbsp;not.</font></div></li>
+<li><div class="src-line"><a name="a32"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a33"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong>isset<strong>(</strong><strong>$_plugin</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a34"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong>empty<strong>(</strong><strong>$_plugin</strong><strong>[</strong>3<strong>]</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a35"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>!</strong><a href="http://www.php.net/is_callable">is_callable</a><strong>(</strong><strong>$_plugin</strong><strong>[</strong>0<strong>]</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a36"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong>_trigger_fatal_error<strong>(</strong><font color="#66cccc">&quot;</font><font color="#66cccc">[plugin]&nbsp;<strong>$_type</strong>&nbsp;'<strong>$_name</strong>'&nbsp;is&nbsp;not&nbsp;implemented</font><font color="#66cccc">&quot;</font><strong>,&nbsp;</strong><strong>$_tpl_file</strong><strong>,&nbsp;</strong><strong>$_tpl_line</strong><strong>,&nbsp;</strong>__FILE__<strong>,&nbsp;</strong>__LINE__<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a37"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a38"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_plugin</strong><strong>[</strong>1<strong>]&nbsp;</strong>=&nbsp;<strong>$_tpl_file</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a39"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_plugin</strong><strong>[</strong>2<strong>]&nbsp;</strong>=&nbsp;<strong>$_tpl_line</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_plugin</strong><strong>[</strong>3<strong>]&nbsp;</strong>=&nbsp;true<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a41"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>!</strong>isset<strong>(</strong><strong>$_plugin</strong><strong>[</strong>4<strong>]</strong><strong>))&nbsp;</strong><strong>$_plugin</strong><strong>[</strong>4<strong>]&nbsp;</strong>=&nbsp;true<strong>;&nbsp;</strong><font color="green">/*&nbsp;cacheable&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a42"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a43"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a44"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a45"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>$_type&nbsp;</strong>==&nbsp;<font color="#66cccc">'insert'</font><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">/*</font></div></li>
+<li><div class="src-line"><a name="a47"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;For&nbsp;backwards&nbsp;compatibility,&nbsp;we&nbsp;check&nbsp;for&nbsp;insert&nbsp;functions&nbsp;in</font></div></li>
+<li><div class="src-line"><a name="a48"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;the&nbsp;symbol&nbsp;table&nbsp;before&nbsp;trying&nbsp;to&nbsp;load&nbsp;them&nbsp;as&nbsp;a&nbsp;plugin.</font></div></li>
+<li><div class="src-line"><a name="a49"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a50"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_plugin_func&nbsp;</strong>=&nbsp;<font color="#66cccc">'insert_'&nbsp;</font>.&nbsp;<strong>$_name</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a51"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><a href="http://www.php.net/function_exists">function_exists</a><strong>(</strong><strong>$_plugin_func</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a52"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_plugin&nbsp;</strong>=&nbsp;array<strong>(</strong><strong>$_plugin_func</strong><strong>,&nbsp;</strong><strong>$_tpl_file</strong><strong>,&nbsp;</strong><strong>$_tpl_line</strong><strong>,&nbsp;</strong>true<strong>,&nbsp;</strong>false<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a53"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a54"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a55"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a56"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a57"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_plugin_file&nbsp;</strong>=&nbsp;<strong>$smarty</strong><strong>-&gt;</strong>_get_plugin_filepath<strong>(</strong><strong>$_type</strong><strong>,&nbsp;</strong><strong>$_name</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a58"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a59"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>!&nbsp;</strong><strong>$_found&nbsp;</strong>=&nbsp;<strong>(</strong><strong>$_plugin_file&nbsp;</strong>!=&nbsp;false<strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a60"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_message&nbsp;</strong>=&nbsp;<font color="#66cccc">&quot;</font><font color="#66cccc">could&nbsp;not&nbsp;load&nbsp;plugin&nbsp;file&nbsp;'<strong>$_type</strong>.<strong>$_name</strong>.php'\n</font><font color="#66cccc">&quot;</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a61"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a62"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a63"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">/*</font></div></li>
+<li><div class="src-line"><a name="a64"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;If&nbsp;plugin&nbsp;file&nbsp;is&nbsp;found,&nbsp;it&nbsp;-must-&nbsp;provide&nbsp;the&nbsp;properly&nbsp;named</font></div></li>
+<li><div class="src-line"><a name="a65"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;plugin&nbsp;function.&nbsp;In&nbsp;case&nbsp;it&nbsp;doesn't,&nbsp;simply&nbsp;output&nbsp;the&nbsp;error&nbsp;and</font></div></li>
+<li><div class="src-line"><a name="a66"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;do&nbsp;not&nbsp;fall&nbsp;back&nbsp;on&nbsp;any&nbsp;other&nbsp;method.</font></div></li>
+<li><div class="src-line"><a name="a67"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a68"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>$_found</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a69"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">include_once&nbsp;</font><strong>$_plugin_file</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a70"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a71"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_plugin_func&nbsp;</strong>=&nbsp;<font color="#66cccc">'smarty_'&nbsp;</font>.&nbsp;<strong>$_type&nbsp;</strong>.&nbsp;<font color="#66cccc">'_'&nbsp;</font>.&nbsp;<strong>$_name</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a72"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>!</strong><a href="http://www.php.net/function_exists">function_exists</a><strong>(</strong><strong>$_plugin_func</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a73"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong>_trigger_fatal_error<strong>(</strong><font color="#66cccc">&quot;</font><font color="#66cccc">[plugin]&nbsp;function&nbsp;<strong>$_plugin_func</strong>()&nbsp;not&nbsp;found&nbsp;in&nbsp;<strong>$_plugin_file</strong></font><font color="#66cccc">&quot;</font><strong>,&nbsp;</strong><strong>$_tpl_file</strong><strong>,&nbsp;</strong><strong>$_tpl_line</strong><strong>,&nbsp;</strong>__FILE__<strong>,&nbsp;</strong>__LINE__<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a74"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a75"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a76"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a77"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">/*</font></div></li>
+<li><div class="src-line"><a name="a78"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;In&nbsp;case&nbsp;of&nbsp;insert&nbsp;plugins,&nbsp;their&nbsp;code&nbsp;may&nbsp;be&nbsp;loaded&nbsp;later&nbsp;via</font></div></li>
+<li><div class="src-line"><a name="a79"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;'script'&nbsp;attribute.</font></div></li>
+<li><div class="src-line"><a name="a80"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a81"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>$_type&nbsp;</strong>==&nbsp;<font color="#66cccc">'insert'&nbsp;</font>&amp;&amp;&nbsp;<strong>$_delayed_loading</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a82"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_plugin_func&nbsp;</strong>=&nbsp;<font color="#66cccc">'smarty_'&nbsp;</font>.&nbsp;<strong>$_type&nbsp;</strong>.&nbsp;<font color="#66cccc">'_'&nbsp;</font>.&nbsp;<strong>$_name</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a83"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_found&nbsp;</strong>=&nbsp;true<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a84"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a85"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a86"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">/*</font></div></li>
+<li><div class="src-line"><a name="a87"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Plugin&nbsp;specific&nbsp;processing&nbsp;and&nbsp;error&nbsp;checking.</font></div></li>
+<li><div class="src-line"><a name="a88"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a89"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>!</strong><strong>$_found</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a90"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>$_type&nbsp;</strong>==&nbsp;<font color="#66cccc">'modifier'</font><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a91"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">/*</font></div></li>
+<li><div class="src-line"><a name="a92"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;In&nbsp;case&nbsp;modifier&nbsp;falls&nbsp;back&nbsp;on&nbsp;using&nbsp;PHP&nbsp;functions</font></div></li>
+<li><div class="src-line"><a name="a93"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;directly,&nbsp;we&nbsp;only&nbsp;allow&nbsp;those&nbsp;specified&nbsp;in&nbsp;the&nbsp;security</font></div></li>
+<li><div class="src-line"><a name="a94"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;context.</font></div></li>
+<li><div class="src-line"><a name="a95"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a96"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>$smarty</strong><strong>-&gt;</strong>security&nbsp;&amp;&amp;&nbsp;<strong>!</strong><a href="http://www.php.net/in_array">in_array</a><strong>(</strong><strong>$_name</strong><strong>,&nbsp;</strong><strong>$smarty</strong><strong>-&gt;</strong>security_settings<strong>[</strong><font color="#66cccc">'MODIFIER_FUNCS'</font><strong>]</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a97"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_message&nbsp;</strong>=&nbsp;<font color="#66cccc">&quot;</font><font color="#66cccc">(secure&nbsp;mode)&nbsp;modifier&nbsp;'<strong>$_name</strong>'&nbsp;is&nbsp;not&nbsp;allowed</font><font color="#66cccc">&quot;</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a98"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a99"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>!</strong><a href="http://www.php.net/function_exists">function_exists</a><strong>(</strong><strong>$_name</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a100"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_message&nbsp;</strong>=&nbsp;<font color="#66cccc">&quot;</font><font color="#66cccc">modifier&nbsp;'<strong>$_name</strong>'&nbsp;is&nbsp;not&nbsp;implemented</font><font color="#66cccc">&quot;</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a101"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a102"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_plugin_func&nbsp;</strong>=&nbsp;<strong>$_name</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a103"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_found&nbsp;</strong>=&nbsp;true<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a104"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a105"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a106"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>$_type&nbsp;</strong>==&nbsp;<font color="#66cccc">'function'</font><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a107"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">/*</font></div></li>
+<li><div class="src-line"><a name="a108"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;This&nbsp;is&nbsp;a&nbsp;catch-all&nbsp;situation.</font></div></li>
+<li><div class="src-line"><a name="a109"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a110"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_message&nbsp;</strong>=&nbsp;<font color="#66cccc">&quot;</font><font color="#66cccc">unknown&nbsp;tag&nbsp;-&nbsp;'<strong>$_name</strong>'</font><font color="#66cccc">&quot;</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a111"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a112"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a113"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a114"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>$_found</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a115"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong>_plugins<strong>[</strong><strong>$_type</strong><strong>]</strong><strong>[</strong><strong>$_name</strong><strong>]&nbsp;</strong>=&nbsp;array<strong>(</strong><strong>$_plugin_func</strong><strong>,&nbsp;</strong><strong>$_tpl_file</strong><strong>,&nbsp;</strong><strong>$_tpl_line</strong><strong>,&nbsp;</strong>true<strong>,&nbsp;</strong>true<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a116"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a117"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">//&nbsp;output&nbsp;error</font></div></li>
+<li><div class="src-line"><a name="a118"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong>_trigger_fatal_error<strong>(</strong><font color="#66cccc">'[plugin]&nbsp;'&nbsp;</font>.&nbsp;<strong>$_message</strong><strong>,&nbsp;</strong><strong>$_tpl_file</strong><strong>,&nbsp;</strong><strong>$_tpl_line</strong><strong>,&nbsp;</strong>__FILE__<strong>,&nbsp;</strong>__LINE__<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a119"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a120"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a121"></a><strong>}</strong></div></li>
+<li><div class="src-line"><a name="a122"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a123"></a><font color="green">/*&nbsp;vim:&nbsp;set&nbsp;expandtab:&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a124"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a125"></a><strong>?&gt;</strong></div></li>
+</ol></div>
+</div>
+	<div id="credit">
+		<hr />
+		Äîêóìåíòàöèÿ ñãåíåðèðîâàíà Sun, 22 Aug 2010 18:50:02 +0400 <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Èñõîäíèêè compiler.assign.php</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><h1 align="center">Èñõîäíèêè compiler.assign.php</h1>
+<p>Äîêóìåíòàöèÿ äîñòóïíà â <a href="../Smarty/plugins/_engine---libs---smarty---plugins---compiler.assign.php.html">compiler.assign.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><strong>&lt;?php</strong></div></li>
+<li><div class="src-line"><a name="a2"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a3"></a><font color="#009999">&nbsp;*&nbsp;Smarty&nbsp;plugin</font></div></li>
+<li><div class="src-line"><a name="a4"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@package</font></strong><font color="#009999">&nbsp;Smarty</font></div></li>
+<li><div class="src-line"><a name="a5"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@subpackage</font></strong><font color="#009999">&nbsp;plugins</font></div></li>
+<li><div class="src-line"><a name="a6"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a7"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a8"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a9"></a><font color="#009999">&nbsp;*&nbsp;Smarty&nbsp;{assign}&nbsp;compiler&nbsp;function&nbsp;plugin</font></div></li>
+<li><div class="src-line"><a name="a10"></a><font color="#009999">&nbsp;*</font></div></li>
+<li><div class="src-line"><a name="a11"></a><font color="#009999">&nbsp;*&nbsp;Type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;compiler&nbsp;function&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a12"></a><font color="#009999">&nbsp;*&nbsp;Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assign&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a13"></a><font color="#009999">&nbsp;*&nbsp;Purpose:&nbsp;&nbsp;assign&nbsp;a&nbsp;value&nbsp;to&nbsp;a&nbsp;template&nbsp;variable</font></div></li>
+<li><div class="src-line"><a name="a14"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@link</font></strong><font color="#009999">&nbsp;http://smarty.php.net/manual/en/language.custom.functions.php#LANGUAGE.FUNCTION.ASSIGN&nbsp;{assign}</font></div></li>
+<li><div class="src-line"><a name="a15"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Smarty&nbsp;online&nbsp;manual)</font></div></li>
+<li><div class="src-line"><a name="a16"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@author</font></strong><font color="#009999">&nbsp;Monte&nbsp;Ohrt&nbsp;&lt;monte&nbsp;at&nbsp;ohrt&nbsp;dot&nbsp;com&gt;&nbsp;(initial&nbsp;author)</font></div></li>
+<li><div class="src-line"><a name="a17"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@author</font></strong><font color="#009999">&nbsp;messju&nbsp;mohr&nbsp;&lt;messju&nbsp;at&nbsp;lammfellpuschen&nbsp;dot&nbsp;de&gt;&nbsp;(conversion&nbsp;to&nbsp;compiler&nbsp;function)</font></div></li>
+<li><div class="src-line"><a name="a18"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>string&nbsp;</em><font color="#009999">containing&nbsp;var-attribute&nbsp;and&nbsp;value-attribute</font></div></li>
+<li><div class="src-line"><a name="a19"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>Smarty_Compiler&nbsp;</em></div></li>
+<li><div class="src-line"><a name="a20"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a21"></a><font color="blue">function&nbsp;</font><a href="../Smarty/plugins/_engine---libs---smarty---plugins---compiler.assign.php.html#functionsmarty_compiler_assign">smarty_compiler_assign</a><strong>(</strong><strong>$tag_attrs</strong><strong>,&nbsp;</strong><strong>&amp;</strong><strong>$compiler</strong><strong>)</strong></div></li>
+<li><div class="src-line"><a name="a22"></a><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a23"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_params&nbsp;</strong>=&nbsp;<strong>$compiler</strong><strong>-&gt;</strong>_parse_attrs<strong>(</strong><strong>$tag_attrs</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a24"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a25"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>!</strong>isset<strong>(</strong><strong>$_params</strong><strong>[</strong><font color="#66cccc">'var'</font><strong>]</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a26"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$compiler</strong><strong>-&gt;</strong>_syntax_error<strong>(</strong><font color="#66cccc">&quot;assign:&nbsp;missing&nbsp;'var'&nbsp;parameter&quot;</font><strong>,&nbsp;</strong>E_USER_WARNING<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a27"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a28"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a29"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a30"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>!</strong>isset<strong>(</strong><strong>$_params</strong><strong>[</strong><font color="#66cccc">'value'</font><strong>]</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a31"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$compiler</strong><strong>-&gt;</strong>_syntax_error<strong>(</strong><font color="#66cccc">&quot;assign:&nbsp;missing&nbsp;'value'&nbsp;parameter&quot;</font><strong>,&nbsp;</strong>E_USER_WARNING<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a32"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a33"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a34"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a35"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><font color="#66cccc">&quot;</font><font color="#66cccc">\$this-&gt;assign({<strong>$_params</strong><strong>[</strong><font color="#66cccc">'var'</font><strong>]</strong><strong>}</strong>,&nbsp;{<strong>$_params</strong><strong>[</strong><font color="#66cccc">'value'</font><strong>]</strong><strong>}</strong>);</font><font color="#66cccc">&quot;</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a36"></a><strong>}</strong></div></li>
+<li><div class="src-line"><a name="a37"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a38"></a><font color="green">/*&nbsp;vim:&nbsp;set&nbsp;expandtab:&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a39"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a40"></a><strong>?&gt;</strong></div></li>
+</ol></div>
+</div>
+	<div id="credit">
+		<hr />
+		Äîêóìåíòàöèÿ ñãåíåðèðîâàíà Sun, 22 Aug 2010 18:49:58 +0400 <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</div>
+</body>
+</html>

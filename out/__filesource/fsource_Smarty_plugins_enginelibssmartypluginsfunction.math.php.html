@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Èñõîäíèêè function.math.php</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><h1 align="center">Èñõîäíèêè function.math.php</h1>
+<p>Äîêóìåíòàöèÿ äîñòóïíà â <a href="../Smarty/plugins/_engine---libs---smarty---plugins---function.math.php.html">function.math.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><strong>&lt;?php</strong></div></li>
+<li><div class="src-line"><a name="a2"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a3"></a><font color="#009999">&nbsp;*&nbsp;Smarty&nbsp;plugin</font></div></li>
+<li><div class="src-line"><a name="a4"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@package</font></strong><font color="#009999">&nbsp;Smarty</font></div></li>
+<li><div class="src-line"><a name="a5"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@subpackage</font></strong><font color="#009999">&nbsp;plugins</font></div></li>
+<li><div class="src-line"><a name="a6"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a7"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a8"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a9"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a10"></a><font color="#009999">&nbsp;*&nbsp;Smarty&nbsp;{math}&nbsp;function&nbsp;plugin</font></div></li>
+<li><div class="src-line"><a name="a11"></a><font color="#009999">&nbsp;*</font></div></li>
+<li><div class="src-line"><a name="a12"></a><font color="#009999">&nbsp;*&nbsp;Type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a13"></a><font color="#009999">&nbsp;*&nbsp;Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;math&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a14"></a><font color="#009999">&nbsp;*&nbsp;Purpose:&nbsp;&nbsp;handle&nbsp;math&nbsp;computations&nbsp;in&nbsp;template&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a15"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@link</font></strong><font color="#009999">&nbsp;http://smarty.php.net/manual/en/language.function.math.php&nbsp;{math}</font></div></li>
+<li><div class="src-line"><a name="a16"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Smarty&nbsp;online&nbsp;manual)</font></div></li>
+<li><div class="src-line"><a name="a17"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@author</font></strong><font color="#009999">&nbsp;&nbsp;&nbsp;Monte&nbsp;Ohrt&nbsp;&lt;monte&nbsp;at&nbsp;ohrt&nbsp;dot&nbsp;com&gt;</font></div></li>
+<li><div class="src-line"><a name="a18"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>array&nbsp;</em></div></li>
+<li><div class="src-line"><a name="a19"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>Smarty&nbsp;</em></div></li>
+<li><div class="src-line"><a name="a20"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@return&nbsp;</font></strong><em>string&nbsp;</em></div></li>
+<li><div class="src-line"><a name="a21"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a22"></a><font color="blue">function&nbsp;</font><a href="../Smarty/plugins/_engine---libs---smarty---plugins---function.math.php.html#functionsmarty_function_math">smarty_function_math</a><strong>(</strong><strong>$params</strong><strong>,&nbsp;</strong><strong>&amp;</strong><strong>$smarty</strong><strong>)</strong></div></li>
+<li><div class="src-line"><a name="a23"></a><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a24"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">//&nbsp;be&nbsp;sure&nbsp;equation&nbsp;parameter&nbsp;is&nbsp;present</font></div></li>
+<li><div class="src-line"><a name="a25"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong>empty<strong>(</strong><strong>$params</strong><strong>[</strong><font color="#66cccc">'equation'</font><strong>]</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a26"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong><a href="http://www.php.net/trigger_error">trigger_error</a><strong>(</strong><font color="#66cccc">&quot;math:&nbsp;missing&nbsp;equation&nbsp;parameter&quot;</font><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a27"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a28"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a29"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a30"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">//&nbsp;strip&nbsp;out&nbsp;backticks,&nbsp;not&nbsp;necessary&nbsp;for&nbsp;math</font></div></li>
+<li><div class="src-line"><a name="a31"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$equation&nbsp;</strong>=&nbsp;<a href="http://www.php.net/str_replace">str_replace</a><strong>(</strong><font color="#66cccc">'`'</font><strong>,</strong><font color="#66cccc">''</font><strong>,</strong><strong>$params</strong><strong>[</strong><font color="#66cccc">'equation'</font><strong>]</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a32"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a33"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">//&nbsp;make&nbsp;sure&nbsp;parenthesis&nbsp;are&nbsp;balanced</font></div></li>
+<li><div class="src-line"><a name="a34"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><a href="http://www.php.net/substr_count">substr_count</a><strong>(</strong><strong>$equation</strong><strong>,</strong><font color="#66cccc">&quot;(&quot;</font><strong>)&nbsp;</strong>!=&nbsp;<a href="http://www.php.net/substr_count">substr_count</a><strong>(</strong><strong>$equation</strong><strong>,</strong><font color="#66cccc">&quot;)&quot;</font><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a35"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong><a href="http://www.php.net/trigger_error">trigger_error</a><strong>(</strong><font color="#66cccc">&quot;math:&nbsp;unbalanced&nbsp;parenthesis&quot;</font><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a36"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a37"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a38"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a39"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">//&nbsp;match&nbsp;all&nbsp;vars&nbsp;in&nbsp;equation,&nbsp;make&nbsp;sure&nbsp;all&nbsp;are&nbsp;passed</font></div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/preg_match_all">preg_match_all</a><strong>(</strong><font color="#66cccc">&quot;!(?:0x[a-fA-F0-9]+)|([a-zA-Z][a-zA-Z0-9_]+)!&quot;</font><strong>,</strong><strong>$equation</strong><strong>,&nbsp;</strong><strong>$match</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a41"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$allowed_funcs&nbsp;</strong>=&nbsp;array<strong>(</strong><font color="#66cccc">'int'</font><strong>,</strong><font color="#66cccc">'abs'</font><strong>,</strong><font color="#66cccc">'ceil'</font><strong>,</strong><font color="#66cccc">'cos'</font><strong>,</strong><font color="#66cccc">'exp'</font><strong>,</strong><font color="#66cccc">'floor'</font><strong>,</strong><font color="#66cccc">'log'</font><strong>,</strong><font color="#66cccc">'log10'</font><strong>,</strong></div></li>
+<li><div class="src-line"><a name="a42"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#66cccc">'max'</font><strong>,</strong><font color="#66cccc">'min'</font><strong>,</strong><font color="#66cccc">'pi'</font><strong>,</strong><font color="#66cccc">'pow'</font><strong>,</strong><font color="#66cccc">'rand'</font><strong>,</strong><font color="#66cccc">'round'</font><strong>,</strong><font color="#66cccc">'sin'</font><strong>,</strong><font color="#66cccc">'sqrt'</font><strong>,</strong><font color="#66cccc">'srand'</font><strong>,</strong><font color="#66cccc">'tan'</font><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a43"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a44"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">foreach</font><strong>(</strong><strong>$match</strong><strong>[</strong>1<strong>]&nbsp;</strong>as&nbsp;<strong>$curr_var</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a45"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>$curr_var&nbsp;</strong>&amp;&amp;&nbsp;<strong>!</strong><a href="http://www.php.net/in_array">in_array</a><strong>(</strong><strong>$curr_var</strong><strong>,&nbsp;</strong><a href="http://www.php.net/array_keys">array_keys</a><strong>(</strong><strong>$params</strong><strong>))&nbsp;</strong>&amp;&amp;&nbsp;<strong>!</strong><a href="http://www.php.net/in_array">in_array</a><strong>(</strong><strong>$curr_var</strong><strong>,&nbsp;</strong><strong>$allowed_funcs</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong><a href="http://www.php.net/trigger_error">trigger_error</a><strong>(</strong><font color="#66cccc">&quot;</font><font color="#66cccc">math:&nbsp;function&nbsp;call&nbsp;<strong>$curr_var</strong>&nbsp;not&nbsp;allowed</font><font color="#66cccc">&quot;</font><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a49"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a50"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a51"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">foreach</font><strong>(</strong><strong>$params&nbsp;</strong>as&nbsp;<strong>$key&nbsp;</strong>=&gt;&nbsp;<strong>$val</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a52"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>$key&nbsp;</strong>!=&nbsp;<font color="#66cccc">&quot;equation&quot;&nbsp;</font>&amp;&amp;&nbsp;<strong>$key&nbsp;</strong>!=&nbsp;<font color="#66cccc">&quot;format&quot;&nbsp;</font>&amp;&amp;&nbsp;<strong>$key&nbsp;</strong>!=&nbsp;<font color="#66cccc">&quot;assign&quot;</font><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a53"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">//&nbsp;make&nbsp;sure&nbsp;value&nbsp;is&nbsp;not&nbsp;empty</font></div></li>
+<li><div class="src-line"><a name="a54"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><a href="http://www.php.net/strlen">strlen</a><strong>(</strong><strong>$val</strong><strong>)</strong>==0<strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a55"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong><a href="http://www.php.net/trigger_error">trigger_error</a><strong>(</strong><font color="#66cccc">&quot;</font><font color="#66cccc">math:&nbsp;parameter&nbsp;<strong>$key</strong>&nbsp;is&nbsp;empty</font><font color="#66cccc">&quot;</font><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a56"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a57"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a58"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>!</strong><a href="http://www.php.net/is_numeric">is_numeric</a><strong>(</strong><strong>$val</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a59"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong><a href="http://www.php.net/trigger_error">trigger_error</a><strong>(</strong><font color="#66cccc">&quot;</font><font color="#66cccc">math:&nbsp;parameter&nbsp;<strong>$key</strong>:&nbsp;is&nbsp;not&nbsp;numeric</font><font color="#66cccc">&quot;</font><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a60"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a61"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a62"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$equation&nbsp;</strong>=&nbsp;<a href="http://www.php.net/preg_replace">preg_replace</a><strong>(</strong><font color="#66cccc">&quot;</font><font color="#66cccc">/\b<strong>$key</strong>\b/</font><font color="#66cccc">&quot;</font><strong>,&nbsp;</strong><font color="#66cccc">&quot;</font><font color="#66cccc">&nbsp;\$params['<strong>$key</strong>']&nbsp;</font><font color="#66cccc">&quot;</font><strong>,&nbsp;</strong><strong>$equation</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a63"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a64"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a65"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a66"></a>&nbsp;&nbsp;&nbsp;&nbsp;eval<strong>(</strong><font color="#66cccc">&quot;\$smarty_math_result&nbsp;=&nbsp;&quot;</font>.<strong>$equation</strong>.<font color="#66cccc">&quot;;&quot;</font><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a67"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a68"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong>empty<strong>(</strong><strong>$params</strong><strong>[</strong><font color="#66cccc">'format'</font><strong>]</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a69"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong>empty<strong>(</strong><strong>$params</strong><strong>[</strong><font color="#66cccc">'assign'</font><strong>]</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a70"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><strong>$smarty_math_result</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a71"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a72"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong>assign<strong>(</strong><strong>$params</strong><strong>[</strong><font color="#66cccc">'assign'</font><strong>]</strong><strong>,</strong><strong>$smarty_math_result</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a73"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a74"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a75"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong>empty<strong>(</strong><strong>$params</strong><strong>[</strong><font color="#66cccc">'assign'</font><strong>]</strong><strong>))</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a76"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/printf">printf</a><strong>(</strong><strong>$params</strong><strong>[</strong><font color="#66cccc">'format'</font><strong>]</strong><strong>,</strong><strong>$smarty_math_result</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a77"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a78"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong>assign<strong>(</strong><strong>$params</strong><strong>[</strong><font color="#66cccc">'assign'</font><strong>]</strong><strong>,</strong><a href="http://www.php.net/sprintf">sprintf</a><strong>(</strong><strong>$params</strong><strong>[</strong><font color="#66cccc">'format'</font><strong>]</strong><strong>,</strong><strong>$smarty_math_result</strong><strong>))</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a79"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a80"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a81"></a><strong>}</strong></div></li>
+<li><div class="src-line"><a name="a82"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a83"></a><font color="green">/*&nbsp;vim:&nbsp;set&nbsp;expandtab:&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a84"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a85"></a><strong>?&gt;</strong></div></li>
+</ol></div>
+</div>
+	<div id="credit">
+		<hr />
+		Äîêóìåíòàöèÿ ñãåíåðèðîâàíà Sun, 22 Aug 2010 18:50:14 +0400 <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</div>
+</body>
+</html>

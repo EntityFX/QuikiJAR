@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Èñõîäíèêè core.write_compiled_include.php</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><h1 align="center">Èñõîäíèêè core.write_compiled_include.php</h1>
+<p>Äîêóìåíòàöèÿ äîñòóïíà â <a href="../Smarty/plugins/_engine---libs---smarty---internals---core.write_compiled_include.php.html">core.write_compiled_include.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><strong>&lt;?php</strong></div></li>
+<li><div class="src-line"><a name="a2"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a3"></a><font color="#009999">&nbsp;*&nbsp;Smarty&nbsp;plugin</font></div></li>
+<li><div class="src-line"><a name="a4"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@package</font></strong><font color="#009999">&nbsp;Smarty</font></div></li>
+<li><div class="src-line"><a name="a5"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@subpackage</font></strong><font color="#009999">&nbsp;plugins</font></div></li>
+<li><div class="src-line"><a name="a6"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a7"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a8"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a9"></a><font color="#009999">&nbsp;*&nbsp;Extract&nbsp;non-cacheable&nbsp;parts&nbsp;out&nbsp;of&nbsp;compiled&nbsp;template&nbsp;and&nbsp;write&nbsp;it</font></div></li>
+<li><div class="src-line"><a name="a10"></a><font color="#009999">&nbsp;*</font></div></li>
+<li><div class="src-line"><a name="a11"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>string&nbsp;</em><strong>$compile_path&nbsp;</strong></div></li>
+<li><div class="src-line"><a name="a12"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>string&nbsp;</em><strong>$template_compiled&nbsp;</strong></div></li>
+<li><div class="src-line"><a name="a13"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@return&nbsp;</font></strong><em>boolean&nbsp;</em></div></li>
+<li><div class="src-line"><a name="a14"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a15"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a16"></a><font color="blue">function&nbsp;</font><a href="../Smarty/plugins/_engine---libs---smarty---internals---core.write_compiled_include.php.html#functionsmarty_core_write_compiled_include">smarty_core_write_compiled_include</a><strong>(</strong><strong>$params</strong><strong>,&nbsp;</strong><strong>&amp;</strong><strong>$smarty</strong><strong>)</strong></div></li>
+<li><div class="src-line"><a name="a17"></a><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a18"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_tag_start&nbsp;</strong>=&nbsp;<font color="#66cccc">'if&nbsp;\(\$this-&gt;caching&nbsp;&amp;&amp;&nbsp;\!\$this-&gt;_cache_including\)\:&nbsp;echo&nbsp;\'\{nocache\:('</font>.<strong>$params</strong><strong>[</strong><font color="#66cccc">'cache_serial'</font><strong>]</strong>.<font color="#66cccc">')#(\d+)\}\';&nbsp;endif;'</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a19"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_tag_end&nbsp;&nbsp;&nbsp;</strong>=&nbsp;<font color="#66cccc">'if&nbsp;\(\$this-&gt;caching&nbsp;&amp;&amp;&nbsp;\!\$this-&gt;_cache_including\)\:&nbsp;echo&nbsp;\'\{/nocache\:(\\2)#(\\3)\}\';&nbsp;endif;'</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a20"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a21"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/preg_match_all">preg_match_all</a><strong>(</strong><font color="#66cccc">'!('</font>.<strong>$_tag_start</strong>.<font color="#66cccc">'(.*)'</font>.<strong>$_tag_end</strong>.<font color="#66cccc">')!Us'</font><strong>,</strong></div></li>
+<li><div class="src-line"><a name="a22"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$params</strong><strong>[</strong><font color="#66cccc">'compiled_content'</font><strong>]</strong><strong>,&nbsp;</strong><strong>$_match_source</strong><strong>,&nbsp;</strong>PREG_SET_ORDER<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a23"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a24"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">//&nbsp;no&nbsp;nocache-parts&nbsp;found:&nbsp;done</font></div></li>
+<li><div class="src-line"><a name="a25"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><a href="http://www.php.net/count">count</a><strong>(</strong><strong>$_match_source</strong><strong>)</strong>==0<strong>)&nbsp;</strong><font color="blue">return</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a26"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a27"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">//&nbsp;convert&nbsp;the&nbsp;matched&nbsp;php-code&nbsp;to&nbsp;functions</font></div></li>
+<li><div class="src-line"><a name="a28"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_include_compiled&nbsp;</strong>=&nbsp;&nbsp;<font color="#66cccc">&quot;&lt;?php&nbsp;/*&nbsp;Smarty&nbsp;version&nbsp;&quot;</font>.<strong>$smarty</strong><strong>-&gt;</strong>_version.<font color="#66cccc">&quot;,&nbsp;created&nbsp;on&nbsp;&quot;</font>.<a href="http://www.php.net/strftime">strftime</a><strong>(</strong><font color="#66cccc">&quot;%Y-%m-%d&nbsp;%H:%M:%S&quot;</font><strong>)</strong>.<font color="#66cccc">&quot;\n&quot;</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a29"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_include_compiled&nbsp;</strong>.=&nbsp;<font color="#66cccc">&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;compiled&nbsp;from&nbsp;&quot;&nbsp;</font>.&nbsp;<a href="http://www.php.net/strtr">strtr</a><strong>(</strong><a href="http://www.php.net/urlencode">urlencode</a><strong>(</strong><strong>$params</strong><strong>[</strong><font color="#66cccc">'resource_name'</font><strong>]</strong><strong>)</strong><strong>,&nbsp;</strong>array<strong>(</strong><font color="#66cccc">'%2F'</font>=&gt;<font color="#66cccc">'/'</font><strong>,&nbsp;</strong><font color="#66cccc">'%3A'</font>=&gt;<font color="#66cccc">':'</font><strong>))&nbsp;</strong>.&nbsp;<font color="#66cccc">&quot;&nbsp;*/\n\n&quot;</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a30"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a31"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_compile_path&nbsp;</strong>=&nbsp;<strong>$params</strong><strong>[</strong><font color="#66cccc">'include_file_path'</font><strong>]</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a32"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a33"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong>_cache_serials<strong>[</strong><strong>$_compile_path</strong><strong>]&nbsp;</strong>=&nbsp;<strong>$params</strong><strong>[</strong><font color="#66cccc">'cache_serial'</font><strong>]</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a34"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_include_compiled&nbsp;</strong>.=&nbsp;<font color="#66cccc">&quot;\$this-&gt;_cache_serials['&quot;</font>.<strong>$_compile_path</strong>.<font color="#66cccc">&quot;']&nbsp;=&nbsp;'&quot;</font>.<strong>$params</strong><strong>[</strong><font color="#66cccc">'cache_serial'</font><strong>]</strong>.<font color="#66cccc">&quot;';\n\n?&gt;&quot;</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a35"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a36"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_include_compiled&nbsp;</strong>.=&nbsp;<strong>$params</strong><strong>[</strong><font color="#66cccc">'plugins_code'</font><strong>]</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a37"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_include_compiled&nbsp;</strong>.=&nbsp;<font color="#66cccc">&quot;&lt;?php&quot;</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a38"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a39"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$this_varname&nbsp;</strong>=&nbsp;<strong>(</strong>(double)<a href="http://www.php.net/phpversion">phpversion</a><strong>(</strong><strong>)&nbsp;</strong>&gt;=&nbsp;5.0<strong>)&nbsp;</strong>?&nbsp;<font color="#66cccc">'_smarty'&nbsp;</font>:&nbsp;<font color="#66cccc">'this'</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">for&nbsp;</font><strong>(</strong><strong>$_i&nbsp;</strong>=&nbsp;0<strong>,&nbsp;</strong><strong>$_for_max&nbsp;</strong>=&nbsp;<a href="http://www.php.net/count">count</a><strong>(</strong><strong>$_match_source</strong><strong>)</strong><strong>;&nbsp;</strong><strong>$_i&nbsp;</strong>&lt;&nbsp;<strong>$_for_max</strong><strong>;&nbsp;</strong><strong>$_i</strong>++<strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a41"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_match&nbsp;</strong>=<strong>&amp;&nbsp;</strong><strong>$_match_source</strong><strong>[</strong><strong>$_i</strong><strong>]</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a42"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$source&nbsp;</strong>=&nbsp;<strong>$_match</strong><strong>[</strong>4<strong>]</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a43"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>$this_varname&nbsp;</strong>==&nbsp;<font color="#66cccc">'_smarty'</font><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a44"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">/*&nbsp;rename&nbsp;$this&nbsp;to&nbsp;$_smarty&nbsp;in&nbsp;the&nbsp;sourcecode&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a45"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$tokens&nbsp;</strong>=&nbsp;<a href="http://www.php.net/token_get_all">token_get_all</a><strong>(</strong><font color="#66cccc">'&lt;?php&nbsp;'&nbsp;</font>.&nbsp;<strong>$_match</strong><strong>[</strong>4<strong>]</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">/*&nbsp;remove&nbsp;trailing&nbsp;&lt;?php&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$open_tag&nbsp;</strong>=&nbsp;<font color="#66cccc">''</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a49"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;<strong>(</strong><strong>$tokens</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a50"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$token&nbsp;</strong>=&nbsp;<a href="http://www.php.net/array_shift">array_shift</a><strong>(</strong><strong>$tokens</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a51"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><a href="http://www.php.net/is_array">is_array</a><strong>(</strong><strong>$token</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a52"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$open_tag&nbsp;</strong>.=&nbsp;<strong>$token</strong><strong>[</strong>1<strong>]</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a53"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a54"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$open_tag&nbsp;</strong>.=&nbsp;<strong>$token</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a55"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a56"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>$open_tag&nbsp;</strong>==&nbsp;<font color="#66cccc">'&lt;?php&nbsp;'</font><strong>)&nbsp;</strong>break<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a57"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a58"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a59"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">for&nbsp;</font><strong>(</strong><strong>$i</strong>=0<strong>,&nbsp;</strong><strong>$count&nbsp;</strong>=&nbsp;<a href="http://www.php.net/count">count</a><strong>(</strong><strong>$tokens</strong><strong>)</strong><strong>;&nbsp;</strong><strong>$i&nbsp;</strong>&lt;&nbsp;<strong>$count</strong><strong>;&nbsp;</strong><strong>$i</strong>++<strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a60"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><a href="http://www.php.net/is_array">is_array</a><strong>(</strong><strong>$tokens</strong><strong>[</strong><strong>$i</strong><strong>]</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a61"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>$tokens</strong><strong>[</strong><strong>$i</strong><strong>]</strong><strong>[</strong>0<strong>]&nbsp;</strong>==&nbsp;T_VARIABLE&nbsp;&amp;&amp;&nbsp;<strong>$tokens</strong><strong>[</strong><strong>$i</strong><strong>]</strong><strong>[</strong>1<strong>]&nbsp;</strong>==&nbsp;<font color="#66cccc">'$this'</font><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a62"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$tokens</strong><strong>[</strong><strong>$i</strong><strong>]&nbsp;</strong>=&nbsp;<font color="#66cccc">'$'&nbsp;</font>.&nbsp;<strong>$this_varname</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a63"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a64"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$tokens</strong><strong>[</strong><strong>$i</strong><strong>]&nbsp;</strong>=&nbsp;<strong>$tokens</strong><strong>[</strong><strong>$i</strong><strong>]</strong><strong>[</strong>1<strong>]</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a65"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></div></li>
+<li><div class="src-line"><a name="a66"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a67"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a68"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$source&nbsp;</strong>=&nbsp;<a href="http://www.php.net/implode">implode</a><strong>(</strong><font color="#66cccc">''</font><strong>,&nbsp;</strong><strong>$tokens</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a69"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a70"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a71"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">/*&nbsp;add&nbsp;function&nbsp;to&nbsp;compiled&nbsp;include&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a72"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_include_compiled&nbsp;</strong>.=&nbsp;<font color="#66cccc">&quot;</div></li>
+<li><div class="src-line"><a name="a73"></a></font><font color="#66cccc">function&nbsp;_smarty_tplfunc_<strong>$_match</strong><strong>[</strong>2<strong>]</strong>_<strong>$_match</strong><strong>[</strong>3<strong>]</strong>(&amp;\$<strong>$this_varname</strong>)</font></div></li>
+<li><div class="src-line"><a name="a74"></a></font><font color="#66cccc">{</font></div></li>
+<li><div class="src-line"><a name="a75"></a></font><font color="#66cccc"><strong>$source</strong></font></div></li>
+<li><div class="src-line"><a name="a76"></a></font><font color="#66cccc">}</font></div></li>
+<li><div class="src-line"><a name="a77"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a78"></a><font color="#66cccc">&quot;</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a79"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a80"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_include_compiled&nbsp;</strong>.=&nbsp;<font color="#66cccc">&quot;\n\n?&gt;\n&quot;</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a81"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a82"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_params&nbsp;</strong>=&nbsp;array<strong>(</strong><font color="#66cccc">'filename'&nbsp;</font>=&gt;&nbsp;<strong>$_compile_path</strong><strong>,</strong></div></li>
+<li><div class="src-line"><a name="a83"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#66cccc">'contents'&nbsp;</font>=&gt;&nbsp;<strong>$_include_compiled</strong><strong>,&nbsp;</strong><font color="#66cccc">'create_dirs'&nbsp;</font>=&gt;&nbsp;true<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a84"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a85"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">require_once</font><strong>(</strong><a href="../Smarty/_engine---libs---smarty---Smarty.class.php.html#defineSMARTY_CORE_DIR">SMARTY_CORE_DIR</a>&nbsp;.&nbsp;<font color="#66cccc">'core.write_file.php'</font><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a86"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../Smarty/plugins/_engine---libs---smarty---internals---core.write_file.php.html#functionsmarty_core_write_file">smarty_core_write_file</a><strong>(</strong><strong>$_params</strong><strong>,&nbsp;</strong><strong>$smarty</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a87"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font>true<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a88"></a><strong>}</strong></div></li>
+<li><div class="src-line"><a name="a89"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a90"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a91"></a><strong>?&gt;</strong></div></li>
+</ol></div>
+</div>
+	<div id="credit">
+		<hr />
+		Äîêóìåíòàöèÿ ñãåíåðèðîâàíà Sun, 22 Aug 2010 18:50:07 +0400 <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</div>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Èñõîäíèêè function.cycle.php</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><h1 align="center">Èñõîäíèêè function.cycle.php</h1>
+<p>Äîêóìåíòàöèÿ äîñòóïíà â <a href="../Smarty/plugins/_engine---libs---smarty---plugins---function.cycle.php.html">function.cycle.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><strong>&lt;?php</strong></div></li>
+<li><div class="src-line"><a name="a2"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a3"></a><font color="#009999">&nbsp;*&nbsp;Smarty&nbsp;plugin</font></div></li>
+<li><div class="src-line"><a name="a4"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@package</font></strong><font color="#009999">&nbsp;Smarty</font></div></li>
+<li><div class="src-line"><a name="a5"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@subpackage</font></strong><font color="#009999">&nbsp;plugins</font></div></li>
+<li><div class="src-line"><a name="a6"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a7"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a8"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a9"></a><font color="#009999">&nbsp;*&nbsp;Smarty&nbsp;{cycle}&nbsp;function&nbsp;plugin</font></div></li>
+<li><div class="src-line"><a name="a10"></a><font color="#009999">&nbsp;*</font></div></li>
+<li><div class="src-line"><a name="a11"></a><font color="#009999">&nbsp;*&nbsp;Type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a12"></a><font color="#009999">&nbsp;*&nbsp;Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cycle&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a13"></a><font color="#009999">&nbsp;*&nbsp;Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;May&nbsp;3,&nbsp;2002&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a14"></a><font color="#009999">&nbsp;*&nbsp;Purpose:&nbsp;&nbsp;cycle&nbsp;through&nbsp;given&nbsp;values&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a15"></a><font color="#009999">&nbsp;*&nbsp;Input:</font></div></li>
+<li><div class="src-line"><a name="a16"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;name&nbsp;=&nbsp;name&nbsp;of&nbsp;cycle&nbsp;(optional)</font></div></li>
+<li><div class="src-line"><a name="a17"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;values&nbsp;=&nbsp;comma&nbsp;separated&nbsp;list&nbsp;of&nbsp;values&nbsp;to&nbsp;cycle,</font></div></li>
+<li><div class="src-line"><a name="a18"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;an&nbsp;array&nbsp;of&nbsp;values&nbsp;to&nbsp;cycle</font></div></li>
+<li><div class="src-line"><a name="a19"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(this&nbsp;can&nbsp;be&nbsp;left&nbsp;out&nbsp;for&nbsp;subsequent&nbsp;calls)</font></div></li>
+<li><div class="src-line"><a name="a20"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;reset&nbsp;=&nbsp;boolean&nbsp;-&nbsp;resets&nbsp;given&nbsp;var&nbsp;to&nbsp;true</font></div></li>
+<li><div class="src-line"><a name="a21"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;print&nbsp;=&nbsp;boolean&nbsp;-&nbsp;print&nbsp;var&nbsp;or&nbsp;not.&nbsp;default&nbsp;is&nbsp;true</font></div></li>
+<li><div class="src-line"><a name="a22"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;advance&nbsp;=&nbsp;boolean&nbsp;-&nbsp;whether&nbsp;or&nbsp;not&nbsp;to&nbsp;advance&nbsp;the&nbsp;cycle</font></div></li>
+<li><div class="src-line"><a name="a23"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;delimiter&nbsp;=&nbsp;the&nbsp;value&nbsp;delimiter,&nbsp;default&nbsp;is&nbsp;&quot;,&quot;</font></div></li>
+<li><div class="src-line"><a name="a24"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;assign&nbsp;=&nbsp;boolean,&nbsp;assigns&nbsp;to&nbsp;template&nbsp;var&nbsp;instead&nbsp;of</font></div></li>
+<li><div class="src-line"><a name="a25"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printed.</font></div></li>
+<li><div class="src-line"><a name="a26"></a><font color="#009999">&nbsp;*</font></div></li>
+<li><div class="src-line"><a name="a27"></a><font color="#009999">&nbsp;*&nbsp;Examples:&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a28"></a><font color="#009999">&nbsp;*&nbsp;&lt;pre&gt;</font></div></li>
+<li><div class="src-line"><a name="a29"></a><font color="#009999">&nbsp;*&nbsp;{cycle&nbsp;values=&quot;#eeeeee,#d0d0d0d&quot;}</font></div></li>
+<li><div class="src-line"><a name="a30"></a><font color="#009999">&nbsp;*&nbsp;{cycle&nbsp;name=row&nbsp;values=&quot;one,two,three&quot;&nbsp;reset=true}</font></div></li>
+<li><div class="src-line"><a name="a31"></a><font color="#009999">&nbsp;*&nbsp;{cycle&nbsp;name=row}</font></div></li>
+<li><div class="src-line"><a name="a32"></a><font color="#009999">&nbsp;*&nbsp;&lt;/pre&gt;</font></div></li>
+<li><div class="src-line"><a name="a33"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@link</font></strong><font color="#009999">&nbsp;http://smarty.php.net/manual/en/language.function.cycle.php&nbsp;{cycle}</font></div></li>
+<li><div class="src-line"><a name="a34"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Smarty&nbsp;online&nbsp;manual)</font></div></li>
+<li><div class="src-line"><a name="a35"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@author</font></strong><font color="#009999">&nbsp;Monte&nbsp;Ohrt&nbsp;&lt;monte&nbsp;at&nbsp;ohrt&nbsp;dot&nbsp;com&gt;</font></div></li>
+<li><div class="src-line"><a name="a36"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@author</font></strong><font color="#009999">&nbsp;credit&nbsp;to&nbsp;Mark&nbsp;Priatel&nbsp;&lt;mpriatel@rogers.com&gt;</font></div></li>
+<li><div class="src-line"><a name="a37"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@author</font></strong><font color="#009999">&nbsp;credit&nbsp;to&nbsp;Gerard&nbsp;&lt;gerard@interfold.com&gt;</font></div></li>
+<li><div class="src-line"><a name="a38"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@author</font></strong><font color="#009999">&nbsp;credit&nbsp;to&nbsp;Jason&nbsp;Sweat&nbsp;&lt;jsweat_php@yahoo.com&gt;</font></div></li>
+<li><div class="src-line"><a name="a39"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@version</font></strong><font color="#009999">&nbsp;&nbsp;1.3</font></div></li>
+<li><div class="src-line"><a name="a40"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>array&nbsp;</em></div></li>
+<li><div class="src-line"><a name="a41"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>Smarty&nbsp;</em></div></li>
+<li><div class="src-line"><a name="a42"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@return&nbsp;</font></strong><em>string</em><font color="#009999">|</font><em>null</em></div></li>
+<li><div class="src-line"><a name="a43"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a44"></a><font color="blue">function&nbsp;</font><a href="../Smarty/plugins/_engine---libs---smarty---plugins---function.cycle.php.html#functionsmarty_function_cycle">smarty_function_cycle</a><strong>(</strong><strong>$params</strong><strong>,&nbsp;</strong><strong>&amp;</strong><strong>$smarty</strong><strong>)</strong></div></li>
+<li><div class="src-line"><a name="a45"></a><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">static&nbsp;</font><strong>$cycle_vars</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$name&nbsp;</strong>=&nbsp;<strong>(</strong>empty<strong>(</strong><strong>$params</strong><strong>[</strong><font color="#66cccc">'name'</font><strong>]</strong><strong>))&nbsp;</strong>?&nbsp;<font color="#66cccc">'default'&nbsp;</font>:&nbsp;<strong>$params</strong><strong>[</strong><font color="#66cccc">'name'</font><strong>]</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a49"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$print&nbsp;</strong>=&nbsp;<strong>(</strong>isset<strong>(</strong><strong>$params</strong><strong>[</strong><font color="#66cccc">'print'</font><strong>]</strong><strong>))&nbsp;</strong>?&nbsp;(bool)<strong>$params</strong><strong>[</strong><font color="#66cccc">'print'</font><strong>]&nbsp;</strong>:&nbsp;true<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a50"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$advance&nbsp;</strong>=&nbsp;<strong>(</strong>isset<strong>(</strong><strong>$params</strong><strong>[</strong><font color="#66cccc">'advance'</font><strong>]</strong><strong>))&nbsp;</strong>?&nbsp;(bool)<strong>$params</strong><strong>[</strong><font color="#66cccc">'advance'</font><strong>]&nbsp;</strong>:&nbsp;true<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a51"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$reset&nbsp;</strong>=&nbsp;<strong>(</strong>isset<strong>(</strong><strong>$params</strong><strong>[</strong><font color="#66cccc">'reset'</font><strong>]</strong><strong>))&nbsp;</strong>?&nbsp;(bool)<strong>$params</strong><strong>[</strong><font color="#66cccc">'reset'</font><strong>]&nbsp;</strong>:&nbsp;false<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a52"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a53"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>!</strong><a href="http://www.php.net/in_array">in_array</a><strong>(</strong><font color="#66cccc">'values'</font><strong>,&nbsp;</strong><a href="http://www.php.net/array_keys">array_keys</a><strong>(</strong><strong>$params</strong><strong>)))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a54"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if</font><strong>(</strong><strong>!</strong>isset<strong>(</strong><strong>$cycle_vars</strong><strong>[</strong><strong>$name</strong><strong>]</strong><strong>[</strong><font color="#66cccc">'values'</font><strong>]</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a55"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong><a href="http://www.php.net/trigger_error">trigger_error</a><strong>(</strong><font color="#66cccc">&quot;cycle:&nbsp;missing&nbsp;'values'&nbsp;parameter&quot;</font><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a56"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a57"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a58"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a59"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if</font><strong>(</strong>isset<strong>(</strong><strong>$cycle_vars</strong><strong>[</strong><strong>$name</strong><strong>]</strong><strong>[</strong><font color="#66cccc">'values'</font><strong>]</strong><strong>)</strong></div></li>
+<li><div class="src-line"><a name="a60"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;&amp;&nbsp;<strong>$cycle_vars</strong><strong>[</strong><strong>$name</strong><strong>]</strong><strong>[</strong><font color="#66cccc">'values'</font><strong>]&nbsp;</strong>!=&nbsp;<strong>$params</strong><strong>[</strong><font color="#66cccc">'values'</font><strong>]&nbsp;</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a61"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$cycle_vars</strong><strong>[</strong><strong>$name</strong><strong>]</strong><strong>[</strong><font color="#66cccc">'index'</font><strong>]&nbsp;</strong>=&nbsp;0<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a62"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a63"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$cycle_vars</strong><strong>[</strong><strong>$name</strong><strong>]</strong><strong>[</strong><font color="#66cccc">'values'</font><strong>]&nbsp;</strong>=&nbsp;<strong>$params</strong><strong>[</strong><font color="#66cccc">'values'</font><strong>]</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a64"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a65"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a66"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$cycle_vars</strong><strong>[</strong><strong>$name</strong><strong>]</strong><strong>[</strong><font color="#66cccc">'delimiter'</font><strong>]&nbsp;</strong>=&nbsp;<strong>(</strong>isset<strong>(</strong><strong>$params</strong><strong>[</strong><font color="#66cccc">'delimiter'</font><strong>]</strong><strong>))&nbsp;</strong>?&nbsp;<strong>$params</strong><strong>[</strong><font color="#66cccc">'delimiter'</font><strong>]&nbsp;</strong>:&nbsp;<font color="#66cccc">','</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a67"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a68"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if</font><strong>(</strong><a href="http://www.php.net/is_array">is_array</a><strong>(</strong><strong>$cycle_vars</strong><strong>[</strong><strong>$name</strong><strong>]</strong><strong>[</strong><font color="#66cccc">'values'</font><strong>]</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a69"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$cycle_array&nbsp;</strong>=&nbsp;<strong>$cycle_vars</strong><strong>[</strong><strong>$name</strong><strong>]</strong><strong>[</strong><font color="#66cccc">'values'</font><strong>]</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a70"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a71"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$cycle_array&nbsp;</strong>=&nbsp;<a href="http://www.php.net/explode">explode</a><strong>(</strong><strong>$cycle_vars</strong><strong>[</strong><strong>$name</strong><strong>]</strong><strong>[</strong><font color="#66cccc">'delimiter'</font><strong>]</strong><strong>,</strong><strong>$cycle_vars</strong><strong>[</strong><strong>$name</strong><strong>]</strong><strong>[</strong><font color="#66cccc">'values'</font><strong>]</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a72"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a73"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a74"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if</font><strong>(</strong><strong>!</strong>isset<strong>(</strong><strong>$cycle_vars</strong><strong>[</strong><strong>$name</strong><strong>]</strong><strong>[</strong><font color="#66cccc">'index'</font><strong>]</strong><strong>)&nbsp;</strong>||&nbsp;<strong>$reset&nbsp;</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a75"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$cycle_vars</strong><strong>[</strong><strong>$name</strong><strong>]</strong><strong>[</strong><font color="#66cccc">'index'</font><strong>]&nbsp;</strong>=&nbsp;0<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a76"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a77"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a78"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong>isset<strong>(</strong><strong>$params</strong><strong>[</strong><font color="#66cccc">'assign'</font><strong>]</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a79"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$print&nbsp;</strong>=&nbsp;false<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a80"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong>assign<strong>(</strong><strong>$params</strong><strong>[</strong><font color="#66cccc">'assign'</font><strong>]</strong><strong>,&nbsp;</strong><strong>$cycle_array</strong><strong>[</strong><strong>$cycle_vars</strong><strong>[</strong><strong>$name</strong><strong>]</strong><strong>[</strong><font color="#66cccc">'index'</font><strong>]]</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a81"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a82"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a83"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if</font><strong>(</strong><strong>$print</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a84"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$retval&nbsp;</strong>=&nbsp;<strong>$cycle_array</strong><strong>[</strong><strong>$cycle_vars</strong><strong>[</strong><strong>$name</strong><strong>]</strong><strong>[</strong><font color="#66cccc">'index'</font><strong>]]</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a85"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a86"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$retval&nbsp;</strong>=&nbsp;null<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a87"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a88"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a89"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if</font><strong>(</strong><strong>$advance</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a90"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(&nbsp;</strong><strong>$cycle_vars</strong><strong>[</strong><strong>$name</strong><strong>]</strong><strong>[</strong><font color="#66cccc">'index'</font><strong>]&nbsp;</strong>&gt;=&nbsp;<a href="http://www.php.net/count">count</a><strong>(</strong><strong>$cycle_array</strong><strong>)&nbsp;</strong>-1&nbsp;<strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a91"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$cycle_vars</strong><strong>[</strong><strong>$name</strong><strong>]</strong><strong>[</strong><font color="#66cccc">'index'</font><strong>]&nbsp;</strong>=&nbsp;0<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a92"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a93"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$cycle_vars</strong><strong>[</strong><strong>$name</strong><strong>]</strong><strong>[</strong><font color="#66cccc">'index'</font><strong>]</strong>++<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a94"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a95"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a96"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a97"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><strong>$retval</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a98"></a><strong>}</strong></div></li>
+<li><div class="src-line"><a name="a99"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a100"></a><font color="green">/*&nbsp;vim:&nbsp;set&nbsp;expandtab:&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a101"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a102"></a><strong>?&gt;</strong></div></li>
+</ol></div>
+</div>
+	<div id="credit">
+		<hr />
+		Äîêóìåíòàöèÿ ñãåíåðèðîâàíà Sun, 22 Aug 2010 18:50:09 +0400 <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</div>
+</body>
+</html>

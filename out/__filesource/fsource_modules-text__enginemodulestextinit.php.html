@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Èñõîäíèêè init.php</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><h1 align="center">Èñõîäíèêè init.php</h1>
+<p>Äîêóìåíòàöèÿ äîñòóïíà â <a href="../modules-text/_engine---modules---text---init.php.html">init.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><strong>&lt;?php</strong></div></li>
+<li><div class="src-line"><a name="a2"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a3"></a><font color="#009999">*&nbsp;Çàãðóç÷èê&nbsp;òåêñòîâîãî&nbsp;ìîäóëÿ.</font></div></li>
+<li><div class="src-line"><a name="a4"></a><font color="#009999">*&nbsp;</font><strong><font color = "#0099FF">@package</font></strong><font color="#009999">&nbsp;modules.text</font></div></li>
+<li><div class="src-line"><a name="a5"></a><font color="#009999">*&nbsp;</font><strong><font color = "#0099FF">@author</font></strong><font color="#009999">&nbsp;Solopiy&nbsp;Artem</font></div></li>
+<li><div class="src-line"><a name="a6"></a><font color="#009999">*&nbsp;</font><strong><font color = "#0099FF">@version</font></strong><font color="#009999">&nbsp;0.9&nbsp;Beta</font></div></li>
+<li><div class="src-line"><a name="a7"></a><font color="#009999">*&nbsp;</font><strong><font color = "#0099FF">@copyright</font></strong><font color="#009999">&nbsp;Idel&nbsp;Media&nbsp;Group:&nbsp;Developers&nbsp;Team&nbsp;(Solopiy&nbsp;Artem,&nbsp;Jusupziyanov&nbsp;Timur)&nbsp;©&nbsp;2010</font></div></li>
+<li><div class="src-line"><a name="a8"></a><font color="#009999">*/</font></div></li>
+<li><div class="src-line"><a name="a9"></a><font color="blue">require_once</font><strong>(</strong><font color="#66cccc">&quot;class_text_module.php&quot;</font><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a10"></a><strong>$txtM&nbsp;</strong>=&nbsp;new&nbsp;<a href="../modules-text/TextModule.html">TextModule</a><strong>(</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a11"></a>try</div></li>
+<li><div class="src-line"><a name="a12"></a><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a13"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$output&nbsp;</strong>=&nbsp;<strong>$txtM</strong><strong>-&gt;</strong>getText<strong>(</strong><strong>$data</strong><strong>[</strong><font color="#66cccc">&quot;id&quot;</font><strong>]</strong><strong>)</strong><strong>;&nbsp;</strong></div></li>
+<li><div class="src-line"><a name="a14"></a><strong>}</strong></div></li>
+<li><div class="src-line"><a name="a15"></a>catch<strong>(</strong>Exception&nbsp;<strong>$arr2</strong><strong>)</strong></div></li>
+<li><div class="src-line"><a name="a16"></a><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a17"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$output&nbsp;</strong>=&nbsp;array<strong>(</strong><font color="#66cccc">&quot;text&quot;&nbsp;</font>=&gt;&nbsp;<font color="#66cccc">&quot;&lt;span&nbsp;style=\&quot;color:&nbsp;red;&nbsp;font-weight:&nbsp;bold;\&quot;&gt;Òåêñòîâûé&nbsp;ìîäóëü:&nbsp;&quot;</font>.<strong>$arr2</strong><strong>-&gt;</strong>getMessage<strong>(</strong><strong>)</strong>.<font color="#66cccc">&quot;&lt;/span&gt;&quot;</font><strong>,&nbsp;</strong><font color="#66cccc">&quot;id&quot;&nbsp;</font>=&gt;&nbsp;NULL<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a18"></a><strong>}</strong></div></li>
+<li><div class="src-line"><a name="a19"></a><strong>?&gt;</strong></div></li>
+</ol></div>
+</div>
+	<div id="credit">
+		<hr />
+		Äîêóìåíòàöèÿ ñãåíåðèðîâàíà Sun, 22 Aug 2010 18:50:15 +0400 <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</div>
+</body>
+</html>

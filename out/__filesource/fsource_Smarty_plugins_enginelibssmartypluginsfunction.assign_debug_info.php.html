@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Èñõîäíèêè function.assign_debug_info.php</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><h1 align="center">Èñõîäíèêè function.assign_debug_info.php</h1>
+<p>Äîêóìåíòàöèÿ äîñòóïíà â <a href="../Smarty/plugins/_engine---libs---smarty---plugins---function.assign_debug_info.php.html">function.assign_debug_info.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><strong>&lt;?php</strong></div></li>
+<li><div class="src-line"><a name="a2"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a3"></a><font color="#009999">&nbsp;*&nbsp;Smarty&nbsp;plugin</font></div></li>
+<li><div class="src-line"><a name="a4"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@package</font></strong><font color="#009999">&nbsp;Smarty</font></div></li>
+<li><div class="src-line"><a name="a5"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@subpackage</font></strong><font color="#009999">&nbsp;plugins</font></div></li>
+<li><div class="src-line"><a name="a6"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a7"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a8"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a9"></a><font color="#009999">&nbsp;*&nbsp;Smarty&nbsp;{assign_debug_info}&nbsp;function&nbsp;plugin</font></div></li>
+<li><div class="src-line"><a name="a10"></a><font color="#009999">&nbsp;*</font></div></li>
+<li><div class="src-line"><a name="a11"></a><font color="#009999">&nbsp;*&nbsp;Type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a12"></a><font color="#009999">&nbsp;*&nbsp;Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assign_debug_info&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a13"></a><font color="#009999">&nbsp;*&nbsp;Purpose:&nbsp;&nbsp;assign&nbsp;debug&nbsp;info&nbsp;to&nbsp;the&nbsp;template&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a14"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@author</font></strong><font color="#009999">&nbsp;Monte&nbsp;Ohrt&nbsp;&lt;monte&nbsp;at&nbsp;ohrt&nbsp;dot&nbsp;com&gt;</font></div></li>
+<li><div class="src-line"><a name="a15"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>array&nbsp;</em><font color="#009999">unused&nbsp;in&nbsp;this&nbsp;plugin,&nbsp;this&nbsp;plugin&nbsp;uses&nbsp;</font><em><font color="#0099FF">{@link&nbsp;Smarty::$_config}</font></em><font color="#009999">,</font></div></li>
+<li><div class="src-line"><a name="a16"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><em><font color="#0099FF">{@link&nbsp;Smarty::$_tpl_vars}</font></em><font color="#009999">&nbsp;and&nbsp;</font><em><font color="#0099FF">{@link&nbsp;Smarty::$_smarty_debug_info}</font></em></div></li>
+<li><div class="src-line"><a name="a17"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>Smarty&nbsp;</em></div></li>
+<li><div class="src-line"><a name="a18"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a19"></a><font color="blue">function&nbsp;</font><a href="../Smarty/plugins/_engine---libs---smarty---plugins---function.assign_debug_info.php.html#functionsmarty_function_assign_debug_info">smarty_function_assign_debug_info</a><strong>(</strong><strong>$params</strong><strong>,&nbsp;</strong><strong>&amp;</strong><strong>$smarty</strong><strong>)</strong></div></li>
+<li><div class="src-line"><a name="a20"></a><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a21"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$assigned_vars&nbsp;</strong>=&nbsp;<strong>$smarty</strong><strong>-&gt;</strong>_tpl_vars<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a22"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/ksort">ksort</a><strong>(</strong><strong>$assigned_vars</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a23"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>@</strong><a href="http://www.php.net/is_array">is_array</a><strong>(</strong><strong>$smarty</strong><strong>-&gt;</strong>_config<strong>[</strong>0<strong>]</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a24"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$config_vars&nbsp;</strong>=&nbsp;<strong>$smarty</strong><strong>-&gt;</strong>_config<strong>[</strong>0<strong>]</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a25"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/ksort">ksort</a><strong>(</strong><strong>$config_vars</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a26"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong>assign<strong>(</strong><font color="#66cccc">&quot;_debug_config_keys&quot;</font><strong>,&nbsp;</strong><a href="http://www.php.net/array_keys">array_keys</a><strong>(</strong><strong>$config_vars</strong><strong>))</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a27"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong>assign<strong>(</strong><font color="#66cccc">&quot;_debug_config_vals&quot;</font><strong>,&nbsp;</strong><a href="http://www.php.net/array_values">array_values</a><strong>(</strong><strong>$config_vars</strong><strong>))</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a28"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a29"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a30"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$included_templates&nbsp;</strong>=&nbsp;<strong>$smarty</strong><strong>-&gt;</strong>_smarty_debug_info<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a31"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a32"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong>assign<strong>(</strong><font color="#66cccc">&quot;_debug_keys&quot;</font><strong>,&nbsp;</strong><a href="http://www.php.net/array_keys">array_keys</a><strong>(</strong><strong>$assigned_vars</strong><strong>))</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a33"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong>assign<strong>(</strong><font color="#66cccc">&quot;_debug_vals&quot;</font><strong>,&nbsp;</strong><a href="http://www.php.net/array_values">array_values</a><strong>(</strong><strong>$assigned_vars</strong><strong>))</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a34"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a35"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong>assign<strong>(</strong><font color="#66cccc">&quot;_debug_tpls&quot;</font><strong>,&nbsp;</strong><strong>$included_templates</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a36"></a><strong>}</strong></div></li>
+<li><div class="src-line"><a name="a37"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a38"></a><font color="green">/*&nbsp;vim:&nbsp;set&nbsp;expandtab:&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a39"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a40"></a><strong>?&gt;</strong></div></li>
+</ol></div>
+</div>
+	<div id="credit">
+		<hr />
+		Äîêóìåíòàöèÿ ñãåíåðèðîâàíà Sun, 22 Aug 2010 18:50:08 +0400 <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</div>
+</body>
+</html>

@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Docs For Class MySQLquery</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+  <script src="../media/lib/classTree.js"></script>
+<link id="webfx-tab-style-sheet" type="text/css" rel="stylesheet" href="../media/lib/tab.webfx.css" />
+<script type="text/javascript" src="../media/lib/tabpane.js"></script>
+  <script language="javascript" type="text/javascript" src="../media/lib/ua.js"></script>
+<script language="javascript" type="text/javascript">
+	var imgPlus = new Image();
+	var imgMinus = new Image();
+	imgPlus.src = "../media/images/plus.gif";
+	imgMinus.src = "../media/images/minus.gif";
+	
+	function showNode(Node){
+        switch(navigator.family){
+        	case 'nn4':
+        		// Nav 4.x code fork...
+				var oTable = document.layers["span" + Node];
+				var oImg = document.layers["img" + Node];
+        		break;
+        	case 'ie4':
+        		// IE 4/5 code fork...
+				var oTable = document.all["span" + Node];
+				var oImg = document.all["img" + Node];
+        		break;
+        	case 'gecko':
+        		// Standards Compliant code fork...
+				var oTable = document.getElementById("span" + Node);
+				var oImg = document.getElementById("img" + Node);
+        		break;
+        }
+		oImg.src = imgMinus.src;
+		oTable.style.display = "block";
+	}
+	
+	function hideNode(Node){
+        switch(navigator.family){
+        	case 'nn4':
+        		// Nav 4.x code fork...
+				var oTable = document.layers["span" + Node];
+				var oImg = document.layers["img" + Node];
+        		break;
+        	case 'ie4':
+        		// IE 4/5 code fork...
+				var oTable = document.all["span" + Node];
+				var oImg = document.all["img" + Node];
+        		break;
+        	case 'gecko':
+        		// Standards Compliant code fork...
+				var oTable = document.getElementById("span" + Node);
+				var oImg = document.getElementById("img" + Node);
+        		break;
+        }
+		oImg.src = imgPlus.src;
+		oTable.style.display = "none";
+	}
+	
+	function nodeIsVisible(Node){
+        switch(navigator.family){
+        	case 'nn4':
+        		// Nav 4.x code fork...
+				var oTable = document.layers["span" + Node];
+        		break;
+        	case 'ie4':
+        		// IE 4/5 code fork...
+				var oTable = document.all["span" + Node];
+        		break;
+        	case 'gecko':
+        		// Standards Compliant code fork...
+				var oTable = document.getElementById("span" + Node);
+        		break;
+        }
+		return (oTable && oTable.style.display == "block");
+	}
+	
+	function toggleNodeVisibility(Node){
+		if (nodeIsVisible(Node)){
+			hideNode(Node);
+		}else{
+			showNode(Node);
+		}
+	}
+</script>
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><!-- Start of Class Data -->
+<h2>
+	Êëàññ MySQLquery
+</h2> (line <span class="linenumber"><a href="../__filesource/fsource_default__enginelibsMySQL.php.html#a142">142</a></span>)
+<div class="tab-pane" id="tabPane1">
+<script type="text/javascript">
+tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
+</script>
+
+<div class="tab-page" id="Description">
+<h2 class="tab">Îïèñàíèå</h2>
+<pre>
+</pre>
+<p>
+	<b><i>Ðàñïîëîæåí â ôàéëå: <a href="_engine---libs---MySQL.php.html">/engine/libs/MySQL.php</a></i></b><br>
+</p>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Êëàññ MySQL çàïðîñîâ</h5>
+<div class="desc"><p>Êëàññ MySQL çàïðîñîâ</p></div>
+<ul>
+	</ul>
+<br /><hr />
+<span class="type">Êëàññ íàñëåäóåò îò MySQLquery:</span>
+ 		<dl>
+	<dt><a href="../default/MySQL.html">MySQL</a></dt>
+		<dd>Êëàññ MySQL.</dd>
+	</dl>
+	</p>
+</div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "Description" ) );</script>
+<div class="tab-page" id="tabPage1">
+
+<h2 class="tab">Ïåðåìåííûå êëàññà</h2>
+<!-- ============ VARIABLE DETAIL =========== -->
+<strong>Èíôîðìàöèÿ:</strong><br />
+<div class="var-title">
+    <span class="var-type">Array</span>
+    <a href="#var$rows" title="details" class="property"><strong>$rows</strong></a>
+</div>
+<div class="var-title">
+    <span class="var-type">mixed</span>
+    <a href="#var$_internalResource" title="details" class="property"><strong>$_internalResource</strong></a>
+</div>
+<div class="var-title">
+    <span class="var-type">mixed</span>
+    <a href="#var$_password" title="details" class="property"><strong>$_password</strong></a>
+</div>
+<div class="var-title">
+    <span class="var-type">mixed</span>
+    <a href="#var$_server" title="details" class="property"><strong>$_server</strong></a>
+</div>
+<div class="var-title">
+    <span class="var-type">mixed</span>
+    <a href="#var$_user" title="details" class="property"><strong>$_user</strong></a>
+</div>
+<hr />
+<a name="var$rows" id="var$rows"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$rows</strong> (line <span class="linenumber"><a href="../__filesource/fsource_default__enginelibsMySQL.php.html#a158">158</a></span>)
+ </h4>
+<h4>Data type : Array</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Ìàññèâ ñòðîê</h5>
+<div class="desc"><p>Ìàññèâ ñòðîê</p></div>
+<ul>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$_internalResource" id="var$_internalResource"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$_internalResource</strong> (line <span class="linenumber"><a href="../__filesource/fsource_default__enginelibsMySQL.php.html#a152">152</a></span>)
+ </h4>
+<h4>Data type : mixed</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Âîçðàùàåò ìàññèâ ñòðîê òàáëèöû</h5>
+<div class="desc"><p>Âîçðàùàåò ìàññèâ ñòðîê òàáëèöû</p></div>
+<ul>
+		<li><strong>access:</strong> - private</li>
+	</ul>
+</div>
+<a name="var$_password" id="var$_password"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$_password</strong> (line <span class="linenumber"><a href="../__filesource/fsource_default__enginelibsMySQL.php.html#a161">161</a></span>)
+ </h4>
+<h4>Data type : mixed</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$_server" id="var$_server"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$_server</strong> (line <span class="linenumber"><a href="../__filesource/fsource_default__enginelibsMySQL.php.html#a159">159</a></span>)
+ </h4>
+<h4>Data type : mixed</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$_user" id="var$_user"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$_user</strong> (line <span class="linenumber"><a href="../__filesource/fsource_default__enginelibsMySQL.php.html#a160">160</a></span>)
+ </h4>
+<h4>Data type : mixed</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage1" ) );</script>
+</div>
+<div class="tab-page" id="constantsTabpage">
+
+<h2 class="tab">Êîíñòàíòû êëàññà</h2>
+<!-- ============ VARIABLE DETAIL =========== -->
+<strong>Èíôîðìàöèÿ:</strong><br />
+<div class="const-title">
+    <a href="#constEXCEPTION_NO_PRIMARY_KEY" title="details" class="property"><strong>EXCEPTION_NO_PRIMARY_KEY</strong></a>
+</div>
+<hr />
+<a name="constEXCEPTION_NO_PRIMARY_KEY" id="constEXCEPTION_NO_PRIMARY_KEY"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">EXCEPTION_NO_PRIMARY_KEY = &quot;No field with primary key&quot;</strong> (line <span class="linenumber"><a href="../__filesource/fsource_default__enginelibsMySQL.php.html#a144">144</a></span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "constantsTabpage" ) );</script>
+</div>
+<div class="tab-page" id="tabPage2">
+<h2 class="tab">Ìåòîäû</h2>
+<!-- ============ METHOD DETAIL =========== -->
+<strong>Èíôîðìàöèÿ:</strong><br />
+<div class="method-summary">
+    <div class="method-definition">
+            <span class="method-result">String</span>
+        <a href="#methodCreateTableTemplate" title="details" class="method-name">CreateTableTemplate</a>
+        (<span class="var-type">String</span>&nbsp;<span class="var-name">$table_name</span>, <span class="var-type"></span>&nbsp;<span class="var-name">&$fields</span>, <span class="var-type">Array</span>&nbsp;<span class="var-name">$fields</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">MySQLquery</span>
+        <a href="#method__construct" title="details" class="method-name">__construct</a>
+        (<span class="var-type"></span>&nbsp;<span class="var-name">$server</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$user</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$password</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">void</span>
+        <a href="#methodfetchArr" title="details" class="method-name">fetchArr</a>
+        ([<span class="var-type"></span>&nbsp;<span class="var-name">$resource</span> = <span class="var-default">NULL</span>])
+        </div>
+    <div class="method-definition">
+            <span class="method-result">Array</span>
+        <a href="#methodGetFields" title="details" class="method-name">GetFields</a>
+        (<span class="var-type">Resource</span>&nbsp;<span class="var-name">$resourse</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">void</span>
+        <a href="#methodGetRows" title="details" class="method-name">GetRows</a>
+        (<span class="var-type"></span>&nbsp;<span class="var-name">$query_res</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">String</span>
+        <a href="#methodInsertIntoTemplate" title="details" class="method-name">InsertIntoTemplate</a>
+        (<span class="var-type">String</span>&nbsp;<span class="var-name">$table_name</span>, <span class="var-type"></span>&nbsp;<span class="var-name">&$values</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">&$fields</span> = <span class="var-default">null</span>], <span class="var-type">Array</span>&nbsp;<span class="var-name">$values</span>, <span class="var-type">Array</span>&nbsp;<span class="var-name">$fields</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">String</span>
+        <a href="#methodMakeFieldString" title="details" class="method-name">MakeFieldString</a>
+        (<span class="var-type"></span>&nbsp;<span class="var-name">&$fields_arr</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$char</span> = <span class="var-default">&quot;`&quot;</span>], <span class="var-type">Array</span>&nbsp;<span class="var-name">$fields_arr</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">Resource</span>
+        <a href="#methodquery" title="details" class="method-name">query</a>
+        (<span class="var-type">String</span>&nbsp;<span class="var-name">$string</span>)
+        </div>
+</div>
+<hr />
+<A NAME='method_detail'></A>
+
+
+<a name="methodCreateTableTemplate" id="methodCreateTableTemplate"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/Public üóåðùâ.gif" border="0" /> <strong class="method">Method CreateTableTemplate</strong> (line <span class="linenumber"><a href="../__filesource/fsource_default__enginelibsMySQL.php.html#a211">211</a></span>)
+ </h4> 
+<h4><i>String</i> <strong>CreateTableTemplate(
+String
+$table_name, 
+&$fields, Array
+$fields)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Âîçâðàùàåò øàáëîí CREATE TABLE</h5>
+<div class="desc"><p>Âîçâðàùàåò øàáëîí CREATE TABLE</p></div>
+		<h4>Ïàðàìåòðû</h4>
+	<ul>
+			<li><strong>String $table_name</strong>: Èìÿ òàáëèöû</li>
+			<li><strong>Array $fields</strong>: Ìàññèâ ïîëåé MySQLField</li>
+			<li><strong> &$fields</strong>: </li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="method__construct" id="method__construct"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/Êîíñòðóêòîð.gif" border="0" /> <strong class="method">Êîíñòðóêòîð __construct</strong> (line <span class="linenumber"><a href="../__filesource/fsource_default__enginelibsMySQL.php.html#a163">163</a></span>)
+ </h4> 
+<h4><i>MySQLquery</i> <strong>__construct(
+
+$server, 
+$user, 
+$password)</strong></h4>
+	<p>Ïåðåîïðåäåë¸í â äî÷åðíåì êëàññå êàê:<br />
+		<dl>
+	<dt><a href="../default/MySQL.html#method__construct">MySQL::__construct()</a></dt>
+		<dd>Êîíñòðóêòîð.</dd>
+	</dl>
+	</p>
+
+	<!-- ========== Info from phpDoc block ========= -->
+		<h4>Ïàðàìåòðû</h4>
+	<ul>
+			<li><strong> $server</strong>: </li>
+			<li><strong> $user</strong>: </li>
+			<li><strong> $password</strong>: </li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodfetchArr" id="methodfetchArr"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/Public üóåðùâ.gif" border="0" /> <strong class="method">Method fetchArr</strong> (line <span class="linenumber"><a href="../__filesource/fsource_default__enginelibsMySQL.php.html#a289">289</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>fetchArr(
+[
+$resource = NULL])</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+		<h4>Ïàðàìåòðû</h4>
+	<ul>
+			<li><strong> $resource</strong>: </li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodGetFields" id="methodGetFields"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/Public üóåðùâ.gif" border="0" /> <strong class="method">Method GetFields</strong> (line <span class="linenumber"><a href="../__filesource/fsource_default__enginelibsMySQL.php.html#a195">195</a></span>)
+ </h4> 
+<h4><i>Array</i> <strong>GetFields(
+Resource
+$resourse)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Âîçâðàùàåò ìàññèâ çàãîëîâêîâ ïîëåé òàáëèöû</h5>
+<div class="desc"><p>Âîçâðàùàåò ìàññèâ çàãîëîâêîâ ïîëåé òàáëèöû</p></div>
+		<h4>Ïàðàìåòðû</h4>
+	<ul>
+			<li><strong>Resource $resourse</strong>: Ðåçóëüòàò çàïðîñà</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodGetRows" id="methodGetRows"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/Public üóåðùâ.gif" border="0" /> <strong class="method">Method GetRows</strong> (line <span class="linenumber"><a href="../__filesource/fsource_default__enginelibsMySQL.php.html#a180">180</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>GetRows(
+
+$query_res)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+		<h4>Ïàðàìåòðû</h4>
+	<ul>
+			<li><strong> $query_res</strong>: </li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodInsertIntoTemplate" id="methodInsertIntoTemplate"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/Public üóåðùâ.gif" border="0" /> <strong class="method">Method InsertIntoTemplate</strong> (line <span class="linenumber"><a href="../__filesource/fsource_default__enginelibsMySQL.php.html#a239">239</a></span>)
+ </h4> 
+<h4><i>String</i> <strong>InsertIntoTemplate(
+String
+$table_name, 
+&$values, [
+&$fields = null], Array
+$values, Array
+$fields)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Øàáëîí INSERT INTO</h5>
+<div class="desc"><p>Øàáëîí INSERT INTO</p></div>
+		<h4>Ïàðàìåòðû</h4>
+	<ul>
+			<li><strong>String $table_name</strong>: Èìÿ òàáëèöû</li>
+			<li><strong>Array $values</strong>: Ìàññèâ çíà÷åíèé ïîëåé äîáàâëÿåìûõ çàïèñåé</li>
+			<li><strong>Array $fields</strong>: Ìàññèâ èì¸í ïîëåé äëÿ äîáàâëÿåíèÿ çàïèñåé. Ïî-óìîë÷àíèþ äëÿ âñåõ ïîëåé</li>
+			<li><strong> &$values</strong>: </li>
+			<li><strong> &$fields</strong>: </li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodMakeFieldString" id="methodMakeFieldString"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/Public üóåðùâ.gif" border="0" /> <strong class="method">Method MakeFieldString</strong> (line <span class="linenumber"><a href="../__filesource/fsource_default__enginelibsMySQL.php.html#a258">258</a></span>)
+ </h4> 
+<h4><i>String</i> <strong>MakeFieldString(
+
+&$fields_arr, [mixed
+$char = &quot;`&quot;], Array
+$fields_arr)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>put your comment there.</h5>
+<div class="desc"><p>put your comment there...</p></div>
+		<h4>Ïàðàìåòðû</h4>
+	<ul>
+			<li><strong>Array $fields_arr</strong>: Ìàññèâ ïîëåé MySQLField</li>
+			<li><strong>mixed $char</strong>: </li>
+			<li><strong> &$fields_arr</strong>: </li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>access</strong> - protected</li>
+		</ul>
+</div>
+<a name="methodquery" id="methodquery"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/Public üóåðùâ.gif" border="0" /> <strong class="method">Method query</strong> (line <span class="linenumber"><a href="../__filesource/fsource_default__enginelibsMySQL.php.html#a278">278</a></span>)
+ </h4> 
+<h4><i>Resource</i> <strong>query(
+String
+$string)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Âûïîëíÿåò MySQL-çàïðîñ</h5>
+<div class="desc"><p>Âûïîëíÿåò MySQL-çàïðîñ</p></div>
+		<h4>Ïàðàìåòðû</h4>
+	<ul>
+			<li><strong>String $string</strong>: SQL-çàïðîñ</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage2" ) );</script></div>
+<div class="tab-page" id="iVars">
+<h2 class="tab">Íàñëåäîâàííûå ïåðåìåííûå</h2>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "iVars" ) );</script>
+<!-- =========== VAR INHERITED SUMMARY =========== -->
+<A NAME='var_inherited_summary'><!-- --></A>
+<h3>Íàñëåäóåìûå ïåðåìåííûå êëàññîâ</h3>
+
+	</div>
+<div class="tab-page" id="iMethods">
+<h2 class="tab">Íàñëåäîâàííûå ìåòîäû</h2>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "iMethods" ) );</script>
+<!-- =========== INHERITED METHOD SUMMARY =========== -->
+<A NAME='functions_inherited'><!-- --></A>
+<h3>Íàñëåäóåìûå ìåòîäû</h3>
+
+	</div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+
+setupAllTabs();
+
+//]]>
+</script>
+	<div id="credit">
+		<hr />
+		Äîêóìåíòàöèÿ ñãåíåðèðîâàíà Sun, 22 Aug 2010 18:50:22 +0400 <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</div>
+</body>
+</html>

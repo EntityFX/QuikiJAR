@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Èñõîäíèêè shared.escape_special_chars.php</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><h1 align="center">Èñõîäíèêè shared.escape_special_chars.php</h1>
+<p>Äîêóìåíòàöèÿ äîñòóïíà â <a href="../Smarty/plugins/_engine---libs---smarty---plugins---shared.escape_special_chars.php.html">shared.escape_special_chars.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><strong>&lt;?php</strong></div></li>
+<li><div class="src-line"><a name="a2"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a3"></a><font color="#009999">&nbsp;*&nbsp;Smarty&nbsp;shared&nbsp;plugin</font></div></li>
+<li><div class="src-line"><a name="a4"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@package</font></strong><font color="#009999">&nbsp;Smarty</font></div></li>
+<li><div class="src-line"><a name="a5"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@subpackage</font></strong><font color="#009999">&nbsp;plugins</font></div></li>
+<li><div class="src-line"><a name="a6"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a7"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a8"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a9"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a10"></a><font color="#009999">&nbsp;*&nbsp;escape_special_chars&nbsp;common&nbsp;function</font></div></li>
+<li><div class="src-line"><a name="a11"></a><font color="#009999">&nbsp;*</font></div></li>
+<li><div class="src-line"><a name="a12"></a><font color="#009999">&nbsp;*&nbsp;Function:&nbsp;smarty_function_escape_special_chars&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a13"></a><font color="#009999">&nbsp;*&nbsp;Purpose:&nbsp;&nbsp;used&nbsp;by&nbsp;other&nbsp;smarty&nbsp;functions&nbsp;to&nbsp;escape</font></div></li>
+<li><div class="src-line"><a name="a14"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;special&nbsp;chars&nbsp;except&nbsp;for&nbsp;already&nbsp;escaped&nbsp;ones</font></div></li>
+<li><div class="src-line"><a name="a15"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@author</font></strong><font color="#009999">&nbsp;&nbsp;&nbsp;Monte&nbsp;Ohrt&nbsp;&lt;monte&nbsp;at&nbsp;ohrt&nbsp;dot&nbsp;com&gt;</font></div></li>
+<li><div class="src-line"><a name="a16"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>string&nbsp;</em></div></li>
+<li><div class="src-line"><a name="a17"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@return&nbsp;</font></strong><em>string&nbsp;</em></div></li>
+<li><div class="src-line"><a name="a18"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a19"></a><font color="blue">function&nbsp;</font><a href="../Smarty/plugins/_engine---libs---smarty---plugins---shared.escape_special_chars.php.html#functionsmarty_function_escape_special_chars">smarty_function_escape_special_chars</a><strong>(</strong><strong>$string</strong><strong>)</strong></div></li>
+<li><div class="src-line"><a name="a20"></a><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a21"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if</font><strong>(</strong><strong>!</strong><a href="http://www.php.net/is_array">is_array</a><strong>(</strong><strong>$string</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a22"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$string&nbsp;</strong>=&nbsp;<a href="http://www.php.net/preg_replace">preg_replace</a><strong>(</strong><font color="#66cccc">'!&amp;(#?\w+);!'</font><strong>,&nbsp;</strong><font color="#66cccc">'%%%SMARTY_START%%%\\1%%%SMARTY_END%%%'</font><strong>,&nbsp;</strong><strong>$string</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a23"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$string&nbsp;</strong>=&nbsp;<a href="http://www.php.net/htmlspecialchars">htmlspecialchars</a><strong>(</strong><strong>$string</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a24"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$string&nbsp;</strong>=&nbsp;<a href="http://www.php.net/str_replace">str_replace</a><strong>(</strong>array<strong>(</strong><font color="#66cccc">'%%%SMARTY_START%%%'</font><strong>,</strong><font color="#66cccc">'%%%SMARTY_END%%%'</font><strong>)</strong><strong>,&nbsp;</strong>array<strong>(</strong><font color="#66cccc">'&amp;'</font><strong>,</strong><font color="#66cccc">';'</font><strong>)</strong><strong>,&nbsp;</strong><strong>$string</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a25"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a26"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><strong>$string</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a27"></a><strong>}</strong></div></li>
+<li><div class="src-line"><a name="a28"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a29"></a><font color="green">/*&nbsp;vim:&nbsp;set&nbsp;expandtab:&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a30"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a31"></a><strong>?&gt;</strong></div></li>
+</ol></div>
+</div>
+	<div id="credit">
+		<hr />
+		Äîêóìåíòàöèÿ ñãåíåðèðîâàíà Sun, 22 Aug 2010 18:50:25 +0400 <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</div>
+</body>
+</html>

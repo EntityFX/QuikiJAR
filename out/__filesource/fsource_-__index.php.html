@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Èñõîäíèêè index.php</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><h1 align="center">Èñõîäíèêè index.php</h1>
+<p>Äîêóìåíòàöèÿ äîñòóïíà â <a href="../-/_index.php.html">index.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><strong>&lt;?php</strong></div></li>
+<li><div class="src-line"><a name="a2"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a3"></a><font color="#009999">*&nbsp;Ôàéë&nbsp;òî÷êà&nbsp;âõîäà.&nbsp;Ïîäêëþ÷àþòñÿ&nbsp;îñíîâíûå&nbsp;êîíñòàíòû&nbsp;è&nbsp;êëàññû.</font></div></li>
+<li><div class="src-line"><a name="a4"></a><font color="#009999">*&nbsp;</font><strong><font color = "#0099FF">@package</font></strong><font color="#009999">&nbsp;*</font></div></li>
+<li><div class="src-line"><a name="a5"></a><font color="#009999">*&nbsp;</font><strong><font color = "#0099FF">@author</font></strong><font color="#009999">&nbsp;Solopiy&nbsp;Artem</font></div></li>
+<li><div class="src-line"><a name="a6"></a><font color="#009999">*&nbsp;</font><strong><font color = "#0099FF">@version</font></strong><font color="#009999">&nbsp;0.9&nbsp;Beta</font></div></li>
+<li><div class="src-line"><a name="a7"></a><font color="#009999">*&nbsp;</font><strong><font color = "#0099FF">@copyright</font></strong><font color="#009999">&nbsp;Idel&nbsp;Media&nbsp;Group:&nbsp;Developers&nbsp;Team&nbsp;(Solopiy&nbsp;Artem,&nbsp;Jusupziyanov&nbsp;Timur)&nbsp;©&nbsp;2010</font></div></li>
+<li><div class="src-line"><a name="a8"></a><font color="#009999">*/</font></div></li>
+<li><div class="src-line"><a name="a9"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a10"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@global&nbsp;</font></strong><em>Const&nbsp;</em><font color="#009999">Ïóòü&nbsp;ê&nbsp;ôàéëàì</font></div></li>
+<li><div class="src-line"><a name="a11"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@name</font></strong><font color="#009999">&nbsp;SOURCE_PATH</font></div></li>
+<li><div class="src-line"><a name="a12"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a13"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/define">define</a><strong>(</strong><font color="#66cccc">&quot;SOURCE_PATH&quot;</font><strong>,</strong><font color="#66cccc">&quot;&quot;</font><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a14"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a15"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a16"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Ïîäêëþ÷àåò&nbsp;êîíñòàíòû&nbsp;ÁÄ</font></div></li>
+<li><div class="src-line"><a name="a17"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@filesource</font></strong><font color="#009999">&nbsp;config/databaseConsts.php</font></div></li>
+<li><div class="src-line"><a name="a18"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;*/&nbsp;&nbsp;&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a19"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">require_once&nbsp;</font><font color="#66cccc">&quot;config/databaseConsts.php&quot;</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a20"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a21"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a22"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Ïîäêëþ÷àåò&nbsp;áàçîâûé&nbsp;êëàññ</font></div></li>
+<li><div class="src-line"><a name="a23"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@filesource</font></strong><font color="#009999">&nbsp;engine/kernel/Kernel.php</font></div></li>
+<li><div class="src-line"><a name="a24"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;*/&nbsp;&nbsp;&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a25"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">require_once&nbsp;</font>SOURCE_PATH.<font color="#66cccc">&quot;engine/kernel/Kernel.php&quot;</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a26"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a27"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a28"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Âàæíûé&nbsp;ýêçåìïëÿð&nbsp;êëàññà</font></div></li>
+<li><div class="src-line"><a name="a29"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a30"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@var&nbsp;</font></strong><em>Kernel&nbsp;</em></div></li>
+<li><div class="src-line"><a name="a31"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a32"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$kernel</strong>=new&nbsp;<a href="../engine-kernel/Kernel.html">Kernel</a><strong>(</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a33"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$kernel</strong><strong>-&gt;</strong>run<strong>(</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a34"></a><strong>?&gt;</strong></div></li>
+</ol></div>
+</div>
+	<div id="credit">
+		<hr />
+		Äîêóìåíòàöèÿ ñãåíåðèðîâàíà Sun, 22 Aug 2010 18:50:14 +0400 <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</div>
+</body>
+</html>

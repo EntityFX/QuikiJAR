@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Èñõîäíèêè ModuleLoader.php</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><h1 align="center">Èñõîäíèêè ModuleLoader.php</h1>
+<p>Äîêóìåíòàöèÿ äîñòóïíà â <a href="../Quki/_engine---kernel---ModuleLoader.php.html">ModuleLoader.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><strong>&lt;?</strong></div></li>
+<li><div class="src-line"><a name="a2"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a3"></a><font color="#009999">*&nbsp;Ôàéë&nbsp;ñ&nbsp;êëàññîì&nbsp;ModuleLoader.&nbsp;Îñíîâíîé&nbsp;êëàññ,&nbsp;êîòîðûé&nbsp;íåîáõîäèì&nbsp;äëÿ&nbsp;ðàáîòû&nbsp;ñàéòà.</font></div></li>
+<li><div class="src-line"><a name="a4"></a><font color="#009999">*&nbsp;</font><strong><font color = "#0099FF">@package</font></strong><font color="#009999">&nbsp;Quki</font></div></li>
+<li><div class="src-line"><a name="a5"></a><font color="#009999">*&nbsp;</font><strong><font color = "#0099FF">@author</font></strong><font color="#009999">&nbsp;Solopiy&nbsp;Artem</font></div></li>
+<li><div class="src-line"><a name="a6"></a><font color="#009999">*&nbsp;</font><strong><font color = "#0099FF">@version</font></strong><font color="#009999">&nbsp;0.9&nbsp;Beta</font></div></li>
+<li><div class="src-line"><a name="a7"></a><font color="#009999">*&nbsp;</font><strong><font color = "#0099FF">@copyright</font></strong><font color="#009999">&nbsp;Idel&nbsp;Media&nbsp;Group:&nbsp;Developers&nbsp;Team&nbsp;(Solopiy&nbsp;Artem,&nbsp;Jusupziyanov&nbsp;Timur)</font></div></li>
+<li><div class="src-line"><a name="a8"></a><font color="#009999">*/</font></div></li>
+<li><div class="src-line"><a name="a9"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a10"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a11"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Âûïîëíÿåò&nbsp;çàãðóçêó&nbsp;ìîäóëåé&nbsp;è&nbsp;ïåðåäà¸ò&nbsp;óïðàâëåíèå&nbsp;èì</font></div></li>
+<li><div class="src-line"><a name="a12"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@package</font></strong><font color="#009999">&nbsp;Quki</font></div></li>
+<li><div class="src-line"><a name="a13"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@author</font></strong><font color="#009999">&nbsp;Solopiy&nbsp;Artem</font></div></li>
+<li><div class="src-line"><a name="a14"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a15"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">class&nbsp;</font><a href="../Quki/ModuleLoader.html">ModuleLoader</a></div></li>
+<li><div class="src-line"><a name="a16"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a17"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a18"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Êîíñòàíòà&nbsp;ñîäåðæèò&nbsp;ïî-óìîë÷àíèþ&nbsp;ïóòü&nbsp;ê&nbsp;ìîäóëÿì</font></div></li>
+<li><div class="src-line"><a name="a19"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a20"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;MODULE_PATH=<font color="#66cccc">&quot;engine/modules/&quot;</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a21"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a22"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a23"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Âûõîäíûå&nbsp;äàííûå</font></div></li>
+<li><div class="src-line"><a name="a24"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a25"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@var&nbsp;</font></strong><em>mixed&nbsp;</em></div></li>
+<li><div class="src-line"><a name="a26"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a27"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">private&nbsp;</font><a href="../Quki/ModuleLoader.html#var$_output">$_output</a><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a28"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a29"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a30"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Âõîäíûå&nbsp;äàííûå</font></div></li>
+<li><div class="src-line"><a name="a31"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a32"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@var&nbsp;</font></strong><em>mixed&nbsp;</em></div></li>
+<li><div class="src-line"><a name="a33"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a34"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">private&nbsp;</font><a href="../Quki/ModuleLoader.html#var$_data">$_data</a><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a35"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a36"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a37"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Êîíñòðóêòîð</font></div></li>
+<li><div class="src-line"><a name="a38"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a39"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>Integer&nbsp;</em><strong>$type&nbsp;</strong><font color="#009999">Òèï&nbsp;ìîäóëÿ</font></div></li>
+<li><div class="src-line"><a name="a40"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>Array&nbsp;</em><strong>$data&nbsp;</strong><font color="#009999">Ìàññèâ&nbsp;ñ&nbsp;ïåðåäàâàåìûìè&nbsp;äàííûìè&nbsp;â&nbsp;ìîäóëü</font></div></li>
+<li><div class="src-line"><a name="a41"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@return&nbsp;</font></strong><em>ModuleLoader&nbsp;</em></div></li>
+<li><div class="src-line"><a name="a42"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a43"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">public&nbsp;</font><font color="blue">function&nbsp;</font><a href="../Quki/ModuleLoader.html#method__construct">__construct</a><strong>(</strong><strong>$type</strong><strong>,</strong><strong>$data</strong>=NULL<strong>)</strong></div></li>
+<li><div class="src-line"><a name="a44"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a45"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Quki/ModuleLoader.html#methodloadModule">loadModule</a><strong>(</strong><strong>$type</strong><strong>,</strong><strong>$data</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a49"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Çàãðóæàåò&nbsp;ìîäóëü&nbsp;è&nbsp;ïåðåäà¸ò&nbsp;åìó&nbsp;óïðàâëåíèå</font></div></li>
+<li><div class="src-line"><a name="a50"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a51"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>Integer&nbsp;</em><strong>$type&nbsp;</strong><font color="#009999">ID&nbsp;ìîäóëÿ</font></div></li>
+<li><div class="src-line"><a name="a52"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>Array&nbsp;</em><strong>$data&nbsp;</strong><font color="#009999">ïåðåäàâàåìûå&nbsp;äàííûå</font></div></li>
+<li><div class="src-line"><a name="a53"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@throws</font></strong><font color="#009999">&nbsp;Exception&nbsp;Ôôéë&nbsp;ìîäóëÿ&nbsp;íå&nbsp;ñóùåñòâóåò</font></div></li>
+<li><div class="src-line"><a name="a54"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a55"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">public&nbsp;</font><font color="blue">function&nbsp;</font><a href="../Quki/ModuleLoader.html#methodloadModule">loadModule</a><strong>(</strong><strong>$type</strong><strong>,</strong><strong>$data</strong>=NULL<strong>)&nbsp;&nbsp;&nbsp;&nbsp;</strong></div></li>
+<li><div class="src-line"><a name="a56"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a57"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$sql</strong>=new&nbsp;<a href="../MySQL/MySQL.html">MySQL</a><strong>(</strong>DB_SERVER<strong>,</strong>DB_USER<strong>,</strong>DB_PASSWORD<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a58"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$sql</strong><strong>-&gt;</strong>selectDB<strong>(</strong>DB_NAME<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a59"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$result</strong>=<strong>$sql</strong><strong>-&gt;</strong>query<strong>(</strong><font color="#66cccc">&quot;</font><font color="#66cccc">SELECT&nbsp;`path`&nbsp;FROM&nbsp;`Modules`&nbsp;WHERE&nbsp;`moduleid`=<strong>$type</strong></font><font color="#66cccc">&quot;</font><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a60"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$array</strong>=<strong>$sql</strong><strong>-&gt;</strong>fetchArr<strong>(</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a61"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$fullPath</strong>=<a href="../Quki/ModuleLoader.html">ModuleLoader</a><strong>::</strong>MODULE_PATH.<strong>$array</strong><strong>[</strong><font color="#66cccc">&quot;path&quot;</font><strong>]</strong>.<font color="#66cccc">&quot;/init.php&quot;</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a62"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><a href="http://www.php.net/file_exists">file_exists</a><strong>(</strong><strong>$fullPath</strong><strong>))</strong></div></li>
+<li><div class="src-line"><a name="a63"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a64"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">require_once</font><strong>(</strong><strong>$fullPath</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a65"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a66"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else</div></li>
+<li><div class="src-line"><a name="a67"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a68"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;Exception<strong>(</strong><font color="#66cccc">&quot;ENGINE:&nbsp;FILE&nbsp;MODULE&nbsp;IS&nbsp;NOT&nbsp;EXSIST&quot;</font><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a69"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a70"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Quki/ModuleLoader.html#var$_output">_output</a>=<strong>$output</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a71"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><strong>$output</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a72"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a73"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a74"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">public&nbsp;</font><font color="blue">function&nbsp;</font><a href="../Quki/ModuleLoader.html#methodgetOutput">getOutput</a><strong>(</strong><strong>)&nbsp;</strong></div></li>
+<li><div class="src-line"><a name="a75"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a76"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><strong>$this</strong><strong>-&gt;</strong><a href="../Quki/ModuleLoader.html#var$_output">_output</a><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a77"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a78"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a79"></a><strong>?&gt;</strong></div></li>
+</ol></div>
+</div>
+	<div id="credit">
+		<hr />
+		Äîêóìåíòàöèÿ ñãåíåðèðîâàíà Sun, 22 Aug 2010 18:42:15 +0400 <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</div>
+</body>
+</html>

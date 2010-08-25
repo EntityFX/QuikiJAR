@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Èñõîäíèêè function.html_radios.php</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><h1 align="center">Èñõîäíèêè function.html_radios.php</h1>
+<p>Äîêóìåíòàöèÿ äîñòóïíà â <a href="../Smarty/plugins/_engine---libs---smarty---plugins---function.html_radios.php.html">function.html_radios.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><strong>&lt;?php</strong></div></li>
+<li><div class="src-line"><a name="a2"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a3"></a><font color="#009999">&nbsp;*&nbsp;Smarty&nbsp;plugin</font></div></li>
+<li><div class="src-line"><a name="a4"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@package</font></strong><font color="#009999">&nbsp;Smarty</font></div></li>
+<li><div class="src-line"><a name="a5"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@subpackage</font></strong><font color="#009999">&nbsp;plugins</font></div></li>
+<li><div class="src-line"><a name="a6"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a7"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a8"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a9"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a10"></a><font color="#009999">&nbsp;*&nbsp;Smarty&nbsp;{html_radios}&nbsp;function&nbsp;plugin</font></div></li>
+<li><div class="src-line"><a name="a11"></a><font color="#009999">&nbsp;*</font></div></li>
+<li><div class="src-line"><a name="a12"></a><font color="#009999">&nbsp;*&nbsp;File:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function.html_radios.php&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a13"></a><font color="#009999">&nbsp;*&nbsp;Type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a14"></a><font color="#009999">&nbsp;*&nbsp;Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;html_radios&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a15"></a><font color="#009999">&nbsp;*&nbsp;Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;24.Feb.2003&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a16"></a><font color="#009999">&nbsp;*&nbsp;Purpose:&nbsp;&nbsp;&nbsp;&nbsp;Prints&nbsp;out&nbsp;a&nbsp;list&nbsp;of&nbsp;radio&nbsp;input&nbsp;types&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a17"></a><font color="#009999">&nbsp;*&nbsp;Input:&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a18"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(optional)&nbsp;-&nbsp;string&nbsp;default&nbsp;&quot;radio&quot;</font></div></li>
+<li><div class="src-line"><a name="a19"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;values&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(required)&nbsp;-&nbsp;array</font></div></li>
+<li><div class="src-line"><a name="a20"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;options&nbsp;&nbsp;&nbsp;&nbsp;(optional)&nbsp;-&nbsp;associative&nbsp;array</font></div></li>
+<li><div class="src-line"><a name="a21"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;checked&nbsp;&nbsp;&nbsp;&nbsp;(optional)&nbsp;-&nbsp;array&nbsp;default&nbsp;not&nbsp;set</font></div></li>
+<li><div class="src-line"><a name="a22"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;separator&nbsp;&nbsp;(optional)&nbsp;-&nbsp;ie&nbsp;&lt;br&gt;&nbsp;or&nbsp;&amp;nbsp;</font></div></li>
+<li><div class="src-line"><a name="a23"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;output&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(optional)&nbsp;-&nbsp;the&nbsp;output&nbsp;next&nbsp;to&nbsp;each&nbsp;radio&nbsp;button</font></div></li>
+<li><div class="src-line"><a name="a24"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;assign&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(optional)&nbsp;-&nbsp;assign&nbsp;the&nbsp;output&nbsp;as&nbsp;an&nbsp;array&nbsp;to&nbsp;this&nbsp;variable</font></div></li>
+<li><div class="src-line"><a name="a25"></a><font color="#009999">&nbsp;*&nbsp;Examples:</font></div></li>
+<li><div class="src-line"><a name="a26"></a><font color="#009999">&nbsp;*&nbsp;&lt;pre&gt;</font></div></li>
+<li><div class="src-line"><a name="a27"></a><font color="#009999">&nbsp;*&nbsp;{html_radios&nbsp;values=$ids&nbsp;output=$names}</font></div></li>
+<li><div class="src-line"><a name="a28"></a><font color="#009999">&nbsp;*&nbsp;{html_radios&nbsp;values=$ids&nbsp;name='box'&nbsp;separator='&lt;br&gt;'&nbsp;output=$names}</font></div></li>
+<li><div class="src-line"><a name="a29"></a><font color="#009999">&nbsp;*&nbsp;{html_radios&nbsp;values=$ids&nbsp;checked=$checked&nbsp;separator='&lt;br&gt;'&nbsp;output=$names}</font></div></li>
+<li><div class="src-line"><a name="a30"></a><font color="#009999">&nbsp;*&nbsp;&lt;/pre&gt;</font></div></li>
+<li><div class="src-line"><a name="a31"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@link</font></strong><font color="#009999">&nbsp;http://smarty.php.net/manual/en/language.function.html.radios.php&nbsp;{html_radios}</font></div></li>
+<li><div class="src-line"><a name="a32"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Smarty&nbsp;online&nbsp;manual)</font></div></li>
+<li><div class="src-line"><a name="a33"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@author</font></strong><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Christopher&nbsp;Kvarme&nbsp;&lt;christopher.kvarme@flashjab.com&gt;</font></div></li>
+<li><div class="src-line"><a name="a34"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@author</font></strong><font color="#009999">&nbsp;credits&nbsp;to&nbsp;Monte&nbsp;Ohrt&nbsp;&lt;monte&nbsp;at&nbsp;ohrt&nbsp;dot&nbsp;com&gt;</font></div></li>
+<li><div class="src-line"><a name="a35"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@version</font></strong><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;1.0</font></div></li>
+<li><div class="src-line"><a name="a36"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>array&nbsp;</em></div></li>
+<li><div class="src-line"><a name="a37"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>Smarty&nbsp;</em></div></li>
+<li><div class="src-line"><a name="a38"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@return&nbsp;</font></strong><em>string&nbsp;</em></div></li>
+<li><div class="src-line"><a name="a39"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@uses</font></strong><font color="#009999">&nbsp;smarty_function_escape_special_chars()</font></div></li>
+<li><div class="src-line"><a name="a40"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a41"></a><font color="blue">function&nbsp;</font><a href="../Smarty/plugins/_engine---libs---smarty---plugins---function.html_radios.php.html#functionsmarty_function_html_radios">smarty_function_html_radios</a><strong>(</strong><strong>$params</strong><strong>,&nbsp;</strong><strong>&amp;</strong><strong>$smarty</strong><strong>)</strong></div></li>
+<li><div class="src-line"><a name="a42"></a><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a43"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">require_once&nbsp;</font><strong>$smarty</strong><strong>-&gt;</strong>_get_plugin_filepath<strong>(</strong><font color="#66cccc">'shared'</font><strong>,</strong><font color="#66cccc">'escape_special_chars'</font><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a44"></a>&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a45"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$name&nbsp;</strong>=&nbsp;<font color="#66cccc">'radio'</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$values&nbsp;</strong>=&nbsp;null<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$options&nbsp;</strong>=&nbsp;null<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$selected&nbsp;</strong>=&nbsp;null<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a49"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$separator&nbsp;</strong>=&nbsp;<font color="#66cccc">''</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a50"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$labels&nbsp;</strong>=&nbsp;true<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a51"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$label_ids&nbsp;</strong>=&nbsp;false<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a52"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$output&nbsp;</strong>=&nbsp;null<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a53"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$extra&nbsp;</strong>=&nbsp;<font color="#66cccc">''</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a54"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a55"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">foreach</font><strong>(</strong><strong>$params&nbsp;</strong>as&nbsp;<strong>$_key&nbsp;</strong>=&gt;&nbsp;<strong>$_val</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a56"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">switch</font><strong>(</strong><strong>$_key</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a57"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'name'</font>:</div></li>
+<li><div class="src-line"><a name="a58"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'separator'</font>:</div></li>
+<li><div class="src-line"><a name="a59"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$<strong>$_key&nbsp;</strong>=&nbsp;(string)<strong>$_val</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a60"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a61"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a62"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'checked'</font>:</div></li>
+<li><div class="src-line"><a name="a63"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'selected'</font>:</div></li>
+<li><div class="src-line"><a name="a64"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if</font><strong>(</strong><a href="http://www.php.net/is_array">is_array</a><strong>(</strong><strong>$_val</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a65"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong><a href="http://www.php.net/trigger_error">trigger_error</a><strong>(</strong><font color="#66cccc">'html_radios:&nbsp;the&nbsp;&quot;'&nbsp;</font>.&nbsp;<strong>$_key&nbsp;</strong>.&nbsp;<font color="#66cccc">'&quot;&nbsp;attribute&nbsp;cannot&nbsp;be&nbsp;an&nbsp;array'</font><strong>,&nbsp;</strong>E_USER_WARNING<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a66"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a67"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$selected&nbsp;</strong>=&nbsp;(string)<strong>$_val</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a68"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a69"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a70"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a71"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'labels'</font>:</div></li>
+<li><div class="src-line"><a name="a72"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'label_ids'</font>:</div></li>
+<li><div class="src-line"><a name="a73"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$<strong>$_key&nbsp;</strong>=&nbsp;(bool)<strong>$_val</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a74"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a75"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a76"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'options'</font>:</div></li>
+<li><div class="src-line"><a name="a77"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$<strong>$_key&nbsp;</strong>=&nbsp;(array)<strong>$_val</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a78"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a79"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a80"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'values'</font>:</div></li>
+<li><div class="src-line"><a name="a81"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'output'</font>:</div></li>
+<li><div class="src-line"><a name="a82"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$<strong>$_key&nbsp;</strong>=&nbsp;<a href="http://www.php.net/array_values">array_values</a><strong>(</strong>(array)<strong>$_val</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a83"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a84"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a85"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'radios'</font>:</div></li>
+<li><div class="src-line"><a name="a86"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong><a href="http://www.php.net/trigger_error">trigger_error</a><strong>(</strong><font color="#66cccc">'html_radios:&nbsp;the&nbsp;use&nbsp;of&nbsp;the&nbsp;&quot;radios&quot;&nbsp;attribute&nbsp;is&nbsp;deprecated,&nbsp;use&nbsp;&quot;options&quot;&nbsp;instead'</font><strong>,&nbsp;</strong>E_USER_WARNING<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a87"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$options&nbsp;</strong>=&nbsp;(array)<strong>$_val</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a88"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a89"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a90"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'assign'</font>:</div></li>
+<li><div class="src-line"><a name="a91"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a92"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a93"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default:</div></li>
+<li><div class="src-line"><a name="a94"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if</font><strong>(</strong><strong>!</strong><a href="http://www.php.net/is_array">is_array</a><strong>(</strong><strong>$_val</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a95"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$extra&nbsp;</strong>.=&nbsp;<font color="#66cccc">'&nbsp;'</font>.<strong>$_key</strong>.<font color="#66cccc">'=&quot;'</font>.<a href="../Smarty/plugins/_engine---libs---smarty---plugins---shared.escape_special_chars.php.html#functionsmarty_function_escape_special_chars">smarty_function_escape_special_chars</a><strong>(</strong><strong>$_val</strong><strong>)</strong>.<font color="#66cccc">'&quot;'</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a96"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a97"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong><a href="http://www.php.net/trigger_error">trigger_error</a><strong>(</strong><font color="#66cccc">&quot;</font><font color="#66cccc">html_radios:&nbsp;extra&nbsp;attribute&nbsp;'<strong>$_key</strong>'&nbsp;cannot&nbsp;be&nbsp;an&nbsp;array</font><font color="#66cccc">&quot;</font><strong>,&nbsp;</strong>E_USER_NOTICE<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a98"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a99"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a100"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a101"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a102"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a103"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>!</strong>isset<strong>(</strong><strong>$options</strong><strong>)&nbsp;</strong>&amp;&amp;&nbsp;<strong>!</strong>isset<strong>(</strong><strong>$values</strong><strong>))</strong></div></li>
+<li><div class="src-line"><a name="a104"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><font color="#66cccc">''</font><strong>;&nbsp;</strong><font color="green">/*&nbsp;raise&nbsp;error&nbsp;here?&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a105"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a106"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_html_result&nbsp;</strong>=&nbsp;array<strong>(</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a107"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a108"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong>isset<strong>(</strong><strong>$options</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a109"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a110"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">foreach&nbsp;</font><strong>(</strong><strong>$options&nbsp;</strong>as&nbsp;<strong>$_key</strong>=&gt;<strong>$_val</strong><strong>)</strong></div></li>
+<li><div class="src-line"><a name="a111"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_html_result</strong><strong>[</strong><strong>]&nbsp;</strong>=&nbsp;<a href="../Smarty/plugins/_engine---libs---smarty---plugins---function.html_radios.php.html#functionsmarty_function_html_radios_output">smarty_function_html_radios_output</a><strong>(</strong><strong>$name</strong><strong>,&nbsp;</strong><strong>$_key</strong><strong>,&nbsp;</strong><strong>$_val</strong><strong>,&nbsp;</strong><strong>$selected</strong><strong>,&nbsp;</strong><strong>$extra</strong><strong>,&nbsp;</strong><strong>$separator</strong><strong>,&nbsp;</strong><strong>$labels</strong><strong>,&nbsp;</strong><strong>$label_ids</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a112"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a113"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a114"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a115"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">foreach&nbsp;</font><strong>(</strong><strong>$values&nbsp;</strong>as&nbsp;<strong>$_i</strong>=&gt;<strong>$_key</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a116"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_val&nbsp;</strong>=&nbsp;isset<strong>(</strong><strong>$output</strong><strong>[</strong><strong>$_i</strong><strong>]</strong><strong>)&nbsp;</strong>?&nbsp;<strong>$output</strong><strong>[</strong><strong>$_i</strong><strong>]&nbsp;</strong>:&nbsp;<font color="#66cccc">''</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a117"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_html_result</strong><strong>[</strong><strong>]&nbsp;</strong>=&nbsp;<a href="../Smarty/plugins/_engine---libs---smarty---plugins---function.html_radios.php.html#functionsmarty_function_html_radios_output">smarty_function_html_radios_output</a><strong>(</strong><strong>$name</strong><strong>,&nbsp;</strong><strong>$_key</strong><strong>,&nbsp;</strong><strong>$_val</strong><strong>,&nbsp;</strong><strong>$selected</strong><strong>,&nbsp;</strong><strong>$extra</strong><strong>,&nbsp;</strong><strong>$separator</strong><strong>,&nbsp;</strong><strong>$labels</strong><strong>,&nbsp;</strong><strong>$label_ids</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a118"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a119"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a120"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a121"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a122"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if</font><strong>(</strong><strong>!</strong>empty<strong>(</strong><strong>$params</strong><strong>[</strong><font color="#66cccc">'assign'</font><strong>]</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a123"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong>assign<strong>(</strong><strong>$params</strong><strong>[</strong><font color="#66cccc">'assign'</font><strong>]</strong><strong>,&nbsp;</strong><strong>$_html_result</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a124"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a125"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><a href="http://www.php.net/implode">implode</a><strong>(</strong><font color="#66cccc">&quot;\n&quot;</font><strong>,</strong><strong>$_html_result</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a126"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a127"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a128"></a><strong>}</strong></div></li>
+<li><div class="src-line"><a name="a129"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a130"></a><font color="blue">function&nbsp;</font><a href="../Smarty/plugins/_engine---libs---smarty---plugins---function.html_radios.php.html#functionsmarty_function_html_radios_output">smarty_function_html_radios_output</a><strong>(</strong><strong>$name</strong><strong>,&nbsp;</strong><strong>$value</strong><strong>,&nbsp;</strong><strong>$output</strong><strong>,&nbsp;</strong><strong>$selected</strong><strong>,&nbsp;</strong><strong>$extra</strong><strong>,&nbsp;</strong><strong>$separator</strong><strong>,&nbsp;</strong><strong>$labels</strong><strong>,&nbsp;</strong><strong>$label_ids</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a131"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_output&nbsp;</strong>=&nbsp;<font color="#66cccc">''</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a132"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>$labels</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a133"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if</font><strong>(</strong><strong>$label_ids</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a134"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_id&nbsp;</strong>=&nbsp;<a href="../Smarty/plugins/_engine---libs---smarty---plugins---shared.escape_special_chars.php.html#functionsmarty_function_escape_special_chars">smarty_function_escape_special_chars</a><strong>(</strong><a href="http://www.php.net/preg_replace">preg_replace</a><strong>(</strong><font color="#66cccc">'![^\w\-\.]!'</font><strong>,&nbsp;</strong><font color="#66cccc">'_'</font><strong>,&nbsp;</strong><strong>$name&nbsp;</strong>.&nbsp;<font color="#66cccc">'_'&nbsp;</font>.&nbsp;<strong>$value</strong><strong>))</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a135"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_output&nbsp;</strong>.=&nbsp;<font color="#66cccc">'&lt;label&nbsp;for=&quot;'&nbsp;</font>.&nbsp;<strong>$_id&nbsp;</strong>.&nbsp;<font color="#66cccc">'&quot;&gt;'</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a136"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a137"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_output&nbsp;</strong>.=&nbsp;<font color="#66cccc">'&lt;label&gt;'</font><strong>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></div></li>
+<li><div class="src-line"><a name="a138"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a139"></a>&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a140"></a>&nbsp;&nbsp;&nbsp;<strong>$_output&nbsp;</strong>.=&nbsp;<font color="#66cccc">'&lt;input&nbsp;type=&quot;radio&quot;&nbsp;name=&quot;'</font></div></li>
+<li><div class="src-line"><a name="a141"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.&nbsp;<a href="../Smarty/plugins/_engine---libs---smarty---plugins---shared.escape_special_chars.php.html#functionsmarty_function_escape_special_chars">smarty_function_escape_special_chars</a><strong>(</strong><strong>$name</strong><strong>)&nbsp;</strong>.&nbsp;<font color="#66cccc">'&quot;&nbsp;value=&quot;'</font></div></li>
+<li><div class="src-line"><a name="a142"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.&nbsp;<a href="../Smarty/plugins/_engine---libs---smarty---plugins---shared.escape_special_chars.php.html#functionsmarty_function_escape_special_chars">smarty_function_escape_special_chars</a><strong>(</strong><strong>$value</strong><strong>)&nbsp;</strong>.&nbsp;<font color="#66cccc">'&quot;'</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a143"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a144"></a>&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>$labels&nbsp;</strong>&amp;&amp;&nbsp;<strong>$label_ids</strong><strong>)&nbsp;</strong><strong>$_output&nbsp;</strong>.=&nbsp;<font color="#66cccc">'&nbsp;id=&quot;'&nbsp;</font>.&nbsp;<strong>$_id&nbsp;</strong>.&nbsp;<font color="#66cccc">'&quot;'</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a145"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a146"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong>(string)<strong>$value</strong>==<strong>$selected</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a147"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_output&nbsp;</strong>.=&nbsp;<font color="#66cccc">'&nbsp;checked=&quot;checked&quot;'</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a148"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a149"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_output&nbsp;</strong>.=&nbsp;<strong>$extra&nbsp;</strong>.&nbsp;<font color="#66cccc">'&nbsp;/&gt;'&nbsp;</font>.&nbsp;<strong>$output</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a150"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>$labels</strong><strong>)&nbsp;</strong><strong>$_output&nbsp;</strong>.=&nbsp;<font color="#66cccc">'&lt;/label&gt;'</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a151"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_output&nbsp;</strong>.=&nbsp;&nbsp;<strong>$separator</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a152"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a153"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><strong>$_output</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a154"></a><strong>}</strong></div></li>
+<li><div class="src-line"><a name="a155"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a156"></a><strong>?&gt;</strong></div></li>
+</ol></div>
+</div>
+	<div id="credit">
+		<hr />
+		Äîêóìåíòàöèÿ ñãåíåðèðîâàíà Sun, 22 Aug 2010 18:50:12 +0400 <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</div>
+</body>
+</html>

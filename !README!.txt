@@ -1,0 +1,4 @@
+1. GO TO /install/index.php 
+2. INSERT ALL FIELDS 
+3. PRESS OK
+*. AFTER INSTALLATION DELETE install DIRECTORY

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Èñõîäíèêè function.mailto.php</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><h1 align="center">Èñõîäíèêè function.mailto.php</h1>
+<p>Äîêóìåíòàöèÿ äîñòóïíà â <a href="../Smarty/plugins/_engine---libs---smarty---plugins---function.mailto.php.html">function.mailto.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><strong>&lt;?php</strong></div></li>
+<li><div class="src-line"><a name="a2"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a3"></a><font color="#009999">&nbsp;*&nbsp;Smarty&nbsp;plugin</font></div></li>
+<li><div class="src-line"><a name="a4"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@package</font></strong><font color="#009999">&nbsp;Smarty</font></div></li>
+<li><div class="src-line"><a name="a5"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@subpackage</font></strong><font color="#009999">&nbsp;plugins</font></div></li>
+<li><div class="src-line"><a name="a6"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a7"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a8"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a9"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a10"></a><font color="#009999">&nbsp;*&nbsp;Smarty&nbsp;{mailto}&nbsp;function&nbsp;plugin</font></div></li>
+<li><div class="src-line"><a name="a11"></a><font color="#009999">&nbsp;*</font></div></li>
+<li><div class="src-line"><a name="a12"></a><font color="#009999">&nbsp;*&nbsp;Type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a13"></a><font color="#009999">&nbsp;*&nbsp;Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mailto&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a14"></a><font color="#009999">&nbsp;*&nbsp;Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;May&nbsp;21,&nbsp;2002</font></div></li>
+<li><div class="src-line"><a name="a15"></a><font color="#009999">&nbsp;*&nbsp;Purpose:&nbsp;&nbsp;automate&nbsp;mailto&nbsp;address&nbsp;link&nbsp;creation,&nbsp;and&nbsp;optionally</font></div></li>
+<li><div class="src-line"><a name="a16"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;encode&nbsp;them.&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a17"></a><font color="#009999">&nbsp;*&nbsp;Input:&lt;br&gt;</font></div></li>
+<li><div class="src-line"><a name="a18"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;address&nbsp;=&nbsp;e-mail&nbsp;address</font></div></li>
+<li><div class="src-line"><a name="a19"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;text&nbsp;=&nbsp;(optional)&nbsp;text&nbsp;to&nbsp;display,&nbsp;default&nbsp;is&nbsp;address</font></div></li>
+<li><div class="src-line"><a name="a20"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;encode&nbsp;=&nbsp;(optional)&nbsp;can&nbsp;be&nbsp;one&nbsp;of:</font></div></li>
+<li><div class="src-line"><a name="a21"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;none&nbsp;:&nbsp;no&nbsp;encoding&nbsp;(default)</font></div></li>
+<li><div class="src-line"><a name="a22"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;javascript&nbsp;:&nbsp;encode&nbsp;with&nbsp;javascript</font></div></li>
+<li><div class="src-line"><a name="a23"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;javascript_charcode&nbsp;:&nbsp;encode&nbsp;with&nbsp;javascript&nbsp;charcode</font></div></li>
+<li><div class="src-line"><a name="a24"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;hex&nbsp;:&nbsp;encode&nbsp;with&nbsp;hexidecimal&nbsp;(no&nbsp;javascript)</font></div></li>
+<li><div class="src-line"><a name="a25"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;cc&nbsp;=&nbsp;(optional)&nbsp;address(es)&nbsp;to&nbsp;carbon&nbsp;copy</font></div></li>
+<li><div class="src-line"><a name="a26"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;bcc&nbsp;=&nbsp;(optional)&nbsp;address(es)&nbsp;to&nbsp;blind&nbsp;carbon&nbsp;copy</font></div></li>
+<li><div class="src-line"><a name="a27"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;subject&nbsp;=&nbsp;(optional)&nbsp;e-mail&nbsp;subject</font></div></li>
+<li><div class="src-line"><a name="a28"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;newsgroups&nbsp;=&nbsp;(optional)&nbsp;newsgroup(s)&nbsp;to&nbsp;post&nbsp;to</font></div></li>
+<li><div class="src-line"><a name="a29"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;followupto&nbsp;=&nbsp;(optional)&nbsp;address(es)&nbsp;to&nbsp;follow&nbsp;up&nbsp;to</font></div></li>
+<li><div class="src-line"><a name="a30"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;extra&nbsp;=&nbsp;(optional)&nbsp;extra&nbsp;tags&nbsp;for&nbsp;the&nbsp;href&nbsp;link</font></div></li>
+<li><div class="src-line"><a name="a31"></a><font color="#009999">&nbsp;*</font></div></li>
+<li><div class="src-line"><a name="a32"></a><font color="#009999">&nbsp;*&nbsp;Examples:</font></div></li>
+<li><div class="src-line"><a name="a33"></a><font color="#009999">&nbsp;*&nbsp;&lt;pre&gt;</font></div></li>
+<li><div class="src-line"><a name="a34"></a><font color="#009999">&nbsp;*&nbsp;{mailto&nbsp;address=&quot;me@domain.com&quot;}</font></div></li>
+<li><div class="src-line"><a name="a35"></a><font color="#009999">&nbsp;*&nbsp;{mailto&nbsp;address=&quot;me@domain.com&quot;&nbsp;encode=&quot;javascript&quot;}</font></div></li>
+<li><div class="src-line"><a name="a36"></a><font color="#009999">&nbsp;*&nbsp;{mailto&nbsp;address=&quot;me@domain.com&quot;&nbsp;encode=&quot;hex&quot;}</font></div></li>
+<li><div class="src-line"><a name="a37"></a><font color="#009999">&nbsp;*&nbsp;{mailto&nbsp;address=&quot;me@domain.com&quot;&nbsp;subject=&quot;Hello&nbsp;to&nbsp;you!&quot;}</font></div></li>
+<li><div class="src-line"><a name="a38"></a><font color="#009999">&nbsp;*&nbsp;{mailto&nbsp;address=&quot;me@domain.com&quot;&nbsp;cc=&quot;you@domain.com,they@domain.com&quot;}</font></div></li>
+<li><div class="src-line"><a name="a39"></a><font color="#009999">&nbsp;*&nbsp;{mailto&nbsp;address=&quot;me@domain.com&quot;&nbsp;extra='class=&quot;mailto&quot;'}</font></div></li>
+<li><div class="src-line"><a name="a40"></a><font color="#009999">&nbsp;*&nbsp;&lt;/pre&gt;</font></div></li>
+<li><div class="src-line"><a name="a41"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@link</font></strong><font color="#009999">&nbsp;http://smarty.php.net/manual/en/language.function.mailto.php&nbsp;{mailto}</font></div></li>
+<li><div class="src-line"><a name="a42"></a><font color="#009999">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Smarty&nbsp;online&nbsp;manual)</font></div></li>
+<li><div class="src-line"><a name="a43"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@version</font></strong><font color="#009999">&nbsp;&nbsp;1.2</font></div></li>
+<li><div class="src-line"><a name="a44"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@author</font></strong><font color="#009999">&nbsp;&nbsp;&nbsp;Monte&nbsp;Ohrt&nbsp;&lt;monte&nbsp;at&nbsp;ohrt&nbsp;dot&nbsp;com&gt;</font></div></li>
+<li><div class="src-line"><a name="a45"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@author</font></strong><font color="#009999">&nbsp;&nbsp;&nbsp;credits&nbsp;to&nbsp;Jason&nbsp;Sweat&nbsp;(added&nbsp;cc,&nbsp;bcc&nbsp;and&nbsp;subject&nbsp;functionality)</font></div></li>
+<li><div class="src-line"><a name="a46"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><font color="#009999">&nbsp;&nbsp;&nbsp;</font><em>array&nbsp;</em></div></li>
+<li><div class="src-line"><a name="a47"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><font color="#009999">&nbsp;&nbsp;&nbsp;</font><em>Smarty&nbsp;</em></div></li>
+<li><div class="src-line"><a name="a48"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@return&nbsp;</font></strong><font color="#009999">&nbsp;&nbsp;</font><em>string&nbsp;</em></div></li>
+<li><div class="src-line"><a name="a49"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a50"></a><font color="blue">function&nbsp;</font><a href="../Smarty/plugins/_engine---libs---smarty---plugins---function.mailto.php.html#functionsmarty_function_mailto">smarty_function_mailto</a><strong>(</strong><strong>$params</strong><strong>,&nbsp;</strong><strong>&amp;</strong><strong>$smarty</strong><strong>)</strong></div></li>
+<li><div class="src-line"><a name="a51"></a><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a52"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$extra&nbsp;</strong>=&nbsp;<font color="#66cccc">''</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a53"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a54"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong>empty<strong>(</strong><strong>$params</strong><strong>[</strong><font color="#66cccc">'address'</font><strong>]</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a55"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong><a href="http://www.php.net/trigger_error">trigger_error</a><strong>(</strong><font color="#66cccc">&quot;mailto:&nbsp;missing&nbsp;'address'&nbsp;parameter&quot;</font><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a56"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a57"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a58"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$address&nbsp;</strong>=&nbsp;<strong>$params</strong><strong>[</strong><font color="#66cccc">'address'</font><strong>]</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a59"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a60"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a61"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$text&nbsp;</strong>=&nbsp;<strong>$address</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a62"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a63"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">//&nbsp;netscape&nbsp;and&nbsp;mozilla&nbsp;do&nbsp;not&nbsp;decode&nbsp;%40&nbsp;(@)&nbsp;in&nbsp;BCC&nbsp;field&nbsp;(bug?)</font></div></li>
+<li><div class="src-line"><a name="a64"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">//&nbsp;so,&nbsp;don't&nbsp;encode&nbsp;it.</font></div></li>
+<li><div class="src-line"><a name="a65"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$search&nbsp;</strong>=&nbsp;array<strong>(</strong><font color="#66cccc">'%40'</font><strong>,&nbsp;</strong><font color="#66cccc">'%2C'</font><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a66"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$replace&nbsp;&nbsp;</strong>=&nbsp;array<strong>(</strong><font color="#66cccc">'@'</font><strong>,&nbsp;</strong><font color="#66cccc">','</font><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a67"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$mail_parms&nbsp;</strong>=&nbsp;array<strong>(</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a68"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">foreach&nbsp;</font><strong>(</strong><strong>$params&nbsp;</strong>as&nbsp;<strong>$var</strong>=&gt;<strong>$value</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a69"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">switch&nbsp;</font><strong>(</strong><strong>$var</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a70"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'cc'</font>:</div></li>
+<li><div class="src-line"><a name="a71"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'bcc'</font>:</div></li>
+<li><div class="src-line"><a name="a72"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'followupto'</font>:</div></li>
+<li><div class="src-line"><a name="a73"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>!</strong>empty<strong>(</strong><strong>$value</strong><strong>))</strong></div></li>
+<li><div class="src-line"><a name="a74"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$mail_parms</strong><strong>[</strong><strong>]&nbsp;</strong>=&nbsp;<strong>$var</strong>.<font color="#66cccc">'='</font>.<a href="http://www.php.net/str_replace">str_replace</a><strong>(</strong><strong>$search</strong><strong>,</strong><strong>$replace</strong><strong>,</strong><a href="http://www.php.net/rawurlencode">rawurlencode</a><strong>(</strong><strong>$value</strong><strong>))</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a75"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a76"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a77"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'subject'</font>:</div></li>
+<li><div class="src-line"><a name="a78"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'newsgroups'</font>:</div></li>
+<li><div class="src-line"><a name="a79"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$mail_parms</strong><strong>[</strong><strong>]&nbsp;</strong>=&nbsp;<strong>$var</strong>.<font color="#66cccc">'='</font>.<a href="http://www.php.net/rawurlencode">rawurlencode</a><strong>(</strong><strong>$value</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a80"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a81"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a82"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'extra'</font>:</div></li>
+<li><div class="src-line"><a name="a83"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<font color="#66cccc">'text'</font>:</div></li>
+<li><div class="src-line"><a name="a84"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$<strong>$var&nbsp;</strong>=&nbsp;<strong>$value</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a85"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a86"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default:</div></li>
+<li><div class="src-line"><a name="a87"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a88"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a89"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a90"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$mail_parm_vals&nbsp;</strong>=&nbsp;<font color="#66cccc">''</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a91"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">for&nbsp;</font><strong>(</strong><strong>$i</strong>=0<strong>;&nbsp;</strong><strong>$i</strong>&lt;<a href="http://www.php.net/count">count</a><strong>(</strong><strong>$mail_parms</strong><strong>)</strong><strong>;&nbsp;</strong><strong>$i</strong>++<strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a92"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$mail_parm_vals&nbsp;</strong>.=&nbsp;<strong>(</strong>0==<strong>$i</strong><strong>)&nbsp;</strong>?&nbsp;<font color="#66cccc">'?'&nbsp;</font>:&nbsp;<font color="#66cccc">'&amp;'</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a93"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$mail_parm_vals&nbsp;</strong>.=&nbsp;<strong>$mail_parms</strong><strong>[</strong><strong>$i</strong><strong>]</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a94"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a95"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$address&nbsp;</strong>.=&nbsp;<strong>$mail_parm_vals</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a96"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a97"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$encode&nbsp;</strong>=&nbsp;<strong>(</strong>empty<strong>(</strong><strong>$params</strong><strong>[</strong><font color="#66cccc">'encode'</font><strong>]</strong><strong>))&nbsp;</strong>?&nbsp;<font color="#66cccc">'none'&nbsp;</font>:&nbsp;<strong>$params</strong><strong>[</strong><font color="#66cccc">'encode'</font><strong>]</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a98"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>!</strong><a href="http://www.php.net/in_array">in_array</a><strong>(</strong><strong>$encode</strong><strong>,</strong>array<strong>(</strong><font color="#66cccc">'javascript'</font><strong>,</strong><font color="#66cccc">'javascript_charcode'</font><strong>,</strong><font color="#66cccc">'hex'</font><strong>,</strong><font color="#66cccc">'none'</font><strong>))&nbsp;)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a99"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong><a href="http://www.php.net/trigger_error">trigger_error</a><strong>(</strong><font color="#66cccc">&quot;mailto:&nbsp;'encode'&nbsp;parameter&nbsp;must&nbsp;be&nbsp;none,&nbsp;javascript&nbsp;or&nbsp;hex&quot;</font><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a100"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a101"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a102"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a103"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>$encode&nbsp;</strong>==&nbsp;<font color="#66cccc">'javascript'&nbsp;</font><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a104"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$string&nbsp;</strong>=&nbsp;<font color="#66cccc">'document.write(\'&lt;a&nbsp;href=&quot;mailto:'</font>.<strong>$address</strong>.<font color="#66cccc">'&quot;&nbsp;'</font>.<strong>$extra</strong>.<font color="#66cccc">'&gt;'</font>.<strong>$text</strong>.<font color="#66cccc">'&lt;/a&gt;\');'</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a105"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a106"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$js_encode&nbsp;</strong>=&nbsp;<font color="#66cccc">''</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a107"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">for&nbsp;</font><strong>(</strong><strong>$x</strong>=0<strong>;&nbsp;</strong><strong>$x&nbsp;</strong>&lt;&nbsp;<a href="http://www.php.net/strlen">strlen</a><strong>(</strong><strong>$string</strong><strong>)</strong><strong>;&nbsp;</strong><strong>$x</strong>++<strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a108"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$js_encode&nbsp;</strong>.=&nbsp;<font color="#66cccc">'%'&nbsp;</font>.&nbsp;<a href="http://www.php.net/bin2hex">bin2hex</a><strong>(</strong><strong>$string</strong><strong>[</strong><strong>$x</strong><strong>]</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a109"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a110"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a111"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><font color="#66cccc">'&lt;script&nbsp;type=&quot;text/javascript&quot;&gt;eval(unescape(\''</font>.<strong>$js_encode</strong>.<font color="#66cccc">'\'))&lt;/script&gt;'</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a112"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a113"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>elseif&nbsp;<strong>(</strong><strong>$encode&nbsp;</strong>==&nbsp;<font color="#66cccc">'javascript_charcode'&nbsp;</font><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a114"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$string&nbsp;</strong>=&nbsp;<font color="#66cccc">'&lt;a&nbsp;href=&quot;mailto:'</font>.<strong>$address</strong>.<font color="#66cccc">'&quot;&nbsp;'</font>.<strong>$extra</strong>.<font color="#66cccc">'&gt;'</font>.<strong>$text</strong>.<font color="#66cccc">'&lt;/a&gt;'</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a115"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a116"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">for</font><strong>(</strong><strong>$x&nbsp;</strong>=&nbsp;0<strong>,&nbsp;</strong><strong>$y&nbsp;</strong>=&nbsp;<a href="http://www.php.net/strlen">strlen</a><strong>(</strong><strong>$string</strong><strong>)</strong><strong>;&nbsp;</strong><strong>$x&nbsp;</strong>&lt;&nbsp;<strong>$y</strong><strong>;&nbsp;</strong><strong>$x</strong>++&nbsp;<strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a117"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$ord</strong><strong>[</strong><strong>]&nbsp;</strong>=&nbsp;<a href="http://www.php.net/ord">ord</a><strong>(</strong><strong>$string</strong><strong>[</strong><strong>$x</strong><strong>]</strong><strong>)</strong><strong>;&nbsp;&nbsp;&nbsp;</strong></div></li>
+<li><div class="src-line"><a name="a118"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a119"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a120"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_ret&nbsp;</strong>=&nbsp;<font color="#66cccc">&quot;&lt;script&nbsp;type=\&quot;text/javascript\&quot;&nbsp;language=\&quot;javascript\&quot;&gt;\n&quot;</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a121"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_ret&nbsp;</strong>.=&nbsp;<font color="#66cccc">&quot;&lt;!--\n&quot;</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a122"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_ret&nbsp;</strong>.=&nbsp;<font color="#66cccc">&quot;{document.write(String.fromCharCode(&quot;</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a123"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_ret&nbsp;</strong>.=&nbsp;<a href="http://www.php.net/implode">implode</a><strong>(</strong><font color="#66cccc">','</font><strong>,</strong><strong>$ord</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a124"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_ret&nbsp;</strong>.=&nbsp;<font color="#66cccc">&quot;))&quot;</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a125"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_ret&nbsp;</strong>.=&nbsp;<font color="#66cccc">&quot;}\n&quot;</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a126"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_ret&nbsp;</strong>.=&nbsp;<font color="#66cccc">&quot;//--&gt;\n&quot;</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a127"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_ret&nbsp;</strong>.=&nbsp;<font color="#66cccc">&quot;&lt;/script&gt;\n&quot;</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a128"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a129"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><strong>$_ret</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a130"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a131"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a132"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>elseif&nbsp;<strong>(</strong><strong>$encode&nbsp;</strong>==&nbsp;<font color="#66cccc">'hex'</font><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a133"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a134"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/preg_match">preg_match</a><strong>(</strong><font color="#66cccc">'!^(.*)(\?.*)$!'</font><strong>,</strong><strong>$address</strong><strong>,</strong><strong>$match</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a135"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if</font><strong>(</strong><strong>!</strong>empty<strong>(</strong><strong>$match</strong><strong>[</strong>2<strong>]</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a136"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong><a href="http://www.php.net/trigger_error">trigger_error</a><strong>(</strong><font color="#66cccc">&quot;mailto:&nbsp;hex&nbsp;encoding&nbsp;does&nbsp;not&nbsp;work&nbsp;with&nbsp;extra&nbsp;attributes.&nbsp;Try&nbsp;javascript.&quot;</font><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a137"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a138"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a139"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$address_encode&nbsp;</strong>=&nbsp;<font color="#66cccc">''</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a140"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">for&nbsp;</font><strong>(</strong><strong>$x</strong>=0<strong>;&nbsp;</strong><strong>$x&nbsp;</strong>&lt;&nbsp;<a href="http://www.php.net/strlen">strlen</a><strong>(</strong><strong>$address</strong><strong>)</strong><strong>;&nbsp;</strong><strong>$x</strong>++<strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a141"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if</font><strong>(</strong><a href="http://www.php.net/preg_match">preg_match</a><strong>(</strong><font color="#66cccc">'!\w!'</font><strong>,</strong><strong>$address</strong><strong>[</strong><strong>$x</strong><strong>]</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a142"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$address_encode&nbsp;</strong>.=&nbsp;<font color="#66cccc">'%'&nbsp;</font>.&nbsp;<a href="http://www.php.net/bin2hex">bin2hex</a><strong>(</strong><strong>$address</strong><strong>[</strong><strong>$x</strong><strong>]</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a143"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a144"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$address_encode&nbsp;</strong>.=&nbsp;<strong>$address</strong><strong>[</strong><strong>$x</strong><strong>]</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a145"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a146"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a147"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$text_encode&nbsp;</strong>=&nbsp;<font color="#66cccc">''</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a148"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">for&nbsp;</font><strong>(</strong><strong>$x</strong>=0<strong>;&nbsp;</strong><strong>$x&nbsp;</strong>&lt;&nbsp;<a href="http://www.php.net/strlen">strlen</a><strong>(</strong><strong>$text</strong><strong>)</strong><strong>;&nbsp;</strong><strong>$x</strong>++<strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a149"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$text_encode&nbsp;</strong>.=&nbsp;<font color="#66cccc">'&amp;#x'&nbsp;</font>.&nbsp;<a href="http://www.php.net/bin2hex">bin2hex</a><strong>(</strong><strong>$text</strong><strong>[</strong><strong>$x</strong><strong>]</strong><strong>)</strong>.<font color="#66cccc">';'</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a150"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a151"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a152"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$mailto&nbsp;</strong>=&nbsp;<font color="#66cccc">&quot;&amp;#109;&amp;#97;&amp;#105;&amp;#108;&amp;#116;&amp;#111;&amp;#58;&quot;</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a153"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><font color="#66cccc">'&lt;a&nbsp;href=&quot;'</font>.<strong>$mailto</strong>.<strong>$address_encode</strong>.<font color="#66cccc">'&quot;&nbsp;'</font>.<strong>$extra</strong>.<font color="#66cccc">'&gt;'</font>.<strong>$text_encode</strong>.<font color="#66cccc">'&lt;/a&gt;'</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a154"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a155"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a156"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">//&nbsp;no&nbsp;encoding</font></div></li>
+<li><div class="src-line"><a name="a157"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><font color="#66cccc">'&lt;a&nbsp;href=&quot;mailto:'</font>.<strong>$address</strong>.<font color="#66cccc">'&quot;&nbsp;'</font>.<strong>$extra</strong>.<font color="#66cccc">'&gt;'</font>.<strong>$text</strong>.<font color="#66cccc">'&lt;/a&gt;'</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a158"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a159"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a160"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a161"></a><strong>}</strong></div></li>
+<li><div class="src-line"><a name="a162"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a163"></a><font color="green">/*&nbsp;vim:&nbsp;set&nbsp;expandtab:&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a164"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a165"></a><strong>?&gt;</strong></div></li>
+</ol></div>
+</div>
+	<div id="credit">
+		<hr />
+		Äîêóìåíòàöèÿ ñãåíåðèðîâàíà Sun, 22 Aug 2010 18:50:14 +0400 <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</div>
+</body>
+</html>

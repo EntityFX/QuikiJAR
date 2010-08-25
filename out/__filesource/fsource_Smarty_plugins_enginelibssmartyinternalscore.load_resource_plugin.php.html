@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Èñõîäíèêè core.load_resource_plugin.php</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><h1 align="center">Èñõîäíèêè core.load_resource_plugin.php</h1>
+<p>Äîêóìåíòàöèÿ äîñòóïíà â <a href="../Smarty/plugins/_engine---libs---smarty---internals---core.load_resource_plugin.php.html">core.load_resource_plugin.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><strong>&lt;?php</strong></div></li>
+<li><div class="src-line"><a name="a2"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a3"></a><font color="#009999">&nbsp;*&nbsp;Smarty&nbsp;plugin</font></div></li>
+<li><div class="src-line"><a name="a4"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@package</font></strong><font color="#009999">&nbsp;Smarty</font></div></li>
+<li><div class="src-line"><a name="a5"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@subpackage</font></strong><font color="#009999">&nbsp;plugins</font></div></li>
+<li><div class="src-line"><a name="a6"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a7"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a8"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a9"></a><font color="#009999">&nbsp;*&nbsp;load&nbsp;a&nbsp;resource&nbsp;plugin</font></div></li>
+<li><div class="src-line"><a name="a10"></a><font color="#009999">&nbsp;*</font></div></li>
+<li><div class="src-line"><a name="a11"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>string&nbsp;</em><strong>$type&nbsp;</strong></div></li>
+<li><div class="src-line"><a name="a12"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a13"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a14"></a><font color="green">//&nbsp;$type</font></div></li>
+<li><div class="src-line"><a name="a15"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a16"></a><font color="blue">function&nbsp;</font><a href="../Smarty/plugins/_engine---libs---smarty---internals---core.load_resource_plugin.php.html#functionsmarty_core_load_resource_plugin">smarty_core_load_resource_plugin</a><strong>(</strong><strong>$params</strong><strong>,&nbsp;</strong><strong>&amp;</strong><strong>$smarty</strong><strong>)</strong></div></li>
+<li><div class="src-line"><a name="a17"></a><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a18"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">/*</font></div></li>
+<li><div class="src-line"><a name="a19"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Resource&nbsp;plugins&nbsp;are&nbsp;not&nbsp;quite&nbsp;like&nbsp;the&nbsp;other&nbsp;ones,&nbsp;so&nbsp;they&nbsp;are</font></div></li>
+<li><div class="src-line"><a name="a20"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;handled&nbsp;differently.&nbsp;The&nbsp;first&nbsp;element&nbsp;of&nbsp;plugin&nbsp;info&nbsp;is&nbsp;the&nbsp;array&nbsp;of</font></div></li>
+<li><div class="src-line"><a name="a21"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;functions&nbsp;provided&nbsp;by&nbsp;the&nbsp;plugin,&nbsp;the&nbsp;second&nbsp;one&nbsp;indicates&nbsp;whether</font></div></li>
+<li><div class="src-line"><a name="a22"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;all&nbsp;of&nbsp;them&nbsp;exist&nbsp;or&nbsp;not.</font></div></li>
+<li><div class="src-line"><a name="a23"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a24"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a25"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_plugin&nbsp;</strong>=&nbsp;<strong>&amp;</strong><strong>$smarty</strong><strong>-&gt;</strong>_plugins<strong>[</strong><font color="#66cccc">'resource'</font><strong>]</strong><strong>[</strong><strong>$params</strong><strong>[</strong><font color="#66cccc">'type'</font><strong>]]</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a26"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong>isset<strong>(</strong><strong>$_plugin</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a27"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>!</strong><strong>$_plugin</strong><strong>[</strong>1<strong>]&nbsp;</strong>&amp;&amp;&nbsp;<a href="http://www.php.net/count">count</a><strong>(</strong><strong>$_plugin</strong><strong>[</strong>0<strong>]</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a28"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_plugin</strong><strong>[</strong>1<strong>]&nbsp;</strong>=&nbsp;true<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a29"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">foreach&nbsp;</font><strong>(</strong><strong>$_plugin</strong><strong>[</strong>0<strong>]&nbsp;</strong>as&nbsp;<strong>$_plugin_func</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a30"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>!</strong><a href="http://www.php.net/is_callable">is_callable</a><strong>(</strong><strong>$_plugin_func</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a31"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_plugin</strong><strong>[</strong>1<strong>]&nbsp;</strong>=&nbsp;false<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a32"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a33"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a34"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a35"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a36"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a37"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>!</strong><strong>$_plugin</strong><strong>[</strong>1<strong>]</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a38"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong>_trigger_fatal_error<strong>(</strong><font color="#66cccc">&quot;[plugin]&nbsp;resource&nbsp;'&quot;&nbsp;</font>.&nbsp;<strong>$params</strong><strong>[</strong><font color="#66cccc">'type'</font><strong>]&nbsp;</strong>.&nbsp;<font color="#66cccc">&quot;'&nbsp;is&nbsp;not&nbsp;implemented&quot;</font><strong>,&nbsp;</strong>null<strong>,&nbsp;</strong>null<strong>,&nbsp;</strong>__FILE__<strong>,&nbsp;</strong>__LINE__<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a39"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a41"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a42"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a43"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a44"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_plugin_file&nbsp;</strong>=&nbsp;<strong>$smarty</strong><strong>-&gt;</strong>_get_plugin_filepath<strong>(</strong><font color="#66cccc">'resource'</font><strong>,&nbsp;</strong><strong>$params</strong><strong>[</strong><font color="#66cccc">'type'</font><strong>]</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a45"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_found&nbsp;</strong>=&nbsp;<strong>(</strong><strong>$_plugin_file&nbsp;</strong>!=&nbsp;false<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>$_found</strong><strong>)&nbsp;</strong><strong>{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong><font color="green">/*</font></div></li>
+<li><div class="src-line"><a name="a48"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;If&nbsp;the&nbsp;plugin&nbsp;file&nbsp;is&nbsp;found,&nbsp;it&nbsp;-must-&nbsp;provide&nbsp;the&nbsp;properly&nbsp;named</font></div></li>
+<li><div class="src-line"><a name="a49"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;plugin&nbsp;functions.</font></div></li>
+<li><div class="src-line"><a name="a50"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a51"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">include_once</font><strong>(</strong><strong>$_plugin_file</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a52"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a53"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">/*</font></div></li>
+<li><div class="src-line"><a name="a54"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Locate&nbsp;functions&nbsp;that&nbsp;we&nbsp;require&nbsp;the&nbsp;plugin&nbsp;to&nbsp;provide.</font></div></li>
+<li><div class="src-line"><a name="a55"></a><font color="green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a56"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_resource_ops&nbsp;</strong>=&nbsp;array<strong>(</strong><font color="#66cccc">'source'</font><strong>,&nbsp;</strong><font color="#66cccc">'timestamp'</font><strong>,&nbsp;</strong><font color="#66cccc">'secure'</font><strong>,&nbsp;</strong><font color="#66cccc">'trusted'</font><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a57"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_resource_funcs&nbsp;</strong>=&nbsp;array<strong>(</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a58"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">foreach&nbsp;</font><strong>(</strong><strong>$_resource_ops&nbsp;</strong>as&nbsp;<strong>$_op</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a59"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_plugin_func&nbsp;</strong>=&nbsp;<font color="#66cccc">'smarty_resource_'&nbsp;</font>.&nbsp;<strong>$params</strong><strong>[</strong><font color="#66cccc">'type'</font><strong>]&nbsp;</strong>.&nbsp;<font color="#66cccc">'_'&nbsp;</font>.&nbsp;<strong>$_op</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a60"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>!</strong><a href="http://www.php.net/function_exists">function_exists</a><strong>(</strong><strong>$_plugin_func</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a61"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong>_trigger_fatal_error<strong>(</strong><font color="#66cccc">&quot;</font><font color="#66cccc">[plugin]&nbsp;function&nbsp;<strong>$_plugin_func</strong>()&nbsp;not&nbsp;found&nbsp;in&nbsp;<strong>$_plugin_file</strong></font><font color="#66cccc">&quot;</font><strong>,&nbsp;</strong>null<strong>,&nbsp;</strong>null<strong>,&nbsp;</strong>__FILE__<strong>,&nbsp;</strong>__LINE__<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a62"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a63"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a64"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$_resource_funcs</strong><strong>[</strong><strong>]&nbsp;</strong>=&nbsp;<strong>$_plugin_func</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a65"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a66"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a67"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a68"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$smarty</strong><strong>-&gt;</strong>_plugins<strong>[</strong><font color="#66cccc">'resource'</font><strong>]</strong><strong>[</strong><strong>$params</strong><strong>[</strong><font color="#66cccc">'type'</font><strong>]]&nbsp;</strong>=&nbsp;array<strong>(</strong><strong>$_resource_funcs</strong><strong>,&nbsp;</strong>true<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a69"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a70"></a><strong>}</strong></div></li>
+<li><div class="src-line"><a name="a71"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a72"></a><font color="green">/*&nbsp;vim:&nbsp;set&nbsp;expandtab:&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a73"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a74"></a><strong>?&gt;</strong></div></li>
+</ol></div>
+</div>
+	<div id="credit">
+		<hr />
+		Äîêóìåíòàöèÿ ñãåíåðèðîâàíà Sun, 22 Aug 2010 18:50:03 +0400 <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</div>
+</body>
+</html>
