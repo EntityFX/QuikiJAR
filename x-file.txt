@@ -1,3 +1,7 @@
+<<<<<<< .mine
+sdf((svbcvbxcvbx))dfg
+=======
 sdfsdfg
 
 изменил
+>>>>>>> .r14
