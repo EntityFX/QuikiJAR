@@ -31,5 +31,5 @@
     */
     $kernel=new Kernel();
     $kernel->run();
-	$kernel->view("mail.tpl");
+	$kernel->view("main.tpl");
 ?>
