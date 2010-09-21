@@ -1,0 +1,95 @@
+{\rtf1\ansi\deff0\deftab480
+
+{\fonttbl
+{\f000 Courier New;}
+{\f001 Courier New;}
+{\f002 Courier New;}
+{\f003 Courier New;}
+{\f004 Courier New;}
+{\f005 Courier New;}
+{\f006 Courier New;}
+{\f007 Courier New;}
+{\f008 Courier New;}
+}
+
+{\colortbl
+\red000\green000\blue000;
+\red242\green244\blue255;
+\red000\green128\blue000;
+\red242\green244\blue255;
+\red000\green128\blue000;
+\red242\green244\blue255;
+\red255\green000\blue000;
+\red242\green244\blue255;
+\red000\green000\blue128;
+\red242\green244\blue255;
+\red128\green128\blue128;
+\red242\green244\blue255;
+\red000\green000\blue000;
+\red242\green244\blue255;
+\red000\green000\blue000;
+\red242\green244\blue255;
+\red000\green000\blue000;
+\red255\green255\blue255;
+}
+
+\f0\fs20\cb17\cf16 \highlight15\cf14 I\highlight13\cf12\b .\highlight1\cf0\b0  \highlight15\cf14 Правила\highlight1\cf0  \highlight15\cf14 кодирования\highlight13\cf12\b :\highlight1\cf0\b0 \par
+\tab \highlight7\cf6 1.\highlight1\cf0  \highlight15\cf14 Константы\highlight1\cf0  \highlight15\cf14 капсом\highlight13\cf12\b ,\highlight1\cf0\b0  \highlight15\cf14 отделяя\highlight1\cf0  \highlight11\cf10 "_"\highlight13\cf12\b :\highlight1\cf0\b0  \highlight15\cf14 CONSTANT_NAME\highlight13\cf12\b .\highlight1\cf0\b0 \par
+\tab \tab \highlight15\cf14 Пример\highlight13\cf12\b :\highlight1\cf0\b0 \par
+\tab \tab \highlight15\cf14 define\highlight13\cf12\b (\highlight11\cf10\b0 "MAIN_WORLD"\highlight13\cf12\b ,\highlight7\cf6\b0 5\highlight13\cf12\b );\highlight1\cf0\b0 \par
+\tab \tab \par
+\tab \tab \highlight9\cf8\b const\highlight1\cf0\b0  \highlight15\cf14 MAIN_WORLD\highlight13\cf12\b =\highlight7\cf6\b0 5\highlight13\cf12\b ;\highlight1\cf0\b0  \highlight5\cf4 //для класса.\par
+\highlight1\cf0 \par
+\tab \highlight7\cf6 2.\highlight1\cf0  \highlight15\cf14 Имена\highlight1\cf0  \highlight15\cf14 функций\highlight1\cf0  \highlight15\cf14 и\highlight1\cf0  \highlight15\cf14 методов\highlight13\cf12\b :\highlight1\cf0\b0  \highlight15\cf14 первое\highlight1\cf0  \highlight15\cf14 словр\highlight1\cf0  \highlight15\cf14 начинается\highlight1\cf0  \highlight15\cf14 с\highlight1\cf0  \highlight15\cf14 маленькой\highlight13\cf12\b ,\highlight1\cf0\b0  \highlight15\cf14 другие\highlight1\cf0  \highlight15\cf14 с\highlight1\cf0  \highlight15\cf14 большой\highlight13\cf12\b :\highlight1\cf0\b0  \highlight15\cf14 getValueOfText\highlight13\cf12\b ();\highlight1\cf0\b0 \par
+\tab \highlight7\cf6 3.\highlight1\cf0  \highlight15\cf14 Имена\highlight1\cf0  \highlight15\cf14 скрытых\highlight1\cf0  \highlight15\cf14 и\highlight1\cf0  \highlight15\cf14 защищённых\highlight1\cf0  \highlight15\cf14 свойств\highlight1\cf0  \highlight15\cf14 начинаются\highlight1\cf0  \highlight15\cf14 с\highlight1\cf0  \highlight15\cf14 $\highlight13\cf12\b :\highlight1\cf0\b0  \highlight15\cf14 $_world\highlight13\cf12\b ;\highlight1\cf0\b0 \par
+\tab \tab \highlight15\cf14 Пример\highlight13\cf12\b :\highlight1\cf0\b0 \par
+\tab \tab \highlight9\cf8\b private\highlight1\cf0\b0  \highlight15\cf14 $_deletion\highlight13\cf12\b ;\highlight1\cf0\b0 \par
+\tab \tab \par
+\tab \tab \highlight9\cf8\b protected\highlight1\cf0\b0  \highlight15\cf14 $_name\highlight13\cf12\b ;\highlight1\cf0\b0 \par
+\tab \tab \par
+\tab \highlight7\cf6 4.\highlight1\cf0  \highlight15\cf14 Так\highlight1\cf0  \highlight15\cf14 как\highlight1\cf0  \highlight15\cf14 нет\highlight1\cf0  \highlight15\cf14 статических\highlight1\cf0  \highlight15\cf14 классов\highlight13\cf12\b ,\highlight1\cf0\b0  \highlight15\cf14 то\highlight1\cf0  \highlight15\cf14 используй\highlight1\cf0  \highlight15\cf14 модификатор\highlight1\cf0  \highlight9\cf8\b abstract\highlight13\cf12 .\highlight1\cf0\b0 \par
+\tab \highlight7\cf6 5.\highlight1\cf0  \highlight15\cf14 В\highlight1\cf0  \highlight15\cf14 функции\highlight13\cf12\b ,\highlight1\cf0\b0  \highlight15\cf14 вызов\highlight1\cf0  \highlight15\cf14 которых\highlight1\cf0  \highlight15\cf14 требует\highlight1\cf0  \highlight15\cf14 спец\highlight13\cf12\b .\highlight1\cf0\b0  \highlight15\cf14 параметры\highlight1\cf0  \highlight15\cf14 с\highlight1\cf0  \highlight15\cf14 определёнными\highlight1\cf0  \highlight15\cf14 допустимыми\highlight1\cf0  \highlight15\cf14 значениями\highlight1\cf0  \highlight15\cf14 значениями\highlight13\cf12\b ,\highlight1\cf0\b0  \highlight15\cf14 передавай\highlight1\cf0  \highlight15\cf14 константы\highlight1\cf0  \highlight15\cf14 класса\highlight13\cf12\b .\highlight1\cf0\b0 \par
+\tab \tab \highlight15\cf14 Пример\highlight13\cf12\b :\highlight1\cf0\b0 \par
+\tab \tab \par
+\tab \tab \highlight3\cf2 /*\par
+\tab \tab \tab Вспомни вызов MessageBox))))\par
+\tab \tab \tab Передать в функцию нужно только следующие значения: 3,4,"hi",5.67\par
+\tab \tab \tab Вызвать функцию нужно с параметром "hi";\par
+\tab \tab \tab Тогда используй следующее\par
+\tab \tab */\highlight1\cf0 \par
+\tab \tab \par
+\tab \tab \highlight9\cf8\b class\highlight1\cf0\b0  \highlight15\cf14 NameEnumerator\highlight1\cf0 \par
+\tab \tab \highlight13\cf12\b \{\highlight1\cf0\b0 \par
+\tab \tab \tab \highlight9\cf8\b const\highlight1\cf0\b0  \highlight15\cf14 THREE\highlight13\cf12\b =\highlight7\cf6\b0 3\highlight13\cf12\b ;\highlight1\cf0\b0 \par
+\tab \tab \tab \highlight9\cf8\b const\highlight1\cf0\b0  \highlight15\cf14 FOUR\highlight13\cf12\b =\highlight7\cf6\b0 4\highlight13\cf12\b ;\highlight1\cf0\b0 \par
+\tab \tab \tab \highlight9\cf8\b const\highlight1\cf0\b0  \highlight15\cf14 HIGH\highlight13\cf12\b =\highlight11\cf10\b0 "hi"\highlight13\cf12\b ;\highlight1\cf0\b0 \par
+\tab \tab \tab \highlight9\cf8\b const\highlight1\cf0\b0  \highlight15\cf14 FIVE\highlight13\cf12\b =\highlight7\cf6\b0 5.67\highlight13\cf12\b ;\highlight1\cf0\b0 \par
+\tab \tab \highlight13\cf12\b \}\highlight1\cf0\b0 \par
+\tab \tab \par
+\tab \tab \highlight9\cf8\b function\highlight1\cf0\b0  \highlight15\cf14 createMeet\highlight13\cf12\b (\highlight15\cf14\b0 $param\highlight13\cf12\b )\highlight1\cf0\b0 \par
+\tab \tab \highlight13\cf12\b \{\highlight1\cf0\b0 \par
+\tab \tab \tab \highlight13\cf12\b ...\highlight1\cf0\b0 \par
+\tab \tab \highlight13\cf12\b \}\highlight1\cf0\b0 \par
+\tab \tab \par
+\tab \tab \highlight15\cf14 createMeet\highlight13\cf12\b (\highlight15\cf14\b0 NameEnumerator\highlight13\cf12\b ::\highlight15\cf14\b0 HIGH\highlight13\cf12\b );\highlight1\cf0\b0 \par
+\tab \tab \par
+\tab \highlight7\cf6 6.\highlight1\cf0  \highlight15\cf14 В\highlight1\cf0  \highlight15\cf14 каждом\highlight1\cf0  \highlight15\cf14 файле\highlight1\cf0  \highlight15\cf14 только\highlight1\cf0  \highlight15\cf14 ОДИН\highlight1\cf0  \highlight15\cf14 КЛАСС\highlight13\cf12\b !!!\highlight1\cf0\b0  \par
+\tab \highlight7\cf6 7.\highlight1\cf0  \highlight15\cf14 Всегда\highlight1\cf0  \highlight15\cf14 используй\highlight1\cf0  \highlight15\cf14 комментарии\highlight1\cf0  \highlight15\cf14 в\highlight1\cf0  \highlight15\cf14 формате\highlight1\cf0  \highlight15\cf14 phpDOC\highlight13\cf12\b .\highlight1\cf0\b0  \highlight13\cf12\b (\highlight15\cf14\b0 Чтоб\highlight1\cf0  \highlight15\cf14 другие\highlight1\cf0  \highlight15\cf14 программеры\highlight1\cf0  \highlight15\cf14 могли\highlight1\cf0  \highlight15\cf14 понять\highlight13\cf12\b ,\highlight1\cf0\b0  \highlight15\cf14 что\highlight1\cf0  \highlight15\cf14 ты\highlight1\cf0  \highlight15\cf14 там\highlight1\cf0  \highlight15\cf14 накодил\highlight13\cf12\b ).\highlight1\cf0\b0 \par
+\par
+\highlight15\cf14 II\highlight13\cf12\b .\highlight1\cf0\b0  \highlight15\cf14 Правила\highlight1\cf0  \highlight15\cf14 именования\highlight1\cf0  \highlight15\cf14 файлов\highlight13\cf12\b .\highlight1\cf0\b0 \par
+\tab \highlight7\cf6 1.\highlight1\cf0  \highlight15\cf14 Так\highlight1\cf0  \highlight15\cf14 как\highlight1\cf0  \highlight15\cf14 в\highlight1\cf0  \highlight15\cf14 каждом\highlight1\cf0  \highlight15\cf14 файле\highlight1\cf0  \highlight15\cf14 только\highlight1\cf0  \highlight15\cf14 один\highlight1\cf0  \highlight15\cf14 класс\highlight13\cf12\b ,\highlight1\cf0\b0  \highlight15\cf14 то\highlight1\cf0  \highlight15\cf14 используй\highlight1\cf0  \highlight15\cf14 такое\highlight1\cf0  \highlight15\cf14 же\highlight1\cf0  \highlight15\cf14 название\highlight1\cf0  \highlight15\cf14 как\highlight1\cf0  \highlight15\cf14 и\highlight1\cf0  \highlight15\cf14 у\highlight1\cf0  \highlight15\cf14 класса\highlight1\cf0  \highlight13\cf12\b (\highlight15\cf14\b0 соблюдая\highlight1\cf0  \highlight15\cf14 регистр\highlight13\cf12\b ).\highlight1\cf0\b0 \par
+\tab \highlight7\cf6 2.\highlight1\cf0  \highlight15\cf14 Файлы\highlight1\cf0  \highlight15\cf14 с\highlight1\cf0  \highlight15\cf14 функциями\highlight1\cf0  \highlight15\cf14 и\highlight1\cf0  \highlight15\cf14 прочим\highlight1\cf0  \highlight15\cf14 кодом\highlight1\cf0  \highlight15\cf14 начинай\highlight1\cf0  \highlight15\cf14 с\highlight1\cf0  \highlight15\cf14 маленькой\highlight1\cf0  \highlight15\cf14 буквы\highlight13\cf12\b .\highlight1\cf0\b0 \par
+\tab \par
+\highlight15\cf14 III\highlight13\cf12\b .\highlight1\cf0\b0  \highlight15\cf14 Веди\highlight1\cf0  \highlight15\cf14 файл\highlight1\cf0  \highlight15\cf14 журнала\highlight13\cf12\b ,\highlight1\cf0\b0  \highlight15\cf14 чтоб\highlight1\cf0  \highlight15\cf14 знать\highlight13\cf12\b ,\highlight1\cf0\b0  \highlight15\cf14 какие\highlight1\cf0  \highlight15\cf14 произошли\highlight1\cf0  \highlight15\cf14 изменения\highlight13\cf12\b .\highlight1\cf0\b0 \par
+\tab \highlight7\cf6 1.\highlight1\cf0  \highlight15\cf14 Имя\highlight1\cf0  \highlight15\cf14 файла\highlight1\cf0  \highlight15\cf14 лога\highlight1\cf0  \highlight15\cf14 создай\highlight1\cf0  \highlight15\cf14 в\highlight1\cf0  \highlight15\cf14 папке\highlight1\cf0  \highlight15\cf14 log\highlight1\cf0  \highlight15\cf14 с\highlight1\cf0  \highlight15\cf14 именем\highlight1\cf0  \highlight13\cf12\b %\highlight15\cf14\b0 NIK_OR_NAME\highlight13\cf12\b %.\highlight15\cf14\b0 log\highlight13\cf12\b .\highlight1\cf0\b0  \highlight15\cf14 Например\highlight13\cf12\b :\highlight1\cf0\b0  \highlight15\cf14 EntityFX\highlight13\cf12\b .\highlight15\cf14\b0 log\highlight13\cf12\b .\highlight1\cf0\b0 \par
+\tab \highlight7\cf6 2.\highlight1\cf0  \highlight15\cf14 При\highlight1\cf0  \highlight15\cf14 каждом\highlight1\cf0  \highlight15\cf14 изменеии\highlight1\cf0  \highlight15\cf14 записывай\highlight1\cf0  \highlight15\cf14 в\highlight1\cf0  \highlight15\cf14 журнал\highlight13\cf12\b .\highlight1\cf0\b0  \highlight15\cf14 Пример\highlight13\cf12\b :\highlight1\cf0\b0 \par
+\tab \par
+\tab \highlight13\cf12\b [\highlight7\cf6\b0 2010\highlight13\cf12\b -\highlight7\cf6\b0 09\highlight13\cf12\b -\highlight7\cf6\b0 17\highlight13\cf12\b ]\highlight1\cf0\b0 \par
+\tab \highlight7\cf6 1.\highlight1\cf0  \highlight15\cf14 Изменил\highlight1\cf0  \highlight15\cf14 класс\highlight1\cf0  \highlight15\cf14 Liberty\highlight13\cf12\b .\highlight1\cf0\b0  \par
+\tab \highlight7\cf6 2.\highlight1\cf0  \highlight15\cf14 Удалил\highlight1\cf0  \highlight15\cf14 метод\highlight1\cf0  \highlight15\cf14 helloWorld\highlight13\cf12\b ().\highlight1\cf0\b0 \par
+\tab \highlight7\cf6 3.\highlight1\cf0  \highlight15\cf14 Лёг\highlight1\cf0  \highlight15\cf14 спать\highlight1\cf0 \par
+\tab \par
+\tab \highlight13\cf12\b [\highlight7\cf6\b0 2010\highlight13\cf12\b -\highlight7\cf6\b0 09\highlight13\cf12\b -\highlight7\cf6\b0 18\highlight13\cf12\b ]\highlight1\cf0\b0 \par
+\tab \highlight7\cf6 1.\highlight1\cf0  \highlight15\cf14 Теперь\highlight1\cf0  \highlight15\cf14 мой\highlight1\cf0  \highlight15\cf14 модуль\highlight1\cf0  \highlight15\cf14 использует\highlight1\cf0  \highlight15\cf14 другой\highlight1\cf0  \highlight15\cf14 модуль\highlight13\cf12\b ,\highlight1\cf0\b0  \highlight15\cf14 так\highlight1\cf0  \highlight15\cf14 что\highlight1\cf0  \highlight15\cf14 ту\highlight1\cf0  \highlight15\cf14 папку\highlight1\cf0  \highlight15\cf14 не\highlight1\cf0  \highlight15\cf14 удаляйте\highlight13\cf12\b ,\highlight1\cf0\b0  \highlight15\cf14 иначе\highlight1\cf0  \highlight15\cf14 сайт\highlight1\cf0  \highlight15\cf14 упадёт\highlight13\cf12\b .\highlight1\cf0\b0 \par
+\tab \par
+\tab \highlight15\cf14 УДАЧИ\highlight13\cf12\b .\highlight1\cf0\b0  \highlight15\cf14 P\highlight13\cf12\b .\highlight15\cf14\b0 S\highlight13\cf12\b :\highlight1\cf0\b0  \highlight15\cf14 если\highlight1\cf0  \highlight15\cf14 что\highlight13\cf12\b ,\highlight1\cf0\b0  \highlight15\cf14 звони\highlight13\cf12\b .}
