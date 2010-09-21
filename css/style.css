@@ -1,0 +1,33 @@
+dd
+{
+    float: left;
+    width: 180px;
+    text-align: right;
+    margin: 0px 10px 0px 0; 
+}
+
+dt,label
+{
+    margin: 10px 0;
+}
+
+.reg_form
+{
+    width: 400px;
+    margin: 0 auto;
+    padding: 5px;
+    border: #999 2px solid;
+}
+
+.reg_form hr
+{
+    background-color: #cc9;
+    border: 1px dotted;
+    color: #fa0;
+    height: 2px;
+}
+
+label .star
+{
+    color: red;
+}
