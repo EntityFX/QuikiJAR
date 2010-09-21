@@ -1,5 +1,17 @@
 <?php
-
+/**
+* Файл с классом UserRegister. 
+* Выполняет следующую роль:
+*   Регистрация нового пользователя
+*   Удаление пользователя
+*   Активация пользователя
+*   Деактивация пользователя
+*   Проверка на существование
+* @package kernel
+* @author Solopiy Artem
+* @version 0.9 Beta
+* @copyright Idel Media Group: Developers Team (Solopiy Artem, Jusupziyanov Timur)
+*/
     require_once "MailCheck.php";
     
     require_once "UserException.php";
@@ -56,17 +68,37 @@
         
         public function unregister($id)
         {
-            
+            if ($this->checkIfExsistID($id))
+            {
+                $this->_sql->query("DELETE FROM `SITE_USERS` WHERE `id`=$id");
+            }
+            else
+            {
+                throw new UserException($id,UserException::USR_NOT_EXSIST);
+            }    
         }
         
         public function activate($id)
         {
-            
+            $this->setState((int)$id);     
         }
         
-        public function ban($id)
+        public function deactivate($id)
         {
-            
+            $this->setState((int)$id,false);    
+        }
+        
+        private function setState($id,$value=true)
+        {
+            $state=(int)$value;
+            if ($this->checkIfExsistID($id))
+            {
+                $this->_sql->query("UPDATE `SITE_USERS` SET `state` = $state WHERE `id` = $id");
+            }
+            else
+            {
+                throw new UserException($id,UserException::USR_NOT_EXSIST);
+            }               
         }
         
         private function checkIfExsist($mail)
@@ -82,5 +114,20 @@
                 return true;
             }
         }
+        
+        private function checkIfExsistID($id)
+        {
+            $res=$this->_sql->query("SELECT COUNT(`mail`) AS `c` FROM `SITE_USERS` WHERE `id`='$id'");
+            $data=$this->_sql->GetRows($res);
+            if ($data[0]["c"]==0)
+            {
+                return false;    
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
+
 ?>
