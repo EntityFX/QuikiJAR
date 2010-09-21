@@ -1,9 +1,10 @@
-<?php /* Smarty version 2.6.26, created on 2010-08-22 14:59:00
+<?php /* Smarty version 2.6.26, created on 2010-09-19 19:14:33
          compiled from main.tpl */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
     <head>
-        <title>Тестовый шаблон</title>
+        <title><?php echo $this->_tpl_vars['TITLE']; ?>
+</title>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
     </head>
     <body>

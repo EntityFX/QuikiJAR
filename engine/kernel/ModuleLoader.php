@@ -1,7 +1,7 @@
 <?
 /**
 * Файл с классом ModuleLoader. Основной класс, который необходим для работы сайта.
-* @package engine.kernel
+* @package kernel
 * @author Solopiy Artem
 * @version 0.9 Beta
 * @copyright Idel Media Group: Developers Team (Solopiy Artem, Jusupziyanov Timur)
@@ -9,7 +9,7 @@
     
     /**
     * Выполняет загрузку модулей и передаёт управление им
-    * @package engine.kernel
+    * @package kernel
     * @author Solopiy Artem 
     */
     class ModuleLoader
@@ -40,7 +40,7 @@
         * @param Array $data Массив с передаваемыми данными в модуль
         * @return ModuleLoader
         */
-        public function __construct($type,$data=NULL)
+        public function __construct($type,&$data=NULL)
         {
             $this->loadModule($type,$data);
         }
@@ -52,11 +52,18 @@
         * @param Array $data передаваемые данные
         * @throws Exception Ффйл модуля не существует
         */
-        public function loadModule($type,$data=NULL)    
+        public function loadModule($type,&$data)    
         {
-            $sql=new MySQL(DB_SERVER,DB_USER,DB_PASSWORD);
-            $sql->selectDB(DB_NAME);
-            $result=$sql->query("SELECT `path` FROM `Modules` WHERE `moduleid`=$type");
+            try
+            {
+                $sql=new MySQL(DB_SERVER,DB_USER,DB_PASSWORD);
+                $sql->selectDB(DB_NAME);
+                $result=$sql->query("SELECT `path` FROM `Modules` WHERE `moduleid`=$type"); 
+            }
+            catch (Exception $dbError)
+            {
+                throw new Exception("MODULE LOADER ERROR: CHECK DB CONNECTION");
+            }
             $array=$sql->fetchArr();
             $fullPath=ModuleLoader::MODULE_PATH.$array["path"]."/init.php";
             if (file_exists($fullPath))
@@ -65,12 +72,16 @@
             }
             else
             {
-                throw new Exception("ENGINE: FILE MODULE IS NOT EXSIST");
+                throw new Exception("ENGINE: INIT FILE FOR $array[path] MODULE IS NOT EXSIST");
             }
             $this->_output=$output;
             return $output;
         }
-        
+        /**
+        * Возвращает массив данных после работы модуля
+        *
+        * @return Array[Mixed] 
+        */
         public function getOutput() 
         {
             return $this->_output;

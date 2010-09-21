@@ -1,3 +1,3 @@
-<?
-    echo "ERROR 404. PAGE NOT FOUND.";
+<?php
+    $output["text"]="ERROR 404. PAGE NOT FOUND.";
 ?>

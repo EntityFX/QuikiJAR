@@ -1,7 +1,7 @@
 <?
 /**
 * Файл с классом LinksList.
-* @package engine.kernel  
+* @package kernel  
 * @author Solopiy Artem
 * @version 0.9 Beta
 * @copyright Idel Media Group: Developers Team (Solopiy Artem, Jusupziyanov Timur) © 2010 
@@ -10,7 +10,7 @@
     /**
     * Выполняет роль построения списка ссылок основного меню, список ссылок от корневого раздела к текущему,
     * список подразделов
-    * @package engine.kernel
+    * @package kernel
     * @author Solopiy Artem   
     * @final
     */
@@ -56,7 +56,7 @@
         */
         private function getMenuTable()
         {
-            $resource=$this->_sql->query("SELECT a.`title`, b.`section_id`, b.`show_sub`, a.`id` FROM `URL` a, `MainMenu` b WHERE a.`id`=b.`section_id`");
+            $resource=$this->_sql->query("SELECT b.`title`, b.`section_id`, b.`show_sub` FROM `URL` a, `MainMenu` b WHERE a.`id`=b.`section_id`");
             return $this->_sql->GetRows($resource);
         } 
         

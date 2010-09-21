@@ -6,6 +6,10 @@
 * @version 0.9 Beta
 * @copyright Idel Media Group: Developers Team (Solopiy Artem, Jusupziyanov Timur) © 2010 
 */      
+    /**
+    * Класс текстового модуля
+    * @package modules.text
+    */
     class TextModule
     {
         public function getText($sectionId)
