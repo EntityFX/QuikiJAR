@@ -28,7 +28,7 @@
                 {
                     throw new UserException($mail,UserException::USR_ALREADY_EXIST);
                 }
-                if (checkDateFormat($burthday))
+                if (!checkDateFormat($burthday))
                 {
                     throw new UserException($mail,UserException::USR_CHECK_BURTHDAY);   
                 }
@@ -122,5 +122,4 @@
             }
         }
     }
-
 ?>

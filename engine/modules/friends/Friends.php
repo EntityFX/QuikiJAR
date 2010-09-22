@@ -1,6 +1,8 @@
 <?php
 
-    require_once "engine/libs/mysql/MySQLConnector.php";  
+    require_once "engine/libs/mysql/MySQLConnector.php"; 
+    
+    require_once "engine/modules/user/User.php";  
     
     class Friends extends MySQLConnector  
     {
@@ -15,7 +17,8 @@
         
         public function addFriend($friendId)
         {
-            
+            $userId=$this->_curentId;
+            $this->_sql->query("INSERT INTO `USERS_FRIENDSHIP` VALUES (0,$userId,$friendId)");
         }
         
         public function deleteFriend($friendId)

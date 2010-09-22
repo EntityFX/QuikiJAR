@@ -10,6 +10,7 @@
     require_once SOURCE_PATH."engine/modules/user/UserRegister.php";
     
     require_once SOURCE_PATH."engine/modules/user/User.php";
+    
     $smarty=new SmartyExst();
     $links=array(
         "signInPath" => "/".$data["urlArray"][1]."/view/",
@@ -66,9 +67,8 @@
         case "register":
             $output["text"]=$smarty->fetch("users.register.tpl");
             break;
-        case "create":
+        case "create": 
             $registerUser=new UserRegister();
-            $currentUser=new User();
             try
             {
                 $registerUser->checkPassword($_POST["password1"],$_POST["password2"]);
