@@ -12,7 +12,7 @@
 * @version 0.9 Beta
 * @copyright Idel Media Group: Developers Team (Solopiy Artem, Jusupziyanov Timur)
 */
-    require_once "MailCheck.php";
+    require_once "checker.php";
     
     require_once "UserException.php";
     

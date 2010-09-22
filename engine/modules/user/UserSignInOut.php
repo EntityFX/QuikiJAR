@@ -2,7 +2,7 @@
     
     require_once("UserException.php");
     
-    require_once("MailCheck.php");
+    require_once("checker.php");
     
     require_once "engine/libs/mysql/MySQLConnector.php";  
     
