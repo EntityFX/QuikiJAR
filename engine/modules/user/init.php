@@ -69,8 +69,6 @@
         case "create":
             $registerUser=new UserRegister();
             $currentUser=new User();
-            var_dump($currentUser);
-            $registerUser->activate(9);
             try
             {
                 $registerUser->checkPassword($_POST["password1"],$_POST["password2"]);

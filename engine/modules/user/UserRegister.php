@@ -15,17 +15,11 @@
     require_once "MailCheck.php";
     
     require_once "UserException.php";
+    
+    require_once "engine/libs/mysql/MySQLConnector.php";
         
-    class UserRegister
+    class UserRegister extends MySQLConnector
     {
-        private $_sql;
-
-        public function __construct()
-        {
-            $this->_sql=new MySQL(DB_SERVER,DB_USER,DB_PASSWORD);
-            $this->_sql->selectDB(DB_NAME);
-        }
-        
         public function register($mail,$password,$name,$surname,$burthday,$gender,$ip)
         {
             if (checkMail($mail))
@@ -34,7 +28,6 @@
                 {
                     throw new UserException($mail,UserException::USR_ALREADY_EXIST);
                 }
-                die($burthday);
                 if (checkDateFormat($burthday))
                 {
                     throw new UserException($mail,UserException::USR_CHECK_BURTHDAY);   

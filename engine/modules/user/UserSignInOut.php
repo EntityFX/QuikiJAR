@@ -4,15 +4,15 @@
     
     require_once("MailCheck.php");
     
-    class UserSignInOut
+    require_once "engine/libs/mysql/MySQLConnector.php";  
+    
+    class UserSignInOut extends MySQLConnector
     {
-        private $_sql;
-        
+   
         public function __construct()
         {
             session_start();
-            $this->_sql=new MySQL(DB_SERVER,DB_USER,DB_PASSWORD);
-            $this->_sql->selectDB(DB_NAME);
+            parent::__construct();
         }
         
         public function authentication($mail,$password)
