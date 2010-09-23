@@ -11,7 +11,7 @@
     * Подключает класс Текстового модуля TextModule
     * @filesource engine/kernel/ModuleLoader.php 
     */  
-    require_once("class_text_module.php");
+    require_once("TextModule.php");
     $txtM = new TextModule();
     try
     {

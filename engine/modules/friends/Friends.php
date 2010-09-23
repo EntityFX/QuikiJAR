@@ -21,9 +21,21 @@
             $this->_sql->query("INSERT INTO `USERS_FRIENDSHIP` VALUES (0,$userId,$friendId)");
         }
         
+        public function checkHasFriend($friendId,$userId=NULL)
+        {
+            if ($userId!=NULL)    
+            {
+                $userId=$this->_curentId;    
+            }
+            else
+            {
+                
+            }
+        }
+        
         public function deleteFriend($friendId)
         {
-            
+                
         }
         
         public function getAllFriends()
