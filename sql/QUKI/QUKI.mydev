@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Devart (www.devart.com), the Project File -->
+<!-- Modifying this generated file will probably render it invalid -->
+<DatabaseProject Version="1.0.1" Guid="b7043fea-00e1-4a66-a100-e802edd5512f">
+  <Provider Guid="59f90733-4d68-4fdf-82a7-f0fcbf5460aa" />
+  <Include>
+    <Folder Name="Представления" />
+    <Folder Name="Функции" />
+    <Folder Name="Процедуры" />
+    <Folder Name="Триггеры" />
+    <File RelPath="Таблицы" Link="C:\SERVER\home\new.com\www\sql\QUKI\Таблицы\COUNTRY.Table.sql" />
+    <File RelPath="Таблицы" Link="C:\SERVER\home\new.com\www\sql\QUKI\Таблицы\COUNTRY_REGIONS.Table.sql" />
+    <File RelPath="Таблицы" Link="C:\SERVER\home\new.com\www\sql\QUKI\Таблицы\COUNTRY_REGIONS_CITY.Table.sql" />
+    <File RelPath="Таблицы" Link="C:\SERVER\home\new.com\www\sql\QUKI\Таблицы\MainMenu.Table.sql" />
+    <File RelPath="Таблицы" Link="C:\SERVER\home\new.com\www\sql\QUKI\Таблицы\Modules.Table.sql" />
+    <File RelPath="Таблицы" Link="C:\SERVER\home\new.com\www\sql\QUKI\Таблицы\REGISTRY.Table.sql" />
+    <File RelPath="Таблицы" Link="C:\SERVER\home\new.com\www\sql\QUKI\Таблицы\SITE_USERS.Table.sql" />
+    <File RelPath="Таблицы" Link="C:\SERVER\home\new.com\www\sql\QUKI\Таблицы\TEXT_MODULE.Table.sql" />
+    <File RelPath="Таблицы" Link="C:\SERVER\home\new.com\www\sql\QUKI\Таблицы\URL.Table.sql" />
+    <File RelPath="Таблицы" Link="C:\SERVER\home\new.com\www\sql\QUKI\Таблицы\USERS_FRIENDS_IN_GROUPS.Table.sql" />
+    <File RelPath="Таблицы" Link="C:\SERVER\home\new.com\www\sql\QUKI\Таблицы\USERS_FRIENDSHIP.Table.sql" />
+    <File RelPath="Таблицы" Link="C:\SERVER\home\new.com\www\sql\QUKI\Таблицы\USERS_GROUPS.Table.sql" />
+    <File RelPath="" Link="C:\SERVER\home\new.com\www\sql\QUKI\PostDeployment.sql" />
+    <File RelPath="" Link="C:\SERVER\home\new.com\www\sql\QUKI\PreDeployment.sql" />
+  </Include>
+  <Configurations Active="По умолчанию">
+    <Configuration Name="По умолчанию" CheckReferences="True" IgnoreErrors="False" OutputPath="" Target="" OutputType="SingleFile" KeepOriginalObjects="True" RecreateDatabase="False" RecreateObjects="False" ServerVersion="5.0.45" Database="QUKI" UseRegions="False" FullPaths="False" Definer="CURRENT_USER" ScriptDelimiter="$$" StorageEngine="MYISAM" Collation="cp1251_general_ci" ConvertToLowercase="False" DefinerEffect="Keep">
+      <Connection Name="localhost" ConnectionString="User Id=root;Host=localhost;Character Set=utf8" />
+      <Build>
+        <File RelPath="" Name="PreDeployment.sql" BuildAction="Build" />
+        <File RelPath="Таблицы" Name="COUNTRY.Table.sql" BuildAction="Build" />
+        <File RelPath="Таблицы" Name="COUNTRY_REGIONS.Table.sql" BuildAction="Build" />
+        <File RelPath="Таблицы" Name="COUNTRY_REGIONS_CITY.Table.sql" BuildAction="Build" />
+        <File RelPath="Таблицы" Name="MainMenu.Table.sql" BuildAction="Build" />
+        <File RelPath="Таблицы" Name="Modules.Table.sql" BuildAction="Build" />
+        <File RelPath="Таблицы" Name="REGISTRY.Table.sql" BuildAction="Build" />
+        <File RelPath="Таблицы" Name="SITE_USERS.Table.sql" BuildAction="Build" />
+        <File RelPath="Таблицы" Name="TEXT_MODULE.Table.sql" BuildAction="Build" />
+        <File RelPath="Таблицы" Name="URL.Table.sql" BuildAction="Build" />
+        <File RelPath="Таблицы" Name="USERS_FRIENDS_IN_GROUPS.Table.sql" BuildAction="Build" />
+        <File RelPath="Таблицы" Name="USERS_FRIENDSHIP.Table.sql" BuildAction="Build" />
+        <File RelPath="Таблицы" Name="USERS_GROUPS.Table.sql" BuildAction="Build" />
+        <File RelPath="" Name="PostDeployment.sql" BuildAction="Build" />
+      </Build>
+    </Configuration>
+  </Configurations>
+</DatabaseProject>
