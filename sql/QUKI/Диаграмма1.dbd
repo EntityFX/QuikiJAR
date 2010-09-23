@@ -1,0 +1,1525 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Devart (www.devart.com), the Database Diagram File -->
+<!-- Modifying this generated file will probably render it invalid -->
+<DevartDatabaseDiagram>
+  <SchemaVersion>1.2</SchemaVersion>
+  <DatabaseProvider>59f90733-4d68-4fdf-82a7-f0fcbf5460aa</DatabaseProvider>
+  <Connection>
+    <Name>localhost</Name>
+    <ConnectionString>User Id=root;Host=localhost;Character Set=utf8</ConnectionString>
+  </Connection>
+  <Settings>
+    <DbDiagramOptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <SkinType>Simple</SkinType>
+      <FieldDetails>NameAndFullType</FieldDetails>
+      <CustomProperties />
+    </DbDiagramOptions>
+    <Options xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="PageOptions">
+      <TopLeftMargins>
+        <Width>39.3700787401575 in/100</Width>
+        <Height>39.3700787401575 in/100</Height>
+      </TopLeftMargins>
+      <BottomRightMargins>
+        <Width>39.3700787401575 in/100</Width>
+        <Height>39.3700787401575 in/100</Height>
+      </BottomRightMargins>
+      <PaperSize>
+        <Width>826 in/100</Width>
+        <Height>1169 in/100</Height>
+      </PaperSize>
+      <PaperSourceName>автоматический выбор</PaperSourceName>
+    </Options>
+    <Options xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="PrintOptions" />
+    <Options xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="ViewOptions">
+      <ShadowOffset>
+        <X>4 px</X>
+        <Y>4 px</Y>
+      </ShadowOffset>
+      <CustomProperties />
+    </Options>
+  </Settings>
+  <VirtualRelations>
+    <RelationCount>14</RelationCount>
+    <Relation Name="URL_VR1">
+      <Owner>QUKI.URL</Owner>
+      <Columns>
+        <Column>pid</Column>
+      </Columns>
+      <ReferencedTableOwner>QUKI</ReferencedTableOwner>
+      <ReferencedTableName>URL</ReferencedTableName>
+      <ReferencedColumns>
+        <Column>id</Column>
+      </ReferencedColumns>
+      <UpdateRule>NO ACTION</UpdateRule>
+      <DeleteRule>NO ACTION</DeleteRule>
+    </Relation>
+    <Relation Name="USERS_FRIENDSHIP_VR1">
+      <Owner>QUKI.USERS_FRIENDSHIP</Owner>
+      <Columns>
+        <Column>user_id</Column>
+      </Columns>
+      <ReferencedTableOwner>QUKI</ReferencedTableOwner>
+      <ReferencedTableName>SITE_USERS</ReferencedTableName>
+      <ReferencedColumns>
+        <Column>id</Column>
+      </ReferencedColumns>
+      <UpdateRule>NO ACTION</UpdateRule>
+      <DeleteRule>NO ACTION</DeleteRule>
+    </Relation>
+    <Relation Name="USERS_FRIENDSHIP_VR2">
+      <Owner>QUKI.USERS_FRIENDSHIP</Owner>
+      <Columns>
+        <Column>friend_id</Column>
+      </Columns>
+      <ReferencedTableOwner>QUKI</ReferencedTableOwner>
+      <ReferencedTableName>SITE_USERS</ReferencedTableName>
+      <ReferencedColumns>
+        <Column>id</Column>
+      </ReferencedColumns>
+      <UpdateRule>NO ACTION</UpdateRule>
+      <DeleteRule>NO ACTION</DeleteRule>
+    </Relation>
+    <Relation Name="USERS_FRIENDS_IN_GROUPS_VR1">
+      <Owner>QUKI.USERS_FRIENDS_IN_GROUPS</Owner>
+      <Columns>
+        <Column>user_id</Column>
+      </Columns>
+      <ReferencedTableOwner>QUKI</ReferencedTableOwner>
+      <ReferencedTableName>USERS_FRIENDSHIP</ReferencedTableName>
+      <ReferencedColumns>
+        <Column>user_id</Column>
+      </ReferencedColumns>
+      <UpdateRule>NO ACTION</UpdateRule>
+      <DeleteRule>NO ACTION</DeleteRule>
+    </Relation>
+    <Relation Name="USERS_FRIENDS_IN_GROUPS_VR2">
+      <Owner>QUKI.USERS_FRIENDS_IN_GROUPS</Owner>
+      <Columns>
+        <Column>group_id</Column>
+      </Columns>
+      <ReferencedTableOwner>QUKI</ReferencedTableOwner>
+      <ReferencedTableName>USERS_GROUPS</ReferencedTableName>
+      <ReferencedColumns>
+        <Column>group_id</Column>
+      </ReferencedColumns>
+      <UpdateRule>NO ACTION</UpdateRule>
+      <DeleteRule>NO ACTION</DeleteRule>
+    </Relation>
+    <Relation Name="USERS_GROUPS_VR1">
+      <Owner>QUKI.USERS_GROUPS</Owner>
+      <Columns>
+        <Column>owner</Column>
+      </Columns>
+      <ReferencedTableOwner>QUKI</ReferencedTableOwner>
+      <ReferencedTableName>SITE_USERS</ReferencedTableName>
+      <ReferencedColumns>
+        <Column>id</Column>
+      </ReferencedColumns>
+      <UpdateRule>NO ACTION</UpdateRule>
+      <DeleteRule>NO ACTION</DeleteRule>
+    </Relation>
+    <Relation Name="URL_VR2">
+      <Owner>QUKI.URL</Owner>
+      <Columns>
+        <Column>module</Column>
+      </Columns>
+      <ReferencedTableOwner>QUKI</ReferencedTableOwner>
+      <ReferencedTableName>Modules</ReferencedTableName>
+      <ReferencedColumns>
+        <Column>moduleId</Column>
+      </ReferencedColumns>
+      <UpdateRule>NO ACTION</UpdateRule>
+      <DeleteRule>NO ACTION</DeleteRule>
+    </Relation>
+    <Relation Name="SITE_USERS_VR1">
+      <Owner>QUKI.SITE_USERS</Owner>
+      <Columns>
+        <Column>region</Column>
+      </Columns>
+      <ReferencedTableOwner>QUKI</ReferencedTableOwner>
+      <ReferencedTableName>COUNTRY_REGIONS</ReferencedTableName>
+      <ReferencedColumns>
+        <Column>region_id</Column>
+      </ReferencedColumns>
+      <UpdateRule>NO ACTION</UpdateRule>
+      <DeleteRule>NO ACTION</DeleteRule>
+    </Relation>
+    <Relation Name="SITE_USERS_VR2">
+      <Owner>QUKI.SITE_USERS</Owner>
+      <Columns>
+        <Column>country</Column>
+      </Columns>
+      <ReferencedTableOwner>QUKI</ReferencedTableOwner>
+      <ReferencedTableName>COUNTRY</ReferencedTableName>
+      <ReferencedColumns>
+        <Column>country_id</Column>
+      </ReferencedColumns>
+      <UpdateRule>NO ACTION</UpdateRule>
+      <DeleteRule>NO ACTION</DeleteRule>
+    </Relation>
+    <Relation Name="SITE_USERS_VR3">
+      <Owner>QUKI.SITE_USERS</Owner>
+      <Columns>
+        <Column>region</Column>
+      </Columns>
+      <ReferencedTableOwner>QUKI</ReferencedTableOwner>
+      <ReferencedTableName>COUNTRY_REGIONS_CITY</ReferencedTableName>
+      <ReferencedColumns>
+        <Column>city_id</Column>
+      </ReferencedColumns>
+      <UpdateRule>NO ACTION</UpdateRule>
+      <DeleteRule>NO ACTION</DeleteRule>
+    </Relation>
+    <Relation Name="COUNTRY_REGIONS_VR1">
+      <Owner>QUKI.COUNTRY_REGIONS</Owner>
+      <Columns>
+        <Column>country</Column>
+      </Columns>
+      <ReferencedTableOwner>QUKI</ReferencedTableOwner>
+      <ReferencedTableName>COUNTRY</ReferencedTableName>
+      <ReferencedColumns>
+        <Column>country_id</Column>
+      </ReferencedColumns>
+      <UpdateRule>NO ACTION</UpdateRule>
+      <DeleteRule>NO ACTION</DeleteRule>
+    </Relation>
+    <Relation Name="COUNTRY_REGIONS_CITY_VR1">
+      <Owner>QUKI.COUNTRY_REGIONS_CITY</Owner>
+      <Columns>
+        <Column>region</Column>
+      </Columns>
+      <ReferencedTableOwner>QUKI</ReferencedTableOwner>
+      <ReferencedTableName>COUNTRY_REGIONS</ReferencedTableName>
+      <ReferencedColumns>
+        <Column>region_id</Column>
+      </ReferencedColumns>
+      <UpdateRule>NO ACTION</UpdateRule>
+      <DeleteRule>NO ACTION</DeleteRule>
+    </Relation>
+    <Relation Name="MainMenu_VR1">
+      <Owner>QUKI.MainMenu</Owner>
+      <Columns>
+        <Column>section_id</Column>
+      </Columns>
+      <ReferencedTableOwner>QUKI</ReferencedTableOwner>
+      <ReferencedTableName>URL</ReferencedTableName>
+      <ReferencedColumns>
+        <Column>id</Column>
+      </ReferencedColumns>
+      <UpdateRule>NO ACTION</UpdateRule>
+      <DeleteRule>NO ACTION</DeleteRule>
+    </Relation>
+    <Relation Name="TEXT_MODULE_VR1">
+      <Owner>QUKI.TEXT_MODULE</Owner>
+      <Columns>
+        <Column>id</Column>
+      </Columns>
+      <ReferencedTableOwner>QUKI</ReferencedTableOwner>
+      <ReferencedTableName>URL</ReferencedTableName>
+      <ReferencedColumns>
+        <Column>id</Column>
+      </ReferencedColumns>
+      <UpdateRule>NO ACTION</UpdateRule>
+      <DeleteRule>NO ACTION</DeleteRule>
+    </Relation>
+  </VirtualRelations>
+  <Diagram Version="1.10.0.62">
+    <DiagramModel>
+      <Model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="RootModel">
+        <CustomProperties>
+          <OID>0</OID>
+        </CustomProperties>
+        <Children>
+          <Model xsi:type="TableModel">
+            <CustomProperties>
+              <OID>1</OID>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <Location>
+              <X>758 px</X>
+              <Y>415 px</Y>
+            </Location>
+            <Size>
+              <Width>207 px</Width>
+              <Height>93 px</Height>
+            </Size>
+            <DbOid>
+              <Path>quki.country</Path>
+              <TypeName>Table</TypeName>
+            </DbOid>
+            <Compartments>
+              <ConstraintsCollapsed>True</ConstraintsCollapsed>
+              <IndexesCollapsed>True</IndexesCollapsed>
+              <TriggersCollapsed>True</TriggersCollapsed>
+            </Compartments>
+          </Model>
+          <Model xsi:type="TableModel">
+            <CustomProperties>
+              <OID>2</OID>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <Location>
+              <X>760 px</X>
+              <Y>228 px</Y>
+            </Location>
+            <Size>
+              <Width>205 px</Width>
+              <Height>127 px</Height>
+            </Size>
+            <DbOid>
+              <Path>quki.country_regions</Path>
+              <TypeName>Table</TypeName>
+            </DbOid>
+            <Compartments>
+              <ConstraintsCollapsed>True</ConstraintsCollapsed>
+              <IndexesCollapsed>True</IndexesCollapsed>
+              <TriggersCollapsed>True</TriggersCollapsed>
+            </Compartments>
+          </Model>
+          <Model xsi:type="TableModel">
+            <CustomProperties>
+              <OID>3</OID>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <Location>
+              <X>745 px</X>
+              <Y>40 px</Y>
+            </Location>
+            <Size>
+              <Width>235 px</Width>
+              <Height>127 px</Height>
+            </Size>
+            <DbOid>
+              <Path>quki.country_regions_city</Path>
+              <TypeName>Table</TypeName>
+            </DbOid>
+            <Compartments>
+              <ConstraintsCollapsed>True</ConstraintsCollapsed>
+              <IndexesCollapsed>True</IndexesCollapsed>
+              <TriggersCollapsed>True</TriggersCollapsed>
+            </Compartments>
+          </Model>
+          <Model xsi:type="TableModel">
+            <CustomProperties>
+              <OID>4</OID>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <Location>
+              <X>276 px</X>
+              <Y>1204 px</Y>
+            </Location>
+            <Size>
+              <Width>197 px</Width>
+              <Height>110 px</Height>
+            </Size>
+            <DbOid>
+              <Path>quki.mainmenu</Path>
+              <TypeName>Table</TypeName>
+            </DbOid>
+            <Compartments>
+              <ConstraintsCollapsed>True</ConstraintsCollapsed>
+              <IndexesCollapsed>True</IndexesCollapsed>
+              <TriggersCollapsed>True</TriggersCollapsed>
+            </Compartments>
+          </Model>
+          <Model xsi:type="TableModel">
+            <CustomProperties>
+              <OID>5</OID>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <Location>
+              <X>556 px</X>
+              <Y>982 px</Y>
+            </Location>
+            <Size>
+              <Width>201 px</Width>
+              <Height>127 px</Height>
+            </Size>
+            <DbOid>
+              <Path>quki.modules</Path>
+              <TypeName>Table</TypeName>
+            </DbOid>
+            <Compartments>
+              <ConstraintsCollapsed>True</ConstraintsCollapsed>
+              <IndexesCollapsed>True</IndexesCollapsed>
+              <TriggersCollapsed>True</TriggersCollapsed>
+            </Compartments>
+          </Model>
+          <Model xsi:type="TableModel">
+            <CustomProperties>
+              <OID>6</OID>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <Location>
+              <X>860 px</X>
+              <Y>680 px</Y>
+            </Location>
+            <Size>
+              <Width>236 px</Width>
+              <Height>93 px</Height>
+            </Size>
+            <DbOid>
+              <Path>quki.registry</Path>
+              <TypeName>Table</TypeName>
+            </DbOid>
+            <Compartments>
+              <ConstraintsCollapsed>True</ConstraintsCollapsed>
+              <IndexesCollapsed>True</IndexesCollapsed>
+              <TriggersCollapsed>True</TriggersCollapsed>
+            </Compartments>
+          </Model>
+          <Model xsi:type="TableModel">
+            <CustomProperties>
+              <OID>7</OID>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <Location>
+              <X>470 px</X>
+              <Y>351 px</Y>
+            </Location>
+            <Size>
+              <Width>227 px</Width>
+              <Height>348 px</Height>
+            </Size>
+            <DbOid>
+              <Path>quki.site_users</Path>
+              <TypeName>Table</TypeName>
+            </DbOid>
+            <Compartments>
+              <ConstraintsCollapsed>True</ConstraintsCollapsed>
+              <IndexesCollapsed>True</IndexesCollapsed>
+              <TriggersCollapsed>True</TriggersCollapsed>
+            </Compartments>
+          </Model>
+          <Model xsi:type="TableModel">
+            <CustomProperties>
+              <OID>8</OID>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <Location>
+              <X>40 px</X>
+              <Y>999 px</Y>
+            </Location>
+            <Size>
+              <Width>154 px</Width>
+              <Height>93 px</Height>
+            </Size>
+            <DbOid>
+              <Path>quki.text_module</Path>
+              <TypeName>Table</TypeName>
+            </DbOid>
+            <Compartments>
+              <ConstraintsCollapsed>True</ConstraintsCollapsed>
+              <IndexesCollapsed>True</IndexesCollapsed>
+              <TriggersCollapsed>True</TriggersCollapsed>
+            </Compartments>
+          </Model>
+          <Model xsi:type="TableModel">
+            <CustomProperties>
+              <OID>9</OID>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <Location>
+              <X>254 px</X>
+              <Y>948 px</Y>
+            </Location>
+            <Size>
+              <Width>241 px</Width>
+              <Height>195 px</Height>
+            </Size>
+            <DbOid>
+              <Path>quki.url</Path>
+              <TypeName>Table</TypeName>
+            </DbOid>
+            <Compartments>
+              <ConstraintsCollapsed>True</ConstraintsCollapsed>
+              <IndexesCollapsed>True</IndexesCollapsed>
+              <TriggersCollapsed>True</TriggersCollapsed>
+            </Compartments>
+          </Model>
+          <Model xsi:type="TableModel">
+            <CustomProperties>
+              <OID>10</OID>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <Location>
+              <X>40 px</X>
+              <Y>758 px</Y>
+            </Location>
+            <Size>
+              <Width>262 px</Width>
+              <Height>110 px</Height>
+            </Size>
+            <DbOid>
+              <Path>quki.users_friends_in_groups</Path>
+              <TypeName>Table</TypeName>
+            </DbOid>
+            <Compartments>
+              <ConstraintsCollapsed>True</ConstraintsCollapsed>
+              <IndexesCollapsed>True</IndexesCollapsed>
+              <TriggersCollapsed>True</TriggersCollapsed>
+            </Compartments>
+          </Model>
+          <Model xsi:type="TableModel">
+            <CustomProperties>
+              <OID>11</OID>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <Location>
+              <X>131 px</X>
+              <Y>365 px</Y>
+            </Location>
+            <Size>
+              <Width>221 px</Width>
+              <Height>110 px</Height>
+            </Size>
+            <DbOid>
+              <Path>quki.users_friendship</Path>
+              <TypeName>Table</TypeName>
+            </DbOid>
+            <Compartments>
+              <ConstraintsCollapsed>True</ConstraintsCollapsed>
+              <IndexesCollapsed>True</IndexesCollapsed>
+              <TriggersCollapsed>True</TriggersCollapsed>
+            </Compartments>
+          </Model>
+          <Model xsi:type="TableModel">
+            <CustomProperties>
+              <OID>12</OID>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <Location>
+              <X>485 px</X>
+              <Y>758 px</Y>
+            </Location>
+            <Size>
+              <Width>197 px</Width>
+              <Height>110 px</Height>
+            </Size>
+            <DbOid>
+              <Path>quki.users_groups</Path>
+              <TypeName>Table</TypeName>
+            </DbOid>
+            <Compartments>
+              <ConstraintsCollapsed>True</ConstraintsCollapsed>
+              <IndexesCollapsed>True</IndexesCollapsed>
+              <TriggersCollapsed>True</TriggersCollapsed>
+            </Compartments>
+          </Model>
+          <Model xsi:type="VirtualRelationLinkModel">
+            <CustomProperties>
+              <OID>13</OID>
+              <Comment>14</Comment>
+              <OutModel>9</OutModel>
+              <InModel>9</InModel>
+              <OutPort>15</OutPort>
+              <InPort>16</InPort>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
+              <Port>
+                <Location>
+                  <X>0 px</X>
+                  <Y>146.25 px</Y>
+                </Location>
+                <Anchors>Top Bottom</Anchors>
+                <Align>Left</Align>
+                <CustomProperties>
+                  <OID>15</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+              <Port>
+                <Location>
+                  <X>0 px</X>
+                  <Y>48.75 px</Y>
+                </Location>
+                <Anchors>Top Bottom</Anchors>
+                <Align>Left</Align>
+                <CustomProperties>
+                  <OID>16</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+            </PortAnchors>
+            <BendPoints>
+              <PointD>
+                <X>235 px</X>
+                <Y>1094.25 px</Y>
+              </PointD>
+              <PointD>
+                <X>235 px</X>
+                <Y>996.75 px</Y>
+              </PointD>
+            </BendPoints>
+            <IsManuallyRouted>false</IsManuallyRouted>
+            <DbOid>
+              <Path>quki.url.url_vr1</Path>
+              <TypeName>VirtualRelation</TypeName>
+            </DbOid>
+          </Model>
+          <Model xsi:type="RelationCommentModel">
+            <CustomProperties>
+              <OID>14</OID>
+              <HolderModel>13</HolderModel>
+              <Port>17</Port>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
+              <Port xsi:type="LinkPort">
+                <Location>
+                  <X>19 px</X>
+                  <Y>48.75 px</Y>
+                </Location>
+                <Anchors>None</Anchors>
+                <Align>Left</Align>
+                <CustomProperties>
+                  <OID>17</OID>
+                  <PortType>FixedAnchor</PortType>
+                </CustomProperties>
+                <LinkPortAnchor>OutPoint</LinkPortAnchor>
+              </Port>
+            </PortAnchors>
+            <CommentOffset>
+              <X>-3.52516937255859 px</X>
+              <Y>62.5 px</Y>
+            </CommentOffset>
+          </Model>
+          <Model xsi:type="VirtualRelationLinkModel">
+            <CustomProperties>
+              <OID>18</OID>
+              <Comment>19</Comment>
+              <OutModel>11</OutModel>
+              <InModel>7</InModel>
+              <OutPort>20</OutPort>
+              <InPort>21</InPort>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
+              <Port>
+                <Location>
+                  <X>204 px</X>
+                  <Y>110 px</Y>
+                </Location>
+                <Anchors>Left Right</Anchors>
+                <Align>Bottom</Align>
+                <CustomProperties>
+                  <OID>20</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+              <Port>
+                <Location>
+                  <X>0 px</X>
+                  <Y>331.5 px</Y>
+                </Location>
+                <Anchors>Top Bottom</Anchors>
+                <Align>Left</Align>
+                <CustomProperties>
+                  <OID>21</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+            </PortAnchors>
+            <BendPoints>
+              <PointD>
+                <X>335 px</X>
+                <Y>682.5 px</Y>
+              </PointD>
+            </BendPoints>
+            <IsManuallyRouted>false</IsManuallyRouted>
+            <DbOid>
+              <Path>quki.users_friendship.users_friendship_vr1</Path>
+              <TypeName>VirtualRelation</TypeName>
+            </DbOid>
+          </Model>
+          <Model xsi:type="RelationCommentModel">
+            <CustomProperties>
+              <OID>19</OID>
+              <HolderModel>18</HolderModel>
+              <Port>22</Port>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
+              <Port xsi:type="LinkPort">
+                <Location>
+                  <X>0 px</X>
+                  <Y>-103.75 px</Y>
+                </Location>
+                <Anchors>None</Anchors>
+                <Align>Bottom</Align>
+                <CustomProperties>
+                  <OID>22</OID>
+                  <PortType>FixedAnchor</PortType>
+                </CustomProperties>
+                <LinkPortAnchor>OutPoint</LinkPortAnchor>
+              </Port>
+            </PortAnchors>
+            <CommentOffset>
+              <X>-21 px</X>
+              <Y>-45 px</Y>
+            </CommentOffset>
+          </Model>
+          <Model xsi:type="VirtualRelationLinkModel">
+            <CustomProperties>
+              <OID>23</OID>
+              <Comment>24</Comment>
+              <OutModel>11</OutModel>
+              <InModel>7</InModel>
+              <OutPort>25</OutPort>
+              <InPort>26</InPort>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
+              <Port>
+                <Location>
+                  <X>219 px</X>
+                  <Y>55 px</Y>
+                </Location>
+                <Anchors>Top Bottom</Anchors>
+                <Align>Right</Align>
+                <CustomProperties>
+                  <OID>25</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+              <Port>
+                <Location>
+                  <X>0 px</X>
+                  <Y>174 px</Y>
+                </Location>
+                <Anchors>Top Bottom</Anchors>
+                <Align>Left</Align>
+                <CustomProperties>
+                  <OID>26</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+            </PortAnchors>
+            <BendPoints>
+              <PointD>
+                <X>410 px</X>
+                <Y>420 px</Y>
+              </PointD>
+              <PointD>
+                <X>410 px</X>
+                <Y>525 px</Y>
+              </PointD>
+            </BendPoints>
+            <IsManuallyRouted>false</IsManuallyRouted>
+            <DbOid>
+              <Path>quki.users_friendship.users_friendship_vr2</Path>
+              <TypeName>VirtualRelation</TypeName>
+            </DbOid>
+          </Model>
+          <Model xsi:type="RelationCommentModel">
+            <CustomProperties>
+              <OID>24</OID>
+              <HolderModel>23</HolderModel>
+              <Port>27</Port>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
+              <Port xsi:type="LinkPort">
+                <Location>
+                  <X>-58 px</X>
+                  <Y>-52.5 px</Y>
+                </Location>
+                <Anchors>None</Anchors>
+                <Align>Right</Align>
+                <CustomProperties>
+                  <OID>27</OID>
+                  <PortType>FixedAnchor</PortType>
+                </CustomProperties>
+                <LinkPortAnchor>OutPoint</LinkPortAnchor>
+              </Port>
+            </PortAnchors>
+            <CommentOffset>
+              <X>-21 px</X>
+              <Y>17.5 px</Y>
+            </CommentOffset>
+          </Model>
+          <Model xsi:type="VirtualRelationLinkModel">
+            <CustomProperties>
+              <OID>28</OID>
+              <Comment>29</Comment>
+              <OutModel>10</OutModel>
+              <InModel>11</InModel>
+              <OutPort>30</OutPort>
+              <InPort>31</InPort>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
+              <Port>
+                <Location>
+                  <X>132.5 px</X>
+                  <Y>-0.5 px</Y>
+                </Location>
+                <Anchors>Left Right</Anchors>
+                <Align>Top</Align>
+                <CustomProperties>
+                  <OID>30</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+              <Port>
+                <Location>
+                  <X>41.5 px</X>
+                  <Y>110 px</Y>
+                </Location>
+                <Anchors>Left Right</Anchors>
+                <Align>Bottom</Align>
+                <CustomProperties>
+                  <OID>31</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+            </PortAnchors>
+            <IsManuallyRouted>false</IsManuallyRouted>
+            <DbOid>
+              <Path>quki.users_friends_in_groups.users_friends_in_groups_vr1</Path>
+              <TypeName>VirtualRelation</TypeName>
+            </DbOid>
+          </Model>
+          <Model xsi:type="RelationCommentModel">
+            <CustomProperties>
+              <OID>29</OID>
+              <HolderModel>28</HolderModel>
+              <Port>32</Port>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
+              <Port xsi:type="LinkPort">
+                <Location>
+                  <X>0 px</X>
+                  <Y>141.5 px</Y>
+                </Location>
+                <Anchors>None</Anchors>
+                <Align>Top</Align>
+                <CustomProperties>
+                  <OID>32</OID>
+                  <PortType>FixedAnchor</PortType>
+                </CustomProperties>
+                <LinkPortAnchor>OutPoint</LinkPortAnchor>
+              </Port>
+            </PortAnchors>
+            <CommentOffset>
+              <X>39.2395839691162 px</X>
+              <Y>-110 px</Y>
+            </CommentOffset>
+          </Model>
+          <Model xsi:type="VirtualRelationLinkModel">
+            <CustomProperties>
+              <OID>33</OID>
+              <Comment>34</Comment>
+              <OutModel>10</OutModel>
+              <InModel>12</InModel>
+              <OutPort>35</OutPort>
+              <InPort>36</InPort>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
+              <Port>
+                <Location>
+                  <X>262.5 px</X>
+                  <Y>54.5 px</Y>
+                </Location>
+                <Anchors>Top Bottom</Anchors>
+                <Align>Right</Align>
+                <CustomProperties>
+                  <OID>35</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+              <Port>
+                <Location>
+                  <X>0 px</X>
+                  <Y>54.5 px</Y>
+                </Location>
+                <Anchors>Top Bottom</Anchors>
+                <Align>Left</Align>
+                <CustomProperties>
+                  <OID>36</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+            </PortAnchors>
+            <IsManuallyRouted>false</IsManuallyRouted>
+            <DbOid>
+              <Path>quki.users_friends_in_groups.users_friends_in_groups_vr2</Path>
+              <TypeName>VirtualRelation</TypeName>
+            </DbOid>
+          </Model>
+          <Model xsi:type="RelationCommentModel">
+            <CustomProperties>
+              <OID>34</OID>
+              <HolderModel>33</HolderModel>
+              <Port>37</Port>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
+              <Port xsi:type="LinkPort">
+                <Location>
+                  <X>-91.5 px</X>
+                  <Y>0 px</Y>
+                </Location>
+                <Anchors>None</Anchors>
+                <Align>Right</Align>
+                <CustomProperties>
+                  <OID>37</OID>
+                  <PortType>FixedAnchor</PortType>
+                </CustomProperties>
+                <LinkPortAnchor>OutPoint</LinkPortAnchor>
+              </Port>
+            </PortAnchors>
+            <CommentOffset>
+              <X>22 px</X>
+              <Y>2 px</Y>
+            </CommentOffset>
+          </Model>
+          <Model xsi:type="VirtualRelationLinkModel">
+            <CustomProperties>
+              <OID>38</OID>
+              <Comment>39</Comment>
+              <OutModel>12</OutModel>
+              <InModel>7</InModel>
+              <OutPort>40</OutPort>
+              <InPort>41</InPort>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
+              <Port>
+                <Location>
+                  <X>100 px</X>
+                  <Y>-0.5 px</Y>
+                </Location>
+                <Anchors>Left Right</Anchors>
+                <Align>Top</Align>
+                <CustomProperties>
+                  <OID>40</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+              <Port>
+                <Location>
+                  <X>115 px</X>
+                  <Y>346.5 px</Y>
+                </Location>
+                <Anchors>Left Right</Anchors>
+                <Align>Bottom</Align>
+                <CustomProperties>
+                  <OID>41</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+            </PortAnchors>
+            <IsManuallyRouted>false</IsManuallyRouted>
+            <DbOid>
+              <Path>quki.users_groups.users_groups_vr1</Path>
+              <TypeName>VirtualRelation</TypeName>
+            </DbOid>
+          </Model>
+          <Model xsi:type="RelationCommentModel">
+            <CustomProperties>
+              <OID>39</OID>
+              <HolderModel>38</HolderModel>
+              <Port>42</Port>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
+              <Port xsi:type="LinkPort">
+                <Location>
+                  <X>0 px</X>
+                  <Y>29.5 px</Y>
+                </Location>
+                <Anchors>None</Anchors>
+                <Align>Top</Align>
+                <CustomProperties>
+                  <OID>42</OID>
+                  <PortType>FixedAnchor</PortType>
+                </CustomProperties>
+                <LinkPortAnchor>OutPoint</LinkPortAnchor>
+              </Port>
+            </PortAnchors>
+            <CommentOffset>
+              <X>22 px</X>
+              <Y>2 px</Y>
+            </CommentOffset>
+          </Model>
+          <Model xsi:type="VirtualRelationLinkModel">
+            <CustomProperties>
+              <OID>43</OID>
+              <Comment>44</Comment>
+              <OutModel>9</OutModel>
+              <InModel>5</InModel>
+              <OutPort>45</OutPort>
+              <InPort>46</InPort>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
+              <Port>
+                <Location>
+                  <X>241.7 px</X>
+                  <Y>97.1500000000001 px</Y>
+                </Location>
+                <Anchors>Top Bottom</Anchors>
+                <Align>Right</Align>
+                <CustomProperties>
+                  <OID>45</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+              <Port>
+                <Location>
+                  <X>0.150000000000091 px</X>
+                  <Y>63.1500000000001 px</Y>
+                </Location>
+                <Anchors>Top Bottom</Anchors>
+                <Align>Left</Align>
+                <CustomProperties>
+                  <OID>46</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+            </PortAnchors>
+            <IsManuallyRouted>false</IsManuallyRouted>
+            <DbOid>
+              <Path>quki.url.url_vr2</Path>
+              <TypeName>VirtualRelation</TypeName>
+            </DbOid>
+          </Model>
+          <Model xsi:type="RelationCommentModel">
+            <CustomProperties>
+              <OID>44</OID>
+              <HolderModel>43</HolderModel>
+              <Port>47</Port>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
+              <Port xsi:type="LinkPort">
+                <Location>
+                  <X>-30.5 px</X>
+                  <Y>-2.44140624090505E-05 px</Y>
+                </Location>
+                <Anchors>None</Anchors>
+                <Align>Right</Align>
+                <CustomProperties>
+                  <OID>47</OID>
+                  <PortType>FixedAnchor</PortType>
+                </CustomProperties>
+                <LinkPortAnchor>OutPoint</LinkPortAnchor>
+              </Port>
+            </PortAnchors>
+            <CommentOffset>
+              <X>22 px</X>
+              <Y>2 px</Y>
+            </CommentOffset>
+          </Model>
+          <Model xsi:type="VirtualRelationLinkModel">
+            <CustomProperties>
+              <OID>48</OID>
+              <Comment>49</Comment>
+              <OutModel>7</OutModel>
+              <InModel>2</InModel>
+              <OutPort>50</OutPort>
+              <InPort>51</InPort>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
+              <Port>
+                <Location>
+                  <X>180 px</X>
+                  <Y>1.5 px</Y>
+                </Location>
+                <Anchors>Left Right</Anchors>
+                <Align>Top</Align>
+                <CustomProperties>
+                  <OID>50</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+              <Port>
+                <Location>
+                  <X>0 px</X>
+                  <Y>64.5 px</Y>
+                </Location>
+                <Anchors>Top Bottom</Anchors>
+                <Align>Left</Align>
+                <CustomProperties>
+                  <OID>51</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+            </PortAnchors>
+            <BendPoints>
+              <PointD>
+                <X>650 px</X>
+                <Y>292.5 px</Y>
+              </PointD>
+            </BendPoints>
+            <IsManuallyRouted>false</IsManuallyRouted>
+            <DbOid>
+              <Path>quki.site_users.site_users_vr1</Path>
+              <TypeName>VirtualRelation</TypeName>
+            </DbOid>
+          </Model>
+          <Model xsi:type="RelationCommentModel">
+            <CustomProperties>
+              <OID>49</OID>
+              <HolderModel>48</HolderModel>
+              <Port>52</Port>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
+              <Port xsi:type="LinkPort">
+                <Location>
+                  <X>-55 px</X>
+                  <Y>58.5 px</Y>
+                </Location>
+                <Anchors>None</Anchors>
+                <Align>Top</Align>
+                <CustomProperties>
+                  <OID>52</OID>
+                  <PortType>FixedAnchor</PortType>
+                </CustomProperties>
+                <LinkPortAnchor>OutPoint</LinkPortAnchor>
+              </Port>
+            </PortAnchors>
+            <CommentOffset>
+              <X>22 px</X>
+              <Y>2 px</Y>
+            </CommentOffset>
+          </Model>
+          <Model xsi:type="VirtualRelationLinkModel">
+            <CustomProperties>
+              <OID>53</OID>
+              <Comment>54</Comment>
+              <OutModel>7</OutModel>
+              <InModel>1</InModel>
+              <OutPort>55</OutPort>
+              <InPort>56</InPort>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
+              <Port>
+                <Location>
+                  <X>227.5 px</X>
+                  <Y>111.5 px</Y>
+                </Location>
+                <Anchors>Top Bottom</Anchors>
+                <Align>Right</Align>
+                <CustomProperties>
+                  <OID>55</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+              <Port>
+                <Location>
+                  <X>-0.5 px</X>
+                  <Y>47.5 px</Y>
+                </Location>
+                <Anchors>Top Bottom</Anchors>
+                <Align>Left</Align>
+                <CustomProperties>
+                  <OID>56</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+            </PortAnchors>
+            <IsManuallyRouted>false</IsManuallyRouted>
+            <DbOid>
+              <Path>quki.site_users.site_users_vr2</Path>
+              <TypeName>VirtualRelation</TypeName>
+            </DbOid>
+          </Model>
+          <Model xsi:type="RelationCommentModel">
+            <CustomProperties>
+              <OID>54</OID>
+              <HolderModel>53</HolderModel>
+              <Port>57</Port>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
+              <Port xsi:type="LinkPort">
+                <Location>
+                  <X>-30.5 px</X>
+                  <Y>0 px</Y>
+                </Location>
+                <Anchors>None</Anchors>
+                <Align>Right</Align>
+                <CustomProperties>
+                  <OID>57</OID>
+                  <PortType>FixedAnchor</PortType>
+                </CustomProperties>
+                <LinkPortAnchor>OutPoint</LinkPortAnchor>
+              </Port>
+            </PortAnchors>
+            <CommentOffset>
+              <X>22 px</X>
+              <Y>2 px</Y>
+            </CommentOffset>
+          </Model>
+          <Model xsi:type="VirtualRelationLinkModel">
+            <CustomProperties>
+              <OID>58</OID>
+              <Comment>59</Comment>
+              <OutModel>7</OutModel>
+              <InModel>3</InModel>
+              <OutPort>60</OutPort>
+              <InPort>61</InPort>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
+              <Port>
+                <Location>
+                  <X>17.5 px</X>
+                  <Y>1.5 px</Y>
+                </Location>
+                <Anchors>Left Right</Anchors>
+                <Align>Top</Align>
+                <CustomProperties>
+                  <OID>60</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+              <Port>
+                <Location>
+                  <X>0 px</X>
+                  <Y>65 px</Y>
+                </Location>
+                <Anchors>Top Bottom</Anchors>
+                <Align>Left</Align>
+                <CustomProperties>
+                  <OID>61</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+            </PortAnchors>
+            <BendPoints>
+              <PointD>
+                <X>487.5 px</X>
+                <Y>105 px</Y>
+              </PointD>
+            </BendPoints>
+            <IsManuallyRouted>false</IsManuallyRouted>
+            <DbOid>
+              <Path>quki.site_users.site_users_vr3</Path>
+              <TypeName>VirtualRelation</TypeName>
+            </DbOid>
+          </Model>
+          <Model xsi:type="RelationCommentModel">
+            <CustomProperties>
+              <OID>59</OID>
+              <HolderModel>58</HolderModel>
+              <Port>62</Port>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
+              <Port xsi:type="LinkPort">
+                <Location>
+                  <X>-128.75 px</X>
+                  <Y>246 px</Y>
+                </Location>
+                <Anchors>None</Anchors>
+                <Align>Top</Align>
+                <CustomProperties>
+                  <OID>62</OID>
+                  <PortType>FixedAnchor</PortType>
+                </CustomProperties>
+                <LinkPortAnchor>OutPoint</LinkPortAnchor>
+              </Port>
+            </PortAnchors>
+            <CommentOffset>
+              <X>22 px</X>
+              <Y>2 px</Y>
+            </CommentOffset>
+          </Model>
+          <Model xsi:type="VirtualRelationLinkModel">
+            <CustomProperties>
+              <OID>63</OID>
+              <Comment>64</Comment>
+              <OutModel>2</OutModel>
+              <InModel>1</InModel>
+              <OutPort>65</OutPort>
+              <InPort>66</InPort>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
+              <Port>
+                <Location>
+                  <X>102.5 px</X>
+                  <Y>127 px</Y>
+                </Location>
+                <Anchors>Left Right</Anchors>
+                <Align>Bottom</Align>
+                <CustomProperties>
+                  <OID>65</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+              <Port>
+                <Location>
+                  <X>104.5 px</X>
+                  <Y>0 px</Y>
+                </Location>
+                <Anchors>Left Right</Anchors>
+                <Align>Top</Align>
+                <CustomProperties>
+                  <OID>66</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+            </PortAnchors>
+            <IsManuallyRouted>false</IsManuallyRouted>
+            <DbOid>
+              <Path>quki.country_regions.country_regions_vr1</Path>
+              <TypeName>VirtualRelation</TypeName>
+            </DbOid>
+          </Model>
+          <Model xsi:type="RelationCommentModel">
+            <CustomProperties>
+              <OID>64</OID>
+              <HolderModel>63</HolderModel>
+              <Port>67</Port>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
+              <Port xsi:type="LinkPort">
+                <Location>
+                  <X>0 px</X>
+                  <Y>-30 px</Y>
+                </Location>
+                <Anchors>None</Anchors>
+                <Align>Bottom</Align>
+                <CustomProperties>
+                  <OID>67</OID>
+                  <PortType>FixedAnchor</PortType>
+                </CustomProperties>
+                <LinkPortAnchor>OutPoint</LinkPortAnchor>
+              </Port>
+            </PortAnchors>
+            <CommentOffset>
+              <X>22 px</X>
+              <Y>2 px</Y>
+            </CommentOffset>
+          </Model>
+          <Model xsi:type="VirtualRelationLinkModel">
+            <CustomProperties>
+              <OID>68</OID>
+              <Comment>69</Comment>
+              <OutModel>3</OutModel>
+              <InModel>2</InModel>
+              <OutPort>70</OutPort>
+              <InPort>71</InPort>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
+              <Port>
+                <Location>
+                  <X>117.5 px</X>
+                  <Y>127.5 px</Y>
+                </Location>
+                <Anchors>Left Right</Anchors>
+                <Align>Bottom</Align>
+                <CustomProperties>
+                  <OID>70</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+              <Port>
+                <Location>
+                  <X>102.5 px</X>
+                  <Y>-0.5 px</Y>
+                </Location>
+                <Anchors>Left Right</Anchors>
+                <Align>Top</Align>
+                <CustomProperties>
+                  <OID>71</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+            </PortAnchors>
+            <IsManuallyRouted>false</IsManuallyRouted>
+            <DbOid>
+              <Path>quki.country_regions_city.country_regions_city_vr1</Path>
+              <TypeName>VirtualRelation</TypeName>
+            </DbOid>
+          </Model>
+          <Model xsi:type="RelationCommentModel">
+            <CustomProperties>
+              <OID>69</OID>
+              <HolderModel>68</HolderModel>
+              <Port>72</Port>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
+              <Port xsi:type="LinkPort">
+                <Location>
+                  <X>0 px</X>
+                  <Y>-30.5 px</Y>
+                </Location>
+                <Anchors>None</Anchors>
+                <Align>Bottom</Align>
+                <CustomProperties>
+                  <OID>72</OID>
+                  <PortType>FixedAnchor</PortType>
+                </CustomProperties>
+                <LinkPortAnchor>OutPoint</LinkPortAnchor>
+              </Port>
+            </PortAnchors>
+            <CommentOffset>
+              <X>22 px</X>
+              <Y>2 px</Y>
+            </CommentOffset>
+          </Model>
+          <Model xsi:type="VirtualRelationLinkModel">
+            <CustomProperties>
+              <OID>73</OID>
+              <Comment>74</Comment>
+              <OutModel>4</OutModel>
+              <InModel>9</InModel>
+              <OutPort>75</OutPort>
+              <InPort>76</InPort>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
+              <Port>
+                <Location>
+                  <X>98.8000000000001 px</X>
+                  <Y>-0.75 px</Y>
+                </Location>
+                <Anchors>Left Right</Anchors>
+                <Align>Top</Align>
+                <CustomProperties>
+                  <OID>75</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+              <Port>
+                <Location>
+                  <X>120.8 px</X>
+                  <Y>194.8 px</Y>
+                </Location>
+                <Anchors>Left Right</Anchors>
+                <Align>Bottom</Align>
+                <CustomProperties>
+                  <OID>76</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+            </PortAnchors>
+            <IsManuallyRouted>false</IsManuallyRouted>
+            <DbOid>
+              <Path>quki.mainmenu.mainmenu_vr1</Path>
+              <TypeName>VirtualRelation</TypeName>
+            </DbOid>
+          </Model>
+          <Model xsi:type="RelationCommentModel">
+            <CustomProperties>
+              <OID>74</OID>
+              <HolderModel>73</HolderModel>
+              <Port>77</Port>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
+              <Port xsi:type="LinkPort">
+                <Location>
+                  <X>1.22070313182121E-05 px</X>
+                  <Y>30.5 px</Y>
+                </Location>
+                <Anchors>None</Anchors>
+                <Align>Top</Align>
+                <CustomProperties>
+                  <OID>77</OID>
+                  <PortType>FixedAnchor</PortType>
+                </CustomProperties>
+                <LinkPortAnchor>OutPoint</LinkPortAnchor>
+              </Port>
+            </PortAnchors>
+            <CommentOffset>
+              <X>22 px</X>
+              <Y>2 px</Y>
+            </CommentOffset>
+          </Model>
+          <Model xsi:type="VirtualRelationLinkModel">
+            <CustomProperties>
+              <OID>78</OID>
+              <Comment>79</Comment>
+              <OutModel>8</OutModel>
+              <InModel>9</InModel>
+              <OutPort>80</OutPort>
+              <InPort>81</InPort>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
+              <Port>
+                <Location>
+                  <X>153.45 px</X>
+                  <Y>46.1500000000001 px</Y>
+                </Location>
+                <Anchors>Top Bottom</Anchors>
+                <Align>Right</Align>
+                <CustomProperties>
+                  <OID>80</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+              <Port>
+                <Location>
+                  <X>-0.0999999999999659 px</X>
+                  <Y>97.1500000000001 px</Y>
+                </Location>
+                <Anchors>Top Bottom</Anchors>
+                <Align>Left</Align>
+                <CustomProperties>
+                  <OID>81</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+            </PortAnchors>
+            <IsManuallyRouted>false</IsManuallyRouted>
+            <DbOid>
+              <Path>quki.text_module.text_module_vr1</Path>
+              <TypeName>VirtualRelation</TypeName>
+            </DbOid>
+          </Model>
+          <Model xsi:type="RelationCommentModel">
+            <CustomProperties>
+              <OID>79</OID>
+              <HolderModel>78</HolderModel>
+              <Port>82</Port>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
+              <Port xsi:type="LinkPort">
+                <Location>
+                  <X>-30 px</X>
+                  <Y>-2.44140624090505E-05 px</Y>
+                </Location>
+                <Anchors>None</Anchors>
+                <Align>Right</Align>
+                <CustomProperties>
+                  <OID>82</OID>
+                  <PortType>FixedAnchor</PortType>
+                </CustomProperties>
+                <LinkPortAnchor>OutPoint</LinkPortAnchor>
+              </Port>
+            </PortAnchors>
+            <CommentOffset>
+              <X>22 px</X>
+              <Y>2 px</Y>
+            </CommentOffset>
+          </Model>
+        </Children>
+        <ViewPort>
+          <ScaleMode>Free</ScaleMode>
+          <Scale>0.27</Scale>
+          <Location>
+            <X>-714.814786410627 px</X>
+            <Y>-262.962952513754 px</Y>
+          </Location>
+        </ViewPort>
+      </Model>
+    </DiagramModel>
+  </Diagram>
+</DevartDatabaseDiagram>
