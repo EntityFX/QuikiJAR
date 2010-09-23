@@ -1,12 +1,12 @@
 <?php   
-
+require_once "engine/libs/mysql/MySQLConnector.php"; 
 
 	/**
 	 * Класс, работающий с галереями.
 	 * @author Тимур 06.08.10 <gtimur666@gmail.com>
 	 * @version 1.0
 	 */
-    class Galary
+    class Galary extends MySQLConnector
     {
         /**
          * Показывает список галерей из таблицы `galary_list` у конкретного пользователя $user
@@ -18,10 +18,8 @@
          */
         public function showGalariesList($user, $visitor, $listNum) 
         {
-            $sql=new MySQL(DB_SERVER,DB_USER,DB_PASSWORD); 
-            $sql->selectDB(DB_NAME);
-            $result=$sql->query("SELECT * FROM `galary_list` WHERE `user`='$user' ORDER BY `pos` ASC");
-            while ($array=$sql->fetchArr($result)) 
+            $result=$this->_sql->query("SELECT * FROM `galary_list` WHERE `user`='$user' ORDER BY `pos` ASC");
+            while ($array=$this->_sql->fetchArr($result)) 
             {        
                 //Для начала проверим, не пустой ли массив ваще, а потом не находится 
                 //ли визитер в списках ограничения
@@ -51,11 +49,9 @@
          * @return string путь к превью-файлу
          */
         public function getPreviewPathById($id)
-        {
-            $sql=new MySQL(DB_SERVER,DB_USER,DB_PASSWORD); 
-            $sql->selectDB(DB_NAME); 
-            $result=$sql->query("SELECT * FROM `galary_files` WHERE `id`='$id'");
-            $resArr =  $sql->fetchArr();
+        { 
+            $result=$this->_sql->query("SELECT * FROM `galary_files` WHERE `id`='$id'");
+            $resArr =  $this->_sql->fetchArr();
             $res = $resArr["small_path"];
             return $res;
         }
@@ -113,18 +109,16 @@
          * @return Array Возвращает ассоциативный массив.
          */
         public function showGalary($visitor,$altname,$listNum)
-        {
-            $sql=new MySQL(DB_SERVER,DB_USER,DB_PASSWORD); 
-            $sql->selectDB(DB_NAME); 
-            $result=$sql->query("SELECT * FROM `galary_list` WHERE `id`='$altname'");
-            $array=$sql->fetchArr($result);
+        { 
+            $result=$this->_sql->query("SELECT * FROM `galary_list` WHERE `id`='$altname'");
+            $array=$this->_sql->fetchArr($result);
             if (count($array)!=0)
             {
                 if ($this->checkSQRTY($visitor,$array["sequrity"],$array["trusted"])) //проверка на приватность
                 {
                     //проверку прошли, заходим в таблицу и смотрим есть ли файлы в альбом   
-                    $result=$sql->query("SELECT * FROM `galary_files` WHERE `pid`='$altname' ORDER BY `pos` ASC");
-                    while ($ar=$sql->fetchArr($result))
+                    $result=$this->_sql->query("SELECT * FROM `galary_files` WHERE `pid`='$altname' ORDER BY `pos` ASC");
+                    while ($ar=$this->_sql->fetchArr($result))
                     {
                         if (count($ar)!=0) 
                         {
@@ -223,11 +217,9 @@
          * @return Array ассоциативный массив с данными о предыдущем, текущем и следующем элементе.
          */
         public function showPhoto($user, $visitor, $altname, $id)
-        {
-            $sql=new MySQL(DB_SERVER,DB_USER,DB_PASSWORD); 
-            $sql->selectDB(DB_NAME); 
-            $result=$sql->query("SELECT * FROM `galary_list` WHERE `id`='$altname'"); //для проверки на приватность
-            $array=$sql->fetchArr($result); 
+        { 
+            $result=$this->_sql->query("SELECT * FROM `galary_list` WHERE `id`='$altname'"); //для проверки на приватность
+            $array=$this->_sql->fetchArr($result); 
             if (count($array)!=0)
             {
                 if ($this->checkSQRTY($visitor,$array["sequrity"],$array["trusted"]))
@@ -235,8 +227,8 @@
                     $pid=$array["id"]; 
                     $i=0;
                     $currPhoto=0;
-                    $qResult=$sql->query("SELECT * FROM `galary_files` WHERE `pid`='$pid' ORDER BY `pos` ASC");//соберем весь массив с фотками
-                    while ($ar=$sql->fetchArr($qResult))
+                    $qResult=$this->_sql->query("SELECT * FROM `galary_files` WHERE `pid`='$pid' ORDER BY `pos` ASC");//соберем весь массив с фотками
+                    while ($ar=$this->_sql->fetchArr($qResult))
                     {   
                         if (count($ar)!=0) 
                         {  
@@ -280,7 +272,7 @@
                     {
                         if ($tempArr["isreadedcomments"]==1)
                         {
-                            $sql->query("UPDATE `galary_files` SET `isreadedcomments`='0' WHERE `id`='$id' ");
+                            $this->_sql->query("UPDATE `galary_files` SET `isreadedcomments`='0' WHERE `id`='$id' ");
                         }
                     } 
                     else
@@ -302,30 +294,28 @@
         //показать комментарии к отдельной фотке
         //входные данные: id фотки.
         //выходные данные: массив многомерный. автор,время,текст сообщения, прочитано или нет.
-        /**
+        /*
          * Функция просмотра комментариев к фотографии
          * @param $pid
          * @param $user
          * @param $altname
          * @param $visitor
          */
-        public function showComments ($pid, $user,$altname,$visitor)
-        {
-            $sql=new MySQL(DB_SERVER,DB_USER,DB_PASSWORD); 
-            $sql->selectDB(DB_NAME); 
-            $result=$sql->query("SELECT * FROM `galary_list` WHERE `id`='$altname'"); //для проверки на приватность
-            $array=$sql->fetchArr($result); 
+       /* public function showComments ($pid, $user,$altname,$visitor)
+        { 
+            $result=$this->_sql->query("SELECT * FROM `galary_list` WHERE `id`='$altname'"); //для проверки на приватность
+            $array=$this->_sql->fetchArr($result); 
             if (count($array)!=0)
             {
                 if ($this->checkSQRTY($visitor,$array["sequrity"],$array["trusted"]))
                 {   
-                    $result2=$sql->query("SELECT * FROM `galary_comments` WHERE `pid`='$pid'"); //ищем все комментарии к фото
-                    while ($ar=$sql->fetchArr($result2))
+                    $result2=$this->_sql->query("SELECT * FROM `galary_comments` WHERE `pid`='$pid'"); //ищем все комментарии к фото
+                    while ($ar=$this->_sql->fetchArr($result2))
                     {      
                         $returnArr[]=$ar;
                         if ($ar["notanswered"]==1)
                         {
-                            $sql->query("UPDATE `galary_comments` SET `notanswered`='0' WHERE `pid`='$pid'");
+                            $this->_sql->query("UPDATE `galary_comments` SET `notanswered`='0' WHERE `pid`='$pid'");
                         }
                     }
                 }
@@ -340,24 +330,22 @@
             }
             return $returnArr;
         }
-        
+        */
         /*
         показывать только комментарии и превьюшки.
         входные параметры: номер листа, имя юзера, имя посетителя, номер альбома - если он равен нулю то показать все комментарии
         выходные параметры: массив, автор комментария, дата комментария, прочитан или нет, сам комментарий, айдишники - таблица из базы в общем
-        */
+        */ /*
         public function showCommentsAndPreview($user,$altname,$visitor, $listnum)
-        {
-            $sql=new MySQL(DB_SERVER,DB_USER,DB_PASSWORD); 
-            $sql->selectDB(DB_NAME); 
-            $result=$sql->query("SELECT * FROM `galary_list` WHERE `id`='$altname'"); //для проверки на приватность
-            $array=$sql->fetchArr($result);
+        { 
+            $result=$this->_sql->query("SELECT * FROM `galary_list` WHERE `id`='$altname'"); //для проверки на приватность
+            $array=$this->_sql->fetchArr($result);
             if (count($array)!=0)
             {
                 if ($this->checkSQRTY($visitor,$array["sequrity"],$array["trusted"])) //проверка приватности
                 {
-                    $result2 = $sql->query("SELECT * FROM `galary_comments` WHERE `user`='$user' ORDER BY `datetime` ASC"); //ищем все комментарии у данного юзера
-                    while ($ar=$sql->fetchArr($result2))
+                    $result2 = $this->_sql->query("SELECT * FROM `galary_comments` WHERE `user`='$user' ORDER BY `datetime` ASC"); //ищем все комментарии у данного юзера
+                    while ($ar=$this->_sql->fetchArr($result2))
                     {   
                         if ($this->checkSQRTY($visitor,$ar["sequrity"],$ar["trusted"]))
                         {
@@ -381,7 +369,7 @@
             }
             $retArr2= $this->listing($retArr,2,50); 
             return $retArr2;
-        }
+        }*/
 
         /*
         возвращает итоговый результат приватности.
@@ -389,20 +377,16 @@
         */
         public function getPrivateState($visitor, $id)
         {
-            $sql=new MySQL(DB_SERVER,DB_USER,DB_PASSWORD); 
-            $sql->selectDB(DB_NAME); 
-            $result=$sql->query("SELECT * FROM `galary_list` WHERE `id`=(SELECT `pid` FROM `galary_files` WHERE `id`='$id')"); //для проверки на приватность
-            $array=$sql->fetchArr($result);
+            $result=$this->_sql->query("SELECT * FROM `galary_list` WHERE `id`=(SELECT `pid` FROM `galary_files` WHERE `id`='$id')"); //для проверки на приватность
+            $array=$this->_sql->fetchArr($result);
             $ret = $this->checkSQRTY($visitor,$array["sequrity"],$array["trusted"]);
             return $ret;
         }
         
         public function getGalaryIDs($altname)
-        {
-            $sql=new MySQL(DB_SERVER,DB_USER,DB_PASSWORD); 
-            $sql->selectDB(DB_NAME); 
-            $result=$sql->query("SELECT * FROM `galary_files` WHERE `pid`='$altname'");
-            while ($array=$sql->fetchArr($result))
+        { 
+            $result=$this->_sql->query("SELECT * FROM `galary_files` WHERE `pid`='$altname'");
+            while ($array=$this->_sql->fetchArr($result))
             {
                 $retArr[]=$array[id]; 
             }
