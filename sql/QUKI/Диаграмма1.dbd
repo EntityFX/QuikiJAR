@@ -581,8 +581,8 @@
               </Port>
             </PortAnchors>
             <CommentOffset>
-              <X>-3.52516937255859 px</X>
-              <Y>62.5 px</Y>
+              <X>3.47483062744141 px</X>
+              <Y>-134.25 px</Y>
             </CommentOffset>
           </Model>
           <Model xsi:type="VirtualRelationLinkModel">
@@ -656,8 +656,8 @@
               </Port>
             </PortAnchors>
             <CommentOffset>
-              <X>-21 px</X>
-              <Y>-45 px</Y>
+              <X>135 px</X>
+              <Y>-65 px</Y>
             </CommentOffset>
           </Model>
           <Model xsi:type="VirtualRelationLinkModel">
@@ -735,8 +735,8 @@
               </Port>
             </PortAnchors>
             <CommentOffset>
-              <X>-21 px</X>
-              <Y>17.5 px</Y>
+              <X>-22 px</X>
+              <Y>-20 px</Y>
             </CommentOffset>
           </Model>
           <Model xsi:type="VirtualRelationLinkModel">
@@ -873,8 +873,8 @@
               </Port>
             </PortAnchors>
             <CommentOffset>
-              <X>22 px</X>
-              <Y>2 px</Y>
+              <X>-12 px</X>
+              <Y>17.5 px</Y>
             </CommentOffset>
           </Model>
           <Model xsi:type="VirtualRelationLinkModel">
@@ -1011,8 +1011,8 @@
               </Port>
             </PortAnchors>
             <CommentOffset>
-              <X>22 px</X>
-              <Y>2 px</Y>
+              <X>-5 px</X>
+              <Y>24.8499999999999 px</Y>
             </CommentOffset>
           </Model>
           <Model xsi:type="VirtualRelationLinkModel">
@@ -1155,8 +1155,8 @@
               </Port>
             </PortAnchors>
             <CommentOffset>
-              <X>22 px</X>
-              <Y>2 px</Y>
+              <X>13 px</X>
+              <Y>47.4999999999999 px</Y>
             </CommentOffset>
           </Model>
           <Model xsi:type="VirtualRelationLinkModel">
@@ -1437,8 +1437,8 @@
               </Port>
             </PortAnchors>
             <CommentOffset>
-              <X>22 px</X>
-              <Y>2 px</Y>
+              <X>16.2395839691162 px</X>
+              <Y>15.1999999999999 px</Y>
             </CommentOffset>
           </Model>
           <Model xsi:type="VirtualRelationLinkModel">
@@ -1506,17 +1506,54 @@
               </Port>
             </PortAnchors>
             <CommentOffset>
-              <X>22 px</X>
-              <Y>2 px</Y>
+              <X>-114 px</X>
+              <Y>54.8499999999999 px</Y>
             </CommentOffset>
+          </Model>
+          <Model xsi:type="StampModel">
+            <CustomProperties>
+              <OID>83</OID>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <Location>
+              <X>60 px</X>
+              <Y>10 px</Y>
+            </Location>
+            <Size>
+              <Width>250 px</Width>
+              <Height>133 px</Height>
+            </Size>
+            <CompanyName>Идель Медиа Групп</CompanyName>
+            <ProjectName>QUKI</ProjectName>
+            <Version>1.0.0.0</Version>
+            <Author>Солопий А.В.</Author>
+            <Date>23.09.2010</Date>
+            <Copyrights>© Idel Media Group</Copyrights>
+            <Text>Идель Медиа Групп QUKI</Text>
+          </Model>
+          <Model xsi:type="NoteModel">
+            <CustomProperties>
+              <OID>84</OID>
+              <BackgroundColor>255, 255, 225</BackgroundColor>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <Location>
+              <X>1140 px</X>
+              <Y>690 px</Y>
+            </Location>
+            <Size>
+              <Width>166 px</Width>
+              <Height>70 px</Height>
+            </Size>
+            <Text>Реестр хранит сериализованные объеты, масивы или переменные</Text>
           </Model>
         </Children>
         <ViewPort>
           <ScaleMode>Free</ScaleMode>
-          <Scale>0.27</Scale>
+          <Scale>0.3</Scale>
           <Location>
-            <X>-714.814786410627 px</X>
-            <Y>-262.962952513754 px</Y>
+            <X>-706.666638586257 px</X>
+            <Y>-176.666659646564 px</Y>
           </Location>
         </ViewPort>
       </Model>
