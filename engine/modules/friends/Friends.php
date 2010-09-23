@@ -27,10 +27,7 @@
             {
                 $userId=$this->_curentId;    
             }
-            else
-            {
-                
-            }
+            $this->_sql->query("SELECT COUNT(*) FROM `USERS_FRIENDSHIP` WHERE ")
         }
         
         public function deleteFriend($friendId)
