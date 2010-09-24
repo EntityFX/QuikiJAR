@@ -4,7 +4,9 @@
     
     require_once "engine/libs/registry/Registry.php";
     
-    class User
+    require_once "engine/libs/mysql/MySQLConnector.php";
+        
+    class User extends MySQLConnector
     {
         const PHOTO_PATH="/photos/";
         
@@ -22,7 +24,8 @@
         
         public function __construct($id=NULL)
         {
-            if ($id==NULL)
+            parent::__construct();
+            if ($id==NULL || $id==$_SESSION["user"]["id"])
             {
                 session_start();
                 if (!isset($_SESSION["user"]))
@@ -37,7 +40,19 @@
                 $this->ip=$_SESSION["user"]["ip"];
                 $this->id=$_SESSION["user"]["id"];
             }
-            
+            else
+            {
+                $res=$this->_sql->query("SELECT * FROM `SITE_USERS` WHERE `id`=$id");
+                $resArray=$this->_sql->GetRows($res);
+                $resArray=$resArray[0];
+                $this->name=$resArray["name"];
+                $this->secondName=$resArray["second_name"];
+                $this->burthday=$resArray["burthday"];
+                $this->mail=$resArray["mail"];
+                $this->photo=$resArray["photo"];
+                $this->ip=$resArray["ip"];
+                $this->id=$resArray["id"];                
+            }
         }
         
         public function getPhoto()

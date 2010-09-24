@@ -49,7 +49,14 @@
         case "view":
             if ($usersSignInOut->isEntered())
             {
-                $currentUser=new User();
+                if ($data["parameters"][1]!=NULL)
+                {
+                    $currentUser=new User($data["parameters"][1]);
+                }
+                else
+                {
+                    $currentUser=new User();                    
+                }
                 $smarty->assign("user",$currentUser);
                 $smarty->assign("photo",$currentUser->getPhoto());
                 $output["title"]=$currentUser->name." ".$currentUser->secondName;

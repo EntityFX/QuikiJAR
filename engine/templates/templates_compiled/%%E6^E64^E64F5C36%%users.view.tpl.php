@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2010-09-22 22:26:40
+<?php /* Smarty version 2.6.26, created on 2010-09-24 18:26:46
          compiled from users.view.tpl */ ?>
 <html>
 <head>
@@ -21,6 +21,7 @@
 </strong><br/>
     Registration IP: <strong><?php echo $this->_tpl_vars['user']->ip; ?>
 </strong><br/>
+    <a href="/friends">Мои дружбаны</a><br/>
     <a href="<?php echo $this->_tpl_vars['links']['signOutPath']; ?>
 ">Выход</a>
 </body>

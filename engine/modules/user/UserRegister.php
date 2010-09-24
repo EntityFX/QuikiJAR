@@ -108,7 +108,7 @@
             }
         }
         
-        private function checkIfExsistID($id)
+        public function checkIfExsistID($id)
         {
             $res=$this->_sql->query("SELECT COUNT(`mail`) AS `c` FROM `SITE_USERS` WHERE `id`='$id'");
             $data=$this->_sql->GetRows($res);

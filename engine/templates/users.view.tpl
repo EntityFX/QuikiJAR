@@ -10,6 +10,7 @@
     <span style="color: blue">Пол:</span> {if $user->gender==0}Мужской{else}Женский{/if}<br/>
     mail: <strong>{$user->mail}</strong><br/>
     Registration IP: <strong>{$user->ip}</strong><br/>
+    <a href="/friends">Мои дружбаны</a><br/>
     <a href="{$links.signOutPath}">Выход</a>
 </body>
 </html>
