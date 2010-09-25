@@ -68,7 +68,28 @@
         {
             $userId=$this->_curentId;
             $res=$this->_sql->query("SELECT `friend_id` FROM `USERS_FRIENDSHIP` WHERE `user_id`=$userId"); 
-            $table=$this->_sql->GetRows($res);
+            return $this->getFriendsResultQuery($res);
+        }
+        
+        public function getFriendsPage($size,$page)
+        {
+            $from=$size*($page-1);
+            $userId=$this->_curentId;
+            $res=$this->_sql->query("SELECT `friend_id` FROM `USERS_FRIENDSHIP` WHERE `user_id`=$userId LIMIT $from,$size"); 
+            return $this->getFriendsResultQuery($res);           
+        }
+        
+        public function getRandomFriends($num)
+        {
+            $num=(int)$num;
+            $userId=$this->_curentId;
+            $res=$this->_sql->query("SELECT * FROM `USERS_FRIENDSHIP` WHERE `user_id`=$userId ORDER BY RAND( ) LIMIT $num"); 
+            return $this->getFriendsResultQuery($res);
+        }
+        
+        private function getFriendsResultQuery($queryResult)
+        {
+            $table=$this->_sql->GetRows($queryResult);
             $result=NULL;
             if ($table!=NULL)
             {
@@ -77,12 +98,7 @@
                    $result[]=new User((int)$value["friend_id"]);
                 }
             }
-            return $result;
-        }
-        
-        public function getFriendsList($size,$page)
-        {
-            
+            return $result;           
         }
         
         

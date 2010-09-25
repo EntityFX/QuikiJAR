@@ -9,8 +9,19 @@
     */
     require_once SOURCE_PATH."engine/kernel/SmartyExst.php";    
     $friends=new Friends();
-    $array=$friends->getAllFriends();
-    $smarty=new SmartyExst();
-    $smarty->assign("FRIENDS",$array);
-    $output["text"]=$smarty->fetch("friends.all.tpl");
+    switch ($data["parameters"][0])
+    {
+        case "delete":
+            $friends->deleteFriend((int)$data["parameters"][1]);
+            header("Location: /friends/");
+            break;
+        default:
+            $arrayFriends=$friends->getAllFriends();
+            $randomFriends=$friends->getRandomFriends(3);
+            $smarty=new SmartyExst();
+            $smarty->assign("FRIENDS",$arrayFriends);
+            $smarty->assign("randomFRIENDS",$randomFriends); 
+            $output["text"]=$smarty->fetch("friends.all.tpl");
+            break;    
+    }
 ?>
