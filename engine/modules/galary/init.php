@@ -9,9 +9,9 @@
     * Подключает класс модуля галерей Galary
     * @filesource engine/kernel/ModuleLoader.php 
     */
-	require_once("galary.php");
+	require_once "Galary.php";
 	require_once "engine/modules/user/User.php";
-	require_once "engine/modules/numerator/numerator.php";
+	require_once "engine/modules/numerator/Numerator.php";
     
     try 
     {
@@ -22,7 +22,7 @@
     {
     	echo "юзер из нот афторизед! \n <br />";
     }
-    
+    var_dump($data);
 	//var_dump($visitor);
 	$galOne = new Galary();
 	//$visitor = 124;
@@ -111,34 +111,34 @@
     
     function makeGalaryFiles($array) 
     {
-    	$url = $data["url"];
+    	$url = $data["url"]; 
     	$i = 0;
     	foreach ($array as $index=>$value)
     	{
     		if ($index!="listCount" & $index!="listCurrent")
 			{
-	    		$i++;
-	    		$trBegin="";
-	    		$trEnd="";
+	    		$tr="";
+				if ($i==0)
+				{
+					$tr="<tr>\n";
+				}
 	    		if ($i==4) 
 	    		{
-	    			$trEnd="</tr> \n";
+	    			$tr="</tr> \n";
 	    			$i=0; 
 	    		}
-				if ($i==1)
-				{
-					$trBegin="<tr>\n";
-				}
 				$imgPath = $value["small_path"];
 	    		$imgLink = $value["id"];
-	    		$imgString = "<IMG SRC=\"$imgPath\" 
-	    		onMouseOver=\"this.style.borderColor='#45688E'\" onMouseOut=\"this.style.borderColor=''\" style=\"max-width:130px; max-height: 90px;\">";
-	    		$linkStr = "<a href=\"".$url.$imgLink."/\"> $imgString</a>";
-	    		$td = $td.$trBegin."<td> $linkStr </td>".$trEnd;
+	    		$imgString = "\n <IMG SRC=\"$imgPath\" 
+	    		onMouseOver=\"this.style.borderColor='#45688E'\" onMouseOut=\"this.style.borderColor=''\" style=\"max-width:130px; max-height: 90px;\"> \n";
+	    		$linkStr = "<a href=\"".$url.$imgLink."/\"> $imgString</a> ";
+	    		$td = $td.$tr."<td> $linkStr </td> \n";
+	    		$i++;
 			}
     	}
+    	if ($tr=="") $tr="</tr>";
     	$lCount = makeNumerator($array["listCount"], $array["listCurrent"]);
-    	$tableStr["text"] = $lCount."<br /><table border=\"0\" cellspacing=\"0\"> \n $td \n </table> \n <br />".$lCount;
+    	$tableStr["text"] = $lCount."<br /><table border=\"0\" cellspacing=\"0\">  \n $td \n $tr </table> \n <br />".$lCount;
     	return $tableStr;
     }
 ?>
