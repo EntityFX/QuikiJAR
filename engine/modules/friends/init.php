@@ -1,6 +1,8 @@
 <?php
     require_once "Friends.php";
     
+    require_once "GroupsCreator.php";
+    
     require_once "engine/modules/user/User.php";
     
     /**
@@ -9,6 +11,8 @@
     */
     require_once SOURCE_PATH."engine/kernel/SmartyExst.php";    
     $friends=new Friends();
+    $groups=new GroupsCreator();
+    $groups->create("Vasya");
     switch ($data["parameters"][0])
     {
         case "delete":

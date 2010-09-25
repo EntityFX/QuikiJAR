@@ -204,6 +204,28 @@
         }
         
         /**
+        * Возращает число записей в таблице. 
+        * 
+        * @param String $table_name Имя таблицы
+        * @param String $where Запрос с WHERE
+        * @return Integer
+        */
+        public function countQuery($table_name,$where="")
+        {
+            if ($where=="")
+            {
+                $query="SELECT COUNT(*) as `cnt` FROM `$table_name`";   
+            }
+            else
+            {
+                $query="SELECT COUNT(*) as `cnt` FROM `$table_name` WHERE $where";
+            }
+            $res=$this->queryExecute($query);
+            $arr=$this->GetRows($res);
+            return (int)$arr[0]["cnt"];    
+        }
+        
+        /**
         * Удаление записей из таблицы
         * 
         * @param String $tableName Имя таблицы
@@ -275,7 +297,7 @@
             }
             else 
             {
-                $query_res=$this->Query($query);
+                $query_res=$this->query($query);
                 if (!$query_res)
                 throw new Exception(MySQL::NO_QUERY." $query_res");
             }
