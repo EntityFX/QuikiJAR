@@ -22,37 +22,35 @@
     {
     	echo "юзер из нот афторизед! \n <br />";
     }
-    var_dump($data);
-	//var_dump($visitor);
-	$galOne = new Galary();
-	//$visitor = 124;
+	
 	try
     {
-        $params = $data["parameters"]; 
+        $galOne = new Galary();
+    	$params = $data["parameters"]; 
+        $link = $data["url"];
+        $user = $params[0];
+        $altname = $params[1];
+        $elementID = $params[2];
+        $listNum = $_GET["l"]; 
+        $urlArr = $data["urlArray"]; 
+        //var_dump($urlArr);
         switch (count($params)) 
         {
         	case 0:
         		//header("Location: /");;
         		break;
         	case 1:
-        		$user = $params[0];
-        		$listNum = $_GET["l"];
-        		//НУЖНО ПОЛУЧИТЬ ID ПОСЕТИТЕЛЯ!!!!!
         		$temp = $galOne->showGalariesList($user, $visitor, $listNum);
-        		//var_dump("user = $user , listNum = $listNum <br />");
-        		$output = makeGalaryList($temp);
-        		//var_dump($data);
+        		$output = makeGalaryList($temp,$link);
         		break;
         	case 2:
-        		$user = $params[0];
-        		$listNum = $_GET["l"];
-        		$altname = $params[1];
         		$temp = $galOne->showGalary($visitor, $altname, $listNum);
-        		$output = makeGalaryFiles($temp);
-        		//var_dump($output2);
+        		$output = makeGalaryFiles($temp,$link);
         		break;
         	case 3:
-        		;
+        		$temp = $galOne->showPhoto($user, $visitor, $altname, $elementID);
+        		$output = makeElement($temp, $urlArr);
+        		//var_dump($temp);
         		break;
         	default:
         		header("Location: /");
@@ -61,7 +59,7 @@
     }
     catch(Exception $arr2)
     {
-        $output = array("text" => "<span style=\"color: red; font-weight: bold;\">Эх, 404: ".$arr2->getMessage()."</span>", "id" => NULL);
+    	$output = array("text" => "<span style=\"color: red; font-weight: bold;\">Эх, ".$arr2->getMessage()."</span>", "id" => NULL);
     }
     //var_dump(makeNumerator(12, $_GET["l"]));
     //var_dump("<br />".htmlspecialchars($_GET["o"]));
@@ -71,9 +69,8 @@
      * @param $arrray - массив, полученный из базы
      * @return string - строка с html
      */
-    function makeGalaryList($array) 
+    function makeGalaryList($array,$link) 
     {
-		$link = $data["url"];
     	foreach ($array as $index => $value) 
 		{
 			if ($index!="listCount" & $index!="listCurrent")
@@ -95,10 +92,10 @@
 				{
 					$comment ="";
 				}
-				$allTxt = "<a href=\"".$link.$value["id"]."/\"><b>".$value["name"]."</b></a><br />\n".$comment."Дата создания: ".$value["createdate"]
+				$allTxt = "<a href=\"/".$link.$value["id"]."/\"><b>".$value["name"]."</b></a><br />\n".$comment."Дата создания: ".$value["createdate"]
 				."<br />$mod";
 				$strTable = "<table border=\"1\">\n<tr>\n<td>
-				<a href=\"$link$value[id]/\">
+				<a href=\"/".$link.$value["id"]."/\">
 				<img src=\"$cover\" width=\"80\" height=\"60\"></a></td>\n<td>$allTxt</td>\n</tr>\n</table>";
 				$sumStr = $sumStr.$strTable;
 			}
@@ -109,36 +106,69 @@
 		return $ret;
     }
     
-    function makeGalaryFiles($array) 
+    function makeGalaryFiles($array,$url) 
     {
-    	$url = $data["url"]; 
     	$i = 0;
     	foreach ($array as $index=>$value)
     	{
     		if ($index!="listCount" & $index!="listCurrent")
 			{
-	    		$tr="";
 				if ($i==0)
 				{
 					$tr="<tr>\n";
 				}
-	    		if ($i==4) 
+	    		if ($i==3) 
 	    		{
-	    			$tr="</tr> \n";
-	    			$i=0; 
+	    			$trE="</tr> \n";
+	    			$i=-1; 
 	    		}
 				$imgPath = $value["small_path"];
 	    		$imgLink = $value["id"];
 	    		$imgString = "\n <IMG SRC=\"$imgPath\" 
 	    		onMouseOver=\"this.style.borderColor='#45688E'\" onMouseOut=\"this.style.borderColor=''\" style=\"max-width:130px; max-height: 90px;\"> \n";
-	    		$linkStr = "<a href=\"".$url.$imgLink."/\"> $imgString</a> ";
-	    		$td = $td.$tr."<td> $linkStr </td> \n";
+	    		$linkStr = "<a href=\"/".$url.$imgLink."/\"> $imgString</a> ";
+	    		$td = $td.$tr."<td> $linkStr </td> \n $trE";
 	    		$i++;
+	    		$tr="";
+	    		$trE="";
 			}
     	}
     	if ($tr=="") $tr="</tr>";
     	$lCount = makeNumerator($array["listCount"], $array["listCurrent"]);
-    	$tableStr["text"] = $lCount."<br /><table border=\"0\" cellspacing=\"0\">  \n $td \n $tr </table> \n <br />".$lCount;
+    	$tableStr["text"] = $lCount."<br /> \n <table border=\"0\" cellspacing=\"0\">  \n $td \n $tr </table> \n <br />".$lCount;
     	return $tableStr;
+    }
+    
+    function makeElement($array, $url) 
+    {
+    	$imgPath= $array["current"]["path"];
+    	$currStr="<img src=\"$imgPath\" onMouseOver=\"this.style.borderColor='#45688E'\" 
+    	onMouseOut=\"this.style.borderColor=''\" style=\"max-width:600px; max-height: 800px;\"> \n";
+    	
+    	$previousImgID=$array["previous"]["id"];
+    	$nextImgID=$array["next"]["id"];
+    	
+    	$urlStr = $url[0].$url[1]."/".$url[2]."/".$url[3]."/";
+    	
+    	$nextImgLink="<a href=\"".$urlStr.$nextImgID."\">$currStr</a>";
+    	$prevLink="<a href=\"".$urlStr.$previousImgID."\">&larr;</a>";
+    	$nextLink="<a href=\"".$urlStr.$nextImgID."\">&rarr;</a>";
+    	
+    	$creataDate="<div>Добавлено ".$array["current"]["createdate"] ."</div>";
+    	if ($array["current"]["comment"]!=NULL)
+    	{
+    		$comment="<div> ".$array["current"]["comment"] ."</div>";
+    	}
+    	else 
+    	{
+    		$comment ="";
+    	}
+    	
+    	
+    	$retStr = "<div align=\"center\">$prevLink &nbsp; $nextLink </div> \n
+    	<div align=\"center\">$nextImgLink </div> \n
+    	$creataDate \n $comment \n";
+    	$ret["text"]=$retStr;
+    	return $ret;
     }
 ?>

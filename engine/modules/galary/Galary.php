@@ -226,16 +226,17 @@ require_once "engine/libs/mysql/MySQLConnector.php";
                 {    
                     $pid=$array["id"]; 
                     $i=0;
-                    $currPhoto=0;
+                    $currPhoto=-1;
                     $qResult=$this->_sql->query("SELECT * FROM `galary_files` WHERE `pid`='$pid' ORDER BY `pos` ASC");//соберем весь массив с фотками
                     while ($ar=$this->_sql->fetchArr($qResult))
                     {   
                         if (count($ar)!=0) 
                         {  
                             $photoArr[]=$ar;
-                            if ($id==$ar["id"])
+                            if ($ar["id"]==$id)
                             {   
                                 $currPhoto=$i;//чтобы потом не искать записываем номер в массиве
+                                //die("$ar[id]");
                             }
                             $i++;  
                         }
@@ -245,7 +246,7 @@ require_once "engine/libs/mysql/MySQLConnector.php";
                         }
                     }  
                     
-                    if ($currPhoto!="")
+                    if ($currPhoto!=-1)
                     {    
                         $resArr["current"]=$photoArr[$currPhoto]; 
                         $countArr=count($photoArr);
@@ -258,6 +259,11 @@ require_once "engine/libs/mysql/MySQLConnector.php";
                         {      
                             $resArr["previous"]=$photoArr[$currPhoto-1];
                             $resArr["next"]=$photoArr[0]; 
+                        }
+                        if ($currPhoto!=0 & $currPhoto!=$countArr-1)
+                        {
+                        	$resArr["previous"]=$photoArr[$currPhoto-1];
+                            $resArr["next"]=$photoArr[$currPhoto+1];
                         }
                     }
                     else
