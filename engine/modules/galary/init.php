@@ -4,11 +4,7 @@
  * @author Timur 18.09.10 <gtimur666@gmail.com>
  * @version 1.0
  */
-    
-    /**
-    * Подключает класс модуля галерей Galary
-    * @filesource engine/kernel/ModuleLoader.php 
-    */
+
 	require_once "Galary.php";
 	require_once "engine/modules/user/User.php";
 	require_once "engine/modules/numerator/Numerator.php";
@@ -41,11 +37,11 @@
         		break;
         	case 1:
         		$temp = $galOne->showGalariesList($user, $visitor, $listNum);
-        		$output = makeGalaryList($temp,$link);
+        		$output = makeGalaryList($temp,$link,$urlArr);
         		break;
         	case 2:
         		$temp = $galOne->showGalary($visitor, $altname, $listNum);
-        		$output = makeGalaryFiles($temp,$link);
+        		$output = makeGalaryFiles($temp,$link,$urlArr);
         		break;
         	case 3:
         		$temp = $galOne->showPhoto($user, $visitor, $altname, $elementID);
@@ -69,7 +65,7 @@
      * @param $arrray - массив, полученный из базы
      * @return string - строка с html
      */
-    function makeGalaryList($array,$link) 
+    function makeGalaryList($array,$link,$urlArr) 
     {
     	foreach ($array as $index => $value) 
 		{
@@ -106,7 +102,14 @@
 		return $ret;
     }
     
-    function makeGalaryFiles($array,$url) 
+    /**
+     * Построение таблицы файлов в галерее
+     * @param $array входной массив с данными
+     * @param string $url ссылка на текущую страницу
+     * @param array $urlArr ссылка на текущую страницу, разбитую в массив
+     * @return string возвращает html-код
+     */
+    function makeGalaryFiles($array,$url,$urlArr) 
     {
     	$i = 0;
     	foreach ($array as $index=>$value)
@@ -138,7 +141,13 @@
     	$tableStr["text"] = $lCount."<br /> \n <table border=\"0\" cellspacing=\"0\">  \n $td \n $tr </table> \n <br />".$lCount;
     	return $tableStr;
     }
-    
+
+    /**
+     * Представление элемента галереи
+     * @param $array входной массив с данными
+     * @param array $url ссылка на текущую страницу, разбитую в массив
+     * @return string возвращает html-код
+     */
     function makeElement($array, $url) 
     {
     	$imgPath= $array["current"]["path"];
@@ -171,4 +180,29 @@
     	$ret["text"]=$retStr;
     	return $ret;
     }
+    
+    /* да ну нафиг, ненужная хрень. не хочу доделывать
+    function makePath($urlArr)
+    {
+    	switch (count($urlArr))
+    	{
+    		case 3://когда только выбран пункт "альбомы"
+    			$str1=$urlArr[0].$urlArr[1]."/".$urlArr[2]."/";
+    			$link1 = "<a href=\"$str1\">Альбомы</a>";
+    			break;
+    		case 4://когда выбран "альбом"
+    			$str1=$urlArr[0].$urlArr[1]."/".$urlArr[2]."/";
+    			$str2=$urlArr[0].$urlArr[1]."/".$urlArr[2]."/".$urlArr[3]."/";
+    			$link1 = "<a href=\"$str1\">Альбомы</a>";
+    			$link2 = "<a href=\"$str2\">Альбомы</a>";
+    			break;
+    		case 5://когда выбран элемент "альбома"
+    			$str1=$urlArr[0].$urlArr[1]."/".$urlArr[2]."/";
+    			$str3=$urlArr[0].$urlArr[1]."/".$urlArr[2]."/".$urlArr[3]."/";
+    			break;
+    		default:
+    			$str1=$urlArr[0].$urlArr[1]."/".$urlArr[2]."/";;
+    			break;
+    	}
+    }*/
 ?>

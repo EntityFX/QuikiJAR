@@ -1,9 +1,71 @@
-<?php  
+<?php
+  
 	/**
 	 * Ведется обработка нумератора, т.е разбивки данных на листы.
 	 * @author Тимур 22.09.10 <gtimur666@gmail.com>
 	 * @version 1.0
 	 */
+	
+
+        /**
+         * Нумератор - делит исходный массив на части по $fileCount штук. 
+         * @param Array $resourseArray исходный массив.
+         * @param integer $listNum номер листа.
+         * @param integer $fileCount количество элементов на листе.
+         * @return Array ассоциативный массив. + Добавляет значения listCount - общее количество листов,
+         *  listCurrent - текущий лист.
+         */
+        function listing($resourseArray,$listNum, $fileCount)
+        {
+            if (count($resourseArray)>$fileCount)   
+            {
+                $listCount = ceil((count($resourseArray))/$fileCount); 
+                if ($listNum==1 | $listNum=="")//если запрос на первый лист
+                {   
+                    for($i=0; $i<$fileCount; $i++)
+                    {   
+                        $returnArray[$i]=$resourseArray[$i];
+                    }
+
+                    $returnArray["listCount"]=$listCount;
+                    $returnArray["listCurrent"]=1;
+                }
+                if ($listNum>1 & $listNum<=$listCount) 
+                {
+                    $e=$fileCount*($listNum-1);
+                    $f=($fileCount*$listNum)-1;
+                    for ($b=$e;$b<=$f;$b++)  
+                    {
+                        if ($resourseArray[$b]!="")
+                        {
+                            $returnArray[]=$resourseArray[$b];    
+                        }
+                    }    
+                    $returnArray["listCount"]=$listCount;
+                    $returnArray["listCurrent"]=$listNum;
+                }
+                if ($listNum<1 | $listNum>$listCount)
+                {   
+                    if ($listNum!="")
+                    {
+                        throw new Exception("Ошибка в ссылке. :( ");   
+                    }
+                    //$returnArray = listing($resourseArray,1,$fileCount);
+                    /*$returnArray=$resourseArray;
+                    $returnArray["listCount"]=$listCount;
+                    $returnArray["listCurrent"]="1";*/ 
+                }
+            }
+            else
+            {
+                $returnArray=$resourseArray;
+                $returnArray["listCount"]=1;
+                $returnArray["listCurrent"]=1;
+            } 
+            return $returnArray;            
+        }
+
+
 	/**
      * Функция делает строчку нумератора
      * @param integer $listCount - количество листов. 
