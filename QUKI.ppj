@@ -1,7 +1,7 @@
 [PHPEdProject]
 RelativeRootDir=..\www
-URL=
-MappingRemoteDir=
+URL=new.com
+MappingRemoteDir=new.com
 MappingPublishingRoot=
 DriverID=
 SourceControl=0
@@ -10,13 +10,13 @@ DefaultFile=
 HideFiles=
 HideDirs=CVS;.svn
 EncoderEnabled=0
-MappingRemote0=
-MappingLocal0=C:\SERVER\home\new.com\www
-MappingURL0=
+MappingRemote0=new.com
+MappingLocal0=C:\Denwer\home\new.com\www
+MappingURL0=http://localhost/new.com
 MappingPublishing0=
 MappingCount=1
 MappingMainIdx=0
-RunMode=0
+RunMode=2
 CustomPropCount=0
 PublishingFilterCount=1
 PublishingAllowFilterCount=1
@@ -26,7 +26,7 @@ CvsHost=
 CvsRoot=
 CvsModule=
 CvsUser=
-CvsPassw=fWyCW3JPQauHyy0h0z/FV8NTARziaxh5Xtc0BRqDkNEWbyzdUpsIKc4HJLWKs4CBhp8cjcLL+Nk+NxRl+uMtNg==
+CvsPassw=4Rb61WbQ04HNSLlVdviHsfUtNeb4TIPwPVvI6Y7H5HVKc0BBRl/cTYKLuJn+99QluqMw8baPzP3yu6hJbifE1Q==
 CvsUseUtf8=0
 CvsCVSROOT=:pserver:@
 IncPath_count=0

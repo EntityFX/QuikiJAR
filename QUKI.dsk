@@ -1,11 +1,14 @@
 [Files]
-File0=C:\Denwer\home\new.com\www\engine\modules\user\User.php
+File0=C:\Denwer\home\new.com\www\engine\modules\friends\init.php
 IsActive0=0
-ZIndex1=1
-File1=C:\Denwer\home\new.com\www\engine\modules\message\MessageSend.php
+ZIndex2=2
+File1=K:\home\new.com\www\engine\modules\message\init.php
 IsActive1=1
-ZIndex0=0
-Files=2
+ZIndex1=0
+File2=K:\home\new.com\www\engine\modules\message\Message.php
+IsActive2=0
+ZIndex0=1
+Files=3
 
 [breakpoints]
 bp_count=0
