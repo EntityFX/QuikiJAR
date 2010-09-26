@@ -1,6 +1,8 @@
 <?php
     
-    require_once "engine/modules/friends/FriendsException.php"; 
+    require_once "FriendsException.php";
+    
+    require_once "Group.php";
        
     class GroupsCreator extends MySQLConnector
     {
@@ -16,8 +18,7 @@
         
         public function create($groupName)
         {
-            $countGroups=$this->_sql->countQuery("USERS_GROUPS");
-            if ($countGroups==0)
+            if ($this->checkIfExsistByName($groupName))
             {
                 throw new FriendsException(FriendsException::GRP_ALRD_EX);
             }
@@ -26,31 +27,56 @@
         
         public function delete($groupId)
         {
-            try
+            if ($this->checkIfExsistById($groupId))
             {
                 $this->_sql->query("DELETE FROM `USERS_GROUPS` WHERE `group_id`=$groupId AND `owner`=$this->_curentId");    
             }
-            catch (Exception $exception)
+            else
             {
-                throw new FriendsException(FriendsException::GRP_CANT_DEL,$groupId);
+                throw new FriendsException(FriendsException::GRP_CANT_DEL,$groupId);                    
             }
-            
         }
         
-        public function rename()
+        public function rename($groupId,$newName)
         {
-            
+            if ($this->checkIfExsistById($groupId))
+            {
+                $this->_sql->query("UPDATE `USERS_GROUPS` SET `title`='$newName' WHERE `group_id`=$groupId");    
+            }
+            else
+            {
+                throw new FriendsException(FriendsException::GRP_CANT_EDT,$groupId);                    
+            }   
+        }
+        
+        public function getAllGroups()
+        {
+            $res=$this->_sql->query("SELECT * FROM `USERS_GROUPS` WHERE `owner`=$this->_curentId");
+            $arr=$this->_sql->GetRows($res);
+            $result=NULL; 
+            foreach($arr as $value) 
+            {
+                $result[]=new Group($value["group_id"],$value["title"]);    
+            }
+            return  $result;  
+        }
+        
+        public function getGroup($groupId)
+        {
+            $res=$this->_sql->query("SELECT * FROM `USERS_GROUPS` WHERE `owner`=$this->_curentId AND `group_id`=$groupId");
+            $arr=$this->_sql->GetRows($res);  
+            return new Group($groupId,$arr[0]["title"]);              
         }
         
         private function checkIfExsistById($groupId)
         {
-            $countGroups=$this->_sql->countQuery("USERS_GROUPS","`group_id`=$groupId");
+            $countGroups=$this->_sql->countQuery("USERS_GROUPS","`group_id`=$groupId AND `owner`=$this->_curentId");
             return (Boolean)$countGroups;    
         }
         
         private function checkIfExsistByName($name)
         {
-            $countGroups=$this->_sql->countQuery("USERS_GROUPS","`title`=$name");
+            $countGroups=$this->_sql->countQuery("USERS_GROUPS","`title`='$name' AND `owner`=$this->_curentId");
             return (Boolean)$countGroups;    
         }        
     }
