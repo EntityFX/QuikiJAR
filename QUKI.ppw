@@ -10,6 +10,7 @@ QUKI:QUKI:engine:modules=1
 QUKI:QUKI:engine:modules:error=1
 QUKI:QUKI:engine:modules:friends=1
 QUKI:QUKI:engine:modules:message=1
+QUKI:QUKI:engine:modules:notice=1
 QUKI:QUKI:engine:modules:text=1
 QUKI:QUKI:engine:modules:user=1
 QUKI:QUKI:engine:templates=1
