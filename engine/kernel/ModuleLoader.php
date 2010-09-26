@@ -34,6 +34,13 @@
         private $_data;
         
         /**
+        * ID модуля
+        * 
+        * @var Integer
+        */
+        private $_moduleID;
+        
+        /**
         * Конструктор
         * 
         * @param Integer $type Тип модуля
@@ -58,13 +65,14 @@
             {
                 $sql=new MySQL(DB_SERVER,DB_USER,DB_PASSWORD);
                 $sql->selectDB(DB_NAME);
-                $result=$sql->query("SELECT `path` FROM `Modules` WHERE `moduleid`=$type"); 
+                $result=$sql->query("SELECT `path`,`moduleId` FROM `Modules` WHERE `moduleid`=$type"); 
             }
             catch (Exception $dbError)
             {
                 throw new Exception("MODULE LOADER ERROR: CHECK DB CONNECTION");
             }
             $array=$sql->fetchArr();
+            $this->_moduleID=$array["moduleId"];
             $fullPath=ModuleLoader::MODULE_PATH.$array["path"]."/init.php";
             if (file_exists($fullPath))
             {
@@ -77,6 +85,17 @@
             $this->_output=$output;
             return $output;
         }
+        
+        /**
+        * Возвращает ID моуля
+        * 
+        * @return Integer
+        */
+        public function getModuleID()
+        {
+            return (int)$this->_moduleID;    
+        }
+        
         /**
         * Возвращает массив данных после работы модуля
         *
