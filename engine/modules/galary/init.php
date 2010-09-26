@@ -29,7 +29,7 @@
         $elementID = $params[2];
         $listNum = $_GET["l"]; 
         $urlArr = $data["urlArray"]; 
-        //var_dump($urlArr);
+
         switch (count($params)) 
         {
         	case 0:
@@ -37,16 +37,39 @@
         		break;
         	case 1:
         		$temp = $galOne->showGalariesList($user, $visitor, $listNum);
-        		$output = makeGalaryList($temp,$link,$urlArr);
+        		$output = makeGalaryList($temp,$link,$urlArr,$user,$visitor);
         		break;
         	case 2:
-        		$temp = $galOne->showGalary($visitor, $altname, $listNum);
-        		$output = makeGalaryFiles($temp,$link,$urlArr);
+        		if ($altname!="add")
+        		{
+        			$temp = $galOne->showGalary($visitor, $altname, $listNum);
+        			$output = makeGalaryFiles($temp,$link,$urlArr);
+        		}
+        		else 
+        		{
+        			if (count($_POST)!=0) 
+        			{
+        				if ($visitor==$user) 
+						{        				
+	        				$newGalaryName = $_POST["galary_name"];
+	        				$comment = $_POST["galary_comment"];
+	        				$galOne->addNewGalary($user, $newGalaryName, $comment);
+						}
+        			}
+        			else 
+        			{
+						if ($visitor==$user) 
+						{
+							$temp = makeAddForm($link);
+        					$output=$temp;
+						}
+        			}
+        		}
+        		
         		break;
         	case 3:
         		$temp = $galOne->showPhoto($user, $visitor, $altname, $elementID);
         		$output = makeElement($temp, $urlArr);
-        		//var_dump($temp);
         		break;
         	default:
         		header("Location: /");
@@ -57,21 +80,26 @@
     {
     	$output = array("text" => "<span style=\"color: red; font-weight: bold;\">Эх, ".$arr2->getMessage()."</span>", "id" => NULL);
     }
-    //var_dump(makeNumerator(12, $_GET["l"]));
-    //var_dump("<br />".htmlspecialchars($_GET["o"]));
     
     /**
      * Построение списка галерей по массиву
      * @param $arrray - массив, полученный из базы
      * @return string - строка с html
      */
-    function makeGalaryList($array,$link,$urlArr) 
+    function makeGalaryList($array,$link,$urlArr,$user,$visitor) 
     {
     	foreach ($array as $index => $value) 
 		{
 			if ($index!="listCount" & $index!="listCurrent")
 			{
-				$cover = $value["cover"];
+				if ($value["cover"]!=NULL)
+				{
+					$cover = $value["cover"];
+				}
+				else 
+				{
+					$cover = "/photos/no-galary.jpg";
+				}
 				if ($value["modified"]!=NULL) 
 				{
 					$mod = "Последние изменения: ".$value["modified"];
@@ -98,7 +126,15 @@
 		}
 		$lCount = "<br />\nlistCount $array[listCount] <br />\n";
 		$lCount = makeNumerator($array["listCount"], $array["listCurrent"]);
-		$ret["text"] = $lCount.$sumStr.$lCount; 
+		if ($visitor==$user) 
+		{
+			$newAlbCreate = "<a href=\"/".$link."add/\"> Новый альбом </a> <br /> \n";
+		}
+		else 
+		{
+			$newAlbCreate = "";
+		}
+		$ret["text"] = $newAlbCreate.$lCount.$sumStr.$lCount; 
 		return $ret;
     }
     
@@ -205,4 +241,22 @@
     			break;
     	}
     }*/
+    
+    /**
+     * Функция добавления формы добавки нового альбома.
+     * @param $link - строчка ссылки на текущую страницу.
+     */
+    function makeAddForm($link) 
+    {
+    	$formStr="<form method=\"post\" action=\"/$link\" name=\"add_new\">
+		Название альбома <br />
+		<input name=\"galary_name\"><br />
+		Комментарий <br />
+		
+		<textarea cols=\"23\" rows=\"5\" name=\"galary_comment\"></textarea><br />
+		<input value=\"Создать\" type=\"submit\"><br />
+		</form>";
+    	$ret["text"]=$formStr;
+    	return $ret;
+    }
 ?>

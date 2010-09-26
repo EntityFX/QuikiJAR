@@ -344,9 +344,19 @@ require_once "engine/modules/numerator/Numerator.php";
             return $retArr;
         }
         
-        public function addNewGalary($user, $newGalaryName) 
+        public function addNewGalary($user, $newGalaryName, $comment) 
         {
-        	;
+        	$newGalaryName = htmlspecialchars($newGalaryName);
+        	$comment = htmlspecialchars($comment);
+        	
+        	$result=$this->_sql->query("SELECT MAX(`pos`) FROM `galary_list` WHERE `user`='$user'");
+        	$maxPos=$this->_sql->fetchArr($result);
+        	$pos=$maxPos["MAX(`pos`)"]+1;
+        	
+        	$result=$this->_sql->query("INSERT INTO `galary_list` 
+        	(`id`, `user`, `name`, `type`, `comment`, `createdate`, `modified`, `sequrity`, `cover`, `sqcomment`, `pos`, `trusted`) 
+        	VALUES ('', '$user', '$newGalaryName', NULL, '$comment', NOW(), NULL, '', NULL, NULL, '$pos', '')");
+        	return $result; 
         }
     }
 ?>
