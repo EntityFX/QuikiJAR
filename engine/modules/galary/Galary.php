@@ -325,7 +325,7 @@ require_once "engine/modules/numerator/Numerator.php";
         /*
         возвращает итоговый результат приватности.
         работает только с отдельным элементом!
-        */
+        */ 
         public function getPrivateState($visitor, $id)
         {
             $result=$this->_sql->query("SELECT * FROM `galary_list` WHERE `id`=(SELECT `pid` FROM `galary_files` WHERE `id`='$id')"); //для проверки на приватность
