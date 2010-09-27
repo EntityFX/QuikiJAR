@@ -16,6 +16,13 @@
         const EXCEPTION_NO_PRIMARY_KEY="No field with primary key";
         
         /**
+        * Режим отладки. Если true, то выводит на экран запрос
+        * 
+        * @var mixed
+        */
+        public $debugging;
+        
+        /**
         * Возращает массив строк таблицы
         * 
         * @param Resource $query_res Результат запроса
@@ -187,6 +194,10 @@
         */
         public function query($string)
         {
+            if ($this->debugging)
+            {
+                echo $string;
+            }
             $resource=mysql_query($string);
             if ($resource==false)
             {

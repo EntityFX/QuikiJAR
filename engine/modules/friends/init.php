@@ -33,12 +33,22 @@
                         $groups->delete($data["parameters"][2]);
                         header("Location: /friends/groups/"); 
                     case "show":
-                        $group=$groups->getGroup($data["parameters"][2]);
-                        $group->getFriends();
+                        $group=$groups->getGroup($data["parameters"][2]);  
                         $smarty->assign("GROUP",$group);
-                        $smarty->assign("GROUP_FRIENDS","");  
+                        $smarty->assign("FRIENDS",$friends->getAllFriends());
+                        $smarty->assign("GROUP_FRIENDS",$group->getFriends());  
                         $output["text"]=$smarty->fetch("friends.groups.show.tpl");
-                        break; 
+                        break;
+                    case "addfriend":
+                        $group=$groups->getGroup($data["parameters"][2]);
+                        $group->addFriend($_POST["friend_ID"]);
+                        header("Location: /friends/groups/show/$group->id/");
+                        break;
+                    case "deletefriend":
+                        $group=$groups->getGroup($data["parameters"][2]);
+                        $group->delFriend($data["parameters"][3]);
+                        header("Location: /friends/groups/show/$group->id/");
+                        break;
                 }
             }
             else

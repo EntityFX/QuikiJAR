@@ -51,12 +51,15 @@
         
         public function getAllGroups()
         {
-            $res=$this->_sql->query("SELECT * FROM `USERS_GROUPS` WHERE `owner`=$this->_curentId");
+            $res=$this->_sql->query("SELECT * FROM `USERS_GROUPS` WHERE `owner`=$this->_curentId ORDER BY `title`");
             $arr=$this->_sql->GetRows($res);
-            $result=NULL; 
-            foreach($arr as $value) 
+            $result=NULL;
+            if ($arr!=NULL) 
             {
-                $result[]=new Group($value["group_id"],$value["title"]);    
+                foreach($arr as $value) 
+                {
+                    $result[]=new Group($value["group_id"],$value["title"]);    
+                }
             }
             return  $result;  
         }
@@ -64,8 +67,15 @@
         public function getGroup($groupId)
         {
             $res=$this->_sql->query("SELECT * FROM `USERS_GROUPS` WHERE `owner`=$this->_curentId AND `group_id`=$groupId");
-            $arr=$this->_sql->GetRows($res);  
-            return new Group($groupId,$arr[0]["title"]);              
+            $arr=$this->_sql->GetRows($res); 
+            if ($arr!=NULL)
+            {
+                return new Group($groupId,$arr[0]["title"]);              
+            }
+            else
+            {
+                throw new Exception(FriendsException::GRP_ACC_DEN);
+            }
         }
         
         private function checkIfExsistById($groupId)

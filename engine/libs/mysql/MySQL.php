@@ -32,6 +32,7 @@
     */
     class MySQL extends MySQLquery
     {
+       
         /**
         * Флаг. Выбрана ли БД
         * 
