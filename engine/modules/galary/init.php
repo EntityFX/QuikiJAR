@@ -40,30 +40,55 @@
         		$output = makeGalaryList($temp,$link,$urlArr,$user,$visitor);
         		break;
         	case 2:
-        		if ($altname!="add")
+        		switch ($altname) 
         		{
-        			$temp = $galOne->showGalary($visitor, $altname, $listNum);
-        			$output = makeGalaryFiles($temp,$link,$urlArr);
-        		}
-        		else 
-        		{
-        			if (count($_POST)!=0) 
-        			{
-        				if ($visitor==$user) 
-						{        				
-	        				$newGalaryName = $_POST["galary_name"];
-	        				$comment = $_POST["galary_comment"];
-	        				$galOne->addNewGalary($user, $newGalaryName, $comment);
-						}
-        			}
-        			else 
-        			{
-						if ($visitor==$user) 
-						{
-							$temp = makeAddForm($link);
-        					$output=$temp;
-						}
-        			}
+        			case "add":
+        		    	if ($visitor==$user)
+        		    	{
+							if (count($_POST)!=0) 
+		        			{       				
+			        				$newGalaryName = $_POST["galary_name"];
+			        				$comment = $_POST["galary_comment"];
+			        				$galOne->addNewGalary($user, $newGalaryName, $comment);
+		        			}
+		        			else 
+		        			{
+									$temp = makeAddForm($link);
+		        					$output=$temp;
+		        			}        		    		
+        		    	}
+        		    	else 
+        		    	{
+        		    		$urlStr = $urlArr[0].$urlArr[1]."/".$urlArr[2]."/";
+        		    		header("Location: $urlStr");
+        		    	}
+
+        				break;
+        			
+        			case "del":
+        				if ($visitor==$user)
+        		    	{
+        		    		if (count($_GET)!=0) 
+		        			{ 
+        		    			$galOne->deleteGalary($_GET["id"],$user);
+        		    			//die("Удалено!");
+		        			}
+		        			else 
+		        			{
+		        				$urlStr = $urlArr[0].$urlArr[1]."/".$urlArr[2]."/";
+		        				header("Location: /");
+		        			}
+        		    	}
+        		    	else 
+        		    	{
+        		    		$urlStr = $urlArr[0].$urlArr[1]."/".$urlArr[2]."/";
+        		    		header("Location: $urlStr");
+        		    	}
+        				break;
+        			default:
+        				$temp = $galOne->showGalary($visitor, $altname, $listNum);
+        				$output = makeGalaryFiles($temp,$link,$urlArr);
+        				break;
         		}
         		
         		break;
@@ -116,11 +141,19 @@
 				{
 					$comment ="";
 				}
+				if ($visitor==$user)
+				{
+					$delAlb = "<td> <a href=\"/".$link."del/?id=".$value["id"]."\"> Удалить </a> \n </td>";
+				}
+				else 
+				{
+					$delAlb="";
+				}
 				$allTxt = "<a href=\"/".$link.$value["id"]."/\"><b>".$value["name"]."</b></a><br />\n".$comment."Дата создания: ".$value["createdate"]
 				."<br />$mod";
 				$strTable = "<table border=\"1\">\n<tr>\n<td>
 				<a href=\"/".$link.$value["id"]."/\">
-				<img src=\"$cover\" width=\"80\" height=\"60\"></a></td>\n<td>$allTxt</td>\n</tr>\n</table>";
+				<img src=\"$cover\" width=\"80\" height=\"60\"></a></td>\n<td>$allTxt</td>\n $delAlb</tr>\n</table>";
 				$sumStr = $sumStr.$strTable;
 			}
 		}

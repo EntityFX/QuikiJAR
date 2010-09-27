@@ -358,5 +358,37 @@ require_once "engine/modules/numerator/Numerator.php";
         	VALUES ('', '$user', '$newGalaryName', NULL, '$comment', NOW(), NULL, '', NULL, NULL, '$pos', '')");
         	return $result; 
         }
+        
+        public function deleteGalary($id, $user) 
+        {
+        	$result = $this->deleteElement("galary", $id, $user);
+        	return $result;
+        }
+        /**
+         * Удаление элемента из таблицы. (удаляет отдельный файл, отдельную галерею)
+         * @param string $elType - тип удаляемого элемента. Возможные значения: "galary", "photo"
+         * @param integer $id - id удаляемого элемента.
+         * @param integer $user - юзер, у которого ведется удаление. Необходимо для того, чтобы зарегистрированный пользователь
+         * не удалил чужие данные
+         * @todo подумать насчет удаления самих файлов прямо отсюда
+         */
+        private function deleteElement($elType, $id, $user)
+        {
+        	switch ($elType) 
+        	{
+        		case "galary":
+	        		//$result=$this->_sql->query("DELETE FROM `galary_list` WHERE `id` = '$id' AND `user`='$user'");
+	        		if ($result)
+	        		{
+	        			//$result=$this->_sql->query("DELETE FROM `galary_files` WHERE `pid` = '$id'");
+	        		}
+	        		
+	        		break;
+        		
+        		default:
+	        		;
+	        		break;
+        	}
+        }
     }
 ?>
