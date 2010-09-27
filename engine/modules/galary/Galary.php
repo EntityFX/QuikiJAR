@@ -86,7 +86,7 @@ require_once "engine/modules/numerator/Numerator.php";
               }
             }
             
-            if ($ignState==1 & $trustState==0)
+            if ($ignState==1 && $trustState==0)
             {
                 $ret=FALSE;
             }
@@ -205,7 +205,7 @@ require_once "engine/modules/numerator/Numerator.php";
                             $resArr["previous"]=$photoArr[$currPhoto-1];
                             $resArr["next"]=$photoArr[0]; 
                         }
-                        if ($currPhoto!=0 & $currPhoto!=$countArr-1)
+                        if ($currPhoto!=0 && $currPhoto!=$countArr-1)
                         {
                         	$resArr["previous"]=$photoArr[$currPhoto-1];
                             $resArr["next"]=$photoArr[$currPhoto+1];

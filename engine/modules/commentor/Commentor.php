@@ -21,9 +21,7 @@ require_once "engine/modules/numerator/Numerator.php";
 		 * @return boolean возвращает TRUE в случае, если комментарий успешно добавлен, иначе - FALSE.
 		*/
     	public function writeComment ($id, $module, $visitor,$comment, $user)
-		{
-        	 
-            
+		{ 
             if ($visitor!=$user) 
             {
 				$notanswered=1;
@@ -34,16 +32,8 @@ require_once "engine/modules/numerator/Numerator.php";
 				$this->_sql->Query("UPDATE `commentor` SET `notanswered`='0' WHERE `pid`='$id' AND `module`='$module'");
 			}
             $result=$this->_sql->query("INSERT INTO  `commentor` (  `id` ,  `module` ,  `pid` ,  `user` ,  `comment` ,  `comment_time` ,  `notanswered` ,  `poster_user` )
-            VALUES ('',  'galary',  '$id',  '$user',  '$comment', NOW( ) ,  '$notanswered',  '$visitor')"); 
-			if ($result!=0)
-			{
-				$ret=TRUE;
-			}    		
-			else 
-			{
-				$ret=FALSE;
-			}	
-            return $ret;
+            VALUES ('',  'galary',  '$id',  '$user',  '$comment', NOW( ) ,  '$notanswered',  '$visitor')"); 	
+            return $result;
 		}
 		
 		/**
@@ -74,7 +64,7 @@ require_once "engine/modules/numerator/Numerator.php";
             {
             	throw new Exception("Комментарии отсутствуют.");
             }
-            $resArr=$this->listing($resArr, $listNum, 50);
+            $resArr=listing($resArr, $listNum, 50);
             return $resArr;
 		}
 

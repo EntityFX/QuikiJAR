@@ -8,6 +8,7 @@
 	require_once "Galary.php";
 	require_once "engine/modules/user/User.php";
 	require_once "engine/modules/numerator/Numerator.php";
+	require_once "engine/modules/commentor/init.php";
     
     try 
     {
@@ -94,7 +95,12 @@
         		break;
         	case 3:
         		$temp = $galOne->showPhoto($user, $visitor, $altname, $elementID);
-        		$output = makeElement($temp, $urlArr);
+        		$output = makeElement($temp, $urlArr, $user,$visitor,$_GET["c"],$link);
+        		if (count($_POST)!=0) 
+        		{
+        			writeComment2($elementID, "galary", $visitor, $_POST["id_comment"], $user);
+        			header ("Location: /$link");
+        		}
         		break;
         	default:
         		header("Location: /");
@@ -115,7 +121,7 @@
     {
     	foreach ($array as $index => $value) 
 		{
-			if ($index!="listCount" & $index!="listCurrent")
+			if ($index!="listCount" && $index!="listCurrent")
 			{
 				if ($value["cover"]!=NULL)
 				{
@@ -158,7 +164,7 @@
 			}
 		}
 		$lCount = "<br />\nlistCount $array[listCount] <br />\n";
-		$lCount = makeNumerator($array["listCount"], $array["listCurrent"]);
+		$lCount = makeNumerator($array["listCount"], $array["listCurrent"],"l");
 		if ($visitor==$user) 
 		{
 			$newAlbCreate = "<a href=\"/".$link."add/\"> Новый альбом </a> <br /> \n";
@@ -183,7 +189,7 @@
     	$i = 0;
     	foreach ($array as $index=>$value)
     	{
-    		if ($index!="listCount" & $index!="listCurrent")
+    		if ($index!="listCount" && $index!="listCurrent")
 			{
 				if ($i==0)
 				{
@@ -206,7 +212,7 @@
 			}
     	}
     	if ($tr=="") $tr="</tr>";
-    	$lCount = makeNumerator($array["listCount"], $array["listCurrent"]);
+    	$lCount = makeNumerator($array["listCount"], $array["listCurrent"],"l");
     	$tableStr["text"] = $lCount."<br /> \n <table border=\"0\" cellspacing=\"0\">  \n $td \n $tr </table> \n <br />".$lCount;
     	return $tableStr;
     }
@@ -217,7 +223,7 @@
      * @param array $url ссылка на текущую страницу, разбитую в массив
      * @return string возвращает html-код
      */
-    function makeElement($array, $url) 
+    function makeElement($array, $url, $user,$visitor,$commentlistNum, $link) 
     {
     	$imgPath= $array["current"]["path"];
     	$currStr="<img src=\"$imgPath\" onMouseOver=\"this.style.borderColor='#45688E'\" 
@@ -246,7 +252,10 @@
     	$retStr = "<div align=\"center\">$prevLink &nbsp; $nextLink </div> \n
     	<div align=\"center\">$nextImgLink </div> \n
     	$creataDate \n $comment \n";
-    	$ret["text"]=$retStr;
+    	
+    	$commentors = showElementComments($array["current"]["id"], "galary", $commentlistNum, $user, $visitor);
+    	$commForm = writeCommentForm($link);
+    	$ret["text"]=$retStr.$commentors["text"].$commForm["text"];
     	return $ret;
     }
     
