@@ -1550,10 +1550,10 @@
         </Children>
         <ViewPort>
           <ScaleMode>Free</ScaleMode>
-          <Scale>0.3</Scale>
+          <Scale>0.8</Scale>
           <Location>
-            <X>-706.666638586257 px</X>
-            <Y>-176.666659646564 px</Y>
+            <X>558.749991673976 px</X>
+            <Y>483.749992791563 px</Y>
           </Location>
         </ViewPort>
       </Model>
