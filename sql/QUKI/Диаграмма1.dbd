@@ -494,7 +494,7 @@
             </Location>
             <Size>
               <Width>197 px</Width>
-              <Height>110 px</Height>
+              <Height>127 px</Height>
             </Size>
             <DbOid>
               <Path>quki.users_groups</Path>
@@ -834,7 +834,7 @@
               <Port>
                 <Location>
                   <X>0 px</X>
-                  <Y>54.5 px</Y>
+                  <Y>62.9227272727273 px</Y>
                 </Location>
                 <Anchors>Top Bottom</Anchors>
                 <Align>Left</Align>
@@ -844,6 +844,16 @@
                 </CustomProperties>
               </Port>
             </PortAnchors>
+            <BendPoints>
+              <PointD>
+                <X>322 px</X>
+                <Y>812.5 px</Y>
+              </PointD>
+              <PointD>
+                <X>322 px</X>
+                <Y>820.922727272727 px</Y>
+              </PointD>
+            </BendPoints>
             <IsManuallyRouted>false</IsManuallyRouted>
             <DbOid>
               <Path>quki.users_friends_in_groups.users_friends_in_groups_vr2</Path>
@@ -860,8 +870,8 @@
             <PortAnchors>
               <Port xsi:type="LinkPort">
                 <Location>
-                  <X>-91.5 px</X>
-                  <Y>0 px</Y>
+                  <X>-101.5 px</X>
+                  <Y>-8.4227294921875 px</Y>
                 </Location>
                 <Anchors>None</Anchors>
                 <Align>Right</Align>
