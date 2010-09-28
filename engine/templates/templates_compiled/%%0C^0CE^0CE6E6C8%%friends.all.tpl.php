@@ -1,6 +1,5 @@
-<<<<<<< .mine<?php /* Smarty version 2.6.26, created on 2010-09-26 17:37:50
-=======<?php /* Smarty version 2.6.26, created on 2010-09-26 23:45:21
->>>>>>> .theirs         compiled from friends.all.tpl */ ?>
+<?php /* Smarty version 2.6.26, created on 2010-09-28 19:45:09
+         compiled from friends.all.tpl */ ?>
 <a href="/friends/groups/">Группы</a>  
 <?php if ($this->_tpl_vars['FRIENDS'] != NULL): ?>
     Мои дружбаны:
