@@ -31,6 +31,10 @@ require_once "engine/modules/numerator/Numerator.php";
 				$notanswered=0;
 				$this->_sql->Query("UPDATE `commentor` SET `notanswered`='0' WHERE `pid`='$id' AND `module`='$module'");
 			}
+			if ($comment!="") 
+			{
+				$comment=htmlspecialchars($comment);
+			}
             $result=$this->_sql->query("INSERT INTO  `commentor` (  `id` ,  `module` ,  `pid` ,  `user` ,  `comment` ,  `comment_time` ,  `notanswered` ,  `poster_user` )
             VALUES ('',  'galary',  '$id',  '$user',  '$comment', NOW( ) ,  '$notanswered',  '$visitor')"); 	
             return $result;
@@ -60,18 +64,45 @@ require_once "engine/modules/numerator/Numerator.php";
 				$notanswered=0;
 				$this->_sql->Query("UPDATE `commentor` SET `notanswered`='0' WHERE `pid`='$id' AND `module`='$module'");
             }
-            if (count($resArr)==0)
+          /*  if (count($resArr)==0)
             {
             	throw new Exception("Комментарии отсутствуют.");
-            }
+            }*/
             $resArr=listing($resArr, $listNum, 50);
             return $resArr;
 		}
 
         
-        public function readAllComments($user,$visitor,$listnum,$module,$arrayIds)
+        public function readAllComments($user)
         {
-        	
+        	$result = $this->_sql->query("SELECT * FROM `commentor` WHERE `user`='$user' ORDER BY `comment_time` DESC");
+        	while ($tempArr = $this->_sql->fetchArr($result)) 
+        	{
+        		$resArr[]=$tempArr;
+        	}
+        	return $resArr;
+        }
+        /**
+         * Удаление комментария.
+         * @param $id - номер коммента.
+         * @return bool
+         */
+        public function deleteComment($id)
+        {
+        	$result=$this->_sql->query("DELETE FROM `commentor` WHERE `id` ='$id' LIMIT 1 ;");
+        	return $result;
+        }
+        
+        /**
+         * Получение id юзера, по id его комментария.
+         * @param $id - id комментария
+         * @return integer - id юзера
+         */
+        public function getUserIdFromComment($id) 
+        {
+        	$result=$this->_sql->query("SELECT * FROM `commentor` WHERE `id` = '$id'");
+        	$res=$this->_sql->fetchArr($result);
+        	return $res["poster_user"];
         }
     }
 ?>

@@ -86,7 +86,7 @@
     	{
     		if ($listCount!=1)
     		{
-	    		$ret=cycleLink(1, $listCount, $listCurrent, $link);	
+	    		$ret=cycleLink(1, $listCount, $listCurrent, $link, $getParamName);	
     		}
     		else 
     		{
@@ -101,7 +101,7 @@
     		{
     			$begin = 1;
     			$end = 5;
-    			$ret=cycleLink($begin, $end, $listCurrent,$link);
+    			$ret=cycleLink($begin, $end, $listCurrent,$link, $getParamName);
     			$rArrowStr = "<a href=\"$link?$getParamName=6\">&rarr;</a> \n";
     			$ret = $ret.$rArrowStr;
     		}
@@ -115,7 +115,7 @@
     			$end = $listCurrent +1;
     			$preBegin = $listCurrent -1;
     			$afterEnd = $listCurrent+1;
-				$ret=cycleLink($begin, $end, $listCurrent, $link);
+				$ret=cycleLink($begin, $end, $listCurrent, $link, $getParamName);
 				/*$lArrowStr = "<a href=\"$link?l=1\">&larr;</a> \n";
 				$rArrowStr = "<a href=\"$link?l=$listCount\">&rarr;</a> \n";*/
 				$lArrowStr = "<a href=\"$link?$getParamName=$preBegin\">&larr;</a> \n";

@@ -105,20 +105,22 @@ require_once "engine/modules/numerator/Numerator.php";
         /**
          * Функция просмотра файлов в галерее $altname
          * @param integer $visitor номер посетителя
-         * @param integer $altname номер альбома в таблице `galary_list`
+         * @param integer $altname номер альбома в таблице `galary_list`. Если значение равно -1, то выдается список всех файлов юзера
          * @param integer $listNum номер листа
+         * @param integer $user - id юзера
          * @return Array Возвращает ассоциативный массив.
          */
-        public function showGalary($visitor,$altname,$listNum)
-        { 
-            $result=$this->_sql->query("SELECT * FROM `galary_list` WHERE `id`='$altname'");
+        public function showGalary($visitor,$altname,$listNum,$user)
+        {
+        	$result=$this->_sql->query("SELECT * FROM `galary_list` WHERE `id`='$altname'");
+
             $array=$this->_sql->fetchArr($result);
             if (count($array)!=0)
             {
                 if ($this->checkSQRTY($visitor,$array["sequrity"],$array["trusted"])) //проверка на приватность
                 {
-                    //проверку прошли, заходим в таблицу и смотрим есть ли файлы в альбом   
-                    $result=$this->_sql->query("SELECT * FROM `galary_files` WHERE `pid`='$altname' ORDER BY `pos` ASC");
+                    //проверку прошли, заходим в таблицу и смотрим есть ли файлы в альбом
+                   $result=$this->_sql->query("SELECT * FROM `galary_files` WHERE `pid`='$altname' ORDER BY `pos` ASC");
                     while ($ar=$this->_sql->fetchArr($result))
                     {
                         if (count($ar)!=0) 
@@ -339,7 +341,7 @@ require_once "engine/modules/numerator/Numerator.php";
             $result=$this->_sql->query("SELECT * FROM `galary_files` WHERE `pid`='$altname'");
             while ($array=$this->_sql->fetchArr($result))
             {
-                $retArr[]=$array[id]; 
+                $retArr[]=$array; 
             }
             return $retArr;
         }
@@ -389,6 +391,20 @@ require_once "engine/modules/numerator/Numerator.php";
 	        		;
 	        		break;
         	}
+        }
+        
+        public function getImgProperties($id) 
+        {
+        	$result = $this->_sql->query("SELECT * FROM `galary_files` WHERE `id`='$id'");
+        	$temp = $this->_sql->fetchArr($result);
+        	$resArr["altname"]=$temp["pid"];
+        	$pid=$temp["pid"];
+        	$resArr["id"]=$temp["id"];
+        	
+        	$result = $this->_sql->query("SELECT * FROM `galary_list` WHERE `id`='$pid'");
+        	$temp2 = $this->_sql->fetchArr($result);
+        	$resArr["user"]=$temp2["user"];
+        	return $resArr;
         }
     }
 ?>

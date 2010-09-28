@@ -86,21 +86,39 @@
         		    		header("Location: $urlStr");
         		    	}
         				break;
+        			case "comments":
+        				$output=showAllComments("galary", $visitor, $user, $_GET["i"]);
+        				break;
         			default:
-        				$temp = $galOne->showGalary($visitor, $altname, $listNum);
+        				$temp = $galOne->showGalary($visitor, $altname, $listNum, $user);
         				$output = makeGalaryFiles($temp,$link,$urlArr);
         				break;
         		}
         		
         		break;
         	case 3:
-        		$temp = $galOne->showPhoto($user, $visitor, $altname, $elementID);
-        		$output = makeElement($temp, $urlArr, $user,$visitor,$_GET["c"],$link);
-        		if (count($_POST)!=0) 
+        		if ($elementID!="comments") 
         		{
-        			writeComment2($elementID, "galary", $visitor, $_POST["id_comment"], $user);
-        			header ("Location: /$link");
+	        		$temp = $galOne->showPhoto($user, $visitor, $altname, $elementID);
+	        		$output = makeElement($temp, $urlArr, $user,$visitor,$_GET["c"],$link);
+	        		if (count($_POST)!=0) 
+	        		{
+	        			writeComment2($elementID, "galary", $visitor, $_POST["id_comment"], $user);
+	        			header("Location: /$link");
+	        		}
+        		
+	        		if (count($_GET)!=0) 
+	        		{
+	        			$urlStr = $urlArr[0].$urlArr[1]."/".$urlArr[2]."/".$urlArr[3]."/".$urlArr[4]."/";
+	        			deleteComment2($_GET["comm"]);//die("$urlStr");
+	        			header("Location: $urlStr");
+		        	}
         		}
+        		if($elementID=="comments")
+				{
+					$output = showComments4OneGalary("galary", $visitor, $user, $_GET["g"], $altname);
+				}
+        		
         		break;
         	default:
         		header("Location: /");
@@ -155,11 +173,12 @@
 				{
 					$delAlb="";
 				}
+				$galComments="<td> <a href=\"/".$link.$value["id"]."/comments/\"> Комментарии </a></td>";
 				$allTxt = "<a href=\"/".$link.$value["id"]."/\"><b>".$value["name"]."</b></a><br />\n".$comment."Дата создания: ".$value["createdate"]
 				."<br />$mod";
 				$strTable = "<table border=\"1\">\n<tr>\n<td>
 				<a href=\"/".$link.$value["id"]."/\">
-				<img src=\"$cover\" width=\"80\" height=\"60\"></a></td>\n<td>$allTxt</td>\n $delAlb</tr>\n</table>";
+				<img src=\"$cover\" width=\"80\" height=\"60\"></a></td>\n<td>$allTxt</td>\n $delAlb  $galComments </tr>\n</table>";
 				$sumStr = $sumStr.$strTable;
 			}
 		}
@@ -173,7 +192,8 @@
 		{
 			$newAlbCreate = "";
 		}
-		$ret["text"] = $newAlbCreate.$lCount.$sumStr.$lCount; 
+		$commentsStr="<a href=\"/".$link."comments/\"> Комментарии</a> <br /> \n";
+		$ret["text"] = $newAlbCreate.$commentsStr.$lCount.$sumStr.$lCount; 
 		return $ret;
     }
     
@@ -253,7 +273,7 @@
     	<div align=\"center\">$nextImgLink </div> \n
     	$creataDate \n $comment \n";
     	
-    	$commentors = showElementComments($array["current"]["id"], "galary", $commentlistNum, $user, $visitor);
+    	$commentors = showElementComments($array["current"]["id"], "galary", $commentlistNum, $user, $visitor,$link);
     	$commForm = writeCommentForm($link);
     	$ret["text"]=$retStr.$commentors["text"].$commForm["text"];
     	return $ret;
