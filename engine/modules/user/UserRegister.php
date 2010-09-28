@@ -38,7 +38,7 @@
                 }
                 $password=md5($password);
                 $date=date("Y-m-d");
-                $this->_sql->query("INSERT INTO `SITE_USERS` VALUES(0,'$mail','$password',$ip,'$date','$name','$surname',$gender,'$burthday','',NULL,NULL,NULL,'',0,0)");
+                $this->_sql->query("INSERT INTO `SITE_USERS` VALUES(0,'$mail','$password',$ip,'$date','$name','$surname',$gender,'$burthday','',NULL,NULL,NULL,'',0,0,0)");
             }   
             else
             {

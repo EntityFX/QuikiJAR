@@ -16,6 +16,13 @@
         const EXCEPTION_NO_PRIMARY_KEY="No field with primary key";
         
         /**
+        * Режим глобальной отладки. Если true, то выводит на экран запрос 
+        * 
+        * @var mixed
+        */
+        static $globalDebugging;
+        
+        /**
         * Режим отладки. Если true, то выводит на экран запрос
         * 
         * @var mixed
@@ -194,9 +201,10 @@
         */
         public function query($string)
         {
-            if ($this->debugging)
+            
+            if ($this->debugging || self::$globalDebugging)
             {
-                echo $string;
+                echo $string."\n\r";
             }
             $resource=mysql_query($string);
             if ($resource==false)

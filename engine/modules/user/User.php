@@ -20,6 +20,7 @@
         public $city;
         public $ip;
         public $id;
+        public $isOnline;
         private $photo;
         
         public function __construct($id=NULL)
@@ -39,6 +40,7 @@
                 $this->photo=$_SESSION["user"]["photo"];
                 $this->ip=$_SESSION["user"]["ip"];
                 $this->id=$_SESSION["user"]["id"];
+                $this->isOnline=$_SESSION["user"]["online"]; 
             }
             else
             {
@@ -51,7 +53,8 @@
                 $this->mail=$resArray["mail"];
                 $this->photo=$resArray["photo"];
                 $this->ip=$resArray["ip"];
-                $this->id=$resArray["id"];                
+                $this->id=$resArray["id"];
+                $this->isOnline=(boolean)$resArray["online"];                
             }
         }
         

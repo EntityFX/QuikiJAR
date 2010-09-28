@@ -9,6 +9,8 @@
     class UserSignInOut extends MySQLConnector
     {
    
+        private $userID;
+        
         public function __construct()
         {
             session_start();
@@ -27,13 +29,23 @@
                     throw new UserException($mail,UserException::USR_NOT_EXSIST);
                 }
                 $userResult=$userResult[0];
+                $this->userID=$userResult["id"];
                 if ($userResult["password"]!=md5($password))
                 {
                     throw new UserException($mail,UserException::USR_PASSWORD_INCORRECT);
                 }
                 else
                 {
-                    $_SESSION["user"]=$userResult;
+                    if ($this->checkIfActivated($userResult))
+                    {
+                        $this->changeOnline(true);
+                        $_SESSION["user"]=$userResult;
+                        $_SESSION["user"]["online"]=true;
+                    }
+                    else
+                    {
+                        throw new UserException($mail,UserException::USR_NOT_ACTIVATED);
+                    }
                 }
             }
             else
@@ -45,7 +57,8 @@
         
         public function signOut()
         {
-            unset($_SESSION["user"]);
+            $this->changeOnline(false);
+            unset($_SESSION["user"]); 
         }
         
         public function isEntered()
@@ -58,6 +71,21 @@
             {
                 return false;
             }
+        }
+        
+        private function checkIfActivated(&$qRes)
+        {
+            return (boolean)$qRes["state"];
+        }
+        
+        private function changeOnline($value)
+        {
+            $value=(int)$value;
+            if ($this->userID==NULL)
+            {
+                $this->userID=$_SESSION["user"]["id"];
+            }
+            $this->_sql->query("UPDATE `SITE_USERS` SET `online`=$value WHERE `id`=$this->userID"); 
         }
         
     }

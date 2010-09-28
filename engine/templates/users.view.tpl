@@ -1,3 +1,8 @@
+{if $user->isOnline eq true}
+<span style="background-color: #fcc; color: #fff; font-weight: bold;">На сайте</span>
+{else}
+<span style="background-color: #ccf; color: #fff; font-weight: bold;">Не на сайте</span>
+{/if}<br/>
 <img src="{$photo}" alt="{$user->name} {$user->secondName}" /><hr/>
 <h3>ID: {$user->id}</h3>
 <strong>{$user->name} {$user->secondName}</strong><br/>
