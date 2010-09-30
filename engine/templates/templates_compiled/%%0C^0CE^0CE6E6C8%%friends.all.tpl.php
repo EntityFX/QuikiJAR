@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2010-09-28 19:45:09
+<?php /* Smarty version 2.6.26, created on 2010-09-28 22:23:21
          compiled from friends.all.tpl */ ?>
 <a href="/friends/groups/">Группы</a>  
 <?php if ($this->_tpl_vars['FRIENDS'] != NULL): ?>

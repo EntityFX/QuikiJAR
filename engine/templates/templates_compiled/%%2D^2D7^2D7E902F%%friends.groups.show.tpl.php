@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2010-09-28 19:45:27
+<?php /* Smarty version 2.6.26, created on 2010-09-28 22:36:06
          compiled from friends.groups.show.tpl */ ?>
 <a href="/friends/groups/">К списку групп</a><br/>
 Название группы: <b><?php echo $this->_tpl_vars['GROUP']->title; ?>

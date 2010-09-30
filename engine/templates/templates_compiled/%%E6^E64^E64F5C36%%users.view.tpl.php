@@ -1,5 +1,12 @@
-<?php /* Smarty version 2.6.26, created on 2010-09-26 23:45:14
+<?php /* Smarty version 2.6.26, created on 2010-09-30 01:38:16
          compiled from users.view.tpl */ ?>
+Уровень доступа:<?php echo $this->_tpl_vars['accLevel']; ?>
+<br/>
+<?php if ($this->_tpl_vars['user']->isOnline == true): ?>
+<span style="background-color: #fcc; color: #fff; font-weight: bold;">На сайте</span>
+<?php else: ?>
+<span style="background-color: #ccf; color: #fff; font-weight: bold;">Не на сайте</span>
+<?php endif; ?><br/>
 <img src="<?php echo $this->_tpl_vars['photo']; ?>
 " alt="<?php echo $this->_tpl_vars['user']->name; ?>
  <?php echo $this->_tpl_vars['user']->secondName; ?>

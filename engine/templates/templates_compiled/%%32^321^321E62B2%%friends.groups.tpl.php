@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2010-09-28 19:45:22
+<?php /* Smarty version 2.6.26, created on 2010-09-28 22:23:23
          compiled from friends.groups.tpl */ ?>
 <?php if ($this->_tpl_vars['GROUPS'] != NULL): ?>
     Мои группы:
