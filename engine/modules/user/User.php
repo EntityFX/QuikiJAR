@@ -5,24 +5,95 @@
     require_once "engine/libs/registry/Registry.php";
     
     require_once "engine/libs/mysql/MySQLConnector.php";
-        
+    
+    /**
+    * Пользователи сайта    
+    */
     class User extends MySQLConnector
     {
         const PHOTO_PATH="/photos/";
         
+        /**
+        * Имя пользователя
+        * 
+        * @var string
+        */
         public $name;
+        /**
+        * Фамилия
+        * 
+        * @var string
+        */
         public $secondName;
+        /**
+        * Почта
+        * 
+        * @var string
+        */
         public $mail;
+        /**
+        * Пол (false - жен, true - муж)
+        * 
+        * @var bool
+        */
         public $gender;
+        /**
+        * День рождения
+        * 
+        * @var string
+        */
         public $burthday;
+        /**
+        * страна
+        * 
+        * @var integer
+        */
         public $country;
+        /**
+        * Регион/область
+        * 
+        * @var integer
+        */
         public $region;
+        /**
+        * Город
+        * 
+        * @var string
+        */
         public $city;
+        /**
+        * IP
+        * 
+        * @var string
+        */
         public $ip;
+        /**
+        * ID пользователя
+        * 
+        * @var integer
+        */
         public $id;
+        /**
+        * Онлайн
+        * 
+        * @var bool
+        */
         public $isOnline;
+        
+        /**
+        * Файл фото
+        * 
+        * @var string
+        */
         private $photo;
         
+        /**
+        * Конструктор
+        * 
+        * @param integer $id Необязательный параметр. Если NULL, то берутся данные
+        * пользователя который вошёл в систему (сессии), иначе по ID другого пользователя
+        * @return User
+        */
         public function __construct($id=NULL)
         {
             parent::__construct();
@@ -58,6 +129,11 @@
             }
         }
         
+        /**
+        * Получить путь к фото
+        * 
+        * @return string
+        */
         public function getPhoto()
         {
             if ($this->photo=="")

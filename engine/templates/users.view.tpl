@@ -1,3 +1,4 @@
+Уровень доступа:{$accLevel}<br/>
 {if $user->isOnline eq true}
 <span style="background-color: #fcc; color: #fff; font-weight: bold;">На сайте</span>
 {else}

@@ -386,9 +386,7 @@ require_once "engine/modules/numerator/Numerator.php";
 	        		}
 	        		
 	        		break;
-        		
         		default:
-	        		;
 	        		break;
         	}
         }

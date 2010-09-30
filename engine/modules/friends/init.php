@@ -5,6 +5,8 @@
     
     require_once "engine/modules/user/User.php";
     
+    require_once "engine/modules/accessLevelRights/AccessLevelController.php";
+    
     /**
     * Подключает Smarty с настройками
     * @filesource engine/kernel/SmartyExst.php 

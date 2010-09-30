@@ -1,20 +1,5 @@
 [Files]
-File0=C:\Denwer\home\new.com\www\engine\modules\message\init.php
-IsActive0=1
-ZIndex4=0
-File1=C:\Denwer\home\new.com\www\engine\modules\message\Message.php
-IsActive1=0
-ZIndex3=2
-File2=C:\Denwer\home\new.com\www\engine\modules\notice\NoticeTopicsPF.php
-IsActive2=0
-ZIndex2=3
-File3=C:\Denwer\home\new.com\www\engine\modules\notice\init.php
-IsActive3=0
-ZIndex1=1
-File4=C:\Denwer\home\new.com\www\engine\modules\notice\NoticeCategory.php
-IsActive4=0
-ZIndex0=4
-Files=5
+Files=0
 
 [breakpoints]
 bp_count=0

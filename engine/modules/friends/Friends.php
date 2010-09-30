@@ -8,10 +8,23 @@
     
     require_once "engine/modules/friends/FriendsException.php";    
     
+    /**
+    * Класс управляет добавлением, добавлением и выводом друзей пользователя
+    *
+    */
     class Friends extends MySQLConnector  
     {
+        /**
+        * Id текущего пользователя
+        * 
+        * @var integer
+        */
         private $_curentId;
 
+        /**
+        * Конструктор. Получает данные текущего пользователя, создаёт объект для доступа к бд
+        * 
+        */
         public function __construct()
         {
             parent::__construct();
@@ -19,6 +32,12 @@
             $this->_curentId=$user->id;
         }
         
+        /**
+        * Добавить друга в список друзей по ID
+        * 
+        * @param integer $friendId
+        * @throws FriendsException Если пользователь не существует или друг уже был добавлен.
+        */
         public function addFriend($friendId)
         {
             if (!$this->checkHasFriend($friendId))
@@ -40,6 +59,13 @@
             }
         }
         
+        /**
+        * Проверяет, является ли пользователь другом
+        * 
+        * @param integer $friendId ID друга
+        * @param integer $userId ID пользователя. Если опущено, то ID вошедшего в систему пользователя
+        * @return bool
+        */
         public function checkHasFriend($friendId,$userId=NULL)
         {
             if ($userId==NULL)    
@@ -48,9 +74,15 @@
             }
             $res=$this->_sql->query("SELECT COUNT(*) AS `c` FROM `USERS_FRIENDSHIP` WHERE `user_id`=$userId AND `friend_id`=$friendId");
             $counter=$this->_sql->GetRows($res);
-            return (Bool)$counter[0]["c"];
+            return (bool)$counter[0]["c"];
         }
         
+        /**
+        * Удалить друга по ID
+        * 
+        * @param integer $friendId ID друга
+        * @throws FriendsException Если друга нету в списке друзей
+        */
         public function deleteFriend($friendId)
         {
             if ($this->checkHasFriend($friendId))
@@ -64,6 +96,11 @@
             }                
         }
         
+        /**
+        * Получить список всех друзей
+        * 
+        * @return array[User] 
+        */
         public function getAllFriends()
         {
             $userId=$this->_curentId;
@@ -71,6 +108,13 @@
             return $this->getFriendsResultQuery($res);
         }
         
+        /**
+        * Получить часть друзей постранично 
+        * 
+        * @param integer $size Число друзей на странице
+        * @param integer $page Номер страницы
+        * @return array[User]
+        */
         public function getFriendsPage($size,$page)
         {
             $from=$size*($page-1);
@@ -79,6 +123,12 @@
             return $this->getFriendsResultQuery($res);           
         }
         
+        /**
+        * Получить случайных N друзей
+        * 
+        * @param integer $num Количество друзей
+        * @return array[User]
+        */
         public function getRandomFriends($num)
         {
             $num=(int)$num;
@@ -87,6 +137,12 @@
             return $this->getFriendsResultQuery($res);
         }
         
+        /**
+        * Возращает по результату запроса массив объектов класса User
+        * 
+        * @param resource $queryResult
+        * @return array[User]
+        */
         private function getFriendsResultQuery($queryResult)
         {
             $table=$this->_sql->GetRows($queryResult);

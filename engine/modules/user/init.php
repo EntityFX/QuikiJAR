@@ -11,6 +11,7 @@
     
     require_once SOURCE_PATH."engine/modules/user/User.php";
     
+    require_once SOURCE_PATH."engine/modules/accessLevelRights/AccessLevelController.php";
     $smarty=new SmartyExst();
     $links=array(
         "signInPath" => "/".$data["urlArray"][1]."/view/",
@@ -57,8 +58,10 @@
                 {
                     $currentUser=new User();                    
                 }
+                $perm=new AccessLevelController($currentUser);
                 $smarty->assign("user",$currentUser);
                 $smarty->assign("photo",$currentUser->getPhoto());
+                $smarty->assign("accLevel",$perm->getLevel());
                 $output["title"]=$currentUser->name." ".$currentUser->secondName;
                 $output["text"]=$smarty->fetch("users.view.tpl");
             }

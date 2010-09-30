@@ -96,9 +96,17 @@
         * @param Resource $query_res Ресурс запроса
         * @return Array[Array[String]] 
         */
-        public function GetRows($query_res)
+        public function &GetRows($queryRes=NULL)
         {
             $rows=null;
+            if ($queryRes==NULL)
+            {
+                $query_res=$this->_internalResource;
+            }
+            else
+            {
+                $query_res=$queryRes;    
+            }
             while ($row=mysql_fetch_assoc($query_res))
             {
                 $rows[]=$row;    

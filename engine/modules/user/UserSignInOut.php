@@ -6,17 +6,38 @@
     
     require_once "engine/libs/mysql/MySQLConnector.php";  
     
+    /**
+    * Отвечает за индентификацию и аунтентификацию пользователя
+    */
     class UserSignInOut extends MySQLConnector
     {
-   
+        /**
+        * ID пользователя
+        * 
+        * @var integer
+        */
         private $userID;
         
+        /**
+        * Конструктор
+        * 
+        */
         public function __construct()
         {
             session_start();
             parent::__construct();
         }
         
+        /**
+        * Выполнить аутентификацию
+        * 
+        * @param string $mail почта
+        * @param string $password пароль
+        * @throws UserException Пользователь не существует
+        * @throws UserException Неверный пароль
+        * @throws UserException Пользователь не активирован
+        * @throws UserException Неверный формат почты
+        */
         public function authentication($mail,$password)
         {
             $bad=true;
@@ -55,12 +76,20 @@
             return true;                
         }
         
+        /**
+        * Выход из системы
+        * 
+        */
         public function signOut()
         {
             $this->changeOnline(false);
             unset($_SESSION["user"]); 
         }
         
+        /**
+        * Проверка, активен ли пользователь
+        * 
+        */
         public function isEntered()
         {
             if (isset($_SESSION["user"]))
@@ -73,11 +102,22 @@
             }
         }
         
+        /**
+        * Проверка, является ли активированным
+        * 
+        * @param resource $qRes Результат запроса
+        * @return bool
+        */
         private function checkIfActivated(&$qRes)
         {
             return (boolean)$qRes["state"];
         }
         
+        /**
+        * Сменить статус на OnLINE
+        * 
+        * @param bool $value
+        */
         private function changeOnline($value)
         {
             $value=(int)$value;

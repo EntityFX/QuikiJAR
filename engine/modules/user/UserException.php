@@ -1,4 +1,7 @@
 <?php
+    /**
+    * Выдаёт исключения при ошибках работы с пользователем
+    */
     final class UserException extends Exception
     {
         const USR_NOT_EXSIST="User is not exsist in database";
@@ -12,6 +15,13 @@
         const USR_CHECK_BURTHDAY="User's burthday format uncorrect. Must be between 1900-01-01 AND 2099-12-31";
         const USR_NOT_ACTIVATED="You must activate your user to enter this site";
         
+        /**
+        * Конструктор
+        * 
+        * @param string $mail MAIL пользователя, от которого выдаётся ошибка
+        * @param mixed $message Сообщение ошибки
+        * @return UserException
+        */
         public function __construct($mail,$message)
         {
             if ($message==self::USR_NAME_INCORRECT)

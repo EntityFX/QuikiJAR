@@ -17,9 +17,27 @@
     require_once "UserException.php";
     
     require_once "engine/libs/mysql/MySQLConnector.php";
-        
+    
+    /**
+    * Регистратор нового пользователя    
+    */
     class UserRegister extends MySQLConnector
     {
+        /**
+        * Зарегистрировать нового пользователя в системе
+        * 
+        * @param string $mail Почта
+        * @param string $password Пароль
+        * @param string $name Имя
+        * @param string $surname Фамилия 
+        * @param string $burthday Дата рождения
+        * @param bool $gender Пол 
+        * @param integer $ip IP
+        * @throws UserException Если пользователь уже существует
+        * @throws UserException Если неверна дата рождения
+        * @throws Не заполнены имя и фамилия
+        * @throws Неверный формат почты
+        */
         public function register($mail,$password,$name,$surname,$burthday,$gender,$ip)
         {
             if (checkMail($mail))
@@ -38,7 +56,18 @@
                 }
                 $password=md5($password);
                 $date=date("Y-m-d");
-                $this->_sql->query("INSERT INTO `SITE_USERS` VALUES(0,'$mail','$password',$ip,'$date','$name','$surname',$gender,'$burthday','',NULL,NULL,NULL,'',0,0,0)");
+                $query="
+                INSERT INTO `SITE_USERS` SET
+                    `mail`='$mail',
+                    `password`='$password',
+                    `ip`=$ip,
+                    `register_date`='$date',
+                    `name`='$name',
+                    `second_name`='$surname',
+                    `gender`=$gender,
+                    `burthday`='$burthday'
+                ";
+                $this->_sql->query($query);
             }   
             else
             {
@@ -46,6 +75,14 @@
             } 
         }
         
+        /**
+        * Проверка пароля
+        * 
+        * @param string $p1
+        * @param string $p2
+        * @throws UserException Неверная длина пароля
+        * @throws UserException Не совпадает дублирующий пароль
+        */
         public function checkPassword($p1,$p2)
         {
             $pl=strlen($p1);
@@ -59,6 +96,11 @@
             }
         }
         
+        /**
+        * Удалить пользователя с сайта
+        * 
+        * @param integer $id ID пользователя
+        */
         public function unregister($id)
         {
             if ($this->checkIfExsistID($id))
@@ -71,16 +113,33 @@
             }    
         }
         
+        /**
+        * Активировать пользователя
+        * 
+        * @param integer $id ID пользователя
+        */
         public function activate($id)
         {
             $this->setState((int)$id);     
         }
         
+        /**
+        * Деактивировать пользователя
+        * 
+        * @param integer $id ID пользователя 
+        */
         public function deactivate($id)
         {
             $this->setState((int)$id,false);    
         }
         
+        /**
+        * Установить состояние активирован/деактивирован
+        * 
+        * @param integer $id ID пользователя
+        * @param string $value Значение
+        * @throws UserException Если пользователь не существует.
+        */
         private function setState($id,$value=true)
         {
             $state=(int)$value;
@@ -94,6 +153,11 @@
             }               
         }
         
+        /**
+        * Проверка, существует ли данный пользователь в системе
+        * 
+        * @param string $mail Почта пользователя
+        */
         private function checkIfExsist($mail)
         {
             $res=$this->_sql->query("SELECT COUNT(`mail`) AS `c` FROM `SITE_USERS` WHERE `mail`='$mail'");
@@ -108,6 +172,11 @@
             }
         }
         
+        /**
+        * Проверка на существование по $id
+        * 
+        * @param integer $id
+        */
         public function checkIfExsistID($id)
         {
             $res=$this->_sql->query("SELECT COUNT(`mail`) AS `c` FROM `SITE_USERS` WHERE `id`='$id'");
