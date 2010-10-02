@@ -42,4 +42,37 @@
             session_destroy();
         }*/
     }
+    
+    /**
+    * Возвращает IP клиента
+    *
+    * @return string 
+    */
+    function ipDetect()
+    {
+        $serverVars = array(
+            "HTTP_X_FORWARDED_FOR",
+            "HTTP_X_FORWARDED",
+            "HTTP_FORWARDED_FOR",
+            "HTTP_FORWARDED",
+            "HTTP_VIA",
+            "HTTP_X_COMING_FROM",
+            "HTTP_COMING_FROM",
+            "HTTP_CLIENT_IP"
+        );
+        foreach ($serverVars as $serverVar) //просмотреть все возможные варианты
+        {
+            if (!empty($_SERVER[$serverVar]))
+            {
+                $proxyIP = $_SERVER[$serverVar];
+            }
+        }
+        if (!empty($proxyIP))
+        {
+            $isIP = preg_match('|^([0-9]{1,3}\.){3,3}[0-9]{1,3}|', $proxyIP, $regs);
+            if ($isIP && (sizeof($regs) > 0))
+                return $regs[0];
+        }
+        return $_SERVER['REMOTE_ADDR'];
+    }
 ?>

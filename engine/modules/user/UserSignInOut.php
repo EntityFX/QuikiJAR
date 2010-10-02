@@ -33,12 +33,13 @@
         * 
         * @param string $mail почта
         * @param string $password пароль
+        * @param bool $autologin помнить на сайте
         * @throws UserException Пользователь не существует
         * @throws UserException Неверный пароль
         * @throws UserException Пользователь не активирован
         * @throws UserException Неверный формат почты
         */
-        public function authentication($mail,$password)
+        public function authentication($mail,$password,$autologin=false,$isMd5=false)
         {
             $bad=true;
             if (checkMail($mail))
@@ -51,7 +52,11 @@
                 }
                 $userResult=$userResult[0];
                 $this->userID=$userResult["id"];
-                if ($userResult["password"]!=md5($password))
+                if (!$isMd5)
+                {
+                    $password=md5($password);    
+                }
+                if ($userResult["password"]!=$password)
                 {
                     throw new UserException($mail,UserException::USR_PASSWORD_INCORRECT);
                 }
@@ -59,6 +64,11 @@
                 {
                     if ($this->checkIfActivated($userResult))
                     {
+                        if ($autologin)
+                        {
+                            setcookie("sec",md5($this->userID).md5($userResult["mail"]),0,"/");
+                            setcookie("id",$this->userID,0,"/");
+                        }
                         $_SESSION["user"]=$userResult; 
                     }
                     else
@@ -110,6 +120,18 @@
         private function checkIfActivated(&$qRes)
         {
             return (boolean)$qRes["state"];
+        }
+        
+        public function checkIfSave()
+        {
+            if (isset($_COOKIE["sec"]) && isset($_COOKIE["id"]))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         
     }

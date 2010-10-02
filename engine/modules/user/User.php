@@ -120,32 +120,71 @@
             {
                 if (!isset($_SESSION["user"]))
                 {
-                    throw new UserException("",UserException::USR_NOT_AUTENT);
+                    $userSignOut=new UserSignInOut();
+                    if ($userSignOut->checkIfSave())
+                    { 
+                        $uId=(int)$_COOKIE["id"];
+                        $this->_sql->query("SELECT `mail`,`password` FROM `SITE_USERS` WHERE `id`=$uId");
+                        $secArr=$this->_sql->GetRows();
+                        $mailSec=$secArr[0]["mail"];
+                        $pass=$secArr[0]["password"];
+                        if (md5($uId).md5($mailSec)!=$_COOKIE["sec"])        
+                        {
+                            throw new UserException("",UserException::USR_NOT_AUTENT);      
+                        }
+                        else
+                        {
+                            $userSignOut->authentication($mailSec,$pass,false,true);
+                            $this->setDate($_SESSION["user"]);
+                        }
+                    }
+                    else
+                    {
+                        throw new UserException("",UserException::USR_NOT_AUTENT);
+                    }
                 }
-                $this->name=$_SESSION["user"]["name"];
-                $this->secondName=$_SESSION["user"]["second_name"];
-                $this->burthday=$_SESSION["user"]["burthday"];
-                $this->mail=$_SESSION["user"]["mail"];
-                $this->photo=$_SESSION["user"]["photo"];
-                $this->ip=$_SESSION["user"]["ip"];
-                $this->id=$_SESSION["user"]["id"];
-                $this->isOnline=true;
-                $this->checkLastTime(self::$updateInterval);   
+                else
+                {
+                    $this->setDate($_SESSION["user"]);
+                    $this->isOnline=true;
+                    $this->checkLastTime(self::$updateInterval);
+                }   
             }
             else
             {
-                $res=$this->_sql->query("SELECT * FROM `SITE_USERS` WHERE `id`=$id");
-                $resArray=$this->_sql->GetRows($res);
-                $resArray=$resArray[0];
-                $this->name=$resArray["name"];
-                $this->secondName=$resArray["second_name"];
-                $this->burthday=$resArray["burthday"];
-                $this->mail=$resArray["mail"];
-                $this->photo=$resArray["photo"];
-                $this->ip=$resArray["ip"];
-                $this->id=$resArray["id"];
-                $this->isOnline=$this->isOnline();
+                $this->setDate($this->getDataFromDb($id));
             }
+        }
+        
+        /**
+        * Устанавливает состояния полей из массива
+        * 
+        * @param array $resArray
+        */
+        private function setDate($resArray)
+        {
+            $this->name=$resArray["name"];
+            $this->secondName=$resArray["second_name"];
+            $this->burthday=$resArray["burthday"];
+            $this->mail=$resArray["mail"];
+            $this->photo=$resArray["photo"];
+            $this->ip=$resArray["ip"];
+            $this->id=$resArray["id"];
+            $this->isOnline=$this->isOnline();            
+        }
+        
+        /**
+        * Вытаскивает логин из БД по ID
+        * 
+        * @param int $id
+        * @return Array[Array[String]]
+        */
+        private function getDataFromDb($id)
+        {
+            $res=$this->_sql->query("SELECT * FROM `SITE_USERS` WHERE `id`=$id");
+            $resArray=$this->_sql->GetRows($res);
+            $resArray=$resArray[0];
+            return $resArray;
         }
         
         /**

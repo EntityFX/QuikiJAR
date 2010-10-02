@@ -35,7 +35,7 @@
             {
                 if (!$usersSignInOut->isEntered())
                 {
-                    $sigin=$usersSignInOut->authentication($_POST["mail"],$_POST["password"]);
+                    $sigin=$usersSignInOut->authentication($_POST["mail"],$_POST["password"],$_POST["save"]);
                 }
             }
             catch (UserException $ex)
@@ -59,17 +59,17 @@
                 {
                     $currentUser=new User();                    
                 }
-                $perm=new AccessLevelController($currentUser);
-                $smarty->assign("user",$currentUser);
-                $smarty->assign("photo",$currentUser->getPhoto());
-                $smarty->assign("accLevel",$perm->getLevel());
-                $output["title"]=$currentUser->name." ".$currentUser->secondName;
-                $output["text"]=$smarty->fetch("users.view.tpl");
             }
             else
             {
-                header("Location: /user/");    
+                $currentUser=new User();   
             }
+            //$perm=new AccessLevelController($currentUser);
+            $smarty->assign("user",$currentUser);
+            $smarty->assign("photo",$currentUser->getPhoto());
+            //$smarty->assign("accLevel",$perm->getLevel());
+            $output["title"]=$currentUser->name." ".$currentUser->secondName;
+            $output["text"]=$smarty->fetch("users.view.tpl");
             break;
         case "logout":
             $usersSignInOut->signOut();

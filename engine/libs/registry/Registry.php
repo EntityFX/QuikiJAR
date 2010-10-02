@@ -112,7 +112,7 @@
             {
                 try
                 {
-                    self::$_sql=new MySQL(DB_SERVER,DB_USER,DB_PASSWORD); 
+                    self::$_sql=MySQL::creator(DB_SERVER,DB_USER,DB_PASSWORD); 
                     self::$_sql->selectDB(DB_NAME);
                 }
                 catch (Exception $dbEx)
