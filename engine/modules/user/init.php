@@ -31,6 +31,7 @@
     switch ($data["parameters"][0])
     {
         case "enter":
+            MySQL::$globalDebugging=true;
             try
             {
                 if (!$usersSignInOut->isEntered())
