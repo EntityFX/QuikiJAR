@@ -2,6 +2,8 @@
 
     require_once "UserException.php"; 
     
+    require_once "UserSignInOut.php";      
+    
     require_once "engine/libs/registry/Registry.php";
     
     require_once "engine/libs/mysql/MySQLConnector.php";
