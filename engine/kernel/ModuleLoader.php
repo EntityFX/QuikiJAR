@@ -63,7 +63,7 @@
         {
             try
             {
-                $sql=new MySQL(DB_SERVER,DB_USER,DB_PASSWORD);
+                $sql=MySQL::creator(DB_SERVER,DB_USER,DB_PASSWORD);
                 $sql->selectDB(DB_NAME);
                 $result=$sql->query("SELECT `path`,`moduleId` FROM `Modules` WHERE `moduleid`=$type"); 
             }

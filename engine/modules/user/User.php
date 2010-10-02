@@ -6,6 +6,8 @@
     
     require_once "engine/libs/mysql/MySQLConnector.php";
     
+    require_once "checker.php";
+    
     /**
     * Пользователи сайта    
     */
@@ -88,6 +90,22 @@
         private $photo;
         
         /**
+        * Промежуток, при превышении которого стоит обновить время присутствия на сайте
+        * Измеряется в секундах
+        * 
+        * @var integer
+        */
+        public static $updateInterval=30;
+        
+        /**
+        * Предельный промежуток времени, при котором пользователь помечается как OffLine
+        * Измеряется в секундах 
+        * 
+        * @var integer
+        */
+        private static $offLineTime=900;
+        
+        /**
         * Конструктор
         * 
         * @param integer $id Необязательный параметр. Если NULL, то берутся данные
@@ -97,9 +115,9 @@
         public function __construct($id=NULL)
         {
             parent::__construct();
+            secureStartSession();
             if ($id==NULL || $id==$_SESSION["user"]["id"])
             {
-                session_start();
                 if (!isset($_SESSION["user"]))
                 {
                     throw new UserException("",UserException::USR_NOT_AUTENT);
@@ -111,7 +129,8 @@
                 $this->photo=$_SESSION["user"]["photo"];
                 $this->ip=$_SESSION["user"]["ip"];
                 $this->id=$_SESSION["user"]["id"];
-                $this->isOnline=$_SESSION["user"]["online"]; 
+                $this->isOnline=true;
+                $this->checkLastTime(self::$updateInterval);   
             }
             else
             {
@@ -125,7 +144,7 @@
                 $this->photo=$resArray["photo"];
                 $this->ip=$resArray["ip"];
                 $this->id=$resArray["id"];
-                $this->isOnline=(boolean)$resArray["online"];                
+                $this->isOnline=$this->isOnline();
             }
         }
         
@@ -141,6 +160,54 @@
                 return Registry::getValue("USERS_NO_PHOTO");
             }
             return self::PHOTO_PATH.$this->mail."/".$this->photo;    
+        }
+        
+        public function isOnline($interval=0)
+        {
+            if ($interval==0)
+            {
+                $interval=self::$offLineTime;
+            }
+            $lastUpdateTime=$this->getLastUpdate();
+            if (time()-$lastUpdateTime>=$interval)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+       
+        private function checkLastTime($value)
+        {
+            if (time()-$_SESSION["user"]["lastUpdateTime"]>=$value)
+            {
+                $_SESSION["user"]["lastUpdateTime"]=$this->setLastUpdate(time()); 
+            }
+        }
+       
+        private function getLastUpdate()
+        {
+            $this->_sql->query("SELECT `update_time` FROM `SITE_USERS` WHERE `id`=$this->id");
+            $array=$this->_sql->GetRows();
+            return $array[0]["update_time"];
+        }
+        
+        public function setLastUpdate($time)
+        {
+            $this->_sql->query("UPDATE `SITE_USERS` SET `update_time`=$time WHERE `id`=$this->id");
+            return $time;
+        }
+        
+        public static function setOffLineTime($value)
+        {
+            self::$offLineTime=$value<self::$updateInterval ? self::$updateInterval : $value;
+        }
+        
+        public static function getOffLineTime()
+        {
+            return self::$offLineTime;
         }
     }
 ?>

@@ -24,15 +24,27 @@
     * @filesource engine/libs/mysql/MySQLquery.php 
     */
     require_once "MySQLquery.php";
-        
+    
+    /**
+    * Подключает класс с интерфейсом IMySQLSingleton.php
+    * @filesource engine/libs/mysql/IMySQLSingleton.php
+    */
+    require_once "IMySQLSingleton.php";
+         
     /**
     * Класс MySQL. Оболочка MySQL-запросов. Предоставляет набор защищённых методов доступа к БД
     * @package MySQL 
     * @author Solopiy Artem
+    * @final
     */
-    class MySQL extends MySQLquery
+    final class MySQL extends MySQLquery implements IMySQLSingleton
     {
-       
+        /**
+        * Содержит в себе единственный экземпляр текущего класса
+        * 
+        * @var MySQL
+        */
+        protected static $_instance;
         /**
         * Флаг. Выбрана ли БД
         * 
@@ -63,15 +75,32 @@
         * Неправильный запрос
         */
         const NO_QUERY="BAD MySQL query";
+        
+        /**
+        * Создаёт, либо возвращает единственный экземпляр MyQSL
+        * 
+        * @param string $server
+        * @param string $user
+        * @param string $password
+        */
+        public static function &creator($server,$user,$password)
+        {
+            if (self::$_instance==NULL)
+            {
+                self::$_instance=new MySQL($server,$user,$password);
+            }
+            return self::$_instance; 
+        }     
+        
         /**
         * Конструктор. Подключается к БД
         *   
-        * @param String $server Адрес сервера
-        * @param String $user Имя пользователя
-        * @param String $password пароль
+        * @param string $server Адрес сервера
+        * @param string $user Имя пользователя
+        * @param string $password пароль
         * @return MySQL
         */
-        public function __construct($server,$user,$password)
+        protected function __construct($server,$user,$password)
         {
             parent::__construct($server,$user,$password);
         }

@@ -32,4 +32,14 @@
             return false;
         }        
     }
+    
+    function secureStartSession()
+    {
+        session_start();
+        /*if ($_COOKIE["HASH"]!=md5(session_id()."D'r Lightman"))
+        {
+            unset($_SESSION["user"]);
+            session_destroy();
+        }*/
+    }
 ?>

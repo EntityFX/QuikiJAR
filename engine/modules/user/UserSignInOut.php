@@ -1,8 +1,8 @@
 <?php
     
-    require_once("UserException.php");
+    require_once "UserException.php";
     
-    require_once("checker.php");
+    require_once"checker.php";
     
     require_once "engine/libs/mysql/MySQLConnector.php";  
     
@@ -17,14 +17,14 @@
         * @var integer
         */
         private $userID;
-        
+       
         /**
         * Конструктор
         * 
         */
         public function __construct()
         {
-            session_start();
+            secureStartSession();
             parent::__construct();
         }
         
@@ -59,9 +59,7 @@
                 {
                     if ($this->checkIfActivated($userResult))
                     {
-                        $this->changeOnline(true);
-                        $_SESSION["user"]=$userResult;
-                        $_SESSION["user"]["online"]=true;
+                        $_SESSION["user"]=$userResult; 
                     }
                     else
                     {
@@ -82,7 +80,8 @@
         */
         public function signOut()
         {
-            $this->changeOnline(false);
+            $user=new User();
+            $user->setLastUpdate(0);
             unset($_SESSION["user"]); 
         }
         
@@ -111,21 +110,6 @@
         private function checkIfActivated(&$qRes)
         {
             return (boolean)$qRes["state"];
-        }
-        
-        /**
-        * Сменить статус на OnLINE
-        * 
-        * @param bool $value
-        */
-        private function changeOnline($value)
-        {
-            $value=(int)$value;
-            if ($this->userID==NULL)
-            {
-                $this->userID=$_SESSION["user"]["id"];
-            }
-            $this->_sql->query("UPDATE `SITE_USERS` SET `online`=$value WHERE `id`=$this->userID"); 
         }
         
     }

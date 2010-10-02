@@ -11,7 +11,7 @@
     * Класс MySQL запросов
     * @package MySQL 
     */
-    class MySQLquery 
+    abstract class MySQLquery
     {
         const EXCEPTION_NO_PRIMARY_KEY="No field with primary key";
         
@@ -20,7 +20,7 @@
         * 
         * @var mixed
         */
-        static $globalDebugging;
+        public static $globalDebugging;
         
         /**
         * Режим отладки. Если true, то выводит на экран запрос
@@ -74,7 +74,7 @@
         * @param String  $password
         * @return MySQLquery
         */
-        public function __construct($server,$user,$password)
+        protected function __construct($server,$user,$password)
         {
             $this->rows=array();
             try

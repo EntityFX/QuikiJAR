@@ -28,7 +28,7 @@
         */
         public function __construct()
         {
-            $this->_sql=new MySQL(DB_SERVER,DB_USER,DB_PASSWORD);
+            $this->_sql=MySQL::creator(DB_SERVER,DB_USER,DB_PASSWORD);
             $this->_sql->selectDB(DB_NAME);
         }
     }
