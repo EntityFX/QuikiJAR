@@ -5,9 +5,9 @@
   <Provider Guid="59f90733-4d68-4fdf-82a7-f0fcbf5460aa" />
   <Include>
     <Folder Name="Представления" />
-    <Folder Name="Функции" />
     <Folder Name="Процедуры" />
     <Folder Name="Триггеры" />
+    <Folder Name="Функции" />
     <File RelPath="Таблицы" Link="C:\SERVER\home\new.com\www\sql\QUKI\Таблицы\COUNTRY.Table.sql" />
     <File RelPath="Таблицы" Link="C:\SERVER\home\new.com\www\sql\QUKI\Таблицы\COUNTRY_REGIONS.Table.sql" />
     <File RelPath="Таблицы" Link="C:\SERVER\home\new.com\www\sql\QUKI\Таблицы\COUNTRY_REGIONS_CITY.Table.sql" />
@@ -24,8 +24,8 @@
     <File RelPath="" Link="C:\SERVER\home\new.com\www\sql\QUKI\PreDeployment.sql" />
   </Include>
   <Configurations Active="По умолчанию">
-    <Configuration Name="По умолчанию" CheckReferences="True" IgnoreErrors="False" OutputPath="" Target="" OutputType="SingleFile" KeepOriginalObjects="True" RecreateDatabase="False" RecreateObjects="False" ServerVersion="5.0.45" Database="QUKI" UseRegions="False" FullPaths="False" Definer="CURRENT_USER" ScriptDelimiter="$$" StorageEngine="MYISAM" Collation="cp1251_general_ci" ConvertToLowercase="False" DefinerEffect="Keep">
-      <Connection Name="localhost" ConnectionString="User Id=root;Host=localhost;Character Set=utf8" />
+    <Configuration Name="По умолчанию" CheckReferences="True" IgnoreErrors="False" OutputPath=".\По умолчанию" Target="QUKI" OutputType="SingleFile" KeepOriginalObjects="True" RecreateDatabase="False" RecreateObjects="False" ServerVersion="5.1.40" Database="QUKI" UseRegions="False" FullPaths="False" Definer="root@localhost" ScriptDelimiter="$$" StorageEngine="MYISAM" Collation="cp1251_general_ci" ConvertToLowercase="False" DefinerEffect="Keep">
+      <Connection Name="QUKI.localhost" ConnectionString="User Id=root;Host=localhost;Database=QUKI;Character Set=utf8" />
       <Build>
         <File RelPath="" Name="PreDeployment.sql" BuildAction="Build" />
         <File RelPath="Таблицы" Name="COUNTRY.Table.sql" BuildAction="Build" />
