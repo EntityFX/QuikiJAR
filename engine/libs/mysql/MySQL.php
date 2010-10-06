@@ -142,7 +142,7 @@
         public function selAllWhere($table_name,$where)
         {
             $query_res=$this->queryExecute("SELECT * FROM `$table_name` WHERE $where");
-            $this->rows=$this->getRows($query_res);    
+            $this->rows=&$this->getRows($query_res);    
         }
         
         /**
@@ -271,7 +271,7 @@
         *  
         * @return Array[Array[String]]
         */
-        public function getTable()
+        public function &getTable()
         {
             return $this->rows;    
         }

@@ -50,7 +50,10 @@
                 else
                 {
                     $userId=$this->_curentId;
-                    $this->_sql->query("INSERT INTO `USERS_FRIENDSHIP` VALUES (0,$userId,$friendId)");
+                    $this->_sql->query
+                    ("
+                        INSERT INTO `USERS_FRIENDSHIP` VALUES (0,$userId,$friendId),(0,$friendId,$userId)
+                    ");
                 }
             }
             else
@@ -88,7 +91,11 @@
             if ($this->checkHasFriend($friendId))
             {
                 $userId=$this->_curentId;
-                $this->_sql->query("DELETE FROM `USERS_FRIENDSHIP` WHERE `user_id`=$userId AND `friend_id`=$friendId");
+                $this->_sql->query
+                ("
+                    DELETE FROM `USERS_FRIENDSHIP` WHERE `user_id`=$userId AND `friend_id`=$friendId;
+                    DELETE FROM `USERS_FRIENDSHIP` WHERE `user_id`=$friendId AND `friend_id`=$userId;
+                ");
             }
             else
             {

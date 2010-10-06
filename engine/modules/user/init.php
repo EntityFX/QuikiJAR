@@ -5,16 +5,21 @@
     */
     require_once SOURCE_PATH."engine/kernel/SmartyExst.php";
     
-    require_once SOURCE_PATH."engine/modules/user/UserSignInOut.php";
+    require_once SOURCE_PATH."UserSignInOut.php";
     
-    require_once SOURCE_PATH."engine/modules/user/UserRegister.php";
+    require_once SOURCE_PATH."UserRegister.php";
     
-    require_once SOURCE_PATH."engine/modules/user/User.php";
+    require_once SOURCE_PATH."User.php";
+
+    require_once "AdditionalInfo.php";
     
     require_once SOURCE_PATH."engine/modules/accessLevelRights/AccessLevelController.php";
     
+    require_once "AdditionalInfo.php";
+        
     $smarty=new SmartyExst();
     $links=array(
+        "enterForm" => "/".$data["urlArray"][1]."/",
         "signInPath" => "/".$data["urlArray"][1]."/view/",
         "signOutPath" => "/".$data["urlArray"][1]."/logout/",
         "enter" => "/".$data["urlArray"][1]."/enter/",
@@ -31,7 +36,6 @@
     switch ($data["parameters"][0])
     {
         case "enter":
-            MySQL::$globalDebugging=true;
             try
             {
                 if (!$usersSignInOut->isEntered())
@@ -50,22 +54,30 @@
             }
             break;
         case "view":
-            if ($usersSignInOut->isEntered())
+            try
             {
-                if ($data["parameters"][1]!=NULL)
+                if ($usersSignInOut->isEntered())
                 {
-                    $currentUser=new User($data["parameters"][1]);
+                    if ($data["parameters"][1]!=NULL)
+                    {
+                        $currentUser=new User($data["parameters"][1]);
+                    }
+                    else
+                    {
+                        $currentUser=new User();                    
+                    }
                 }
                 else
                 {
-                    $currentUser=new User();                    
+                    $currentUser=new User();   
                 }
             }
-            else
+            catch (UserException $ex)
             {
-                $currentUser=new User();   
+                header("Location: /user/");
             }
-            //$perm=new AccessLevelController($currentUser);
+            //$perm=new AccessLevelController($currentUser);           
+            $smarty->assign("info",$currentUser->getInfo());
             $smarty->assign("user",$currentUser);
             $smarty->assign("photo",$currentUser->getPhoto());
             //$smarty->assign("accLevel",$perm->getLevel());
@@ -73,8 +85,12 @@
             $output["text"]=$smarty->fetch("users.view.tpl");
             break;
         case "logout":
-            $usersSignInOut->signOut();
-            header("Location: $links[signInPath]");
+            try
+            {
+                $usersSignInOut->signOut();
+            }
+            catch (UserException $e) {}
+            header("Location: $links[enterForm]");
             break;
         case "register":
             $output["text"]=$smarty->fetch("users.register.tpl");

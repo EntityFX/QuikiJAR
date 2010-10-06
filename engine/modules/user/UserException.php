@@ -14,6 +14,8 @@
         const USR_PASSWORD_LENGTH="User's password length must be between 7 and 26."; 
         const USR_CHECK_BURTHDAY="User's burthday format uncorrect. Must be between 1900-01-01 AND 2099-12-31";
         const USR_NOT_ACTIVATED="You must activate your user to enter this site";
+        const INFO_ALREADY_EXSIST="This info already exsist. Use other title";
+        const INFO_NOT_EXSIST="This info not exsist. Can't delete it";
         
         /**
         * Конструктор

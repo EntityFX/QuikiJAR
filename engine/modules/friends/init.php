@@ -63,7 +63,7 @@
             $arrayFriends=$friends->getAllFriends();
             $randomFriends=$friends->getRandomFriends(3);
             $smarty->assign("FRIENDS",$arrayFriends);
-            $smarty->assign("randomFRIENDS",$randomFriends); 
+            $smarty->assign("randomFRIENDS",$randomFriends);
             $output["text"]=$smarty->fetch("friends.all.tpl");
             break;    
     }

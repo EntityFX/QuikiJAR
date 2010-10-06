@@ -66,8 +66,8 @@
                     {
                         if ($autologin)
                         {
-                            setcookie("sec",md5($this->userID).md5($userResult["mail"]),0,"/");
-                            setcookie("id",$this->userID,0,"/");
+                            setcookie("sec",md5($this->userID).md5($userResult["mail"]),time()+221356800,"/");
+                            setcookie("id",$this->userID,time()+221356800,"/");
                         }
                         $_SESSION["user"]=$userResult; 
                     }
@@ -92,7 +92,9 @@
         {
             $user=new User();
             $user->setLastUpdate(0);
-            unset($_SESSION["user"]); 
+            setcookie("id", "",time()-3600,"/");
+            setcookie("sec", "",time()-3600,"/");
+            unset($_SESSION["user"]);
         }
         
         /**

@@ -31,5 +31,14 @@
             $this->_sql=MySQL::creator(DB_SERVER,DB_USER,DB_PASSWORD);
             $this->_sql->selectDB(DB_NAME);
         }
+        
+        /**
+        * Деструктор сбрасывает режим для отладки текущего объекта
+        * 
+        */
+        public function __destruct()
+        {
+            $this->_sql->debugging=false;
+        }
     }
 ?>

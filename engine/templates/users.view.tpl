@@ -12,4 +12,19 @@
 mail: <strong>{$user->mail}</strong><br/>
 Registration IP: <strong>{$user->ip}</strong><br/>
 <a href="/friends">Мои дружбаны</a><br/>
+{if $info neq NULL}
+Мои предпочтения: 
+    <table border="1">
+        <thead>
+            <tr><th>Увлечение</th><th>Информация</th></tr>
+        </thead>
+        <tbody>
+            {foreach from=$info item=obj} {* Выводит подразделы*}
+                <tr><td>{$obj->title}</td><td>{$obj->text}</td></tr>
+            {/foreach} 
+        </tbody>
+    </table>
+{else}
+У вас нет предпочтений. <a href="" >Рекомендуем добавить</a>.<br/>
+{/if}
 <a href="{$links.signOutPath}">Выход</a>

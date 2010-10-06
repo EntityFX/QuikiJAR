@@ -2,13 +2,16 @@
 
     require_once "UserException.php"; 
     
-    require_once "UserSignInOut.php";      
+    require_once "UserSignInOut.php";
+    
+    require_once "AdditionalInfo.php";        
     
     require_once "engine/libs/registry/Registry.php";
     
     require_once "engine/libs/mysql/MySQLConnector.php";
     
     require_once "checker.php";
+    
     
     /**
     * Пользователи сайта    
@@ -138,6 +141,7 @@
                         {
                             $userSignOut->authentication($mailSec,$pass,false,true);
                             $this->setDate($_SESSION["user"]);
+                            $this->isOnline=true;
                         }
                     }
                     else
@@ -239,6 +243,12 @@
         {
             $this->_sql->query("UPDATE `SITE_USERS` SET `update_time`=$time WHERE `id`=$this->id");
             return $time;
+        }
+        
+        public function getInfo()
+        {
+            $info=new AdditionalInfo($this->id);
+            return $info->getAll();
         }
         
         public static function setOffLineTime($value)
