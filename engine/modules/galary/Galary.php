@@ -1,6 +1,7 @@
 <?php   
 require_once "engine/libs/mysql/MySQLConnector.php"; 
 require_once "engine/modules/numerator/Numerator.php"; 
+require_once "engine/libs/fs/FS.php";
 
 	/**
 	 * Класс, работающий с галереями.
@@ -403,6 +404,41 @@ require_once "engine/modules/numerator/Numerator.php";
         	$temp2 = $this->_sql->fetchArr($result);
         	$resArr["user"]=$temp2["user"];
         	return $resArr;
+        }
+        
+        public function addPhoto($user, $altname, $path)
+        {
+        	$fss = new FS();
+        	$arr = $this->giveMeNewName($path);
+        	
+        	$newN = $arr["path2new"];
+        	
+        	$fss->renameElement($path, $arr["name"]);
+        	$result = $this->_sql->query("INSERT INTO `galary_files` 
+        	( `id` , `path` , `small_path` , `text` , `pos` , `isreadedcomments` , `createdate` , `comment` , `pid` , `type` , `productname` , `content` , `cost` )
+			VALUES (
+			'', '$newN', '$newN', NULL , NULL , '', NOW( ) , NULL , '$altname', NULL , NULL , NULL , NULL)");
+        	return $result; 
+        }
+        
+        private function giveMeNewName($path)
+        {
+        	$result = $this->_sql->query("SELECT MAX(`id`) FROM `galary_files`");
+        	$temp3 = $this->_sql->fetchArr($result);
+        	$max = $temp3["MAX(`id`)"];
+        	
+        	$newName = md5($max);
+        	$temp1 = explode("/",$path); 
+        	$temp2 = explode(".", $temp1[count($temp1)-1]);
+        	$ext = $temp2[count($temp2)-1];
+        	$newName = $newName.".".$ext; //имя файла
+        	$temp1[count($temp1)-1] = $newName; 
+        	$newN = implode("/", $temp1);//die(var_dump($newN));  путь к новому файлу
+        	
+        	$ret["name"] = $newName;
+        	$ret["path2new"] = $newN;
+
+        	return $ret;
         }
     }
 ?>

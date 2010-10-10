@@ -9,7 +9,19 @@
 	require_once "engine/modules/user/User.php";
 	require_once "engine/modules/numerator/Numerator.php";
 	require_once "engine/modules/commentor/init.php";
+    require_once "engine/libs/fs/FS.php";
     
+	
+	$deleteGalary_get = $_GET["id"];
+	$showAllComments_get = $_GET["i"];
+	$makeElement_get = $_GET["c"];
+	$deleteComment2_get = $_GET["comm"];
+	$showComments4OneGalary_get = $_GET["g"];
+	$listNum = $_GET["l"]; 
+	
+	/*$galOne = new Galary();
+	var_dump($galOne->addPhoto($user, $altname, $path));*/
+	
     try 
     {
     	$user=new User();
@@ -28,7 +40,6 @@
         $user = $params[0];
         $altname = $params[1];
         $elementID = $params[2];
-        $listNum = $_GET["l"]; 
         $urlArr = $data["urlArray"]; 
 
         switch (count($params)) 
@@ -48,15 +59,29 @@
         		    	{
 							if (count($_POST)!=0) 
 		        			{       				
-			        				$newGalaryName = $_POST["galary_name"];
-			        				$comment = $_POST["galary_comment"];
-			        				$galOne->addNewGalary($user, $newGalaryName, $comment);
+		        				$newGalaryName = $_POST["galary_name"];
+		        				$comment = $_POST["galary_comment"];
+		        				if ($galOne->addNewGalary($user, $newGalaryName, $comment))
+		        				{
+		        					$output=addPhotoForm($link);
+		        				}
 		        			}
-		        			else 
+		        			
+		        			if (count($_FILES)!=0)   
+		        			{
+		        				$fss = new FS();
+		        				$userID = $user;
+		        				$uploadDir = "/photos/$userID/galary";
+		        				$filePropArr = $_FILES;
+		        				var_dump($uFile = $fss->upload2($uploadDir, $filePropArr));
+		        				$galOne->addPhoto($userID, $altname, $path);
+		        			} 
+		        			
+		        			if (count($_POST)==0 && count($_FILES)==0) 
 		        			{
 									$temp = makeAddForm($link);
 		        					$output=$temp;
-		        			}        		    		
+		        			}    		    		
         		    	}
         		    	else 
         		    	{
@@ -71,7 +96,7 @@
         		    	{
         		    		if (count($_GET)!=0) 
 		        			{ 
-        		    			$galOne->deleteGalary($_GET["id"],$user);
+        		    			$galOne->deleteGalary($deleteGalary_get,$user);
         		    			//die("Удалено!");
 		        			}
 		        			else 
@@ -87,8 +112,13 @@
         		    	}
         				break;
         			case "comments":
-        				$output=showAllComments("galary", $visitor, $user, $_GET["i"]);
+        				$output=showAllComments("galary", $visitor, $user, $showAllComments_get);
         				break;
+        				
+        			case "edit": //раздел для редактирования альбома.
+        				$output="";
+        				break;
+        				
         			default:
         				$temp = $galOne->showGalary($visitor, $altname, $listNum, $user);
         				$output = makeGalaryFiles($temp,$link,$urlArr);
@@ -100,7 +130,7 @@
         		if ($elementID!="comments") 
         		{
 	        		$temp = $galOne->showPhoto($user, $visitor, $altname, $elementID);
-	        		$output = makeElement($temp, $urlArr, $user,$visitor,$_GET["c"],$link);
+	        		$output = makeElement($temp, $urlArr, $user,$visitor,$makeElement_get,$link);
 	        		if (count($_POST)!=0) 
 	        		{
 	        			writeComment2($elementID, "galary", $visitor, $_POST["id_comment"], $user);
@@ -110,13 +140,13 @@
 	        		if (count($_GET)!=0) 
 	        		{
 	        			$urlStr = $urlArr[0].$urlArr[1]."/".$urlArr[2]."/".$urlArr[3]."/".$urlArr[4]."/";
-	        			deleteComment2($_GET["comm"]);//die("$urlStr");
+	        			deleteComment2($deleteComment2_get);//die("$urlStr");
 	        			header("Location: $urlStr");
 		        	}
         		}
         		if($elementID=="comments")
 				{
-					$output = showComments4OneGalary("galary", $visitor, $user, $_GET["g"], $altname);
+					$output = showComments4OneGalary("galary", $visitor, $user, $showComments4OneGalary_get, $altname);
 				}
         		
         		break;
@@ -318,6 +348,17 @@
 		<textarea cols=\"23\" rows=\"5\" name=\"galary_comment\"></textarea><br />
 		<input value=\"Создать\" type=\"submit\"><br />
 		</form>";
+    	$ret["text"]=$formStr;
+    	return $ret;
+    }
+    
+    function addPhotoForm($link)
+    {
+    	$formStr = "<form action=\"/$link\" method=post enctype=multipart/form-data>
+<input type=file name=uploadFile>
+<input type=submit value=\"Send\">
+</form>";
+    	
     	$ret["text"]=$formStr;
     	return $ret;
     }

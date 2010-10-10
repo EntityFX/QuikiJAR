@@ -108,7 +108,7 @@
 				$commDate = $value["comment_time"];
 				$comment = $value["comment"];
 				$imgProp = $gal->getImgProperties($value["pid"]);
-				$link="/"."galary"."/".$imgProp["altname"]."/".$imgProp["id"]."/";
+				$link="/"."galary"."/".$imgProp["user"]."/".$imgProp["altname"]."/".$imgProp["id"]."/";
 				if ($visitor==$userID || $visitor==$value["poster_user"]) 
 				{
 					$delUser=$value["poster_user"];
