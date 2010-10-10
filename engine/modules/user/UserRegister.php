@@ -7,10 +7,10 @@
 *   Активация пользователя
 *   Деактивация пользователя
 *   Проверка на существование
-* @package kernel
+* @package user
 * @author Solopiy Artem
 * @version 0.9 Beta
-* @copyright Idel Media Group: Developers Team (Solopiy Artem, Jusupziyanov Timur)
+* @copyright Idel Media Group: Developers Team (Solopiy Artem, Jusupziyanov Timur, Shagiakhmetov Aidar)
 */
     require_once "checker.php";
     
@@ -23,6 +23,7 @@
     */
     class UserRegister extends MySQLConnector
     {
+       
         /**
         * Зарегистрировать нового пользователя в системе
         * 
@@ -35,8 +36,8 @@
         * @param integer $ip IP
         * @throws UserException Если пользователь уже существует
         * @throws UserException Если неверна дата рождения
-        * @throws Не заполнены имя и фамилия
-        * @throws Неверный формат почты
+        * @throws UserException Не заполнены имя и фамилия
+        * @throws UserException Неверный формат почты
         */
         public function register($mail,$password,$name,$surname,$burthday,$gender,$ip)
         {
@@ -93,6 +94,36 @@
             if ($p1!=$p2)    
             {
                 throw new UserException($mail,UserException::USR_PASSWORD_NEQ);    
+            }
+            return true;
+        }
+        
+        /**
+        * Сменить пароль
+        * 
+        * @param string $current Текущий пароль
+        * @param string $new Новый пароль
+        * @throws UserException Если неправильный текущий пароль
+        */
+        public function changePassword($current,$new)
+        {
+            $id=(int)$_SESSION["user"]["id"];
+            if ($_SESSION["user"]["password"]!=md5($current))
+            {
+                throw new Exception(UserException::USR_PASSWORD_INCORRECT,$id);    
+            }
+            else
+            {
+                if ($this->checkPassword($new,$new))
+                {
+                    $pass=md5($new);
+                    $this->_sql->query(
+                        "
+                        UPDATE `SITE_USERS` SET `password`='$pass' WHERE `id`=$id
+                        "
+                    );
+                    $_SESSION["user"]["password"]=$pass;
+                }
             }
         }
         

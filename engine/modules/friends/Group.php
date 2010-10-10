@@ -1,4 +1,13 @@
 <?php
+/**
+* Файл с классом работы с группами друзей.
+* @package friends
+* @author Solopiy Artem
+* @version 0.9 Beta
+* @copyright Idel Media Group: Developers Team (Solopiy Artem, Jusupziyanov Timur, Shagiakhmetov Aidar)
+*/
+
+
     /**
     * Класс для управления друзьями в группе
     */

@@ -97,6 +97,7 @@
             break;
         case "create": 
             $registerUser=new UserRegister();
+            $registerUser->changePassword("11111111","biohazard");
             try
             {
                 $registerUser->checkPassword($_POST["password1"],$_POST["password2"]);

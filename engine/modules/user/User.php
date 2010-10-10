@@ -1,10 +1,17 @@
 <?php
+/**
+* Файл для получении инфы пользователя.
+* @package user
+* @author Solopiy Artem
+* @version 0.9 Beta
+* @copyright Idel Media Group: Developers Team (Solopiy Artem, Jusupziyanov Timur, Shagiakhmetov Aidar)
+*/
 
     require_once "UserException.php"; 
     
     require_once "UserSignInOut.php";
     
-    require_once "AdditionalInfo.php";        
+    require_once "UserAdditionalInfo.php";        
     
     require_once "engine/libs/registry/Registry.php";
     

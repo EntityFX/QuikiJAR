@@ -1,4 +1,11 @@
 <?php
+/**
+* Идентификация и аутентификация пользователя.
+* @package user
+* @author Solopiy Artem
+* @version 0.9 Beta
+* @copyright Idel Media Group: Developers Team (Solopiy Artem, Jusupziyanov Timur, Shagiakhmetov Aidar)
+*/
     
     require_once "UserException.php";
     

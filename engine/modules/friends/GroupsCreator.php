@@ -1,4 +1,11 @@
 <?php
+/**
+* Создание групп
+* @package friends
+* @author Solopiy Artem
+* @version 0.9 Beta
+* @copyright Idel Media Group: Developers Team (Solopiy Artem, Jusupziyanov Timur, Shagiakhmetov Aidar)
+*/
     
     require_once "FriendsException.php";
     

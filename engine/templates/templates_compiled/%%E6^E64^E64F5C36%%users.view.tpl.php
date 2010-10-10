@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2010-10-04 22:48:15
+<?php /* Smarty version 2.6.26, created on 2010-10-10 17:03:17
          compiled from users.view.tpl */ ?>
 Уровень доступа:<?php echo $this->_tpl_vars['accLevel']; ?>
 <br/>
@@ -24,6 +24,8 @@ mail: <strong><?php echo $this->_tpl_vars['user']->mail; ?>
 Registration IP: <strong><?php echo $this->_tpl_vars['user']->ip; ?>
 </strong><br/>
 <a href="/friends">Мои дружбаны</a><br/>
+<a href="/galary/<?php echo $this->_tpl_vars['user']->id; ?>
+/">Галерея</a><br/> 
 <?php if ($this->_tpl_vars['info'] != NULL): ?>
 Мои предпочтения: 
     <table border="1">
@@ -43,4 +45,4 @@ Registration IP: <strong><?php echo $this->_tpl_vars['user']->ip; ?>
 У вас нет предпочтений. <a href="" >Рекомендуем добавить</a>.<br/>
 <?php endif; ?>
 <a href="<?php echo $this->_tpl_vars['links']['signOutPath']; ?>
-">Выход</a>
+">Выход</a>

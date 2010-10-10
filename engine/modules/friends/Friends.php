@@ -1,4 +1,11 @@
 <?php
+/**
+* Файл с классом для работы с друзьями.
+* @package friends
+* @author Solopiy Artem
+* @version 0.9 Beta
+* @copyright Idel Media Group: Developers Team (Solopiy Artem, Jusupziyanov Timur, Shagiakhmetov Aidar)
+*/
 
     require_once "engine/libs/mysql/MySQLConnector.php"; 
     
