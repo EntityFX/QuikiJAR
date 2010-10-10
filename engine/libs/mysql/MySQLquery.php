@@ -217,7 +217,7 @@
             $resource=mysql_query($string);
             if ($resource==false)
             {
-                throw new Exception("ENGINE: BAD QUERY");
+                throw new Exception("\n\rENGINE: BAD QUERY. QUERY is $string\n\r");
             }
             $this->_internalResource=$resource;
             return $resource;
