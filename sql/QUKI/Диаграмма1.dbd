@@ -39,9 +39,15 @@
     </Options>
   </Settings>
   <VirtualRelations>
+<<<<<<< .mine
+    <RelationCount>15</RelationCount>
+    <Relation Name="URL_VR1">
+      <Owner>QUKI.URL</Owner>
+=======
     <RelationCount>17</RelationCount>
     <Relation Name="galary_list.cover=galary_files.id">
       <Owner>QUKI.galary_list</Owner>
+>>>>>>> .r112
       <Columns>
         <Column>cover</Column>
       </Columns>
@@ -261,6 +267,19 @@
       <UpdateRule>NO ACTION</UpdateRule>
       <DeleteRule>NO ACTION</DeleteRule>
     </Relation>
+    <Relation Name="SITE_USERS_ADDONS_VR1">
+      <Owner>QUKI.SITE_USERS_ADDONS</Owner>
+      <Columns>
+        <Column>user_id</Column>
+      </Columns>
+      <ReferencedTableOwner>QUKI</ReferencedTableOwner>
+      <ReferencedTableName>SITE_USERS</ReferencedTableName>
+      <ReferencedColumns>
+        <Column>id</Column>
+      </ReferencedColumns>
+      <UpdateRule>NO ACTION</UpdateRule>
+      <DeleteRule>NO ACTION</DeleteRule>
+    </Relation>
   </VirtualRelations>
   <Diagram Version="1.10.0.62">
     <DiagramModel>
@@ -275,10 +294,87 @@
               <Parent>0</Parent>
             </CustomProperties>
             <Location>
+<<<<<<< .mine
+              <X>900 px</X>
+              <Y>57 px</Y>
+=======
               <X>310 px</X>
               <Y>1350 px</Y>
+>>>>>>> .r112
             </Location>
             <Size>
+<<<<<<< .mine
+              <Width>207 px</Width>
+              <Height>93 px</Height>
+            </Size>
+            <DbOid>
+              <Path>quki.country</Path>
+              <TypeName>Table</TypeName>
+            </DbOid>
+            <Compartments>
+              <ConstraintsCollapsed>True</ConstraintsCollapsed>
+              <IndexesCollapsed>True</IndexesCollapsed>
+              <TriggersCollapsed>True</TriggersCollapsed>
+            </Compartments>
+          </Model>
+          <Model xsi:type="TableModel">
+            <CustomProperties>
+              <OID>2</OID>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <Location>
+              <X>635 px</X>
+              <Y>40 px</Y>
+            </Location>
+            <Size>
+              <Width>205 px</Width>
+              <Height>127 px</Height>
+            </Size>
+            <DbOid>
+              <Path>quki.country_regions</Path>
+              <TypeName>Table</TypeName>
+            </DbOid>
+            <Compartments>
+              <ConstraintsCollapsed>True</ConstraintsCollapsed>
+              <IndexesCollapsed>True</IndexesCollapsed>
+              <TriggersCollapsed>True</TriggersCollapsed>
+            </Compartments>
+          </Model>
+          <Model xsi:type="TableModel">
+            <CustomProperties>
+              <OID>3</OID>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <Location>
+              <X>340 px</X>
+              <Y>40 px</Y>
+            </Location>
+            <Size>
+              <Width>235 px</Width>
+              <Height>127 px</Height>
+            </Size>
+            <DbOid>
+              <Path>quki.country_regions_city</Path>
+              <TypeName>Table</TypeName>
+            </DbOid>
+            <Compartments>
+              <ConstraintsCollapsed>True</ConstraintsCollapsed>
+              <IndexesCollapsed>True</IndexesCollapsed>
+              <TriggersCollapsed>True</TriggersCollapsed>
+            </Compartments>
+          </Model>
+          <Model xsi:type="TableModel">
+            <CustomProperties>
+              <OID>4</OID>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <Location>
+              <X>276 px</X>
+              <Y>1159 px</Y>
+            </Location>
+            <Size>
+=======
+>>>>>>> .r112
               <Width>197 px</Width>
               <Height>110 px</Height>
             </Size>
@@ -298,14 +394,95 @@
               <Parent>0</Parent>
             </CustomProperties>
             <Location>
+<<<<<<< .mine
+              <X>556 px</X>
+              <Y>937 px</Y>
+=======
               <X>630 px</X>
               <Y>1360 px</Y>
+>>>>>>> .r112
             </Location>
             <Size>
+<<<<<<< .mine
+              <Width>201 px</Width>
+              <Height>127 px</Height>
+            </Size>
+            <DbOid>
+              <Path>quki.modules</Path>
+              <TypeName>Table</TypeName>
+            </DbOid>
+            <Compartments>
+              <ConstraintsCollapsed>True</ConstraintsCollapsed>
+              <IndexesCollapsed>True</IndexesCollapsed>
+              <TriggersCollapsed>True</TriggersCollapsed>
+            </Compartments>
+          </Model>
+          <Model xsi:type="TableModel">
+            <CustomProperties>
+              <OID>6</OID>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <Location>
+              <X>1202 px</X>
+              <Y>40 px</Y>
+            </Location>
+            <Size>
+              <Width>236 px</Width>
+=======
               <Width>160 px</Width>
+>>>>>>> .r112
               <Height>93 px</Height>
             </Size>
             <DbOid>
+<<<<<<< .mine
+              <Path>quki.registry</Path>
+              <TypeName>Table</TypeName>
+            </DbOid>
+            <Compartments>
+              <ConstraintsCollapsed>True</ConstraintsCollapsed>
+              <IndexesCollapsed>True</IndexesCollapsed>
+              <TriggersCollapsed>True</TriggersCollapsed>
+            </Compartments>
+          </Model>
+          <Model xsi:type="TableModel">
+            <CustomProperties>
+              <OID>7</OID>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <Location>
+              <X>448 px</X>
+              <Y>287 px</Y>
+            </Location>
+            <Size>
+              <Width>227 px</Width>
+              <Height>348 px</Height>
+            </Size>
+            <DbOid>
+              <Path>quki.site_users</Path>
+              <TypeName>Table</TypeName>
+            </DbOid>
+            <Compartments>
+              <ConstraintsCollapsed>True</ConstraintsCollapsed>
+              <IndexesCollapsed>True</IndexesCollapsed>
+              <TriggersCollapsed>True</TriggersCollapsed>
+            </Compartments>
+          </Model>
+          <Model xsi:type="TableModel">
+            <CustomProperties>
+              <OID>8</OID>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <Location>
+              <X>40 px</X>
+              <Y>954 px</Y>
+            </Location>
+            <Size>
+              <Width>154 px</Width>
+              <Height>93 px</Height>
+            </Size>
+            <DbOid>
+=======
+>>>>>>> .r112
               <Path>quki.text_module</Path>
               <TypeName>Table</TypeName>
             </DbOid>
@@ -324,7 +501,7 @@
             </CustomProperties>
             <Location>
               <X>254 px</X>
-              <Y>948 px</Y>
+              <Y>903 px</Y>
             </Location>
             <Size>
               <Width>241 px</Width>
@@ -347,7 +524,7 @@
             </CustomProperties>
             <Location>
               <X>40 px</X>
-              <Y>758 px</Y>
+              <Y>702 px</Y>
             </Location>
             <Size>
               <Width>262 px</Width>
@@ -369,8 +546,8 @@
               <Parent>0</Parent>
             </CustomProperties>
             <Location>
-              <X>131 px</X>
-              <Y>365 px</Y>
+              <X>108 px</X>
+              <Y>330 px</Y>
             </Location>
             <Size>
               <Width>221 px</Width>
@@ -392,8 +569,8 @@
               <Parent>0</Parent>
             </CustomProperties>
             <Location>
-              <X>485 px</X>
-              <Y>758 px</Y>
+              <X>463 px</X>
+              <Y>695 px</Y>
             </Location>
             <Size>
               <Width>197 px</Width>
@@ -448,12 +625,22 @@
             </PortAnchors>
             <BendPoints>
               <PointD>
+<<<<<<< .mine
+                <X>235 px</X>
+                <Y>1049.25 px</Y>
+=======
                 <X>-245.125 px</X>
                 <Y>437.96612294095 px</Y>
+>>>>>>> .r112
               </PointD>
               <PointD>
+<<<<<<< .mine
+                <X>235 px</X>
+                <Y>951.75 px</Y>
+=======
                 <X>-245.125 px</X>
                 <Y>480 px</Y>
+>>>>>>> .r112
               </PointD>
               <PointD>
                 <X>83 px</X>
@@ -510,8 +697,13 @@
             <PortAnchors>
               <Port>
                 <Location>
+<<<<<<< .mine
+                  <X>207 px</X>
+                  <Y>110 px</Y>
+=======
                   <X>219.5 px</X>
                   <Y>55 px</Y>
+>>>>>>> .r112
                 </Location>
                 <Anchors>Top Bottom</Anchors>
                 <Align>Right</Align>
@@ -522,8 +714,13 @@
               </Port>
               <Port>
                 <Location>
+<<<<<<< .mine
+                  <X>-0.5 px</X>
+                  <Y>333 px</Y>
+=======
                   <X>6.14286509825274 px</X>
                   <Y>111.142864246758 px</Y>
+>>>>>>> .r112
                 </Location>
                 <Anchors>None</Anchors>
                 <Align>Left</Align>
@@ -535,8 +732,13 @@
             </PortAnchors>
             <BendPoints>
               <PointD>
+<<<<<<< .mine
+                <X>315 px</X>
+                <Y>620 px</Y>
+=======
                 <X>387.5 px</X>
                 <Y>417 px</Y>
+>>>>>>> .r112
               </PointD>
               <PointD>
                 <X>387.5 px</X>
@@ -559,8 +761,13 @@
             <PortAnchors>
               <Port xsi:type="LinkPort">
                 <Location>
+<<<<<<< .mine
+                  <X>0 px</X>
+                  <Y>-90 px</Y>
+=======
                   <X>-332.25 px</X>
                   <Y>0 px</Y>
+>>>>>>> .r112
                 </Location>
                 <Anchors>None</Anchors>
                 <Align>Right</Align>
@@ -589,8 +796,13 @@
             <PortAnchors>
               <Port>
                 <Location>
+<<<<<<< .mine
+                  <X>219.5 px</X>
+                  <Y>55 px</Y>
+=======
                   <X>0 px</X>
                   <Y>109.5 px</Y>
+>>>>>>> .r112
                 </Location>
                 <Anchors>Top Bottom</Anchors>
                 <Align>Right</Align>
@@ -601,8 +813,13 @@
               </Port>
               <Port>
                 <Location>
+<<<<<<< .mine
+                  <X>-0.5 px</X>
+                  <Y>190.5 px</Y>
+=======
                   <X>40.4285799678493 px</X>
                   <Y>284.00001004764 px</Y>
+>>>>>>> .r112
                 </Location>
                 <Anchors>None</Anchors>
                 <Align>Left</Align>
@@ -614,12 +831,22 @@
             </PortAnchors>
             <BendPoints>
               <PointD>
+<<<<<<< .mine
+                <X>387.5 px</X>
+                <Y>385 px</Y>
+=======
                 <X>282 px</X>
                 <Y>812.5 px</Y>
+>>>>>>> .r112
               </PointD>
               <PointD>
+<<<<<<< .mine
+                <X>387.5 px</X>
+                <Y>477.5 px</Y>
+=======
                 <X>282 px</X>
                 <Y>590.00001004764 px</Y>
+>>>>>>> .r112
               </PointD>
             </BendPoints>
             <IsManuallyRouted>false</IsManuallyRouted>
@@ -638,8 +865,13 @@
             <PortAnchors>
               <Port xsi:type="LinkPort">
                 <Location>
+<<<<<<< .mine
+                  <X>-58.5 px</X>
+                  <Y>-46.25 px</Y>
+=======
                   <X>-20 px</X>
                   <Y>111.25 px</Y>
+>>>>>>> .r112
                 </Location>
                 <Anchors>None</Anchors>
                 <Align>Right</Align>
@@ -668,8 +900,13 @@
             <PortAnchors>
               <Port>
                 <Location>
+<<<<<<< .mine
+                  <X>132.5 px</X>
+                  <Y>0.5 px</Y>
+=======
                   <X>191 px</X>
                   <Y>0 px</Y>
+>>>>>>> .r112
                 </Location>
                 <Anchors>Left Right</Anchors>
                 <Align>Top</Align>
@@ -680,8 +917,13 @@
               </Port>
               <Port>
                 <Location>
+<<<<<<< .mine
+                  <X>64.5 px</X>
+                  <Y>110 px</Y>
+=======
                   <X>36 px</X>
                   <Y>0 px</Y>
+>>>>>>> .r112
                 </Location>
                 <Anchors>Left Right</Anchors>
                 <Align>Bottom</Align>
@@ -708,7 +950,11 @@
               <Port xsi:type="LinkPort">
                 <Location>
                   <X>0 px</X>
+<<<<<<< .mine
+                  <Y>131 px</Y>
+=======
                   <Y>105 px</Y>
+>>>>>>> .r112
                 </Location>
                 <Anchors>None</Anchors>
                 <Align>Top</Align>
@@ -737,8 +983,13 @@
             <PortAnchors>
               <Port>
                 <Location>
+<<<<<<< .mine
+                  <X>262.5 px</X>
+                  <Y>55.5 px</Y>
+=======
                   <X>227 px</X>
                   <Y>158 px</Y>
+>>>>>>> .r112
                 </Location>
                 <Anchors>Top Bottom</Anchors>
                 <Align>Right</Align>
@@ -750,11 +1001,16 @@
               <Port>
                 <Location>
 <<<<<<< .mine
+                  <X>-0.5 px</X>
+                  <Y>62.5 px</Y>
+=======
+<<<<<<< .mine
                   <X>105 px</X>
                   <Y>93 px</Y>
 =======
                   <X>0 px</X>
                   <Y>62.9227272727273 px</Y>
+>>>>>>> .r112
 >>>>>>> .r108
                 </Location>
                 <Anchors>Left Right</Anchors>
@@ -765,6 +1021,8 @@
                 </CustomProperties>
               </Port>
             </PortAnchors>
+<<<<<<< .mine
+=======
 <<<<<<< .mine
             <BendPoints>
               <PointD>
@@ -783,6 +1041,7 @@
                 <Y>820.922727272727 px</Y>
               </PointD>
             </BendPoints>
+>>>>>>> .r112
 >>>>>>> .r108
             <IsManuallyRouted>false</IsManuallyRouted>
             <DbOid>
@@ -801,11 +1060,16 @@
               <Port xsi:type="LinkPort">
                 <Location>
 <<<<<<< .mine
+                  <X>-80.5 px</X>
+                  <Y>0 px</Y>
+=======
+<<<<<<< .mine
                   <X>-298 px</X>
                   <Y>192.5 px</Y>
 =======
                   <X>-101.5 px</X>
                   <Y>-8.4227294921875 px</Y>
+>>>>>>> .r112
 >>>>>>> .r108
                 </Location>
                 <Anchors>None</Anchors>
@@ -835,8 +1099,13 @@
             <PortAnchors>
               <Port>
                 <Location>
+<<<<<<< .mine
+                  <X>99.5 px</X>
+                  <Y>0 px</Y>
+=======
                   <X>64 px</X>
                   <Y>0 px</Y>
+>>>>>>> .r112
                 </Location>
                 <Anchors>Left Right</Anchors>
                 <Align>Top</Align>
@@ -847,8 +1116,13 @@
               </Port>
               <Port>
                 <Location>
+<<<<<<< .mine
+                  <X>114.5 px</X>
+                  <Y>348 px</Y>
+=======
                   <X>171 px</X>
                   <Y>0 px</Y>
+>>>>>>> .r112
                 </Location>
                 <Anchors>Left Right</Anchors>
                 <Align>Bottom</Align>
@@ -884,8 +1158,13 @@
             <PortAnchors>
               <Port xsi:type="LinkPort">
                 <Location>
+<<<<<<< .mine
+                  <X>0 px</X>
+                  <Y>30 px</Y>
+=======
                   <X>33 px</X>
                   <Y>148 px</Y>
+>>>>>>> .r112
                 </Location>
                 <Anchors>None</Anchors>
                 <Align>Top</Align>
@@ -914,8 +1193,13 @@
             <PortAnchors>
               <Port>
                 <Location>
+<<<<<<< .mine
+                  <X>241.7 px</X>
+                  <Y>97.15 px</Y>
+=======
                   <X>106 px</X>
                   <Y>0 px</Y>
+>>>>>>> .r112
                 </Location>
                 <Anchors>Left Right</Anchors>
                 <Align>Top</Align>
@@ -926,8 +1210,13 @@
               </Port>
               <Port>
                 <Location>
+<<<<<<< .mine
+                  <X>0.150000000000091 px</X>
+                  <Y>63.15 px</Y>
+=======
                   <X>91 px</X>
                   <Y>0 px</Y>
+>>>>>>> .r112
                 </Location>
                 <Anchors>Left Right</Anchors>
                 <Align>Bottom</Align>
@@ -963,8 +1252,13 @@
             <PortAnchors>
               <Port xsi:type="LinkPort">
                 <Location>
+<<<<<<< .mine
+                  <X>-30.5 px</X>
+                  <Y>-2.44140625227374E-05 px</Y>
+=======
                   <X>19.9999694824219 px</X>
                   <Y>99.5 px</Y>
+>>>>>>> .r112
                 </Location>
                 <Anchors>None</Anchors>
                 <Align>Top</Align>
@@ -993,11 +1287,16 @@
             <PortAnchors>
               <Port>
                 <Location>
+<<<<<<< .mine
+                  <X>227 px</X>
+                  <Y>15.5 px</Y>
+=======
                   <X>80 px</X>
                   <Y>0 px</Y>
+>>>>>>> .r112
                 </Location>
-                <Anchors>Left Right</Anchors>
-                <Align>Top</Align>
+                <Anchors>Top Bottom</Anchors>
+                <Align>Right</Align>
                 <CustomProperties>
                   <OID>47</OID>
                   <PortType>FloatAnchor</PortType>
@@ -1005,11 +1304,21 @@
               </Port>
               <Port>
                 <Location>
+<<<<<<< .mine
+                  <X>102.5 px</X>
+                  <Y>127.5 px</Y>
+=======
                   <X>0 px</X>
                   <Y>146.25 px</Y>
+>>>>>>> .r112
                 </Location>
+<<<<<<< .mine
+                <Anchors>Left Right</Anchors>
+                <Align>Bottom</Align>
+=======
                 <Anchors>Top Bottom</Anchors>
                 <Align>Right</Align>
+>>>>>>> .r112
                 <CustomProperties>
                   <OID>48</OID>
                   <PortType>FloatAnchor</PortType>
@@ -1018,8 +1327,13 @@
             </PortAnchors>
             <BendPoints>
               <PointD>
+<<<<<<< .mine
+                <X>737.5 px</X>
+                <Y>302.5 px</Y>
+=======
                 <X>710 px</X>
                 <Y>1301 px</Y>
+>>>>>>> .r112
               </PointD>
               <PointD>
                 <X>566 px</X>
@@ -1046,11 +1360,16 @@
             <PortAnchors>
               <Port xsi:type="LinkPort">
                 <Location>
+<<<<<<< .mine
+                  <X>-62.5 px</X>
+                  <Y>67.75 px</Y>
+=======
                   <X>72 px</X>
                   <Y>59 px</Y>
+>>>>>>> .r112
                 </Location>
                 <Anchors>None</Anchors>
-                <Align>Top</Align>
+                <Align>Right</Align>
                 <CustomProperties>
                   <OID>49</OID>
                   <PortType>FixedAnchor</PortType>
@@ -1068,6 +1387,45 @@
               <OID>50</OID>
               <Parent>0</Parent>
             </CustomProperties>
+<<<<<<< .mine
+            <PortAnchors>
+              <Port>
+                <Location>
+                  <X>227 px</X>
+                  <Y>158 px</Y>
+                </Location>
+                <Anchors>Top Bottom</Anchors>
+                <Align>Right</Align>
+                <CustomProperties>
+                  <OID>55</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+              <Port>
+                <Location>
+                  <X>105 px</X>
+                  <Y>93 px</Y>
+                </Location>
+                <Anchors>Left Right</Anchors>
+                <Align>Bottom</Align>
+                <CustomProperties>
+                  <OID>56</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+            </PortAnchors>
+            <BendPoints>
+              <PointD>
+                <X>1005 px</X>
+                <Y>445 px</Y>
+              </PointD>
+            </BendPoints>
+            <IsManuallyRouted>false</IsManuallyRouted>
+            <DbOid>
+              <Path>quki.site_users.site_users_vr2</Path>
+              <TypeName>VirtualRelation</TypeName>
+            </DbOid>
+=======
             <Location>
               <X>-90 px</X>
               <Y>-110 px</Y>
@@ -1083,7 +1441,38 @@
             <Date>23.09.2010</Date>
             <Copyrights>© Idel Media Group</Copyrights>
             <Text>Идель Медиа Групп QUKI</Text>
+>>>>>>> .r112
           </Model>
+<<<<<<< .mine
+          <Model xsi:type="RelationCommentModel">
+            <CustomProperties>
+              <OID>54</OID>
+              <HolderModel>53</HolderModel>
+              <Port>57</Port>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
+              <Port xsi:type="LinkPort">
+                <Location>
+                  <X>-165 px</X>
+                  <Y>0 px</Y>
+                </Location>
+                <Anchors>None</Anchors>
+                <Align>Right</Align>
+                <CustomProperties>
+                  <OID>57</OID>
+                  <PortType>FixedAnchor</PortType>
+                </CustomProperties>
+                <LinkPortAnchor>OutPoint</LinkPortAnchor>
+              </Port>
+            </PortAnchors>
+            <CommentOffset>
+              <X>13 px</X>
+              <Y>47.4999999999999 px</Y>
+            </CommentOffset>
+          </Model>
+=======
+>>>>>>> .r112
           <Model xsi:type="VirtualRelationLinkModel">
             <CustomProperties>
               <OID>51</OID>
@@ -1097,8 +1486,13 @@
             <PortAnchors>
               <Port>
                 <Location>
+<<<<<<< .mine
+                  <X>9.5 px</X>
+                  <Y>0.5 px</Y>
+=======
                   <X>61 px</X>
                   <Y>0.5 px</Y>
+>>>>>>> .r112
                 </Location>
                 <Anchors>Left Right</Anchors>
                 <Align>Top</Align>
@@ -1109,23 +1503,36 @@
               </Port>
               <Port>
                 <Location>
+<<<<<<< .mine
+                  <X>117.5 px</X>
+                  <Y>127.5 px</Y>
+=======
                   <X>227 px</X>
                   <Y>300.5 px</Y>
+>>>>>>> .r112
                 </Location>
+<<<<<<< .mine
+                <Anchors>Left Right</Anchors>
+                <Align>Bottom</Align>
+=======
                 <Anchors>Top Bottom</Anchors>
                 <Align>Right</Align>
+>>>>>>> .r112
                 <CustomProperties>
                   <OID>55</OID>
                   <PortType>FloatAnchor</PortType>
                 </CustomProperties>
               </Port>
             </PortAnchors>
+<<<<<<< .mine
+=======
             <BendPoints>
               <PointD>
                 <X>931 px</X>
                 <Y>606.5 px</Y>
               </PointD>
             </BendPoints>
+>>>>>>> .r112
             <IsManuallyRouted>false</IsManuallyRouted>
             <DbOid>
               <Path>quki.galary_list.`galary_list.user=SITE_USERS.id`</Path>
@@ -1142,8 +1549,13 @@
             <PortAnchors>
               <Port xsi:type="LinkPort">
                 <Location>
+<<<<<<< .mine
+                  <X>0 px</X>
+                  <Y>60 px</Y>
+=======
                   <X>121.5 px</X>
                   <Y>58.5 px</Y>
+>>>>>>> .r112
                 </Location>
                 <Anchors>None</Anchors>
                 <Align>Top</Align>
@@ -1172,9 +1584,18 @@
                   <Parent>57</Parent>
                 </CustomProperties>
                 <Location>
+<<<<<<< .mine
+                  <X>205 px</X>
+                  <Y>65 px</Y>
+=======
                   <X>19 px</X>
                   <Y>29 px</Y>
+>>>>>>> .r112
                 </Location>
+<<<<<<< .mine
+                <Anchors>Top Bottom</Anchors>
+                <Align>Right</Align>
+=======
                 <Size>
                   <Width>221 px</Width>
                   <Height>263 px</Height>
@@ -1190,14 +1611,24 @@
                 </Compartments>
               </Model>
               <Model xsi:type="TableModel">
+>>>>>>> .r112
                 <CustomProperties>
                   <OID>58</OID>
                   <Parent>57</Parent>
                 </CustomProperties>
                 <Location>
+<<<<<<< .mine
+                  <X>0 px</X>
+                  <Y>48 px</Y>
+=======
                   <X>420 px</X>
                   <Y>30 px</Y>
+>>>>>>> .r112
                 </Location>
+<<<<<<< .mine
+                <Anchors>Top Bottom</Anchors>
+                <Align>Left</Align>
+=======
                 <Size>
                   <Width>265 px</Width>
                   <Height>280 px</Height>
@@ -1213,6 +1644,7 @@
                 </Compartments>
               </Model>
               <Model xsi:type="VirtualRelationLinkModel">
+>>>>>>> .r112
                 <CustomProperties>
                   <OID>59</OID>
                   <Comment>60</Comment>
@@ -1378,16 +1810,36 @@
               <BackgroundColor>252, 250, 240</BackgroundColor>
               <Parent>0</Parent>
             </CustomProperties>
+<<<<<<< .mine
+            <PortAnchors>
+              <Port xsi:type="LinkPort">
+                <Location>
+                  <X>-30 px</X>
+                  <Y>0 px</Y>
+                </Location>
+                <Anchors>None</Anchors>
+                <Align>Right</Align>
+=======
             <Children>
               <Model xsi:type="TableModel">
+>>>>>>> .r112
                 <CustomProperties>
                   <OID>70</OID>
                   <Parent>69</Parent>
                 </CustomProperties>
                 <Location>
+<<<<<<< .mine
+                  <X>235 px</X>
+                  <Y>65 px</Y>
+=======
                   <X>342 px</X>
                   <Y>54 px</Y>
+>>>>>>> .r112
                 </Location>
+<<<<<<< .mine
+                <Anchors>Top Bottom</Anchors>
+                <Align>Right</Align>
+=======
                 <Size>
                   <Width>201 px</Width>
                   <Height>127 px</Height>
@@ -1403,14 +1855,24 @@
                 </Compartments>
               </Model>
               <Model xsi:type="TableModel">
+>>>>>>> .r112
                 <CustomProperties>
                   <OID>41</OID>
                   <Parent>69</Parent>
                 </CustomProperties>
                 <Location>
+<<<<<<< .mine
+                  <X>0 px</X>
+                  <Y>65 px</Y>
+=======
                   <X>40 px</X>
                   <Y>20 px</Y>
+>>>>>>> .r112
                 </Location>
+<<<<<<< .mine
+                <Anchors>Top Bottom</Anchors>
+                <Align>Left</Align>
+=======
                 <Size>
                   <Width>241 px</Width>
                   <Height>195 px</Height>
@@ -1426,6 +1888,7 @@
                 </Compartments>
               </Model>
               <Model xsi:type="VirtualRelationLinkModel">
+>>>>>>> .r112
                 <CustomProperties>
                   <OID>71</OID>
                   <Comment>72</Comment>
@@ -1608,9 +2071,18 @@
                   <Parent>81</Parent>
                 </CustomProperties>
                 <Location>
+<<<<<<< .mine
+                  <X>-30 px</X>
+                  <Y>0 px</Y>
+=======
                   <X>580 px</X>
                   <Y>90 px</Y>
+>>>>>>> .r112
                 </Location>
+<<<<<<< .mine
+                <Anchors>None</Anchors>
+                <Align>Right</Align>
+=======
                 <Size>
                   <Width>207 px</Width>
                   <Height>93 px</Height>
@@ -1626,6 +2098,7 @@
                 </Compartments>
               </Model>
               <Model xsi:type="TableModel">
+>>>>>>> .r112
                 <CustomProperties>
                   <OID>23</OID>
                   <Parent>81</Parent>
@@ -1905,8 +2378,19 @@
               <BackgroundColor>252, 250, 240</BackgroundColor>
               <Parent>0</Parent>
             </CustomProperties>
+<<<<<<< .mine
+            <PortAnchors>
+              <Port>
+                <Location>
+                  <X>153.45 px</X>
+                  <Y>46.15 px</Y>
+                </Location>
+                <Anchors>Top Bottom</Anchors>
+                <Align>Right</Align>
+=======
             <Children>
               <Model xsi:type="DDContainerModel">
+>>>>>>> .r112
                 <CustomProperties>
                   <OID>96</OID>
                   <BackgroundColor>252, 250, 240</BackgroundColor>
@@ -2040,8 +2524,13 @@
                   </Model>
                 </Children>
                 <Location>
+<<<<<<< .mine
+                  <X>-0.0999999999999659 px</X>
+                  <Y>97.15 px</Y>
+=======
                   <X>70.0000000000001 px</X>
                   <Y>350 px</Y>
+>>>>>>> .r112
                 </Location>
                 <Size>
                   <Width>790 px</Width>
@@ -2092,8 +2581,13 @@
                   </Model>
                 </Children>
                 <Location>
+<<<<<<< .mine
+                  <X>-30 px</X>
+                  <Y>-2.44140625227374E-05 px</Y>
+=======
                   <X>30 px</X>
                   <Y>20 px</Y>
+>>>>>>> .r112
                 </Location>
                 <Size>
                   <Width>280 px</Width>
@@ -2193,8 +2687,13 @@
               </Model>
             </Children>
             <Location>
+<<<<<<< .mine
+              <X>250 px</X>
+              <Y>-130 px</Y>
+=======
               <X>-560 px</X>
               <Y>250 px</Y>
+>>>>>>> .r112
             </Location>
             <Size>
               <Width>940 px</Width>
@@ -2245,8 +2744,13 @@
               </Model>
             </Children>
             <Location>
+<<<<<<< .mine
+              <X>1200 px</X>
+              <Y>140 px</Y>
+=======
               <X>440 px</X>
               <Y>240 px</Y>
+>>>>>>> .r112
             </Location>
             <Size>
               <Width>290 px</Width>
@@ -2265,13 +2769,124 @@
               </ScrollPosition>
             </ScrollState>
           </Model>
+          <Model xsi:type="TableModel">
+            <CustomProperties>
+              <OID>85</OID>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <Location>
+              <X>810 px</X>
+              <Y>500 px</Y>
+            </Location>
+            <Size>
+              <Width>207 px</Width>
+              <Height>163 px</Height>
+            </Size>
+            <DbOid>
+              <Path>quki.site_users_addons</Path>
+              <TypeName>Table</TypeName>
+            </DbOid>
+            <Compartments>
+              <ConstraintsCollapsed>True</ConstraintsCollapsed>
+              <IndexesCollapsed>False</IndexesCollapsed>
+              <TriggersCollapsed>True</TriggersCollapsed>
+            </Compartments>
+          </Model>
+          <Model xsi:type="VirtualRelationLinkModel">
+            <CustomProperties>
+              <OID>86</OID>
+              <Comment>87</Comment>
+              <OutModel>85</OutModel>
+              <InModel>7</InModel>
+              <OutPort>88</OutPort>
+              <InPort>89</InPort>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
+              <Port>
+                <Location>
+                  <X>0 px</X>
+                  <Y>80.9340277777778 px</Y>
+                </Location>
+                <Anchors>Top Bottom</Anchors>
+                <Align>Left</Align>
+                <CustomProperties>
+                  <OID>88</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+              <Port>
+                <Location>
+                  <X>227 px</X>
+                  <Y>300.5 px</Y>
+                </Location>
+                <Anchors>Top Bottom</Anchors>
+                <Align>Right</Align>
+                <CustomProperties>
+                  <OID>89</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+            </PortAnchors>
+            <BendPoints>
+              <PointD>
+                <X>775 px</X>
+                <Y>580.934027777778 px</Y>
+              </PointD>
+              <PointD>
+                <X>775 px</X>
+                <Y>587.5 px</Y>
+              </PointD>
+            </BendPoints>
+            <IsManuallyRouted>false</IsManuallyRouted>
+            <DbOid>
+              <Path>quki.site_users_addons.site_users_addons_vr1</Path>
+              <TypeName>VirtualRelation</TypeName>
+            </DbOid>
+          </Model>
+          <Model xsi:type="RelationCommentModel">
+            <CustomProperties>
+              <OID>87</OID>
+              <HolderModel>86</HolderModel>
+              <Port>90</Port>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
+              <Port xsi:type="LinkPort">
+                <Location>
+                  <X>85 px</X>
+                  <Y>-6.56597222222217 px</Y>
+                </Location>
+                <Anchors>None</Anchors>
+                <Align>Left</Align>
+                <CustomProperties>
+                  <OID>90</OID>
+                  <PortType>FixedAnchor</PortType>
+                </CustomProperties>
+                <LinkPortAnchor>OutPoint</LinkPortAnchor>
+              </Port>
+            </PortAnchors>
+            <CommentOffset>
+              <X>-18.5850524902344 px</X>
+              <Y>23.0659722222222 px</Y>
+            </CommentOffset>
+          </Model>
         </Children>
         <ViewPort>
           <ScaleMode>Free</ScaleMode>
+<<<<<<< .mine
+          <Scale>1.08</Scale>
+=======
           <Scale>0.53</Scale>
+>>>>>>> .r112
           <Location>
+<<<<<<< .mine
+            <X>609.259235049472 px</X>
+            <Y>318.51850586173 px</Y>
+=======
             <X>-692.452867568369 px</X>
             <Y>-201.886803350996 px</Y>
+>>>>>>> .r112
           </Location>
         </ViewPort>
       </Model>

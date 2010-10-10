@@ -4,12 +4,15 @@
 <Options Version="3.0">
   <Documents>
 <<<<<<< .mine
+=======
+<<<<<<< .mine
     <Document Moniker="D:\APACHE_DENWER\home\new.com\www\sql\QUKI\Диаграмма1.dbd" ActiveView="Design" Factory="{4254e854-fa1a-4afd-b0c2-e7eda3aac495}" Active="True" />
     <Document Moniker="Table:QUKI.SITE_USERS(QUKI.localhost)" ActiveView="Design" Factory="{3586cc08-aeb7-47f4-a38f-1700741266f6}">
 =======
     <Document Moniker="C:\SERVER\home\new.com\www\sql\QUKI\PostDeployment.sql" ActiveView="Code" Factory="{3586cc08-aeb7-47f4-a38f-1700741266f6}" />
     <Document Moniker="C:\SERVER\home\new.com\www\sql\QUKI\Таблицы\COUNTRY.Table.sql" ActiveView="Code" Factory="{3586cc08-aeb7-47f4-a38f-1700741266f6}" />
     <Document Moniker="C:\SERVER\home\new.com\www\sql\QUKI\Диаграмма1.dbd" ActiveView="Design" Factory="{4254e854-fa1a-4afd-b0c2-e7eda3aac495}" />
+>>>>>>> .r112
     <Document Moniker="Table:QUKI.USERS_FRIENDS_IN_GROUPS(localhost)" ActiveView="Data" Factory="{3586cc08-aeb7-47f4-a38f-1700741266f6}">
 >>>>>>> .r108
       <Persist>
@@ -54,7 +57,7 @@
         <Pinned>True</Pinned>
       </Persist>
     </Document>
-    <Document Moniker="Table:QUKI.USERS_FRIENDSHIP(localhost)" ActiveView="Design" Factory="{3586cc08-aeb7-47f4-a38f-1700741266f6}">
+    <Document Moniker="Table:QUKI.USERS_FRIENDSHIP(localhost)" ActiveView="Data" Factory="{3586cc08-aeb7-47f4-a38f-1700741266f6}" Active="True">
       <Persist>
         <Pinned>True</Pinned>
       </Persist>
@@ -69,12 +72,13 @@
         <Pinned>True</Pinned>
       </Persist>
     </Document>
+<<<<<<< .mine
+    <Document Moniker="C:\SERVER\home\new1.com\www\sql\QUKI\Диаграмма1.dbd" ActiveView="Design" Factory="{4254e854-fa1a-4afd-b0c2-e7eda3aac495}" />
+=======
 >>>>>>> .r108
+>>>>>>> .r112
   </Documents>
   <Services>
-    <Service GUID="{811fba21-97c2-44b6-8c1c-eae1f1315f2d}">
-      <Persist />
-    </Service>
     <Service GUID="{c7b76517-6978-4a0b-8d38-57b7f7223edb}">
       <Persist />
     </Service>
@@ -84,6 +88,9 @@
           <Active>По умолчанию</Active>
         </Configurations>
       </Persist>
+    </Service>
+    <Service GUID="{811fba21-97c2-44b6-8c1c-eae1f1315f2d}">
+      <Persist />
     </Service>
   </Services>
 </Options>
