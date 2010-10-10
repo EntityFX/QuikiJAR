@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2010-09-28 22:23:21
+<?php /* Smarty version 2.6.26, created on 2010-10-10 22:45:27
          compiled from friends.all.tpl */ ?>
 <a href="/friends/groups/">Группы</a>  
 <?php if ($this->_tpl_vars['FRIENDS'] != NULL): ?>
@@ -7,7 +7,7 @@
     <?php $_from = $this->_tpl_vars['FRIENDS']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['rec']):
 ?>         <li><a href="/user/view/<?php echo $this->_tpl_vars['rec']->id; ?>
-"><strong><?php echo $this->_tpl_vars['rec']->name; ?>
+/"><strong><?php echo $this->_tpl_vars['rec']->name; ?>
  <?php echo $this->_tpl_vars['rec']->secondName; ?>
 </strong></a> <a href="delete/<?php echo $this->_tpl_vars['rec']->id; ?>
 /"><span style="color: red;">X</a></span></li>
@@ -23,7 +23,7 @@
     <?php $_from = $this->_tpl_vars['randomFRIENDS']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['rec']):
 ?>         <li><a href="/user/view/<?php echo $this->_tpl_vars['rec']->id; ?>
-"><strong><?php echo $this->_tpl_vars['rec']->name; ?>
+/"><strong><?php echo $this->_tpl_vars['rec']->name; ?>
  <?php echo $this->_tpl_vars['rec']->secondName; ?>
 </strong></a> <a href="delete/<?php echo $this->_tpl_vars['rec']->id; ?>
 /"><span style="color: red;">X</a></span></li>

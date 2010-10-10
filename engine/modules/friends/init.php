@@ -12,7 +12,7 @@
     * @filesource engine/kernel/SmartyExst.php 
     */
     require_once SOURCE_PATH."engine/kernel/SmartyExst.php";    
-    $friends=new Friends();
+    $friends=new Friends((int)$data["parameters"][0]);
     $groups=new GroupsCreator();
     $smarty=new SmartyExst();  
     switch ($data["parameters"][0])

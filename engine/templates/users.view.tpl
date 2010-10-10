@@ -1,4 +1,3 @@
-Уровень доступа:{$accLevel}<br/>
 {if $user->isOnline eq true}
 <span style="background-color: #fcc; color: #fff; font-weight: bold;">На сайте</span>
 {else}
@@ -11,7 +10,7 @@
 <span style="color: blue">Пол:</span> {if $user->gender==0}Мужской{else}Женский{/if}<br/>
 mail: <strong>{$user->mail}</strong><br/>
 Registration IP: <strong>{$user->ip}</strong><br/>
-<a href="/friends">Мои дружбаны</a><br/>
+<a href="/friends/{$user->id}/">Мои дружбаны</a><br/>
 <a href="/galary/{$user->id}/">Галерея</a><br/> 
 {if $info neq NULL}
 Мои предпочтения: 
@@ -28,4 +27,5 @@ Registration IP: <strong>{$user->ip}</strong><br/>
 {else}
 У вас нет предпочтений. <a href="" >Рекомендуем добавить</a>.<br/>
 {/if}
+<a href="{$links.settings}">Настройки</a><br/> 
 <a href="{$links.signOutPath}">Выход</a>

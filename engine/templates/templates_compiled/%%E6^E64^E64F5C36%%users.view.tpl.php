@@ -1,7 +1,5 @@
-<?php /* Smarty version 2.6.26, created on 2010-10-10 17:03:17
+<?php /* Smarty version 2.6.26, created on 2010-10-11 00:49:27
          compiled from users.view.tpl */ ?>
-Уровень доступа:<?php echo $this->_tpl_vars['accLevel']; ?>
-<br/>
 <?php if ($this->_tpl_vars['user']->isOnline == true): ?>
 <span style="background-color: #fcc; color: #fff; font-weight: bold;">На сайте</span>
 <?php else: ?>
@@ -23,7 +21,8 @@ mail: <strong><?php echo $this->_tpl_vars['user']->mail; ?>
 </strong><br/>
 Registration IP: <strong><?php echo $this->_tpl_vars['user']->ip; ?>
 </strong><br/>
-<a href="/friends">Мои дружбаны</a><br/>
+<a href="/friends/<?php echo $this->_tpl_vars['user']->id; ?>
+/">Мои дружбаны</a><br/>
 <a href="/galary/<?php echo $this->_tpl_vars['user']->id; ?>
 /">Галерея</a><br/> 
 <?php if ($this->_tpl_vars['info'] != NULL): ?>
@@ -44,5 +43,7 @@ Registration IP: <strong><?php echo $this->_tpl_vars['user']->ip; ?>
 <?php else: ?>
 У вас нет предпочтений. <a href="" >Рекомендуем добавить</a>.<br/>
 <?php endif; ?>
+<a href="<?php echo $this->_tpl_vars['links']['settings']; ?>
+">Настройки</a><br/> 
 <a href="<?php echo $this->_tpl_vars['links']['signOutPath']; ?>
 ">Выход</a>

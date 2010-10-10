@@ -73,14 +73,14 @@
             }
             $array=$sql->fetchArr();
             $this->_moduleID=$array["moduleId"];
-            $fullPath=ModuleLoader::MODULE_PATH.$array["path"]."/init.php";
+            $fullPath=ModuleLoader::MODULE_PATH.$array["path"]."/init.php";           
             if (file_exists($fullPath))
             {
                 require_once($fullPath);
             }
             else
             {
-                throw new Exception("ENGINE: INIT FILE FOR $array[path] MODULE IS NOT EXSIST");
+                throw new Exception("ENGINE: INIT FILE FOR $fullPath MODULE IS NOT EXSIST");
             }
             $this->_output=$output;
             return $output;

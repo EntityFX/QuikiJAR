@@ -77,7 +77,7 @@
             $this->url=substr($_SERVER['REQUEST_URI'],1);
             $this->_urlArray[]="/";
             $this->_urlArray=array_merge($this->_urlArray,explode("/",$this->url));
-            if (end($this->_urlArray)=="" || strpos(end($this->_urlArray),"?")===0)
+            if (end($this->_urlArray)=="" || strstr(end($this->_urlArray),"?")!==false)
             {
                 array_pop($this->_urlArray);
             }

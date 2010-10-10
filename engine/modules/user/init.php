@@ -24,7 +24,8 @@
         "signOutPath" => "/".$data["urlArray"][1]."/logout/",
         "enter" => "/".$data["urlArray"][1]."/enter/",
         "register" => "/".$data["urlArray"][1]."/register/",
-        "create" => "/".$data["urlArray"][1]."/create/"
+        "create" => "/".$data["urlArray"][1]."/create/",
+        "settings" => "/".$data["urlArray"][1]."/settings/"
     );
     $smarty->assign("links",$links);
     $usersSignInOut=new UserSignInOut();
@@ -75,12 +76,10 @@
             catch (UserException $ex)
             {
                 header("Location: /user/");
-            }
-            //$perm=new AccessLevelController($currentUser);           
+            }       
             $smarty->assign("info",$currentUser->getInfo());
             $smarty->assign("user",$currentUser);
             $smarty->assign("photo",$currentUser->getPhoto());
-            //$smarty->assign("accLevel",$perm->getLevel());
             $output["title"]=$currentUser->name." ".$currentUser->secondName;
             $output["text"]=$smarty->fetch("users.view.tpl");
             break;
@@ -108,7 +107,28 @@
                 $_SESSION["error"]=$usrException->getMessage();
                 header("Location: /user/register/");  
             }
-            break;    
+            break;
+        case "settings":
+            $perm=new AccessLevelController(new User());
+            if (isset($data["parameters"][1]))
+            {
+                switch ($data["parameters"][1])
+                {
+                    case "save":
+                        $perm->setLevel($_POST["level"]);
+                        break;
+                    case "passchange":
+                        $ps=new UserRegister();
+                        $ps->changePassword($_POST["oldpass"],$_POST["newpass"]);
+                        break;                      
+                }
+                header("Location: $links[settings]");
+            } 
+            $levelStrings=array("Всем","Только зарегистрированным","Друзьям и для знакомств","Друзьям","Никто");
+            $smarty->assign("levelstr",$levelStrings);    
+            $smarty->assign("accLevel",$perm->getLevel());
+            $output["text"]=$smarty->fetch("users.settings.tpl");
+            break;
         default:
             if ($usersSignInOut->isEntered())
             {

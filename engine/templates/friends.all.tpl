@@ -3,7 +3,7 @@
     Мои дружбаны:
     <ul>        
     {foreach from=$FRIENDS item=rec} {* Выводит подразделы*}
-        <li><a href="/user/view/{$rec->id}"><strong>{$rec->name} {$rec->secondName}</strong></a> <a href="delete/{$rec->id}/"><span style="color: red;">X</a></span></li>
+        <li><a href="/user/view/{$rec->id}/"><strong>{$rec->name} {$rec->secondName}</strong></a> <a href="delete/{$rec->id}/"><span style="color: red;">X</a></span></li>
     {/foreach}  
     </ul>
 {else}
@@ -14,7 +14,7 @@
     Случайные трое дружбана:
     <ul>        
     {foreach from=$randomFRIENDS item=rec} {* Выводит подразделы*}
-        <li><a href="/user/view/{$rec->id}"><strong>{$rec->name} {$rec->secondName}</strong></a> <a href="delete/{$rec->id}/"><span style="color: red;">X</a></span></li>
+        <li><a href="/user/view/{$rec->id}/"><strong>{$rec->name} {$rec->secondName}</strong></a> <a href="delete/{$rec->id}/"><span style="color: red;">X</a></span></li>
     {/foreach}  
     </ul>
 {/if} 

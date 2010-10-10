@@ -165,7 +165,14 @@
             }
             else
             {
-                $this->setDate($this->getDataFromDb($id));
+                try
+                {
+                    $this->setDate($this->getDataFromDb($id));
+                }
+                catch (Exception $ex)
+                {
+                    throw new UserException($id,UserException::USR_NOT_EXSIST);
+                }
             }
         }
         

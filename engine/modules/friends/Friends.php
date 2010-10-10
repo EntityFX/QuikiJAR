@@ -32,11 +32,18 @@
         * Конструктор. Получает данные текущего пользователя, создаёт объект для доступа к бд
         * 
         */
-        public function __construct()
+        public function __construct($id=NULL)
         {
             parent::__construct();
-            $user=new User();
-            $this->_curentId=$user->id;
+            if ($id==NULL)
+            {
+                $user=new User();
+                $this->_curentId=$user->id;     
+            }
+            else
+            {
+                $this->_curentId=$id;
+            }
         }
         
         /**

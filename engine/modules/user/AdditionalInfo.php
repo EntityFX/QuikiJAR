@@ -21,7 +21,7 @@
         public function __construct($id)
         {
             parent::__construct();
-            $this->_userId=$id;    
+            $this->_userId=$id;
         }
         
         public function add($attribute,$text)
