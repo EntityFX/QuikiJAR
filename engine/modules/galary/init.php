@@ -19,13 +19,10 @@
 	$showComments4OneGalary_get = $_GET["g"];
 	$listNum = $_GET["l"]; 
 	
-	/*$galOne = new Galary();
-	var_dump($galOne->addPhoto($user, $altname, $path));*/
-	
     try 
     {
-    	$user=new User();
-    	$visitor=$user->id;
+    	$userSession=new User();
+    	$visitor=$userSession->id;
     } 
     catch (Exception $e) 
     {
@@ -45,7 +42,8 @@
         switch (count($params)) 
         {
         	case 0:
-        		//header("Location: /");;
+        		header("Location: /galary/$visitor/");
+        		//$userName = $visitor;
         		break;
         	case 1:
         		$temp = $galOne->showGalariesList($user, $visitor, $listNum);
@@ -54,33 +52,35 @@
         	case 2:
         		switch ($altname) 
         		{
-        			case "add":
+        			case "add":        // quki.ru/galary/13/add
         		    	if ($visitor==$user)
         		    	{
 							if (count($_POST)!=0) 
 		        			{       				
 		        				$newGalaryName = $_POST["galary_name"];
 		        				$comment = $_POST["galary_comment"];
-		        				if ($galOne->addNewGalary($user, $newGalaryName, $comment))
+		        				$id = $galOne->addNewGalary($user, $newGalaryName, $comment);
+		        				if ($id != 0)
 		        				{
-		        					$output=addPhotoForm($link);
+		        					$output=addPhotoForm($link,$id);
 		        				}
 		        			}
-		        			
+		        			/*
 		        			if (count($_FILES)!=0)   
 		        			{
+		        				$altname = $_POST["id"];
 		        				$fss = new FS();
 		        				$userID = $user;
 		        				$uploadDir = "/photos/$userID/galary";
 		        				$filePropArr = $_FILES;
-		        				var_dump($uFile = $fss->upload2($uploadDir, $filePropArr));
-		        				$galOne->addPhoto($userID, $altname, $path);
-		        			} 
+		        				$uFile = $fss->upload2($uploadDir, $filePropArr);
+		        				$galOne->addPhoto($userID, $altname, $uploadDir."/".$uFile["lastName"]);
+		        			} */
 		        			
 		        			if (count($_POST)==0 && count($_FILES)==0) 
 		        			{
-									$temp = makeAddForm($link);
-		        					$output=$temp;
+								$temp = makeAddForm($link);
+	        					$output=$temp;
 		        			}    		    		
         		    	}
         		    	else 
@@ -91,7 +91,7 @@
 
         				break;
         			
-        			case "del":
+        			case "del": // quki.ru/galary/13/del
         				if ($visitor==$user)
         		    	{
         		    		if (count($_GET)!=0) 
@@ -111,11 +111,11 @@
         		    		header("Location: $urlStr");
         		    	}
         				break;
-        			case "comments":
+        			case "comments":  // quki.ru/galary/13/comments
         				$output=showAllComments("galary", $visitor, $user, $showAllComments_get);
         				break;
         				
-        			case "edit": //раздел для редактирования альбома.
+        			case "edit": //раздел для редактирования альбома.   quki.ru/galary/13/edit
         				$output="";
         				break;
         				
@@ -126,8 +126,8 @@
         		}
         		
         		break;
-        	case 3:
-        		if ($elementID!="comments") 
+        	case 3:  // quki.ru/galary/13/1/comments
+        		if ($elementID!="comments" && $elementID!="edit") 
         		{
 	        		$temp = $galOne->showPhoto($user, $visitor, $altname, $elementID);
 	        		$output = makeElement($temp, $urlArr, $user,$visitor,$makeElement_get,$link);
@@ -148,7 +148,17 @@
 				{
 					$output = showComments4OneGalary("galary", $visitor, $user, $showComments4OneGalary_get, $altname);
 				}
+        		if($elementID=="edit")
+				{
+					header("Location: /$link"."1");
+				}
+        		break;
         		
+        	case 4:
+        		if ($visitor==$user)
+        		{
+        			$output["text"] = editAlbumForm($altname, $user, $urlArr, $urlArr[5], $_POST, $_FILES);
+        		}
         		break;
         	default:
         		header("Location: /");
@@ -197,18 +207,20 @@
 				}
 				if ($visitor==$user)
 				{
-					$delAlb = "<td> <a href=\"/".$link."del/?id=".$value["id"]."\"> Удалить </a> \n </td>";
+					//$delAlb = "<td> <a href=\"/".$link."del/?id=".$value["id"]."\"> Удалить </a> \n </td>";
+					$editAlb = "<td> <a href=\"/".$link.$value["id"]."/edit/"."\"> Редактировать </a> \n </td>";
 				}
 				else 
 				{
-					$delAlb="";
+					//$delAlb="";
+					$editAlb = "";
 				}
 				$galComments="<td> <a href=\"/".$link.$value["id"]."/comments/\"> Комментарии </a></td>";
 				$allTxt = "<a href=\"/".$link.$value["id"]."/\"><b>".$value["name"]."</b></a><br />\n".$comment."Дата создания: ".$value["createdate"]
 				."<br />$mod";
 				$strTable = "<table border=\"1\">\n<tr>\n<td>
 				<a href=\"/".$link.$value["id"]."/\">
-				<img src=\"$cover\" width=\"80\" height=\"60\"></a></td>\n<td>$allTxt</td>\n $delAlb  $galComments </tr>\n</table>";
+				<img src=\"$cover\" width=\"80\" height=\"60\"></a></td>\n<td>$allTxt</td>\n   $galComments $editAlb</tr>\n</table>";
 				$sumStr = $sumStr.$strTable;
 			}
 		}
@@ -352,14 +364,102 @@
     	return $ret;
     }
     
-    function addPhotoForm($link)
+    function addPhotoForm($link, $id)
     {
-    	$formStr = "<form action=\"/$link\" method=post enctype=multipart/form-data>
-<input type=file name=uploadFile>
-<input type=submit value=\"Send\">
+    	$formStr = "<form action=\"/$link\" method=\"post\" enctype=\"multipart/form-data\">
+<input type=\"file\" name=\"uploadFile\">
+<input type=\"submit\" value=\"Send\">
+<input type=\"hidden\" name=\"id\" value=\"$id\">
 </form>";
     	
     	$ret["text"]=$formStr;
+    	return $ret;
+    }
+    
+    
+    function editAlbumForm($altname, $userID, $linkArr, $mode, $postArray, $filesArray)
+    {
+    	$g = new Galary();
+    	
+    	if (count($postArray)!=0 && $mode==1)
+    	{
+    		$g->updateGalaryProperties($altname, $postArray["name"], $postArray["comment"], $postArray["blackestlist"], $postArray["whitestlist"]);
+    	}
+    	if (count($filesArray)!=0 && $mode==2)
+    	{
+    		$fss = new FS();
+    		$uploadDir = "/photos/$userID/galary";
+    		$uFile = $fss->upload2($uploadDir, $filesArray);
+    		$g->addPhoto($userID, $altname, $uploadDir."/".$uFile["lastName"]);
+    	}
+    	
+    	$editGalUrl = $linkArr[0].$linkArr[1]."/".$linkArr[2]."/".$linkArr[3]."/".$linkArr[4]."/1/";
+    	$editGalAddPhoto = $linkArr[0].$linkArr[1]."/".$linkArr[2]."/".$linkArr[3]."/".$linkArr[4]."/2/";
+    	$editGalSort = $linkArr[0].$linkArr[1]."/".$linkArr[2]."/".$linkArr[3]."/".$linkArr[4]."/3/";
+    	$editGalDel = $linkArr[0].$linkArr[1]."/".$linkArr[2]."/".$linkArr[3]."/".$linkArr[4]."/4/";
+    	$albumsURL = $linkArr[0].$linkArr[1]."/".$linkArr[2]."/";
+    	
+    	$albumsLink =  "<a href=\"$albumsURL$altname/\"> Просмотр альбома</a>";
+    	$editUrlLink = "<a href=\"$editGalUrl\"> Редактировать альбом</a>";
+    	$addPhotoLink = "<a href=\"$editGalAddPhoto\"> Добавить фото</a>";
+    	$sortlLink = "<a href=\"$editGalSort\"> Редактировать фотографии</a>";
+    	$delLink = "<a href=\"$editGalDel\"> Удалить альбом</a>";
+    	
+    	$linkBlock = "<div>$albumsLink</div>
+    	<div>$editUrlLink</div>
+    	<div>$addPhotoLink</div>
+    	<div>$sortlLink</div>
+    	<div>$delLink</div>";
+    	
+    	$formAdd = "$linkBlock";
+    	$formSort = "$linkBlock";
+    	$formDel = "$linkBlock";
+    	
+    	
+    	$tempArr = $g->getGalaryPropertise($altname);
+    	$galName = $tempArr["name"];
+    	$galComm = $tempArr["comment"];
+    	$galBlacketstList = $tempArr["sequrity"] !="" ? $tempArr["sequrity"] : "";//если чо потом вставить чо-нить
+    	$galWhitestList = $tempArr["trusted"] !="" ? $tempArr["trusted"] : "";
+    	
+    	$formEdit = "$linkBlock
+    	<br>
+ <form action=\"$editGalUrl\" method=\"post\">
+название <input name=\"name\" value=\"$galName\"><br>
+комментарий <textarea cols=\"23\" rows=\"5\" name=\"comment\">$galComm</textarea><br>
+Черный список: <input name=\"blackestlist\" value=\"$galBlacketstList\"><br />
+Белый список: <input name=\"whitestlist\" value=\"$galWhitestList\"><br />
+<input value=\"Сохранить\" type=\"submit\"><br>
+</form>";
+    	
+    	$formAdd = "$linkBlock 
+    	<br>
+    	<form action=\"$editGalAddPhoto\" method=\"post\" enctype=\"multipart/form-data\"
+<input type=\"file\" name=\"uploadFile\">
+<input type=\"submit\" value=\"Send\">
+</form>";
+    	switch ($mode)
+    	{
+    		case 1:
+    			$ret = $formEdit;
+    			break;
+    		case 2:
+    			$ret = $formAdd;
+    			break;
+    		case 3:
+    			$ret = $formSort;
+    			break;
+    		case 4: 
+    			//$ret = $formDel;
+    			$ret = $g->deleteGalary($altname, $userID) ;
+    			$ret ? $ret = header("Location: $albumsURL") : $ret = "Ошибочка вышла :( <br /> <a href=\"$albumsURL\"> Назад</a>";
+    			break;
+    		default:
+    			
+    			break;
+    	}
+    	
+    	
     	return $ret;
     }
 ?>
