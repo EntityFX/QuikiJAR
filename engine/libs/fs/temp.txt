@@ -1,0 +1,54 @@
+
+<form action="/engine/libs/fs/init.php" method=post enctype=multipart/form-data>
+<input type=file name=uploadfile>
+<input type=submit value="Отправить"></form>
+
+
+
+
+//var_dump(opendir(FS::SITE_MAIN_PATH."/engine/libs/fs/2"));
+/*
+try 
+{
+	echo $path=$fss->deleteDir("/engine/libs/fs/2");
+} 
+catch (Exception $e) 
+{
+	echo $e->getMessage();
+} */
+
+//echo $path=$fss->createPath("/engine/libs/fs/2");
+
+/*
+$path=$path."/2.txt";
+var_dump($arr=$fss->fileInfo($path));
+echo "<br />";
+if (copy("/home/timur/www/quki.ru/engine/libs/fs/1/Diagramm1.png","/home/timur/www/quki.ru/engine/libs/fs/1/Diagramm2.png"))
+echo "1";
+else 
+echo "2";*/
+/*foreach ($arr as $key => $value) 
+{
+	echo $key." => ".$value."<br />\n";
+}*/
+
+
+/*
+// Каталог, в который мы будем принимать файл:
+
+$uploaddir = './1/';
+$uploadfile = $uploaddir.basename($_FILES['uploadfile']['name']);
+//die($uploadfile);
+// Копируем файл из каталога для временного хранения файлов:
+if (copy($_FILES['uploadfile']['tmp_name'], $uploadfile))
+{
+echo "<h3>Файл успешно загружен на сервер</h3>";
+}
+else { echo "<h3>Ошибка! Не удалось загрузить файл на сервер!</h3>"; exit; }
+
+// Выводим информацию о загруженном файле:
+echo "<h3>Информация о загруженном на сервер файле: </h3>";
+echo "<p><b>Оригинальное имя загруженного файла: ".$_FILES['uploadfile']['name']."</b></p>";
+echo "<p><b>Mime-тип загруженного файла: ".$_FILES['uploadfile']['type']."</b></p>";
+echo "<p><b>Размер загруженного файла в байтах: ".$_FILES['uploadfile']['size']."</b></p>";
+echo "<p><b>Временное имя файла: ".$_FILES['uploadfile']['tmp_name']."</b></p>";*/
