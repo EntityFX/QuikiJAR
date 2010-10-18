@@ -189,15 +189,22 @@
         {
             $fields="";
             $fld="";
-            for($i=0;$i<count($fields_arr);++$i)
+            if ($fields_arr!=NULL)
             {
-                $fld=$fields_arr[$i];
-                if ($i==0)
+                for($i=0;$i<count($fields_arr);++$i)
                 {
-                    $fields.="$char$fld$char";
-                } else $fields.=",$char$fld$char";   
+                    $fld=$fields_arr[$i];
+                    if ($i==0)
+                    {
+                        $fields.="$char$fld$char";
+                    } else $fields.=",$char$fld$char";   
+                }
+                return $fields;
             }
-            return $fields;            
+            else
+            {
+                return " * ";
+            }            
         } 
           
         /**

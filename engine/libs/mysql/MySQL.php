@@ -191,13 +191,12 @@
         * @param String $where Условие выборки
         * @param String [...] Имена полей. ПЕРЕГРУЖАЕМЫЙ ПАРАМЕТР ФУНКЦИИ. 
         */
-        public function selFieldsWhere($table_name,$where)
+        public function selFieldsWhere($tableName,$where)
         {
             $args = func_get_args();
             $fields_arr=array_slice($args,2);
             $fields=$this->MakeFieldString($fields_arr);            
-            $query_res=$this->queryExecute("SELECT $fields FROM `$table_name` WHERE $where");
-            $this->rows=$this->GetRows($query_res);    
+            return $this->queryExecute("SELECT $fields FROM `$tableName` WHERE $where");   
         }
         /**
         * Создать таблицу

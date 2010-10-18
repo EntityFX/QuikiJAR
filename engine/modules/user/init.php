@@ -15,8 +15,10 @@
     
     require_once SOURCE_PATH."engine/modules/accessLevelRights/AccessLevelController.php";
     
-    require_once "AdditionalInfo.php";
-        
+    require_once "engine/modules/finder/Finder.php";
+
+    $f=new Finder(time());
+
     $smarty=new SmartyExst();
     $links=array(
         "enterForm" => "/".$data["urlArray"][1]."/",
@@ -96,7 +98,6 @@
             break;
         case "create": 
             $registerUser=new UserRegister();
-            $registerUser->changePassword("11111111","biohazard");
             try
             {
                 $registerUser->checkPassword($_POST["password1"],$_POST["password2"]);

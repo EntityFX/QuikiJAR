@@ -1,13 +1,34 @@
-<?php /* Smarty version 2.6.26, created on 2010-09-28 22:23:16
+<?php /* Smarty version 2.6.26, created on 2010-10-18 21:35:34
          compiled from main.tpl */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />   
         <title><?php echo $this->_tpl_vars['TITLE']; ?>
 </title>
-        <meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
-    </head>
+        <link rel="stylesheet" href="/css/style.css" type="text/css">  
+        <link type="text/css" href="/css/qtheme/jquery-ui-1.8.5.custom.css" rel="stylesheet" />    
+        <script type="text/javascript" src="/engine/js/jquery-1.4.2.min.js"></script>
+        <script type="text/javascript" src="/engine/js/jquery-ui-1.8.5.custom.min.js"></script>
+        <script type="text/javascript" src="/engine/js/jquery.ui.datepicker-ru.js"></script>
+        <?php echo '
+        <script type="text/javascript">
+            $(function() 
+            {
+                $.datepicker.setDefaults($.datepicker.regional["ru"]);
+                $( "#datepicker" ).datepicker(
+                    { 
+                        dateFormat: \'yy-mm-dd\',
+                        changeMonth: true,
+                        changeYear: true
+                    });
+            });
+        </script>
+        '; ?>
+
+    </head>                                                   
     <body>
+    <div id="slider"></div>
         Главная менюшка: <br />
         <?php if ($this->_tpl_vars['MENU'] != NULL): ?>
             <ul>

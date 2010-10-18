@@ -30,8 +30,8 @@
         public static function getValue($key)
         {
             self::dbConnector();
-            self::$_sql->selFieldsWhere("REGISTRY","`key`='$key'","value_serealized");
-            $serealizedVal=self::$_sql->getTable();
+            $r=self::$_sql->selFieldsWhere("REGISTRY","`key`='$key'","value_serealized");
+            $serealizedVal=self::$_sql->GetRows($r);
             if ($serealizedVal==NULL)
             {
                 throw new Exception("REGISTRY:: KEY '$key' IS NOT EXSIST");
