@@ -62,7 +62,7 @@
 		        				$id = $galOne->addNewGalary($user, $newGalaryName, $comment);
 		        				if ($id != 0)
 		        				{
-		        					$output=addPhotoForm($link,$id);
+		        					header("Location: /galary/$user/$id/edit/2/");
 		        				}
 		        			}
 		        			/*
@@ -157,7 +157,7 @@
         	case 4:
         		if ($visitor==$user)
         		{
-        			$output["text"] = editAlbumForm($altname, $user, $urlArr, $urlArr[5], $_POST, $_FILES);
+        			$output["text"] = editAlbumForm($altname, $user, $urlArr, $urlArr[5], $_POST, $_FILES, $_GET);
         		}
         		break;
         	default:
@@ -377,10 +377,10 @@
     }
     
     
-    function editAlbumForm($altname, $userID, $linkArr, $mode, $postArray, $filesArray)
+    function editAlbumForm($altname, $userID, $linkArr, $mode, $postArray, $filesArray, $getsArray)
     {
     	$g = new Galary();
-    	
+    	$ret2="";
     	if (count($postArray)!=0 && $mode==1)
     	{
     		$g->updateGalaryProperties($altname, $postArray["name"], $postArray["comment"], $postArray["blackestlist"], $postArray["whitestlist"]);
@@ -391,6 +391,7 @@
     		$uploadDir = "/photos/$userID/galary";
     		$uFile = $fss->upload2($uploadDir, $filesArray);
     		$g->addPhoto($userID, $altname, $uploadDir."/".$uFile["lastName"]);
+    		$ret2 = "Фотография добавлена";
     	}
     	
     	$editGalUrl = $linkArr[0].$linkArr[1]."/".$linkArr[2]."/".$linkArr[3]."/".$linkArr[4]."/1/";
@@ -411,8 +412,8 @@
     	<div>$sortlLink</div>
     	<div>$delLink</div>";
     	
-    	$formAdd = "$linkBlock";
-    	$formSort = "$linkBlock";
+    	
+    	
     	$formDel = "$linkBlock";
     	
     	
@@ -423,21 +424,42 @@
     	$galWhitestList = $tempArr["trusted"] !="" ? $tempArr["trusted"] : "";
     	
     	$formEdit = "$linkBlock
-    	<br>
+    	<br />
  <form action=\"$editGalUrl\" method=\"post\">
-название <input name=\"name\" value=\"$galName\"><br>
-комментарий <textarea cols=\"23\" rows=\"5\" name=\"comment\">$galComm</textarea><br>
+название <input name=\"name\" value=\"$galName\"><br />
+комментарий <textarea cols=\"23\" rows=\"5\" name=\"comment\">$galComm</textarea><br />
 Черный список: <input name=\"blackestlist\" value=\"$galBlacketstList\"><br />
 Белый список: <input name=\"whitestlist\" value=\"$galWhitestList\"><br />
-<input value=\"Сохранить\" type=\"submit\"><br>
+<input value=\"Сохранить\" type=\"submit\"><br />
 </form>";
     	
     	$formAdd = "$linkBlock 
-    	<br>
+    	<br />
     	<form action=\"$editGalAddPhoto\" method=\"post\" enctype=\"multipart/form-data\"
 <input type=\"file\" name=\"uploadFile\">
 <input type=\"submit\" value=\"Send\">
 </form>";
+    	
+    	
+    	$temp1 = $g->showGalary($userID, $altname, "all", $userID);
+    	//var_dump($temp1);
+    	foreach ($temp1 as $index => $value) 
+    	{
+    		if ($index!="listCount" && $index!="listCurrent")
+    		{
+    			$small_path = $value["small_path"];
+    			$comment = $value["comment"];
+    			$photoId = $value["id"];
+    			$link2element = $linkArr[0].$linkArr[1]."/".$linkArr[2]."/$altname/$photoId/";
+    			$properties = "<input type=\"checkbox\" name = \"cover\" value=\"set\">Обложка альбома";
+    			$table = $table."<table border=\"1\"> <tr> <td><a href=\"$link2element\"> 
+    			<img src=\"$small_path\"  style=\"max-width:130px; max-height: 90px;\"> </a></td> 
+	    		<td><textarea cols=\"40\" rows=\"5\" name=\"comment\">$comment</textarea></td> 
+	    		<td> $properties </td> </tr> </table>";
+    		}
+    	}
+    	$formSort = "$linkBlock
+    	<br />$table";
     	switch ($mode)
     	{
     		case 1:
@@ -445,6 +467,7 @@
     			break;
     		case 2:
     			$ret = $formAdd;
+    			$ret2!="" ? $ret=$ret.$ret2 : $ret=$ret;
     			break;
     		case 3:
     			$ret = $formSort;

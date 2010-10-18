@@ -93,6 +93,12 @@ require_once "engine/modules/numerator/Numerator.php";
         	return $result;
         }
         
+        public function deleteCommentsByPID($module,$pid)
+        {
+        	$res = $this->_sql->query("DELETE FROM `commentor` WHERE `pid`='$pid' AND `module`='$module'");
+        	return $res;
+        }
+        
         /**
          * Получение id юзера, по id его комментария.
          * @param $id - id комментария

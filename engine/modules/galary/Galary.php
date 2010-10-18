@@ -2,6 +2,7 @@
 require_once "engine/libs/mysql/MySQLConnector.php";
 require_once "engine/modules/numerator/Numerator.php";
 require_once "engine/libs/fs/FS.php";
+require_once "engine/modules/commentor/Commentor.php";
 
 /**
  * Класс, работающий с галереями.
@@ -31,7 +32,21 @@ class Galary extends MySQLConnector
 			{
 				if ($this->checkSQRTY($visitor,$array["sequrity"],$array["trusted"]))
 				{
-					$array["cover"]=$this->getPreviewPathById($array["cover"]);
+					if ($array["auto_cover"]==0)//поставлен НЕавтоматический режим простановки обложки альбома
+					{
+						if ($array["cover"]!==NULL)//узнал сегодня о вариантах появления вселенной и ее возможной смерти.. грустно.. 15.10.2010
+						{
+							$array["cover"]=$this->getPreviewPathById($array["cover"]);
+						}
+						else //если все же ничегошеньки нет, то рандомно выбрать
+						{
+							$array["cover"]=$this->randomCover($array["id"]);
+						}
+					}
+					else 
+					{
+						$array["cover"]=$this->randomCover($array["id"]);
+					}
 					$resArr[$array["id"]]=$array;
 				}
 			}
@@ -45,6 +60,22 @@ class Galary extends MySQLConnector
 		return $resArr;
 	}
 
+	/**
+	 * Получение обложки альбома наугад
+	 * @param integer $altname - номер альбома
+	 * @return путь к файлу
+	 */
+	public function randomCover($altname)
+	{
+		$result = $this->_sql->query("SELECT count(*) FROM `galary_files` WHERE `pid`='$altname'");
+		$temp1 = $this->_sql->fetchArr($result);
+		$temp1['count(*)']!=1 ? $pos = rand(1,$temp1['count(*)']) : $pos = 1; 
+		$result2 = $this->_sql->query("SELECT * FROM `galary_files` WHERE `pos`='$pos' AND `pid`='$altname'");
+		$temp2 = $this->_sql->fetchArr($result2); 
+		$cover = $this->getPreviewPathById($temp2["id"]);
+		return $cover;
+		
+	}
 	/**
 	 * Функция получения пути к превью-файлу по номеру $id
 	 * @param integer $id номер элемента
@@ -357,8 +388,8 @@ class Galary extends MySQLConnector
 		$pos=$maxPos["MAX(`pos`)"]+1;
 		 
 		$result=$this->_sql->query("INSERT INTO `galary_list`
-        	(`id`, `user`, `name`, `type`, `comment`, `createdate`, `modified`, `sequrity`, `cover`, `sqcomment`, `pos`, `trusted`) 
-        	VALUES ('', '$user', '$newGalaryName', NULL, '$comment', NOW(), NULL, '', NULL, NULL, '$pos', '')");
+        	(`id`, `user`, `name`, `type`, `comment`, `createdate`, `modified`, `sequrity`, `cover`, `sqcomment`, `pos`, `trusted`, `auto_cover`) 
+        	VALUES ('', '$user', '$newGalaryName', NULL, '$comment', NOW(), NULL, '', NULL, NULL, '$pos', '', '1')");
 		$res = $this->_sql->query("SELECT * FROM `galary_list` WHERE `user`='$user' AND `pos`='$pos'");
 		$temp = $this->_sql->fetchArr($res);
 		$id = $temp['id'];
@@ -369,6 +400,11 @@ class Galary extends MySQLConnector
 	{
 		$result = $this->deleteElement("galary", $id, $user);
 		return $result;
+	}
+	
+	public function deletePhoto($altname, $id)
+	{
+		$result = $this->deleteElement("photo", $id, $user);
 	}
 	/**
 	 * Удаление элемента из таблицы. (удаляет отдельный файл, отдельную галерею)
@@ -381,6 +417,7 @@ class Galary extends MySQLConnector
 	private function deleteElement($elType, $id, $user)
 	{
 		$deletingFile = new FS();
+		$comm = new Commentor();
 		switch ($elType)
 		{
 			case "galary":
@@ -392,9 +429,35 @@ class Galary extends MySQLConnector
 					$deletingFile->deleteSmthg($path);
 					$deletingFile->deleteSmthg($smallPath);
 					$fID = $temp["id"];
-					$result=$this->_sql->query("DELETE FROM `galary_files` WHERE `id` = '$fID'");
+					
+					$comm->deleteCommentsByPID("galary", $fID);
+					$this->_sql->query("DELETE FROM `galary_files` WHERE `id` = '$fID'");
 				}
-				return $result=$this->_sql->query("DELETE FROM `galary_list` WHERE `id` = '$id' AND `user`='$user'"); 
+				$res = $this->_sql->query("SELECT * FROM `galary_list` WHERE `id`='$id'");
+				$temp2 = $this->_sql->fetchArr($res);
+				$pos = $temp2["pos"];
+				$result=$this->_sql->query("DELETE FROM `galary_list` WHERE `id` = '$id' AND `user`='$user'");
+				$this->_sql->query("UPDATE `galary_list` SET `pos`=`pos`-1 WHERE `user`='$user' AND `pos`>'$pos'"); 
+				return $result;
+				break;
+			case "photo":
+				$result = $this->_sql->query("SELECT * FROM `galary_files` WHERE `pid` = '$id'");
+				$temp = $this->_sql->fetchArr($result);
+				
+				$path = $temp["path"];
+				$smallPath = $temp["small_path"];
+				$fID = $temp["id"];
+				$pid = $temp["pid"];
+				
+				$deletingFile->deleteSmthg($path);
+				$deletingFile->deleteSmthg($smallPath);
+				
+				$comm->deleteCommentsByPID("galary", $fID);
+				
+				$result = $this->_sql->query("DELETE FROM `galary_files` WHERE `id` = '$fID'");
+				$this->_sql->query("UPDATE `galary_files` SET `pos`=`pos`-1 WHERE `pid`='$pid' AND pos`>'$pos'"); 
+				
+				return $result;
 				break;
 			default:
 				break;
@@ -472,6 +535,16 @@ class Galary extends MySQLConnector
 		{
 			return FALSE;
 		}
+	}
+	
+	public function setPhoto2Cover($id, $altname)
+	{
+		return $this->_sql->query("UPDATE `galary_list` SET `cover`='$id', `auto_cover`=0 WHERE `id` = '$altname'");
+	}
+	
+	public function getCoverId($altname)
+	{
+		$this->_sql->query("SELECT * FROM `galary_list` WHERE `id`='$altname'");
 	}
 }
 ?>
