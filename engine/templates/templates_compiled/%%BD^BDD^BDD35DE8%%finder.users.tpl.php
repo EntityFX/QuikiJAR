@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2010-10-18 22:25:41
+<?php /* Smarty version 2.6.26, created on 2010-10-19 17:48:33
          compiled from finder.users.tpl */ ?>
 <?php if ($this->_tpl_vars['FINDERS'] != NULL): ?>
     Всего найдено: <?php echo $this->_tpl_vars['COUNT']; ?>
@@ -27,7 +27,7 @@ if ($this->_foreach['pg']['total'] > 0):
 ?>         <div>
             <a href="/user/view/<?php echo $this->_tpl_vars['rec']['id']; ?>
 /"><?php echo $this->_tpl_vars['rec']['name']; ?>
-</a>
+</a><br />		
             <?php if ($this->_tpl_vars['rec']['online'] == true): ?>
                 <span style="background-color: #fcc; color: #fff; font-weight: bold;">На сайте</span>
             <?php else: ?>

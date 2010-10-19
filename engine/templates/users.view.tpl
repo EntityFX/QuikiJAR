@@ -8,6 +8,7 @@
 <strong>{$user->name} {$user->secondName}</strong><br/>
 <i>{$user->burthday}</i><br/>
 <span style="color: blue">Пол:</span> {if $user->gender==0}Мужской{else}Женский{/if}<br/>
+Дата рождения: {$user->burthday}<br />	
 mail: <strong>{$user->mail}</strong><br/>
 Registration IP: <strong>{$user->ip}</strong><br/>
 <a href="/friends/{$user->id}/">Мои дружбаны</a><br/>

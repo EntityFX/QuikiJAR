@@ -10,7 +10,7 @@
     <ul>        
     {foreach from=$FINDERS item=rec} {* Выводит подразделы*}
         <div>
-            <a href="/user/view/{$rec.id}/">{$rec.name}</a>
+            <a href="/user/view/{$rec.id}/">{$rec.name}</a><br />		
             {if $rec.online eq true}
                 <span style="background-color: #fcc; color: #fff; font-weight: bold;">На сайте</span>
             {else}

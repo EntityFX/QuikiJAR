@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2010-10-18 22:07:38
+<?php /* Smarty version 2.6.26, created on 2010-10-19 17:36:47
          compiled from users.view.tpl */ ?>
 <?php if ($this->_tpl_vars['user']->isOnline == true): ?>
 <span style="background-color: #fcc; color: #fff; font-weight: bold;">На сайте</span>
@@ -17,6 +17,8 @@
 <i><?php echo $this->_tpl_vars['user']->burthday; ?>
 </i><br/>
 <span style="color: blue">Пол:</span> <?php if ($this->_tpl_vars['user']->gender == 0): ?>Мужской<?php else: ?>Женский<?php endif; ?><br/>
+Дата рождения: <?php echo $this->_tpl_vars['user']->burthday; ?>
+<br />	
 mail: <strong><?php echo $this->_tpl_vars['user']->mail; ?>
 </strong><br/>
 Registration IP: <strong><?php echo $this->_tpl_vars['user']->ip; ?>

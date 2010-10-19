@@ -30,11 +30,12 @@
             $qArr=NULL;
             if ($firstName!=="")
             {
-                $qArr[]="`name` LIKE '%$firstName%'";    
+                //$qArr[]="MATCH (name) AGAINST ('$firstName')";
+				$qArr[]="`name` LIKE '$firstName%'";    
             }
             if ($secondName!=="")
             {
-                $qArr[]="`second_name` LIKE '%$secondName%'";    
+                $qArr[]="`second_name` LIKE '$secondName%'";    
             }
             
             if ($gender!=="-")
