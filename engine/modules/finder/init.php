@@ -26,7 +26,7 @@
             $finder->page=$data["parameters"][1];
             $datS=&$_SESSION["search"];
 			$t1=microtime(true);
-			MySQL::$globalDebugging=true;
+			//MySQL::$globalDebugging=true;
             $smarty->assign("FINDERS",$finder->getForView($finder->findByData($datS["name"],$datS["surname"],$datS["gender"],$datS["ageFrom"],$datS["ageTo"],(bool)$datS["isOnline"])));
             echo microtime(true)-$t1;
 			$smarty->assign("COUNT",$finder->count);
