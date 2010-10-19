@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2010-10-18 14:54:32
+<?php /* Smarty version 2.6.26, created on 2010-10-18 22:25:41
          compiled from finder.users.tpl */ ?>
 <?php if ($this->_tpl_vars['FINDERS'] != NULL): ?>
     Всего найдено: <?php echo $this->_tpl_vars['COUNT']; ?>

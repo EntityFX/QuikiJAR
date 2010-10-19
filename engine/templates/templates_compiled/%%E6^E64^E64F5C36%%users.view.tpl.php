@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2010-10-11 00:49:27
+<?php /* Smarty version 2.6.26, created on 2010-10-18 22:07:38
          compiled from users.view.tpl */ ?>
 <?php if ($this->_tpl_vars['user']->isOnline == true): ?>
 <span style="background-color: #fcc; color: #fff; font-weight: bold;">На сайте</span>

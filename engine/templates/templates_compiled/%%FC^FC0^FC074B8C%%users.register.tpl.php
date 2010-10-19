@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2010-10-18 21:25:58
+<?php /* Smarty version 2.6.26, created on 2010-10-18 22:22:08
          compiled from users.register.tpl */ ?>
 <h1>Регистрация на сайте</h1>
 <div class="reg_form">

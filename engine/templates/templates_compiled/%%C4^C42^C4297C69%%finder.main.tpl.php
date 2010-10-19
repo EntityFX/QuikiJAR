@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2010-10-18 00:43:48
+<?php /* Smarty version 2.6.26, created on 2010-10-18 22:07:44
          compiled from finder.main.tpl */ ?>
 По данным:
 <form action="<?php echo $this->_tpl_vars['links']['search']; ?>

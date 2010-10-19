@@ -19,6 +19,8 @@
                         changeMonth: true,
                         changeYear: true
                     });
+                $("input:submit").button();
+                $("input:checkbox").buttonset();
             });
         </script>
         {/literal}

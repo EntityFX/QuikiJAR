@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2010-10-18 21:35:34
+<?php /* Smarty version 2.6.26, created on 2010-10-18 22:08:56
          compiled from main.tpl */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
@@ -22,6 +22,8 @@
                         changeMonth: true,
                         changeYear: true
                     });
+                $("input:submit").button();
+                $("input:checkbox").buttonset();
             });
         </script>
         '; ?>

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2010-10-02 15:05:35
+<?php /* Smarty version 2.6.26, created on 2010-10-18 22:07:34
          compiled from users.sign_out.tpl */ ?>
 <strong>¬ход на сайт:</strong><br/>
 <form name="signIn" action="<?php echo $this->_tpl_vars['links']['enter']; ?>
