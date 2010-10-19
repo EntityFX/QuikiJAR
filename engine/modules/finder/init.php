@@ -27,7 +27,21 @@
             $datS=&$_SESSION["search"];
 			$t1=microtime(true);
 			//MySQL::$globalDebugging=true;
-            $smarty->assign("FINDERS",$finder->getForView($finder->findByData($datS["name"],$datS["surname"],$datS["gender"],$datS["ageFrom"],$datS["ageTo"],(bool)$datS["isOnline"])));
+            switch($_GET["type"])
+            {
+                case "byData":
+                    $fUsers=$finder->findByData($datS["name"],$datS["surname"],$datS["gender"],$datS["ageFrom"],$datS["ageTo"],(bool)$datS["isOnline"]);
+                    break;
+                case "byMail":
+                    $fUsers=$finder->findByMail($datS["mail"]);
+                    break;
+                case "byId":;
+                    $fUsers=$finder->findById($datS["id"]);
+                    break;                    
+                default:
+                    header("Location: $links[base]");
+            }
+            $smarty->assign("FINDERS",$finder->getForView($fUsers));
             echo microtime(true)-$t1;
 			$smarty->assign("COUNT",$finder->count);
             $smarty->assign("PAGES",$finder->getPages());

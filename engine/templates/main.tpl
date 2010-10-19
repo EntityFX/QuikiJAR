@@ -19,6 +19,7 @@
                         changeMonth: true,
                         changeYear: true
                     });
+                $("#findTabs").tabs();
                 $("input:submit").button();
                 $("input:checkbox").buttonset();
             });
