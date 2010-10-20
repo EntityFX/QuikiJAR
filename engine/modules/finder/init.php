@@ -25,12 +25,12 @@
             }   
             $finder->page=$data["parameters"][1];
             $datS=&$_SESSION["search"];
-			$t1=microtime(true);
-			//MySQL::$globalDebugging=true;
             switch($_GET["type"])
             {
                 case "byData":
                     $fUsers=$finder->findByData($datS["name"],$datS["surname"],$datS["gender"],$datS["ageFrom"],$datS["ageTo"],(bool)$datS["isOnline"]);
+                    $smarty->assign("COUNT",$finder->count);
+                    $smarty->assign("PAGES",$finder->getPages());
                     break;
                 case "byMail":
                     $fUsers=$finder->findByMail($datS["mail"]);
@@ -39,12 +39,10 @@
                     $fUsers=$finder->findById($datS["id"]);
                     break;                    
                 default:
-                    header("Location: $links[base]");
+                    $fUsers=$finder->findByData($datS["name"],$datS["surname"],$datS["gender"],$datS["ageFrom"],$datS["ageTo"],(bool)$datS["isOnline"]);
             }
+            
             $smarty->assign("FINDERS",$finder->getForView($fUsers));
-            echo microtime(true)-$t1;
-			$smarty->assign("COUNT",$finder->count);
-            $smarty->assign("PAGES",$finder->getPages());
             $output["text"]=$smarty->fetch("finder.users.tpl");
             break;
         default:
