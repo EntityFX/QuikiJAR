@@ -1,3 +1,4 @@
+<a href="{$links.signOutPath}" class="jAnc">Выход</a><br/><br/>
 {if $user->isOnline eq true}
 <span style="background-color: #fcc; color: #fff; font-weight: bold;">На сайте</span>
 {else}
@@ -28,5 +29,4 @@ Registration IP: <strong>{$user->ip}</strong><br/>
 {else}
 У вас нет предпочтений. <a href="" >Рекомендуем добавить</a>.<br/>
 {/if}
-<a href="{$links.settings}">Настройки</a><br/> 
-<a href="{$links.signOutPath}">Выход</a>
+<a href="{$links.settings}">Настройки</a>

@@ -10,6 +10,7 @@
         <script type="text/javascript" src="/engine/js/jquery.ui.datepicker-ru.js"></script>
         {literal}
         <script type="text/javascript">
+            var x=0;
             $(function() 
             {
                 $.datepicker.setDefaults($.datepicker.regional["ru"]);
@@ -20,14 +21,19 @@
                         changeYear: true
                     });
                 $("#findTabs").tabs();
-                $("input:submit").button();
-                $("input:checkbox").buttonset();
+                $("input:submit, .jAnc").button();
+                $("#b1").click(function(){
+                    $.get('/html.php',{},function(data,state){
+                        alert(data+' '+state);
+                    })
+                });
             });
         </script>
         {/literal}
     </head>                                                   
     <body>
-    <div id="slider"></div>
+        <div id="res"></div>
+        <form name="f1"><input type="button" name="b1" id="b1" value="button"></form>
         Главная менюшка: <br />
         {if $MENU != NULL}
             <ul>

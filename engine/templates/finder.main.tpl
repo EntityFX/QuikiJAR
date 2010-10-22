@@ -17,23 +17,23 @@
                 </select></dt>
                 <dd><label>Возраст: </label></dd><dt>От: <input type="text" name="ageFrom" size="2"/> До: <input type="text" name="ageTo" size="2"/></dt>
                 <dd><label>Только онлайн: </label></dd><dt><input type="checkbox" name="isOnline" /></dt>                                                             
-                <dd>&nbsp;</dd><dt><input type="submit" /></dt>
+                <dd>&nbsp;</dd><dt><input type="submit" value="Искать" /></dt>
             </dl>
         </form>
     </div>
     <div id="byMail">
         <form action="{$links.search}1/?type=byMail" method="post">
             <dl>
-                <dd><label>Имя: </label></dd><dt><input type="text" name="mail" /></dt>
-                <dd>&nbsp;</dd><dt><input type="submit" name="type" /></dt>
+                <dd><label>Mail: </label></dd><dt><input type="text" name="mail" /></dt>
+                <dd>&nbsp;</dd><dt><input type="submit" name="type" value="Искать" /></dt>
             </dl>
         </form>
     </div>
     <div id="byId">
         <form action="{$links.search}1/?type=byId" method="post">
             <dl>
-                <dd><label>Имя: </label></dd><dt><input type="text" name="id" /></dt>
-                <dd>&nbsp;</dd><dt><input type="submit" name="type" /></dt>
+                <dd><label>ID: </label></dd><dt><input type="text" name="id" /></dt>
+                <dd>&nbsp;</dd><dt><input type="submit" name="type" value="Искать" /></dt>
             </dl>
         </form>
     </div>
