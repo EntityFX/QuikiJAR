@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />   
+        <title>SITE_NAME: </title>
+        <link rel="stylesheet" href="/css/style.css" type="text/css">  
+        <link type="text/css" href="/css/qtheme/jquery-ui-1.8.5.custom.css" rel="stylesheet" />    
+        <script type="text/javascript" src="/engine/js/jquery-1.4.2.min.js"></script>
+        <script type="text/javascript" src="/engine/js/jquery-ui-1.8.5.custom.min.js"></script>
+        <script type="text/javascript" src="/engine/js/jquery.ui.datepicker-ru.js"></script>
+    <script type="text/javascript" src="/engine/js/jquery.form.js"></script>
+
+    <script type="text/javascript">
+        // ожидаем загрузки всего документа
+        $(document).ready(function() {
+            // назначаем 'myForm' обрабатываемой формой и задаем ей простецкую функцию
+            $('#myForm').ajaxForm(function() {
+                //alert("Спасибо за комментарий!");
+                var divEl = document.getElementById("added");
+                var sendName = document.meSend.name.value;
+                var sendCom = document.meSend.comment.value;
+                //divEl.innerHTML = 
+                $("#added").load("/engine/modules/crm/test.php",{name: sendName,comment:sendCom}); ;
+            });
+        });
+    </script>
+</head>
+<body>
+<form id="myForm" action="/engine/modules/crm/test.php" method="post" name="meSend">
+    Name: <input type="text" name="name" />
+    Comment: <textarea name="comment"></textarea>
+    <input type="submit" value="Submit Comment" />
+    <div id="added"></div>
+</form>
+</body>
+</html>
