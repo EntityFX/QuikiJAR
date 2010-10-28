@@ -1,5 +1,12 @@
 <?php
-    
+/**
+* Генератор людей
+*
+* @package finder
+* @author Solopiy Artem
+* @version 0.9 Beta
+* @copyright Idel Media Group: Developers Team (Solopiy Artem, Jusupziyanov Timur, Shagiakhmetov Aidar)
+*/    
     $names=array(
         "Аня",
         "Альберт",

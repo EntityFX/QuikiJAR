@@ -194,6 +194,10 @@
                 for($i=0;$i<count($fields_arr);++$i)
                 {
                     $fld=$fields_arr[$i];
+                    if (is_string($fld) && $char!="`")
+                    {
+                        $fld="'$fld'";
+                    }
                     if ($i==0)
                     {
                         $fields.="$char$fld$char";

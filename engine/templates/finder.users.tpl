@@ -2,9 +2,9 @@
     Всего найдено: {$COUNT}<br />
     {foreach name=pg from=$PAGES item=rec} {* Выводит подразделы*}
         {if $rec.current neq true }
-            <span style="background-color: #7d7; font-weight: bold; color: #fff;"><a href="{$links.search}{$rec.page}" style="color: #fff; text-decoration: none">{if $rec.from eq "*"}&#x2190;{elseif $rec.to eq "*"}&#x2192;{else}{$rec.from}...{$rec.to}{/if}</a></span>
+            <span style="background-color: #7d7; font-weight: bold; color: #fff;"><a href="{$links.search}{$rec.page}/?type=byData" style="color: #fff; text-decoration: none">{if $rec.from eq "*"}&#x2190;{elseif $rec.to eq "*"}&#x2192;{else}{$rec.from}...{$rec.to}{/if}</a></span>
         {else}
-            <span style="background-color: #8e0; font-weight: bold; color: #fff;"><a href="{$links.search}{$rec.page}" style="color: #fff; text-decoration: none">{$rec.from}...{$rec.to}</a></span>
+            <span style="background-color: #8e0; font-weight: bold; color: #fff;"><a href="{$links.search}{$rec.page}?type=byData" style="color: #fff; text-decoration: none">{$rec.from}...{$rec.to}</a></span>
         {/if}
     {/foreach} 
     <ul>        

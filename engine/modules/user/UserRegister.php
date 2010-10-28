@@ -5,6 +5,7 @@
 *   Регистрация нового пользователя
 *   Удаление пользователя
 *   Активация пользователя
+*       * Отправка на почту регистрационной формы
 *   Деактивация пользователя
 *   Проверка на существование
 * @package user
@@ -18,6 +19,8 @@
     
     require_once "engine/libs/mysql/MySQLConnector.php";
     
+    require_once "UserMailer.php";
+ 
     /**
     * Регистратор нового пользователя    
     */
@@ -55,6 +58,7 @@
                 {
                     throw new UserException($mail,UserException::USR_NAME_EMPTY);
                 }
+                $textPassword=$password;
                 $password=md5($password);
                 $date=date("Y-m-d");
                 $query="
@@ -69,6 +73,23 @@
                     `burthday`='$burthday'
                 ";
                 $this->_sql->query($query);
+                $querySelectId=$this->_sql->selFieldsWhere("SITE_USERS","`mail`='$mail'","id");
+                $arr=$this->_sql->GetRows($querySelectId);
+                $id=$arr[0]["id"];
+                $activationKey=$this->generateActivationKey(7);
+                $insertActivationRowData=array($id,$activationKey);
+                $this->_sql->insert("USERS_ACTIVATION_KEYS",$insertActivationRowData);
+                $p=new UserMailer();
+                $p->mail=$mail;
+                $embeddedImages=array("photos/no-photo.jpg","photos/no-galary.jpg");
+                $p->registerSend
+                (
+                    "<h1><strong>$name $surname</strong>, Добро пожаловать на сайт quki.ru</h1>
+                    Ваш пароль: $textPassword<br /> 
+                    Перейдите по ссылке и введите следующий код:<br /> 
+                    <span style=\"color: #a00; background-color: 777; font-weight: bold;\">$activationKey</span><br /><img src=\"cid: photos/no-photo.jpg\" />"
+                    ,$embeddedImages
+                );   
             }   
             else
             {
@@ -144,6 +165,33 @@
             }    
         }
         
+        
+        public function activateByKey($id,$key)
+        {
+            try
+            {
+                $this->_sql->debugging=true;
+                $qres=$this->_sql->selFieldsWhere("USERS_ACTIVATION_KEYS","`user_id`=$id","column1");
+                $arr=$this->_sql->GetRows($qres);
+            }
+            catch (Exception $e)
+            {
+                throw new UserException($id,UserException::USR_NOT_EXSIST);
+            }
+            $dbKey=$arr[0]["column1"];
+            if ($key=$dbKey)
+            {
+                $this->activate($id);
+                $qres=$this->_sql->delete("USERS_ACTIVATION_KEYS","`user_id`=$id");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        
+        
         /**
         * Активировать пользователя
         * 
@@ -153,7 +201,7 @@
         {
             $this->setState((int)$id);     
         }
-        
+                
         /**
         * Деактивировать пользователя
         * 
@@ -201,6 +249,29 @@
             {
                 return true;
             }
+        }
+        
+        private function generateActivationKey($size)
+        {
+            $result="";
+            for($it=1;$it<=$size;$it++)      
+            {
+                $type=mt_rand(0,2);
+                switch ($type)
+                {
+                    case 0:
+                        $symbol=mt_rand(0,9);
+                        break;
+                    case 1:
+                        $symbol=chr(mt_rand(ord("a"),ord("z")));
+                        break;
+                    case 2:
+                        $symbol=chr(mt_rand(ord("A"),ord("Z")));
+                        break;
+                }
+                $result.=$symbol;
+            }
+            return $result;
         }
         
         /**

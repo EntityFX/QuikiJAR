@@ -221,6 +221,11 @@
             return self::PHOTO_PATH.$this->mail."/".$this->photo;    
         }
         
+        /**
+        * Проверка Online/Offline
+        * 
+        * @param integer $interval Время, котором уже оффлайн (в секундах)
+        */
         public function isOnline($interval=0)
         {
             if ($interval==0)
@@ -238,6 +243,11 @@
             }
         }
        
+        /**
+        * Проверка времени последнего обновления
+        * 
+        * @param integer $value Если разность больше текущего значения, то обновляется повторно 
+        */
         private function checkLastTime($value)
         {
             if (time()-$_SESSION["user"]["lastUpdateTime"]>=$value)
@@ -246,6 +256,10 @@
             }
         }
        
+        /**
+        * Получить время последнего обновления. Из БД
+        * 
+        */
         private function getLastUpdate()
         {
             $this->_sql->query("SELECT `update_time` FROM `SITE_USERS` WHERE `id`=$this->id");
@@ -253,23 +267,43 @@
             return $array[0]["update_time"];
         }
         
+        /**
+        * Изменить время последнего обновления
+        * 
+        * @param integer $time Время в секундах
+        * @return integer
+        */
         public function setLastUpdate($time)
         {
             $this->_sql->query("UPDATE `SITE_USERS` SET `update_time`=$time WHERE `id`=$this->id");
             return $time;
         }
         
+        /**
+        * Получить дополнительные данные о пользователе
+        * 
+        * @return Array[UserAdditionalInfo]
+        */
         public function getInfo()
         {
             $info=new AdditionalInfo($this->id);
             return $info->getAll();
         }
         
+        /**
+        * Установить время оффлайн
+        * 
+        * @param integer $value Время в секундах
+        */
         public static function setOffLineTime($value)
         {
             self::$offLineTime=$value<self::$updateInterval ? self::$updateInterval : $value;
         }
         
+        /**
+        * Получить время в оффлайн
+        * 
+        */
         public static function getOffLineTime()
         {
             return self::$offLineTime;

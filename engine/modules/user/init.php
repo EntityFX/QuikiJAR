@@ -16,9 +16,10 @@
     require_once SOURCE_PATH."engine/modules/accessLevelRights/AccessLevelController.php";
     
     require_once "engine/modules/finder/Finder.php";
-
-    $f=new Finder(time());
-
+    
+    $r=new UserRegister();
+    $r->activateByKey(437709,0);
+    
     $smarty=new SmartyExst();
     $links=array(
         "enterForm" => "/".$data["urlArray"][1]."/",

@@ -1,29 +1,79 @@
 <?php
 /**
 * Поиск людей на сайте. По многим параметрам
+*
+* @package finder
+* @author Solopiy Artem
+* @version 0.9 Beta
+* @copyright Idel Media Group: Developers Team (Solopiy Artem, Jusupziyanov Timur, Shagiakhmetov Aidar)
 */
     
     require_once "engine/modules/friends/Friends.php";
     
+    
+    /**
+    * Поиск пользователей сайта с постраничным выводом
+    * 
+    */
     class Finder extends MySQLConnector
     {  
+        /**
+        * Текущее время
+        * 
+        * @var integer
+        */
         private $_time;
         
+        /**
+        * Страница, которую выводит
+        * 
+        * @var integer
+        */
         public $page=1;
         
+        /**
+        * Размер выводимой страницы
+        * 
+        * @var integer
+        */
         public $size=30;
         
+        /**
+        * Сколько страниц в списке отображается
+        * 
+        * @var mixed
+        */
         public $view=7;
         
         public $count=0;
         
         
+        /**
+        * Конструктор. Получает текущее время
+        * 
+        * @param integer $time Текущее время в секундах
+        * @return Finder
+        */
         public function __construct($time)
         {
             parent::__construct();
             $this->_time=$time; 
         }
         
+        /**
+        * Выполнить поиск по данным
+        * 
+        * @param string $firstName Имя
+        * @param string $secondName Фамилия
+        * @param bool $gender Пол
+        * @param integer $ageFrom Возраст от
+        * @param integer $ageTo Возраст до
+        * @param bool $isOnline Только online
+        * @param integer $country Код страны
+        * @param integer $region Код региона
+        * @param integer $city Код города
+        * @return Array[User]
+        */
         public function findByData($firstName,$secondName,$gender="",$ageFrom=0,$ageTo=0,$isOnline=false,$country=0,$region=0,$city=0)
         {
             $query="";
@@ -74,6 +124,12 @@
             }
         }
         
+        /**
+        * Получить список пользователей по запросу
+        * 
+        * @param string $query Запрос
+        * @return Array[User]
+        */
         private function getUsers($query)
         {
             if ($this->page<1)
@@ -99,16 +155,34 @@
             return $usr;            
         }
         
+        /**
+        * Поиск по почте
+        * 
+        * @param string $mail Почта
+        * @return Array[User]
+        */
         public function findByMail($mail)
         {
             return $this->getUsers("`mail`='$mail'");
         }
         
+        /**
+        * По ID
+        * 
+        * @param integer $id
+        * @return Array[User]
+        */
         public function findById($id)
         {
             return $this->getUsers("`id`='$id'");
         }
         
+        /**
+        * Преобразует данные из объекта User в ассоциативный массив
+        * 
+        * @param User $usr
+        * @return Array
+        */
         public function getForView(&$usr)
         {
             $friender=new Friends();
@@ -127,6 +201,13 @@
             return $outer;
         }
         
+        /**
+        * Получить каталог страниц вида: <- 1..10 11..20 21..30 ->
+        * Размер задаётся предварительно в поле $size=10
+        * Размер каталога в поле $view=3
+        * 
+        * @return Array
+        */
         public function getPages()
         {
             $pages=(int)ceil($this->count/$this->size);
@@ -186,17 +267,36 @@
             return $out;
         }
         
+        /**
+        * Вычислить минимальную дату для возраста
+        * 
+        * @param integer $age Возраст в годах
+        * @return string
+        */
         private function timeFromAge($age)
         {
             return date("Y-m-d",strtotime("-$age year"));
         }
         
+        /**
+        * Вычислить максимальную дату для возраста
+        * 
+        * @param integer $age Возраст в годах
+        * @return string
+        */        
         private function timeToAge($age)
         {
             ++$age;
             return date("Y-m-d",strtotime("-$age year +1 day"));
         }
         
+        /**
+        * Сформировать диапазон в дате для запроса
+        * 
+        * @param integer $ageFrom Возвраст от
+        * @param integer $ageTo Возраст до
+        * @return string
+        */
         private function makeAgeRange($ageFrom=0,$ageTo=0)        
         {
             $field="burthday";

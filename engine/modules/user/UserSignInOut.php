@@ -107,6 +107,7 @@
         /**
         * Проверка, активен ли пользователь
         * 
+        * @return boolean
         */
         public function isEntered()
         {
@@ -131,6 +132,10 @@
             return (boolean)$qRes["state"];
         }
         
+        /**
+        * Проверка, стоит ли галка "Помнить пользователя"
+        * @return boolean   
+        */
         public function checkIfSave()
         {
             if (isset($_COOKIE["sec"]) && isset($_COOKIE["id"]))
