@@ -6,16 +6,15 @@
 * @copyright Idel Media Group: Developers Team (Solopiy Artem, Jusupziyanov Timur, Shagiahmetov Aidar) © 2010  
 */  
 //-------------------------------------------------------------------------------------------------------------
+
 /**
 * подключение модуля
 * @package MainMessage.php    
 */
 require_once "MainMessage.php";
 
-require_once "engine/modules/user/User.php";    
-
 class Message extends MainMessage
-{   
+{       
     /**
     * Сохранение сообщения  
     * @param string $Msg - Сообщение
@@ -24,10 +23,9 @@ class Message extends MainMessage
     * @param int $UserID - Автор сообщения
     * @param int $State - Прочтено (1) или нет (0)
     */
-    public function saveMes($Msg, $FromID, $DateTime, $UserID, $State)
+    public function saveMes($Msg, $FromID, $UserID, $State)
     {
-              
-        parent::saveMes($Msg, $FromID, $DateTime, $UserID, $State);     
+        parent::saveMes($Msg, $FromID, date('Y-m-d [H:i:s]'), $UserID, $State);     
     }
 
     /**
@@ -35,7 +33,7 @@ class Message extends MainMessage
     * @param int $UserID - Автор сообщения  
     */
     public function getSaves($UserID)
-    {
+    {     
        return parent::getSaves($UserID);
     }
     
@@ -95,9 +93,9 @@ class Message extends MainMessage
     * @param int $UserID - Автор сообщения
     * @param int $State - Прочтено (1) или нет (0)  
     */  
-    public function updateMes($ID, $UserID, $FromID, $Msg, $DateTime, $State)
+    public function updateMes($ID, $UserID, $FromID, $Msg, $State)
     {
-        parent::updateMes($ID, $UserID, $FromID, $Msg, $DateTime, $State);
+        parent::updateMes($ID, $UserID, $FromID, $Msg, date('Y-m-d [H:i:s]'), $State);
     }   
 }
 ?>

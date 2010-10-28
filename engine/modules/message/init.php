@@ -7,19 +7,25 @@
 */  
 
 /**
-* подключение модуля
+* подключение модуля для работы с друзьями
+* @package Friends.php    
+*/
+require_once "engine/modules/friends/Friends.php";  
+
+/**
+* подключение модуля для работы с сообщениями
 * @package Message.php    
 */
 require_once "Message.php";  
 
 /**
-* подключение модуля
+* подключение модуля для работы с пользователями
 * @package User.php    
 */
 require_once "engine/modules/user/User.php";
 
 /**
-* подключение модуля
+* подключение модуля для работы с шаблонами
 * @package SmartyExst.php    
 */
 require_once "engine/kernel/SmartyExst.php";
@@ -29,13 +35,13 @@ try
 {
     $user=new User();
     $UserID=$user->id;
+    $frnd=new Friends($UserID); 
     $flag = true;
 } 
 catch (Exception $e) 
 {
     echo " <font color=red>Пользователь не залогинился </font><br/>";  
-}
-    
+}  
 $mess = new Message();
 $smarty=new SmartyExst();
 if ($flag) 
@@ -46,8 +52,9 @@ if ($flag)
             case "DoSend" : 
             { 
                 $arr=$mess->allMes(911);
-                $smarty->assign("arr",$arr);
+                $smarty->assign("arr",$frnd->getAllFriends());
                 $output["text"]=$smarty->fetch("message/DoSend.tpl"); 
+               // var_dump();
                 break;
             }
             case "GetNew" : 
