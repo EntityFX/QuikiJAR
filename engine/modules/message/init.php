@@ -30,6 +30,11 @@ require_once "engine/modules/user/User.php";
 */
 require_once "engine/kernel/SmartyExst.php";
 
+/*
+$f=new Friends();          //если надо добавить друга быстро
+$f->addFriend(1233);  
+*/
+  /*- - -*/
 $flag = false;    
 try 
 {
@@ -51,10 +56,12 @@ if ($flag)
         {  
             case "DoSend" : 
             { 
-                $arr=$mess->allMes(911);
                 $smarty->assign("arr",$frnd->getAllFriends());
-                $output["text"]=$smarty->fetch("message/DoSend.tpl"); 
-               // var_dump();
+                $output["text"]=$smarty->fetch("message/DoSend.tpl");
+                // if (isset($_POST["sbmt"])) {$str="NULL";} 
+                //if (isset($_POST["sv"])) {$state=0;} 
+                $mess->saveMes($_POST["mes"],222,$UserID,1);
+                // var_dump();
                 break;
             }
             case "GetNew" : 
@@ -83,8 +90,8 @@ if ($flag)
                 $arr=$mess->getSends(332);  
                 $smarty->assign("arr",$arr);
                 $output["text"]=$smarty->fetch("message/GetSends.tpl");
-                break;
-            }   
+                break; 
+            }     
         }
 }
 ?>
