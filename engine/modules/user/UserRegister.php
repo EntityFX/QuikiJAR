@@ -20,6 +20,8 @@
     require_once "engine/libs/mysql/MySQLConnector.php";
     
     require_once "UserMailer.php";
+    
+    require_once SOURCE_PATH."engine/kernel/SmartyExst.php";
  
     /**
     * Регистратор нового пользователя    
@@ -27,6 +29,13 @@
     class UserRegister extends MySQLConnector
     {
        
+        /**
+        * Путь к шаблону, который будет отправляться на почту пользователя
+        *
+        * @var string
+        */
+        public $mailTemplate;
+        
         /**
         * Зарегистрировать нового пользователя в системе
         * 
@@ -82,14 +91,14 @@
                 $p=new UserMailer();
                 $p->mail=$mail;
                 $embeddedImages=array("photos/no-photo.jpg","photos/no-galary.jpg");
-                $p->registerSend
-                (
-                    "<h1><strong>$name $surname</strong>, Добро пожаловать на сайт quki.ru</h1>
-                    Ваш пароль: $textPassword<br /> 
-                    Перейдите по ссылке и введите следующий код:<br /> 
-                    <span style=\"color: #a00; background-color: 777; font-weight: bold;\">$activationKey</span><br /><img src=\"cid: photos/no-photo.jpg\" />"
-                    ,$embeddedImages
-                );   
+                $s=new SmartyExst();
+                $s->assign("NAME","$name $surname");
+                $s->assign("PASS",$textPassword);
+                $s->assign("ID",$id);
+                $s->assign("KEY",$activationKey);
+                $sendString=$s->fetch($this->mailTemplate);
+                $p->registerSend($sendString,$embeddedImages);
+                return $id;
             }   
             else
             {
@@ -170,7 +179,6 @@
         {
             try
             {
-                $this->_sql->debugging=true;
                 $qres=$this->_sql->selFieldsWhere("USERS_ACTIVATION_KEYS","`user_id`=$id","column1");
                 $arr=$this->_sql->GetRows($qres);
             }
@@ -179,7 +187,7 @@
                 throw new UserException($id,UserException::USR_NOT_EXSIST);
             }
             $dbKey=$arr[0]["column1"];
-            if ($key=$dbKey)
+            if ($key==$dbKey)
             {
                 $this->activate($id);
                 $qres=$this->_sql->delete("USERS_ACTIVATION_KEYS","`user_id`=$id");

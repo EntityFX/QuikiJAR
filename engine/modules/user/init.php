@@ -40,6 +40,29 @@
     }
     switch ($data["parameters"][0])
     {
+        case "activate":
+            if (isset($data["parameters"][1]))
+            {
+                $smarty->assign("ID",$data["parameters"][1]);
+                $output["text"]=$smarty->fetch("users.activate.tpl");    
+            }
+            break;
+        case "doactivate":
+            $registerUser=new UserRegister();
+            try
+            {
+                if (!$registerUser->activateByKey($_POST["id"],$_POST["key"]))
+                {
+                    $_SESSION["error"]="WRONG KEY";
+                    header("Location: /user/activate/$_POST[id]/");                     
+                }
+            }
+            catch (UserException $usEx)
+            {
+                $_SESSION["error"]=$usEx->getMessage();
+                header("Location: /user/activate/$_POST[id]/");                  
+            }
+            break;
         case "enter":
             try
             {
@@ -97,19 +120,21 @@
             break;
         case "register":
             $output["text"]=$smarty->fetch("users.register.tpl");
-            break;
+            break;       
         case "create": 
             $registerUser=new UserRegister();
+            $registerUser->mailTemplate="users.mail.tpl";
             try
             {
                 $registerUser->checkPassword($_POST["password1"],$_POST["password2"]);
-                $registerUser->register($_POST["mail"],$_POST["password1"],$_POST["name"],$_POST["surname"],$_POST["burthday"],$_POST["gender"],0);
+                $id=$registerUser->register($_POST["mail"],$_POST["password1"],$_POST["name"],$_POST["surname"],$_POST["burthday"],$_POST["gender"],0);
             }
             catch (UserException $usrException)
             {
                 $_SESSION["error"]=$usrException->getMessage();
                 header("Location: /user/register/");  
             }
+            header("Location: /user/activate/$id/");
             break;
         case "settings":
             $perm=new AccessLevelController(new User());

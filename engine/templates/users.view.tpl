@@ -12,6 +12,7 @@
 Дата рождения: {$user->burthday}<br />	
 mail: <strong>{$user->mail}</strong><br/>
 Registration IP: <strong>{$user->ip}</strong><br/>
+<a href="/message/">Сообщения</a><br/>      
 <a href="/friends/{$user->id}/">Мои дружбаны</a><br/>
 <a href="/galary/{$user->id}/">Галерея</a><br/> 
 {if $info neq NULL}
