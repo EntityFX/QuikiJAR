@@ -18,7 +18,8 @@
     require_once "engine/modules/finder/Finder.php";
     
     $r=new UserRegister();
-    $r->activateByKey(437709,0);
+    
+    //var_dump($data["urlArray"]);
     
     $smarty=new SmartyExst();
     $links=array(
