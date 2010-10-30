@@ -41,9 +41,9 @@ class Message extends MainMessage
     * Получение отправленных    
     * @param int $FromID - От кого пришло    
     */  
-    public function getSends($FromID)
+    public function getSends($UserID)
     {
-        return parent::getSends($FromID);
+        return parent::getSends($UserID);
     } 
     
     /**

@@ -60,34 +60,42 @@ if ($flag)
                 $output["text"]=$smarty->fetch("message/DoSend.tpl");
                 // if (isset($_POST["sbmt"])) {$str="NULL";} 
                 //if (isset($_POST["sv"])) {$state=0;} 
-                $mess->saveMes($_POST["mes"],222,$UserID,1);
-                // var_dump();
+                if (isset($_POST["sbmt"])) 
+                {
+                    $mess->saveMes($_POST["mes"],$_POST["sel"],$UserID,1);
+                    unset($_POST["sbmt"]);
+                }
+                if (isset($_POST["sv"])) 
+                {
+                    $mess->saveMes($_POST["mes"],NULL,$UserID,1);
+                    unset($_POST["sv"]);
+                }
                 break;
             }
             case "GetNew" : 
             {
-                $arr=$mess->getNew(911);
+                $arr=$mess->getNew($UserID);
                 $smarty->assign("arr",$arr); 
                 $output["text"]=$smarty->fetch("message/GetNew.tpl");
                 break;
             }
             case "GetSaves" : 
             {
-                $arr=$mess->getSaves(911);
+                $arr=$mess->getSaves($UserID);
                 $smarty->assign("arr",$arr); 
                 $output["text"]=$smarty->fetch("message/GetSaves.tpl");
                 break;
             }
             case "GetAllMy" : 
             {
-                $arr=$mess->allmes(911);
+                $arr=$mess->allmes($UserID);
                 $smarty->assign("arr",$arr);
                 $output["text"]=$smarty->fetch("message/GetAllMy.tpl");
                 break;
             }  
             case "GetSends" : 
             {
-                $arr=$mess->getSends(332);  
+                $arr=$mess->getSends($UserID);  
                 $smarty->assign("arr",$arr);
                 $output["text"]=$smarty->fetch("message/GetSends.tpl");
                 break; 

@@ -33,7 +33,7 @@ abstract class MainMessage extends MySQLConnector
     */
     protected function getSaves($UserID)
     {
-        $query=$this->_sql->query("SELECT * FROM Message WHERE UserID = '$UserID' AND FromID IS NULL");
+        $query=$this->_sql->query("SELECT * FROM Message WHERE UserID = '$UserID' AND FromID = 0");
         return $this->_sql->GetRows($query);
     }
     
@@ -41,9 +41,9 @@ abstract class MainMessage extends MySQLConnector
     * Получение отправленных    
     * @param int $FromID - От кого пришло
     */
-    protected function getSends($FromID)
+    protected function getSends($UserID)
     {
-        $query=$this->_sql->query("SELECT * FROM Message WHERE FromID = '$FromID'");
+        $query=$this->_sql->query("SELECT * FROM Message WHERE UserID = '$UserID' AND FromID <> 0");
         return $this->_sql->GetRows($query);
     } 
 
@@ -63,7 +63,8 @@ abstract class MainMessage extends MySQLConnector
     */
     protected function getNew($UserID)
     {  
-        $query=$this->_sql->query("SELECT * FROM Message WHERE UserID = '$UserID' AND FromID IS NOT NULL AND State = 0");
+        $query=$this->_sql->query("SELECT * FROM Message WHERE FromID  = '$UserID'");
+        //var_dump($this->_sql->GetRows($query));
         return $this->_sql->GetRows($query);  
     }                                                                              
     
@@ -83,7 +84,7 @@ abstract class MainMessage extends MySQLConnector
     */
     protected function allMes($UserID)
     { 
-        $query = $this->_sql->query("SELECT * FROM Message WHERE UserID = '$UserID'");
+        $query = $this->_sql->query("SELECT * FROM Message WHERE UserID = '$UserID' OR FromID  = '$UserID'");
         return $this->_sql->GetRows($query);
     } 
     
