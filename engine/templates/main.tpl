@@ -27,6 +27,9 @@
                         alert(data+' '+state);
                     })
                 });
+                $("#selCountry").change( function(){
+                    alert("ok");
+                });
             });
         </script>
         {/literal}
