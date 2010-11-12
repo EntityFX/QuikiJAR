@@ -7,6 +7,9 @@
 * @copyright Idel Media Group: Developers Team (Solopiy Artem, Jusupziyanov Timur) © 2010 
 */
     
+    require_once "MySQL.php";
+    
+    
     /**
     * Создаёт класс и соединяет с БД
     * @abstract
