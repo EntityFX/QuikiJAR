@@ -4,9 +4,32 @@ require_once 'Video.php';
 
 $se = new VideoThing();
 //phpinfo();
-$sercherArr = $se->searchOnYT("kitten");
+
+$parameters = $data["parameters"];
+switch (count($parameters)) 
+{
+	case 0: // /video  -- show my video files
+		//$output["text"]=showWithTabs($_POST);
+		break;
+	case 1: // /video/userID  -- show user's videos
+		
+		// /video/search  -- searc videos
+		
+		// /video/add -- add video, blin
+		
+		// 
+		break;
+	default:
+		;
+	break;
+}
+
+
+
+
+$sercherArr = $se->searchOnYT("php vs perl");
 $output["text"] = drawSearchVideoList($sercherArr);
-//$output["text"] = "dd";
+
 	function drawSearchVideoList($searcArr) 
 	{
 		foreach ($searcArr as $key ) 
@@ -15,8 +38,14 @@ $output["text"] = drawSearchVideoList($sercherArr);
 			{
 				$div = $div."$index => $value <br />";
 			}
+			/*$img = "<img src = \"$key[Preview]\">";
+			$title = "<b>$key[Preview]</b>";
+			$div = $div."<div style=\"float: clear; border:1px solid silver;\">
+			<div style=\"float:left; \">$img</div> 
+			<div  style=\"float:left; \"> $title </div>
+			</div>";*/
 		}
-		$div = "<div> $div </div>";
+		//$div = "<div style=\"border:1px solid silver;\"> $div </div>";
 		return $div;
 	}
 /*

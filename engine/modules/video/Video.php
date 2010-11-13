@@ -13,6 +13,7 @@ require_once 'engine/modules/video/Zend/Loader.php';
 		 * @var integer
 		 */
 		public $_filesCount;
+		const FILES_COUNT = 5;
 		
 		/**
 		 * Консртуктор. Выполняется подключение базового класса YT.
@@ -22,7 +23,7 @@ require_once 'engine/modules/video/Zend/Loader.php';
 		{
 			Zend_Loader::loadClass('Zend_Gdata_YouTube');
 			//$_yt = new Zend_Gdata_YouTube();
-			$_filesCount = 5; 	
+			//$_filesCount = 5; 	
 		}
 		
 		/**
@@ -37,7 +38,7 @@ require_once 'engine/modules/video/Zend/Loader.php';
 			$query = $yt->newVideoQuery();
 			$query->videoQuery = $serchString;
 			$query->startIndex = $startID;
-			$query->maxResults = $this->_filesCount;
+			$query->maxResults = VideoThing::FILES_COUNT;
 			$query->orderBy = 'viewCount';
 			//echo $query->queryUrl . "\n <br />";
 			$videoFeed = $yt->getVideoFeed($query);
