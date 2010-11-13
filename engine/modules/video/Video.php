@@ -1,5 +1,5 @@
 <?php 
-require_once 'engine/modules/video/Zend/Loader.php';
+require_once 'engine/libs/Zend/Loader.php';
 
 	class VideoThing
 	{
