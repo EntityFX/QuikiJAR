@@ -8,7 +8,7 @@ class Crm extends MySQLConnector
 	 */
 	public function readTable()
 	{
-		$result = $this->_sql->query("SELECT * FROM `crm_main_table` WHERE `id`>'0' ORDER BY `add_time` ASC");
+		$result = $this->_sql->query("SELECT * FROM `crm_main_table` WHERE `id`>'0' ORDER BY `todo_time` ASC");
 		while ($temp = $this->_sql->fetchArr($result))
 		{
 			$resArr[] = $temp;
@@ -66,7 +66,9 @@ class Crm extends MySQLConnector
 	{
 		$todayDateTime = date("Y-m-d 00:00:00");
 		$tomorowDateTime = date("Y-m-d 23:59:59");
-		$result = $this->_sql->query("SELECT * FROM `crm_main_table` WHERE `todo_time`>'$todayDateTime' AND `todo_time` < '$tomorowDateTime'");
+		$result = $this->_sql->query("SELECT * FROM `crm_main_table` WHERE (`todo_time`='$todayDateTime' OR `todo_time`>'$todayDateTime') 
+		AND `todo_time` < '$tomorowDateTime'
+		ORDER BY `todo_time` ASC");
 		//die("SELECT * FROM `crm_main_table` WHERE `todo_time`>'$todayDateTime' AND `todo_time` < '$tomorowDateTime'");
 		while ($arr = $this->_sql->fetchArr($result))
 		{
@@ -86,10 +88,11 @@ class Crm extends MySQLConnector
 		{
 			$todayDateTime = date("Y-m-d 00:00:00");
 			$sign = "<";
+			
 		}
 		$todayDateTime = date("Y-m-d 23:59:59");
 		$result = $this->_sql->query("SELECT * FROM `crm_main_table` WHERE `todo_time` $sign '$todayDateTime'
-		AND `id`>'0' ORDER BY `add_time` ASC");
+		AND `id`>'0' ORDER BY `todo_time` ASC");
 		//die("");
 		while ($temp = $this->_sql->fetchArr($result))
 		{
@@ -98,7 +101,25 @@ class Crm extends MySQLConnector
 		return $resArr;
 	}
 	
+	public function addTask($postParams)
+	{
+		foreach ($postParams as $index => $value) 
+		{
+			$index = htmlspecialchars($index);
+			$value = htmlspecialchars($value);
+			$temp[] =" `$index`";
+			$temp2[]=" '$value' ";
+		}
+		$names = implode(",", $temp);
+		$values = iconv("utf-8","windows-1251",implode(",", $temp2));
+		$q = "INSERT INTO `crm_main_table` ($names) VALUES ($values)";
+		return $this->_sql->query($q);
+	}
 	
+	public function deleteThing($id)
+	{
+		return $this->_sql->query("DELETE FROM `crm_main_table` WHERE `id` ='$id' LIMIT 1 ;");
+	}
 }
 
 ?>

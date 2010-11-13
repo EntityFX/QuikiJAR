@@ -139,9 +139,17 @@
         		
 	        		if (count($_GET)!=0) 
 	        		{
-	        			$urlStr = $urlArr[0].$urlArr[1]."/".$urlArr[2]."/".$urlArr[3]."/".$urlArr[4]."/";
-	        			deleteComment2($deleteComment2_get);//die("$urlStr");
-	        			header("Location: $urlStr");
+	        			if ($_GET["comm"]!="")
+	        			{
+	        				$urlStr = $urlArr[0].$urlArr[1]."/".$urlArr[2]."/".$urlArr[3]."/".$urlArr[4]."/";
+	        				deleteComment2($deleteComment2_get);//die("$urlStr");
+	        				header("Location: $urlStr");
+	        			}
+	        			if ($_GET["del"]!="")
+	        			{
+	        				$galOne->deletePhoto($altname, $elementID);
+	        				header("Location: /galary/");
+	        			}
 		        	}
         		}
         		if($elementID=="comments")
@@ -309,11 +317,17 @@
     	{
     		$comment ="";
     	}
-    	
-    	
+    	if ($user==$visitor)
+    	{
+    		$delStr = "<a href=\"".$urlStr."?del=$url[3]\"> Удалить </a>";
+    	}
+    	else 
+    	{
+    		$delStr = "";
+    	}
     	$retStr = "<div align=\"center\">$prevLink &nbsp; $nextLink </div> \n
     	<div align=\"center\">$nextImgLink </div> \n
-    	$creataDate \n $comment \n";
+    	$creataDate \n $delStr \n $comment \n";
     	
     	$commentors = showElementComments($array["current"]["id"], "galary", $commentlistNum, $user, $visitor,$link);
     	$commForm = writeCommentForm($link);

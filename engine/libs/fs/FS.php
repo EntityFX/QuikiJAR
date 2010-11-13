@@ -6,8 +6,8 @@ require_once "FileFS.php";
 	class FS
 	{
 		const SITE_MAIN_PATH = "/home/timur/www/quki.ru";
-		private $_d;
-		private $_f;
+		public $_d;
+		public $_f;
 		
 		public function __construct()
 		{
@@ -23,7 +23,7 @@ require_once "FileFS.php";
 			return $ret;
 		}
 		
-		private function modifyPath($path) 
+		public function modifyPath($path) 
 		{
 			$r = FS::SITE_MAIN_PATH; 
 			$ret = str_replace($r,"", $path);
@@ -31,7 +31,7 @@ require_once "FileFS.php";
 		}
 		
 		public function getFullPath($path)
-		{
+		{//die($path);
 			$path = self::modifyPath($path);
 			$path = FS::SITE_MAIN_PATH.$path;
 			$path = self::validateString($path);

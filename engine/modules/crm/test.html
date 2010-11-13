@@ -9,7 +9,26 @@
         <script type="text/javascript" src="/engine/js/jquery-ui-1.8.5.custom.min.js"></script>
         <script type="text/javascript" src="/engine/js/jquery.ui.datepicker-ru.js"></script>
     <script type="text/javascript" src="/engine/js/jquery.form.js"></script>
-
+        <script type="text/javascript">
+            var x=0;
+            $(function() 
+            {
+                $.datepicker.setDefaults($.datepicker.regional["ru"]);
+                $( "#datepicker" ).datepicker(
+                    { 
+                        dateFormat: 'yy-mm-dd',
+                        changeMonth: true,
+                        changeYear: true
+                    });
+                $("#findTabs").tabs();
+                $("input:submit, .jAnc").button();
+                $("#b1").click(function(){
+                    $.get('/html.php',{},function(data,state){
+                        alert(data+' '+state);
+                    })
+                });
+            });
+            </script>
     <script type="text/javascript">
         // ожидаем загрузки всего документа
         $(document).ready(function() {
@@ -23,6 +42,26 @@
                 $("#added").load("/engine/modules/crm/test.php",{name: sendName,comment:sendCom}); ;
             });
         });
+
+        function addThing(formid)
+        {
+        	$('#myForm'+formid).ajaxForm(function() 
+               	{
+	                var divEl = document.getElementById("added"+formid);
+	                var formT = document.getElementById("myForm"+formid);
+	                var sendName = formT.name.value;
+	                var sendCom = formT.comment.value;
+	                //divEl.innerHTML = 
+	                $("#added"+formid).load("/engine/modules/crm/test.php",{name: sendName,comment:sendCom}); ;       		
+               	});
+        }
+
+        function showMe()
+        {
+
+        	$('#myDivId').val("hello world");
+        	alert("he");
+        }
     </script>
 </head>
 <body>
@@ -32,5 +71,37 @@
     <input type="submit" value="Submit Comment" />
     <div id="added"></div>
 </form>
+<br />
+<hr />
+<br />
+<form id="myForm2" action="/engine/modules/crm/test.php" method="post" name="meSend2">
+    Name: <input type="text" name="name" />
+    Comment: <textarea name="comment"></textarea>
+    <input type="submit" value="Submit Comment" onClick="addThing('2')"/>
+    <div id="added2"></div>
+</form>
+
+<br />
+<hr />
+<br />    
+    <div id="added3"></div>
+<a href="#1" onclick=" $('#added3').html('hello world'); "> link </a>
+
+
+<input type="text" name="name" />
+<input type="button" value="Submit Comment" onClick=" $('#myDivId').html('hello world'); "/>
+<div id="myDivId">ddd</div>
+
+
+<ul>
+	<li> 
+		<div> 
+			<div style="float : left; margin : 3px auto; border: solid 1px black; ">first</div>
+			<div style="float : left;  margin : 3px auto; border: solid 1px black; ">second</div>
+		</div>
+	</li>
+	
+</ul>
+
 </body>
 </html>

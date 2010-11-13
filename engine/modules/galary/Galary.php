@@ -52,10 +52,10 @@ class Galary extends MySQLConnector
 			}
 			else
 			{
-				throw new Exception("Альбомы отсутствуют. :( ");
+				//throw new Exception("Альбомы отсутствуют. :( ");
 			}
 		}
-		if (count($resArr)==0) throw new Exception("Альбомы отсутствуют. :( ");
+		//if (count($resArr)==0) throw new Exception("Альбомы отсутствуют. :( ");
 		$resArr = listing($resArr,$listNum,50); //нумератор, показывать по 50 альбомов на лист
 		return $resArr;
 	}
@@ -382,7 +382,9 @@ class Galary extends MySQLConnector
 	{
 		$newGalaryName = htmlspecialchars($newGalaryName);
 		$comment = htmlspecialchars($comment);
-		 
+
+		$fss = new FS();
+		$fss->_d->createPath("/photos/$user/mini/");
 		$result=$this->_sql->query("SELECT MAX(`pos`) FROM `galary_list` WHERE `user`='$user'");
 		$maxPos=$this->_sql->fetchArr($result);
 		$pos=$maxPos["MAX(`pos`)"]+1;
@@ -489,10 +491,15 @@ class Galary extends MySQLConnector
 		$res = $this->_sql->query("SELECT MAX(`pos`) FROM `galary_files` WHERE `pid`='$altname'");
 		$temp = $this->_sql->fetchArr($res);
 		$newPos = $temp["MAX(`pos`)"]+1;
+		
+		$tmp = $this->make_small($newN, $user);
+		$fullImg = $tmp["full"];
+		$miniImg = $tmp["mini"];
+		
 		$result = $this->_sql->query("INSERT INTO `galary_files`
         	( `id` , `path` , `small_path` , `text` , `pos` , `isreadedcomments` , `createdate` , `comment` , `pid` , `type` , `productname` , `content` , `cost` )
 			VALUES (
-			'', '$newN', '$newN', NULL , '$newPos' , '', NOW( ) , NULL , '$altname', NULL , NULL , NULL , NULL)");
+			'', '$fullImg', '$miniImg', NULL , '$newPos' , '', NOW( ) , NULL , '$altname', NULL , NULL , NULL , NULL)");
 		return $result;
 	}
 
@@ -528,6 +535,7 @@ class Galary extends MySQLConnector
 		if ($altname!=0 && $newName!="")
 		{
 			$newName = htmlspecialchars($newName);
+			$newComment = htmlspecialchars($newComment);
 			return $this->_sql->query("UPDATE `galary_list` SET `name`='$newName', `comment`='$newComment',
         		`sequrity` = '$newBlackList', `trusted` = '$newTruthList' WHERE `id`='$altname'");
 		}
@@ -545,6 +553,80 @@ class Galary extends MySQLConnector
 	public function getCoverId($altname)
 	{
 		$this->_sql->query("SELECT * FROM `galary_list` WHERE `id`='$altname'");
+	}
+	
+	//public function make_small($from,$to,$qua)
+	public function make_small($from,$userId)  
+	{
+		/*
+		 * требуется сделать 2 вещи:
+		 * 1) проверить размер фотки. Если превышает разрешенные - изменить размер и пересохранить. (1024 * 1024)
+		 * 2) у каждой фотки сделать превью. Максимальные размеры 130 х 130
+		 */
+		
+		$fss = new FS();
+		$from = $fss->getFullPath($from);
+		$qualif=1024;
+		$info=getimagesize($from);
+		$fr_width=$info[0];
+		$fr_height=$info[1];
+		$temp = explode("/",$from);
+		$imgName = $temp[count($temp)-1];
+		$qua = 80;
+		
+		if ($fr_height > 768 || $fr_width > 1024)//делается уменьшение фотки
+		{
+			
+			$reducedPath = $from;
+			
+			if($fr_width >= $fr_height) 
+			{
+				$del=$fr_width/$qualif;
+				$new_height=$fr_height/$del;
+				$this->resize_copy($from,$reducedPath,$qualif,$new_height,$qua);
+			} 
+			else 
+			{
+				$del=$fr_height/$qualif;
+				$new_width=round($fr_width/$del);
+				$this->resize_copy($from,$reducedPath,$new_width,$qualif,$qua);			
+			}
+		}
+		//создается превью
+		$reducedPath = "/photos/$userId/mini/$imgName";//путь к превью-файлу
+		$reducedPath = $fss->getFullPath($reducedPath);
+		$qualif = 130;
+		if($fr_width>=$fr_height) 
+		{
+			$del=$fr_width/$qualif;
+			$new_height=$fr_height/$del;
+			$this->resize_copy($from,$reducedPath,$qualif,$new_height,$qua);
+		} 
+		else 
+		{
+			$del=$fr_height/$qualif;
+			$new_width=round($fr_width/$del);
+			$this->resize_copy($from,$reducedPath,$new_width,$qualif,$qua);			
+		}
+		$resArr["full"] = $fss->modifyPath($from);
+		$resArr["mini"] = $fss->modifyPath($reducedPath); 
+		return $resArr;
+	}
+	
+	private function resize_copy($from,$to,$w,$h,$qua) 
+	{
+		$arr=getimagesize($from);
+		$type=$arr[2];
+		switch ($type) {
+			case 1: $img=imagecreatefromgif($from); break; //GIF
+			case 2: $img=imagecreatefromjpeg($from); break; //Jpeg
+			case 3: $img=imagecreatefrompng($from); break; //PNG
+		}
+		$img_pro=imagecreatetruecolor($w,$h);
+		imagecopyresampled($img_pro,$img,0,0,0,0,$w,$h,imagesx($img),imagesy($img));
+		imagejpeg($img_pro,$to,$qua);
+		imagedestroy($img);
+		imagedestroy($img_pro);
 	}
 }
 ?>
