@@ -6,7 +6,7 @@ require_once 'engine/modules/video/Zend/Loader.php';
 		/**
 		 * Объект обращения к YouTube
 		 */
-		public $_yt;
+		//public $_yt;
 		
 		/**
 		 * Количество файлов на странице.
@@ -21,8 +21,8 @@ require_once 'engine/modules/video/Zend/Loader.php';
 		function __construct() 
 		{
 			Zend_Loader::loadClass('Zend_Gdata_YouTube');
-			$_yt = new Zend_Gdata_YouTube();
-			$_filesCount = 20; 	
+			//$_yt = new Zend_Gdata_YouTube();
+			$_filesCount = 5; 	
 		}
 		
 		/**
