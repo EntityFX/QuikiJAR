@@ -1,18 +1,14 @@
 <?php 
-require_once 'engine/libs/Zend/Loader.php';
+require_once 'engine/libs/video/Zend/Loader.php';
 
 	class VideoThing
 	{
-		/**
-		 * Объект обращения к YouTube
-		 */
-		//public $_yt;
+
 		
 		/**
 		 * Количество файлов на странице.
 		 * @var integer
 		 */
-		public $_filesCount;
 		const FILES_COUNT = 5;
 		
 		/**
@@ -22,8 +18,6 @@ require_once 'engine/libs/Zend/Loader.php';
 		function __construct() 
 		{
 			Zend_Loader::loadClass('Zend_Gdata_YouTube');
-			//$_yt = new Zend_Gdata_YouTube();
-			//$_filesCount = 5; 	
 		}
 		
 		/**
@@ -32,17 +26,15 @@ require_once 'engine/libs/Zend/Loader.php';
 		 */
 		function searchOnYT($searchString, $startID=0) 
 		{
-			//$yt = $this->_yt;
-			//Zend_Loader::loadClass('Zend_Gdata_YouTube');
 			$yt = new Zend_Gdata_YouTube();
 			$query = $yt->newVideoQuery();
-			$query->videoQuery = $serchString;
+			$query->videoQuery = $searchString;
 			$query->startIndex = $startID;
 			$query->maxResults = VideoThing::FILES_COUNT;
 			$query->orderBy = 'viewCount';
 			//echo $query->queryUrl . "\n <br />";
 			$videoFeed = $yt->getVideoFeed($query);
-			$entry = $videoFeed->getEntry();
+			//$entry = $videoFeed->getEntry();
 			
 			//$videoFeed->getIcon();
 			
@@ -53,7 +45,10 @@ require_once 'engine/libs/Zend/Loader.php';
 			
 			return $tmpArr;
 		}
-		
+		/**
+		 * Функция получения данных по объекту $videoEntry 
+		 * @param $videoEntry
+		 */
 		function printVideoEntry($videoEntry) 
 		{
 			// the videoEntry object contains many helper functions that access the underlying mediaGroup object
@@ -102,5 +97,17 @@ require_once 'engine/libs/Zend/Loader.php';
 			}*/
 		}
 		
+		/**
+		 * Функцич получения видео-файла
+		 * @param $videoId
+		 */
+		public function getVideo($videoId)
+		{
+			$yt = new Zend_Gdata_YouTube();
+			$videoEntry = $yt->getVideoEntry($videoId);
+			$resArr = $this->printVideoEntry($videoEntry);
+			//die(var_dump($resArr));
+			return $resArr;
+		}
 	}
 ?>
