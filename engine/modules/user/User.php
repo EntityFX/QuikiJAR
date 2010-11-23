@@ -21,6 +21,7 @@
 	
 	require_once "UserLocation.php";
 	
+	require_once "Zodiac.php";
 	
 	/**
 	* Пользователи сайта    
@@ -165,7 +166,7 @@
 						else
 						{
 							$userSignOut->authentication($mailSec,$pass,false,true);
-							$this->setDate($_SESSION["user"]);
+							$this->setData($_SESSION["user"]);
 							$this->isOnline=true;
 						}
 					}
@@ -176,7 +177,7 @@
 				}
 				else
 				{
-					$this->setDate($_SESSION["user"]);
+					$this->setData($_SESSION["user"]);
 					$this->isOnline=true;
 					$this->checkLastTime(self::$updateInterval);
 				}   
@@ -186,7 +187,7 @@
 				try
 				{
 					$this->other=true;
-					$this->setDate($this->getDataFromDb($id));
+					$this->setData($this->getDataFromDb($id));
 				}
 				catch (Exception $ex)
 				{
@@ -200,7 +201,7 @@
 		* 
 		* @param array $resArray
 		*/
-		private function setDate($resArray)
+		private function setData($resArray)
 		{
 			$this->name=$resArray["name"];
 			$this->secondName=$resArray["second_name"];
@@ -215,6 +216,7 @@
 			$this->country=$this->location["country"];
 			$this->region=$this->location["region"];
 			$this->city=$this->location["city"];
+			$this->zodiac=Zodiac::calculateByDate($this->burthday);
 			if ($this->other)
 			{
 				$this->lastUpdate=$resArray["update_time"];

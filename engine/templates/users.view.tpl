@@ -8,10 +8,10 @@
 <i>Был в последний раз на сайте:</i>{$lastUpdateTime|date_format:"%eго %B %Y, %H:%M"}<br/>
 <h3>ID: {$user->id}</h3>
 <strong>{$user->name} {$user->secondName}</strong><br/>
-<i>{$user->burthday}</i><br/>
 <span style="color: blue">Пол:</span> {if $user->gender==0}Мужской{else}Женский{/if}<br/>
-Мечто нахождения: {$location.country}, {$location.region}, {$location.city}<br/>
+Место нахождения: {$location.country}, {$location.region}, {$location.city}<br/>
 Дата рождения: {$user->burthday}<br />	
+Зодиак: {$user->zodiac}<br />	
 mail: <strong>{$user->mail}</strong><br/>
 Registration IP: <strong>{$user->ip}</strong><br/>
 <a href="/message/">Сообщения</a><br/>      

@@ -12,12 +12,14 @@
 	require_once SOURCE_PATH."UserRegister.php";
 	
 	require_once SOURCE_PATH."User.php";
+	
+	require_once SOURCE_PATH."UserUTCChange.php";        
 
 	require_once "AdditionalInfo.php";
 	
 	require_once SOURCE_PATH."engine/modules/accessLevelRights/AccessLevelController.php";
 	
-	require_once "engine/modules/finder/Finder.php";
+	require_once "engine/modules/finder/Finder.php";  
 	
 	$r=new UserRegister();
 	
@@ -106,7 +108,6 @@
 			{
 				header("Location: /user/");
 			}
-
 			$timeUTC=new UTCTime(true);
 			$smarty->assign("lastUpdateTime",$timeUTC->getTime($currentUser->lastUpdate));
 			$smarty->assign("location",$currentUser->location);
@@ -114,6 +115,8 @@
 			$smarty->assign("user",$currentUser);
 			$smarty->assign("photo",$currentUser->getPhoto());
 			$output["title"]=$currentUser->name." ".$currentUser->secondName;
+			$utc=new UserUTCChange();
+			echo($utc->getUTCName()."<br />");
 			$output["text"]=$smarty->fetch("users.view.tpl");
 			break;
 		case "logout":
