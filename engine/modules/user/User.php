@@ -227,7 +227,7 @@
 			$this->city=$this->location["city"];
 			$this->zodiac=Zodiac::calculateByDate($this->burthday);
 			$status=new UserStatus(1);
-			//$this->status=$status->getStatus();
+			$this->status=$status->getStatus();
 			if ($this->other)
 			{
 				$this->lastUpdate=$resArray["update_time"];

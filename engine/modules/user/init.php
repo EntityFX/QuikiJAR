@@ -119,6 +119,7 @@
 			$output["title"]=$currentUser->name." ".$currentUser->secondName;
 			$utc=new UserUTCChange();
 			echo($utc->getUTCName()."<br />");
+			$status=new UserStatus();
 			$output["text"]=$smarty->fetch("users.view.tpl");
 			break;
 		case "logout":
