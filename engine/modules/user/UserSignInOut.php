@@ -51,7 +51,7 @@
 			$bad=true;
 			if (checkMail($mail))
 			{
-				$res=$this->_sql->query("SELECT `id` , `mail` , `password` , INET_NTOA( `ip` ) AS `ip` , `register_date` , `name` , `second_name` , `gender` , `burthday` , `photo` , `country` , `region` , `city` , `street` , `utc_time` , `state` FROM `SITE_USERS` WHERE `mail`='$mail'");
+				$res=$this->_sql->query("SELECT `id` , `mail` , `password` , INET_NTOA( `ip` ) AS `ip` , `register_date` , `name` , `second_name` , `gender` , `burthday` , `photo` , `country` , `region` , `city` , `street` , `utc_time` , `state` , `status` FROM `SITE_USERS` WHERE `mail`='$mail'");
 				$userResult=$this->_sql->GetRows($res);
 				if ($userResult==NULL)    
 				{

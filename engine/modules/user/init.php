@@ -13,7 +13,9 @@
 	
 	require_once SOURCE_PATH."User.php";
 	
-	require_once SOURCE_PATH."UserUTCChange.php";        
+	require_once SOURCE_PATH."UserUTCChange.php";   
+	
+	require_once SOURCE_PATH."UserStatus.php";       
 
 	require_once "AdditionalInfo.php";
 	

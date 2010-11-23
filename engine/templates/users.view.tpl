@@ -8,6 +8,7 @@
 <i>Был в последний раз на сайте:</i>{$lastUpdateTime|date_format:"%eго %B %Y, %H:%M"}<br/>
 <h3>ID: {$user->id}</h3>
 <strong>{$user->name} {$user->secondName}</strong><br/>
+Статус: <u>{$user->status}</u><br />
 <span style="color: blue">Пол:</span> {if $user->gender==0}Мужской{else}Женский{/if}<br/>
 Место нахождения: {$location.country}, {$location.region}, {$location.city}<br/>
 Дата рождения: {$user->burthday}<br />	

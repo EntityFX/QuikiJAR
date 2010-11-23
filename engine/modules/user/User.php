@@ -21,6 +21,8 @@
 	
 	require_once "UserLocation.php";
 	
+	require_once "UserStatus.php";
+	
 	require_once "Zodiac.php";
 	
 	/**
@@ -117,6 +119,13 @@
 		* @var mixed
 		*/
 		public $lastUpdate;
+		
+		/**
+		* —татус пользовател€
+		* 
+		* @var mixed
+		*/
+		public $status;
 		
 		/**
 		* ѕромежуток, при превышении которого стоит обновить врем€ присутстви€ на сайте
@@ -217,6 +226,8 @@
 			$this->region=$this->location["region"];
 			$this->city=$this->location["city"];
 			$this->zodiac=Zodiac::calculateByDate($this->burthday);
+			$status=new UserStatus(1);
+			//$this->status=$status->getStatus();
 			if ($this->other)
 			{
 				$this->lastUpdate=$resArray["update_time"];
