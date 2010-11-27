@@ -1,9 +1,8 @@
 <?php
 //require_once 'Zend/Loader.php'; // the Zend dir must be in your include_path
 require_once 'Video.php';
-
-
-//phpinfo();
+require_once 'engine/modules/numerator/Numerator.php';
+require_once "engine/modules/user/User.php";
 
 $parameters = $data["parameters"];
 switch (count($parameters)) 
@@ -11,24 +10,43 @@ switch (count($parameters))
 	case 0: // /video  -- show my video files
 		$output["text"] = showOneVideo($_GET);
 		break;
-	case 1: // /video/userID  -- show user's videos
-
-		// /video/search  -- searc videos
-		$output["text"] = searcher($_POST);
-		// /video/add -- add video, blin
-		
-		// 
+	case 1: 
+		switch ($parameters[0]) 
+		{
+			case "add": // /video/add -- add video, blin
+				add2my($_POST);
+				break;
+			case "search": // /video/search  -- searc videos
+				$output["text"] = searcher($_POST,$_GET);
+				break;
+			default:// /video/userID  -- show user's videos
+				//header("Location: /video/");
+			break;
+		}
 		break;
 	default:
 		;
 	break;
 }
-$output["text"] = "<a href=\"/video/search/\"> Поиск видео</a> <br />".$output["text"];
 
-	function drawSearchVideoList($searcTerm) 
+	function add2my($postParams) 
+	{
+		$user=new User();
+		$uID = $user->id;
+		$se = new VideoThing();
+		$videoID = $postParams["vId"];
+		$videoTitle = htmlspecialchars($postParams["vT"]);
+		die(iconv( "windows-1251","utf-8",$se->add2myVideos($uID, $videoID, $videoTitle) ? "Добавлено":"Ошибка"));
+	}
+
+//$output["text"] = makeNumerator(14, 1, "u");
+
+	function drawSearchVideoList($searcTerm, $getParams) 
 	{
 		$se = new VideoThing();
-		$sercherArr = $se->searchOnYT(iconv( "windows-1251","utf-8",$searcTerm));//die(var_dump($sercherArr));
+		$searchFeed = $se->searchOnYT(iconv( "windows-1251","utf-8",$searcTerm));
+		$sercherArr = $se->printVideoEntry($searchFeed);		
+	
 		foreach ($sercherArr as $key ) 
 		{/*
 			foreach ($key as $index => $value) 
@@ -36,18 +54,29 @@ $output["text"] = "<a href=\"/video/search/\"> Поиск видео</a> <br />".$output["
 				$div = $div."$index => $value <br />";
 			}*/
 			$img = "<img src = \"$key[Preview]\">";
-			$title = iconv("utf-8", "windows-1251","$key[VideoTitle] \n <br /> VideoID:  $key[VideoId] \n");
+			$title = "$key[VideoTitle] \n <br /> VideoID:  $key[VideoId] \n";
 			$flashUrl = $key["FlashPlayer"];
-			$div = $div."<div style=\"border:1px solid #999999; height: auto; margin: 3px; height: 100px; width: auto;\">
+			$div = $div."<div style=\"border:1px solid #999999; height: auto; margin: 3px; height: 140px; width: auto;\">
 			<div style=\"float:left; border-right: 1px solid #999999; width: auto; \">$img</div> 
 			<div style=\"float: left; height: auto; padding: 10px ;\"> $title \n <br /> 
 			<a href=\"/video/?v=$key[VideoId]\"> просмотр</a>
 			<br />
 			$flashUrl
+			<div id=\"added$key[VideoId]\"> </div>
+			<div>
+			<form>
+			<input type=\"button\" class=\"addVideo\" value=\"Добавить к себе\"> 
+			</form>
+			</div>
 			</div>
 			</div>";
 		}
-		//$div = "<div style=\"border:1px solid silver;\"> $div </div>";
+		
+		/*$listCurrent = $getParams["l"];
+		$lists = $se->getListsCount($searchFeed);	//die($lists);	
+		$str = makeNumerator($lists, $listCurrent, "l");
+		$div = $str.$div.$str;*/
+		
 		return  $div;
 	}
 	
@@ -56,7 +85,10 @@ $output["text"] = "<a href=\"/video/search/\"> Поиск видео</a> <br />".$output["
 	{
 		$videoId = $_GET["v"];
 		$videoId!="" ? $d  = drawOneVideo($videoId) : $d = "\n <br />нет видосов <br />";
-		return $d;
+		
+		$smarty=new SmartyExst();
+		$smarty->assign("searchResults", $d);
+		return $smarty->fetch("video.tpl");
 	}
 	
 	function drawOneVideo($videoId) 
@@ -67,7 +99,7 @@ $output["text"] = "<a href=\"/video/search/\"> Поиск видео</a> <br />".$output["
 		//$url = $resArr["FlashPlayer"];
 		$title = $resArr["VideoTitle"];
 		$obj = "<object width=\"425\" height=\"344\">
-<param name=\"movie\" value=\"$url\"</param>
+<param name=\"movie\" value=\"$url\"></param>
 <param name=\"allowFullScreen\" value=\"true\"></param>
 <embed src=\"$url\"
   type=\"application/x-shockwave-flash\"
@@ -81,27 +113,32 @@ $output["text"] = "<a href=\"/video/search/\"> Поиск видео</a> <br />".$output["
 	}
 	
 	
-	function searcher($postParams) 
+	function searcher($postParams,$getParams) 
 	{
 		$searchPath = "/video/search/";
 		$searchStr = $postParams["searchStr"];
 		if ($searchStr!="") 
 		{
-			$searchForm = "<form action=\"$searchPath\" method=\"post\"> \n
+			/*$searchForm = "<form action=\"$searchPath\" method=\"post\"> \n
 			<input value=\"$searchStr\" name=\"searchStr\">
 			<input type=\"submit\" value=\"Поиск\">
-			</form>";
-			$searchResult = drawSearchVideoList($searchStr);
+			</form>";*/
+			$searchResult = drawSearchVideoList($searchStr,$getParams);
 		}
 		else 
 		{
-			$searchForm = "<form action=\"$searchPath\" method=\"post\"> \n
+			/*$searchForm = "<form action=\"$searchPath\" method=\"post\"> \n
 			<input value=\"$searchStr\" name=\"searchStr\">
 			<input type=\"submit\" value=\"Поиск\">
-			</form>";
+			</form>";*/
 			$searchResult = "";
 		}
-		return $searchForm.$searchResult;
+		$numerator = "12345";
+		$smarty=new SmartyExst();
+		$smarty->assign("searchResults", $searchResult);
+		$smarty->assign("numerator", $numerator);
+		return $smarty->fetch("video.tpl");
+		//return $searchResult;
 	}
 /*
 searchMeVideo(iconv( "utf-8","windows-1251", "sleepy kitten"));

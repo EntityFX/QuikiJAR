@@ -1,7 +1,15 @@
 <?php 
-require_once 'engine/libs/video/Zend/Loader.php';
+/**
+ * Модуль видео. Поиск видео по YT, по собственной базе. Вывод, добавление, комментирование файлов.
+ * @author Тимур 22.09.10 <gtimur666@gmail.com>
+ * @version 1.0
+ */
+	
 
-	class VideoThing
+require_once "engine/libs/mysql/MySQLConnector.php";
+require_once 'Zend/Loader.php';
+
+	class VideoThing extends MySQLConnector
 	{
 
 		
@@ -10,22 +18,33 @@ require_once 'engine/libs/video/Zend/Loader.php';
 		 * @var integer
 		 */
 		const FILES_COUNT = 5;
-		
 		/**
 		 * Консртуктор. Выполняется подключение базового класса YT.
-		 * Устанавливается количество файлов на странице поиска, и странице пользовательских видео.
 		 */
 		function __construct() 
 		{
 			Zend_Loader::loadClass('Zend_Gdata_YouTube');
+			parent::__construct();
+			$string = "CREATE TABLE IF NOT EXISTS `Videos` (
+			  `id` int(11) NOT NULL,
+			  `videoID` varchar(255) DEFAULT NULL,
+			  `title` varchar(255) DEFAULT NULL,
+			  `comment` varchar(500) DEFAULT NULL,
+			  `user` int(11) NOT NULL,
+			  `sqrty` int(11) DEFAULT NULL,
+			  `sq_list` varchar(1000) NOT NULL,
+			  PRIMARY KEY (`id`)
+			) ENGINE=MyISAM DEFAULT CHARSET=cp1251 ;";
+			$this->_sql->query($string);
 		}
 		
 		/**
-		 * Функция поиска по серверу YT.
+		 * Функция получения результатов поиска по серверу YT в виде объекта VideoFeed.
 		 * @param string $searchString строка поиска.
+		 * @return VideoFeed - возвращает объект VideoFeed 
 		 */
 		function searchOnYT($searchString, $startID=0) 
-		{
+		{			
 			$yt = new Zend_Gdata_YouTube();
 			$query = $yt->newVideoQuery();
 			$query->videoQuery = $searchString;
@@ -34,68 +53,48 @@ require_once 'engine/libs/video/Zend/Loader.php';
 			$query->orderBy = 'viewCount';
 			//echo $query->queryUrl . "\n <br />";
 			$videoFeed = $yt->getVideoFeed($query);
-			//$entry = $videoFeed->getEntry();
 			
-			//$videoFeed->getIcon();
-			
-			foreach ($videoFeed as $videoEntry) 
-			{
-				$tmpArr[] = $this->printVideoEntry($videoEntry);
-			}
-			
-			return $tmpArr;
+			return $videoFeed;
 		}
 		/**
-		 * Функция получения данных по объекту $videoEntry 
-		 * @param $videoEntry
+		 * Функция получения данных по объекту $videoFeed 
+		 * @param $videoFeed
+		 * @return возвращает ассоциативный массив.
 		 */
-		function printVideoEntry($videoEntry) 
+		function printVideoEntry($videoFeed) 
+		{
+			foreach ($videoFeed as $videoEntry) 
+			{
+				// the videoEntry object contains many helper functions that access the underlying mediaGroup object
+				$resArr["VideoTitle"] = iconv("utf-8", "windows-1251",$videoEntry->getVideoTitle());
+				$resArr["FlashPlayer"] = $videoEntry->getFlashPlayerUrl();
+				$resArr["VideoId"] = $videoEntry->getVideoId();
+				
+				$videoThumbnails = $videoEntry->getVideoThumbnails();
+				$resArr["Preview"] = $videoThumbnails[0]['url'];
+				
+				$tmpArr[] = $resArr;
+			}
+			return $tmpArr;
+		}
+		
+		/**
+		 * Функция получения информации и метаданных о видео по объекту $videoEntry
+		 * @param $videoEntry
+		 * @return возвращает ассоциативный массив.
+		 */
+		function getVideoInfo($videoEntry) 
 		{
 			// the videoEntry object contains many helper functions that access the underlying mediaGroup object
-			$resArr["VideoTitle"] = $videoEntry->getVideoTitle();
+			$resArr["VideoTitle"] = iconv("utf-8", "windows-1251",$videoEntry->getVideoTitle());
 			$resArr["FlashPlayer"] = $videoEntry->getFlashPlayerUrl();
 			$resArr["VideoId"] = $videoEntry->getVideoId();
 			
 			$videoThumbnails = $videoEntry->getVideoThumbnails();
 			$resArr["Preview"] = $videoThumbnails[0]['url'];
 			return $resArr;
-			/*
-			echo 'Video: ' . $videoEntry->getVideoTitle() . "\n <br />";
-			echo "\tDescription: " . $videoEntry->getVideoDescription() . "\n <br />";
-			echo "\tCategory: " . $videoEntry->getVideoCategory() . "\n <br />";
-			echo "\tTags: " . implode(", ", $videoEntry->getVideoTags()) . "\n <br />";
-			echo "\tWatch page: " . $videoEntry->getVideoWatchPageUrl() . "\n <br />";
-			echo "\tFlash Player Url: " . $videoEntry->getFlashPlayerUrl() . "\n <br />";
-			echo "\tDuration: " . $videoEntry->getVideoDuration() . "\n <br />";
-			echo "\tView count: " . $videoEntry->getVideoViewCount() ."\n <br />";
-			echo "\tRating: " . $videoEntry->getVideoRatingInfo() . "\n <br />";
-			echo "\tGeo Location: " . $videoEntry->getVideoGeoLocation() . "\n <br />";
-			echo "\t  <b>VideoId</b> : <u>" . $videoEntry->getVideoId () . " </u>\n <br />";
-			echo "<embed src=\"".$videoEntry->getFlashPlayerUrl()."\" width=\"400\" height=\"300\" type=\"application/x-shockwave-flash\"
-		    pluginspage=\"http://www.macromedia.com/go/getflashplayer\"></embed> ";*/
-			// see the paragraph above this function for more information on the 'mediaGroup' object
-			// here we are using the mediaGroup object directly to its 'Mobile RSTP link' child
-			/*
-			foreach ($videoEntry->mediaGroup->content as $content) 
-			{
-				if ($content->type === "video/3gpp") 
-				{
-					echo "\tMobile RTSP link: " . $content->url . "\n <br />";
-				}
-			}
-			
-			echo "\tThumbnails:\n";
-			$videoThumbnails = $videoEntry->getVideoThumbnails();
-			echo "<img src=\"".$videoThumbnails[0]['url']."\" width=\"80\" height=\"72\" > <br />";*/
-			/*foreach($videoThumbnails as $videoThumbnail) 
-			{
-				
-				echo "\t\t" . $videoThumbnail->time . " - " . $videoThumbnail->url;
-				echo " height=" . $videoThumbnail->height;
-				echo " width=" . $videoThumbnail->width;
-				echo "\n <br />";
-			}*/
 		}
+		
 		
 		/**
 		 * Функцич получения видео-файла
@@ -105,9 +104,63 @@ require_once 'engine/libs/video/Zend/Loader.php';
 		{
 			$yt = new Zend_Gdata_YouTube();
 			$videoEntry = $yt->getVideoEntry($videoId);
-			$resArr = $this->printVideoEntry($videoEntry);
-			//die(var_dump($resArr));
+			$resArr = $this->getVideoInfo($videoEntry);
 			return $resArr;
+		}
+		
+		/**
+		 * Получение количества файлов в результате поиска.
+		 * @param $videoFeed объект, полученный в результате поиска.
+		 * @return integer количество файлов.
+		 */
+		public function getEntriesCount($videoFeed)
+		{
+			$entriesCount = $videoFeed->getTotalResults();
+			$entriesCount = $entriesCount->getText();
+			return $entriesCount;
+		}
+		
+		/**
+		 * Функция получения количества Листов при определенном количестве файлов на страницу.
+		 * @param $videoFeed
+		 * @return integer количество Листов.
+		 */
+		public function getListsCount($videoFeed)
+		{
+			$total = $this->getEntriesCount($videoFeed); 
+			$lists = ceil($total/VideoThing::FILES_COUNT);
+			$total!==0 ? $lists = ceil($total / VideoThing::FILES_COUNT) : $lists=0;
+			return $lists;
+		}
+
+		/**
+		 * Функция добавления видео-файла из результатов поиска и результатов показа списков видео-файлов пользователя.
+		 * @param integer $user - id пользователя.
+		 * @param string $videoID - номер видео-файла (берется с YT).
+		 * @param string $videoTitle
+		 */
+		public function add2myVideos($user, $videoID, $videoTitle)
+		{
+			$result = $this->_sql->query("INSERT INTO `Videos` ( `id` , `videoID` , `title` , `comment` , `user` , `sqrty` , `sq_list` )
+			VALUES (
+			'', '$videoID', '$videoTitle', '', '$user', NULL , '');");
+			return $result;
+		}
+		
+		/**
+		 * Функция удаления видео-файла из таблицы.
+		 * @param integer $user - id пользователя.
+		 * @param string $videoID - номер видео-файла (берется с YT).
+		 */
+		public function deleteFromMyvideos($user, $id)
+		{
+			$result = $this->_sql->query("DELETE FROM `Videos` WHERE `id` = '$id' AND `user`='$user' LIMIT 1;");
+			return $result;
+		}
+		
+		public function showMyVideos()
+		{
+			
 		}
 	}
 ?>

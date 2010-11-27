@@ -19,7 +19,7 @@
         if (count($resourseArray)>$fileCount)   
         {
             $listCount = ceil((count($resourseArray))/$fileCount); 
-            if ($listNum==1 | $listNum=="")//если запрос на первый лист
+            if ($listNum==1 || $listNum=="")//если запрос на первый лист
             {   
                 for($i=0; $i<$fileCount; $i++)
                 {   
@@ -43,7 +43,7 @@
                 $returnArray["listCount"]=$listCount;
                 $returnArray["listCurrent"]=$listNum;
             }
-            if ($listNum<1 | $listNum>$listCount)
+            if ($listNum<1 || $listNum>$listCount)
             {   
                 if ($listNum!="")
                 {
@@ -76,11 +76,11 @@
     {
     	$link = $data["url"];
     	//if ($listCount<=0) throw new Exception("ќшибка в нумерации :(");
-    	if ($listCurrent<=0 | $listCurrent=="" | $listCurrent>$listCount ) 
-    	{
-    		$listCurrent=1;
-    		header("Location: $link?$getParamName=1");
-    	}
+    	//if ($listCurrent<=0 || $listCurrent=="" || $listCurrent>$listCount ) 
+    	//{
+    	//	$listCurrent=1;
+    		//header("Location: $link?$getParamName=1");
+    	//}
     	if ($listCount<=5)//это наиболее частый случай, когда количество страниц альбомов не более 5
     	{
     		if ($listCount!=1)
