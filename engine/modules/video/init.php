@@ -3,7 +3,7 @@
 require_once 'Video.php';
 require_once 'engine/modules/numerator/Numerator.php';
 require_once "engine/modules/user/User.php";
-
+require_once 'engine/modules/user/UserRegister.php';
 $parameters = $data["parameters"];
 switch (count($parameters)) 
 {
@@ -21,6 +21,7 @@ switch (count($parameters))
 				break;
 			default:// /video/userID  -- show user's videos
 				//header("Location: /video/");
+				$output["text"] = myOrUserVideos($_POST,$_GET,$parameters);
 			break;
 		}
 		break;
@@ -28,6 +29,40 @@ switch (count($parameters))
 		;
 	break;
 }
+
+	function myOrUserVideos($postParams, $getParams, $siteParams) 
+	{
+		$user=new User();
+		$visitor = $user->id;
+		//is_numeric($siteParams[0]) ? $userID=$siteParams[0]: $userID=$visitor;
+		$userID=$siteParams[0];
+		$checker = new UserRegister();
+		$userID = $checker->checkIfExsistID($userID) ? $userID : $visitor;
+		
+		$se = new VideoThing();
+		$arr = $se->showMyVideos($userID,$getParams["i"]);
+		if($arr==NULL) return "По Вашему запросу ничего не найдено.";
+		foreach ($arr as $key ) 
+		{
+			$tmp = $se->getVideo($key[videoID]);
+			$img = "<img src = \"$tmp[Preview]\">";
+			$div = $div."<div style=\"border:1px solid #999999; height: auto; margin: 3px; height: 140px; width: auto;\">
+			<div style=\"float:left; border-right: 1px solid #999999; width: auto; \">$img</div> 
+			<div style=\"float: left; height: auto; padding: 10px ;\"> $key[title] \n <br /> 
+			<a href=\"/video/?v=$key[videoID]\"> просмотр</a>
+			<br />
+			
+			<div id=\"added$key[videoID]\"> </div>
+			<div>
+			<form>
+			<input type=\"button\" id=\"addVideo$key[videoID]\" value=\"Добавить к себе\" onClick=\"addVideo('$key[videoID]','$key[title]')\"> 
+			</form>
+			</div>
+			</div>
+			</div>";
+		}
+		return $div;
+	}
 
 	function add2my($postParams) 
 	{
@@ -46,7 +81,7 @@ switch (count($parameters))
 		$se = new VideoThing();
 		$searchFeed = $se->searchOnYT(iconv( "windows-1251","utf-8",$searcTerm));
 		$sercherArr = $se->printVideoEntry($searchFeed);		
-	
+		if($sercherArr==NULL) return "По Вашему запросу ничего не найдено.";
 		foreach ($sercherArr as $key ) 
 		{/*
 			foreach ($key as $index => $value) 
@@ -65,7 +100,7 @@ switch (count($parameters))
 			<div id=\"added$key[VideoId]\"> </div>
 			<div>
 			<form>
-			<input type=\"button\" class=\"addVideo\" value=\"Добавить к себе\"> 
+			<input type=\"button\" id=\"addVideo$key[VideoId]\" value=\"Добавить к себе\" onClick=\"addVideo('$key[VideoId]','$key[VideoTitle]')\"> 
 			</form>
 			</div>
 			</div>

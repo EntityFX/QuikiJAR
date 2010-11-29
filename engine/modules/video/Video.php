@@ -97,7 +97,7 @@ require_once 'Zend/Loader.php';
 		
 		
 		/**
-		 * Функцич получения видео-файла
+		 * Функция получения видео-файла
 		 * @param $videoId
 		 */
 		public function getVideo($videoId)
@@ -158,9 +158,17 @@ require_once 'Zend/Loader.php';
 			return $result;
 		}
 		
-		public function showMyVideos()
+		public function showMyVideos($user, $startIndex=0)
 		{
-			
+			$maxRes = VideoThing::FILES_COUNT;
+			$startIndex = is_numeric($startIndex) ? $startIndex : 0;
+			//die("startIndex --- $startIndex");
+			$result = $this->_sql->query("SELECT * FROM `Videos` WHERE `user`='$user' LIMIT $startIndex, $maxRes");
+			while ($tmp = $this->_sql->fetchArr($result))
+			{
+				$res[] = $tmp;
+			}
+			return $res;
 		}
 	}
 ?>
