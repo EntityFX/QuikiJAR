@@ -11,11 +11,13 @@
 	
 	require_once SOURCE_PATH."UserRegister.php";
 	
-	require_once SOURCE_PATH."User.php";
+	require_once SOURCE_PATH."UserFull.php";
 	
 	require_once SOURCE_PATH."UserUTCChange.php";   
 	
-	require_once SOURCE_PATH."UserStatus.php";       
+	require_once SOURCE_PATH."UserStatus.php"; 
+	
+	require_once "UserDataChange.php";        
 
 	require_once "AdditionalInfo.php";
 	
@@ -94,32 +96,32 @@
 				{
 					if ($data["parameters"][1]!=NULL)
 					{
-						$currentUser=new User($data["parameters"][1]);
+						$currentUser=new UserFull($data["parameters"][1]);
 					}
 					else
 					{
-						$currentUser=new User();                    
+						$currentUser=new UserFull();                    
 					}
 				}
 				else
 				{
-					$currentUser=new User();   
+					$currentUser=new UserFull();   
 				}
 			}
 			catch (UserException $ex)
 			{
 				header("Location: /user/");
 			}
+			//$data=new UserDataChange();
+			//Registry::setKey("loc",$currentUser->location->getLocationId());
+			//$currentUser->location->changeLocation(array("countryId" => 3159, "regionId" =>54 , "cityId" => 5281));  
 			$timeUTC=new UTCTime(true);
 			$smarty->assign("lastUpdateTime",$timeUTC->getTime($currentUser->lastUpdate));
-			$smarty->assign("location",$currentUser->location);
+			$smarty->assign("location",$currentUser->location->getLocation());
 			$smarty->assign("info",$currentUser->getInfo());
 			$smarty->assign("user",$currentUser);
 			$smarty->assign("photo",$currentUser->getPhoto());
 			$output["title"]=$currentUser->name." ".$currentUser->secondName;
-			$utc=new UserUTCChange();
-			echo($utc->getUTCName()."<br />");
-			$status=new UserStatus();
 			$output["text"]=$smarty->fetch("users.view.tpl");
 			break;
 		case "logout":
@@ -149,7 +151,7 @@
 			header("Location: /user/activate/$id/");
 			break;
 		case "settings":
-			$perm=new AccessLevelController(new User());
+			$perm=new AccessLevelController(new UserFull());
 			if (isset($data["parameters"][1]))
 			{
 				switch ($data["parameters"][1])

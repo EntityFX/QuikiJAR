@@ -9,7 +9,7 @@
 		
 		public $localCorrect=0;
 		
-		public function __construct($useCorrect)
+		public function __construct($useCorrect=false)
 		{                    
 			session_start();
 			if ($useCorrect)
@@ -66,9 +66,10 @@
 			}
 		}
 		
-		public function resetUTC()
+		public function resetCorrect()
 		{
-			unset($_SESSION["user"]["utc_time"]);
+			unset($_SESSION["localCorrect"]);
+			$this->__construct(true);  
 		}
 	}
 ?>

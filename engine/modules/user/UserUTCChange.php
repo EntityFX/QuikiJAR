@@ -66,13 +66,26 @@
 		{
 			$utc=(int)$utc;
 			$id=$this->_id;
-			if (in_array($utc,$this->_utcValues))
+			if ($utc!=NULL && in_array($utc,$this->_utcValues))
 			{
 				$qRes=$this->_sql->query("UPDATE `SITE_USERS` SET `utc_time`=$utc WHERE `id`=$id");
 			}
 			else
 			{
 				throw new Exception("This UTC value not exsist");
+			}
+			$_SESSION["user"]["utc_time"]=$utc;
+		}
+		
+		public function setUTCbyIndex($index)
+		{
+			try
+			{
+				$this->setUTC($this->_utcValues[$index]);
+			}
+			catch (Exception $e)
+			{
+				$this->setUTC(12); 
 			}
 		}
 	}

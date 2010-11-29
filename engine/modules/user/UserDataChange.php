@@ -4,11 +4,13 @@
 	
 		private $_id;
 		
+		private $_user;
+		
 		public function __construct() 
 		{
 			parent::__construct();
-			$user=new User();
-			$this->_id=$user->id;    
+			$this->_user=new UserFull();
+			$this->_id=$this->_user->id;    
 		}
 		
 		public function changeName($new)
@@ -27,10 +29,6 @@
 			{
 				$this->changeField($newDate,"burthday");	
 			}
-		}
-		
-		public function changeLocation()
-		{
 		}
 		
 		private function changeField(&$new,$name)
