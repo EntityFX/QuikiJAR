@@ -25,7 +25,9 @@
 	
 	require_once "Zodiac.php";
 	
-	class UserFull extends User 
+	require_once "IUserSingleton.php";
+	
+	final class UserFull extends User implements IUserSingleton
 	{
 		/**
 		* Пол (false - жен, true - муж)
@@ -97,9 +99,21 @@
 		* 
 		* @var integer
 		*/
-		public static $utc=12;
+		static public $utc=12;
 		
 		private $other=false;
+		
+		static private $instance=NULL;
+		
+		static public function create($id=NULL) 
+		{
+			if (self::$instance==NULL)
+			{
+				self::$instance=true;
+				self::$instance=new UserFull($id);
+			}
+			return self::$instance;
+		}
 		
 		/**
 		* Конструктор
@@ -108,8 +122,12 @@
 		* пользователя который вошёл в систему (сессии), иначе по ID другого пользователя
 		* @return User
 		*/
-		public function __construct($id=NULL)
+		final public function __construct($id=NULL)
 		{
+			if (self::$instance!=true)
+			{
+				throw new UserException(UserException::CREATION);
+			}
 			MySQLConnector::__construct();
 			secureStartSession();
 			if ($id==NULL || $id==$_SESSION["user"]["id"])
@@ -244,7 +262,7 @@
 		*/
 		public static function getOffLineTime()
 		{
-			return self::$offLineTime;
+			return parent::$offLineTime;
 		}
 		
 		public function update()

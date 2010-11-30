@@ -96,16 +96,16 @@
 				{
 					if ($data["parameters"][1]!=NULL)
 					{
-						$currentUser=new UserFull($data["parameters"][1]);
+						$currentUser=UserFull::create($data["parameters"][1]);
 					}
 					else
 					{
-						$currentUser=new UserFull();                    
+						$currentUser=UserFull::create();                    
 					}
 				}
 				else
 				{
-					$currentUser=new UserFull();   
+					$currentUser=UserFull::create();   
 				}
 			}
 			catch (UserException $ex)
