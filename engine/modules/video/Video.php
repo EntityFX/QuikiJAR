@@ -37,6 +37,30 @@ require_once 'Zend/Loader.php';
 			) ENGINE=MyISAM DEFAULT CHARSET=cp1251 ;";
 			$this->_sql->query($string);
 		}
+		/**
+		 * Функция добавления видео-файла из результатов поиска и результатов показа списков видео-файлов пользователя.
+		 * @param integer $user - id пользователя.
+		 * @param string $videoID - номер видео-файла (берется с YT).
+		 * @param string $videoTitle
+		 */
+		public function add2myVideos($user, $videoID, $videoTitle)
+		{
+			$result = $this->_sql->query("INSERT INTO `Videos` ( `id` , `videoID` , `title` , `comment` , `user` , `sqrty` , `sq_list` )
+			VALUES (
+			'', '$videoID', '$videoTitle', '', '$user', NULL , '');");
+			return $result;
+		}	
+		
+		/**
+		 * Функция удаления видео-файла из таблицы.
+		 * @param integer $user - id пользователя.
+		 * @param string $videoID - номер видео-файла (берется с YT).
+		 */
+		public function deleteFromMyvideos($user, $id)
+		{
+			$result = $this->_sql->query("DELETE FROM `Videos` WHERE `id` = '$id' AND `user`='$user' LIMIT 1;");
+			return $result;
+		}
 		
 		/**
 		 * Функция получения результатов поиска по серверу YT в виде объекта VideoFeed.
@@ -131,31 +155,6 @@ require_once 'Zend/Loader.php';
 			$lists = ceil($total/VideoThing::FILES_COUNT);
 			$total!==0 ? $lists = ceil($total / VideoThing::FILES_COUNT) : $lists=0;
 			return $lists;
-		}
-
-		/**
-		 * Функция добавления видео-файла из результатов поиска и результатов показа списков видео-файлов пользователя.
-		 * @param integer $user - id пользователя.
-		 * @param string $videoID - номер видео-файла (берется с YT).
-		 * @param string $videoTitle
-		 */
-		public function add2myVideos($user, $videoID, $videoTitle)
-		{
-			$result = $this->_sql->query("INSERT INTO `Videos` ( `id` , `videoID` , `title` , `comment` , `user` , `sqrty` , `sq_list` )
-			VALUES (
-			'', '$videoID', '$videoTitle', '', '$user', NULL , '');");
-			return $result;
-		}
-		
-		/**
-		 * Функция удаления видео-файла из таблицы.
-		 * @param integer $user - id пользователя.
-		 * @param string $videoID - номер видео-файла (берется с YT).
-		 */
-		public function deleteFromMyvideos($user, $id)
-		{
-			$result = $this->_sql->query("DELETE FROM `Videos` WHERE `id` = '$id' AND `user`='$user' LIMIT 1;");
-			return $result;
 		}
 		
 		public function showMyVideos($user, $startIndex=0)

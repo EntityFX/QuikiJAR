@@ -21,7 +21,7 @@
 	
     try 
     {
-    	$userSession=new User();
+    	$userSession=new User(); //die(var_dump($_SESSION));
     	$visitor=$userSession->id;
     } 
     catch (Exception $e) 

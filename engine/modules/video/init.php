@@ -31,8 +31,8 @@ switch (count($parameters))
 }
 
 	function myOrUserVideos($postParams, $getParams, $siteParams) 
-	{
-		$user=new User();
+	{//die(var_dump($_SESSION));
+		$user=new User(13); 
 		$visitor = $user->id;
 		//is_numeric($siteParams[0]) ? $userID=$siteParams[0]: $userID=$visitor;
 		$userID=$siteParams[0];
@@ -44,8 +44,8 @@ switch (count($parameters))
 		if($arr==NULL) return "По Вашему запросу ничего не найдено.";
 		foreach ($arr as $key ) 
 		{
-			$tmp = $se->getVideo($key[videoID]);
-			$img = "<img src = \"$tmp[Preview]\">";
+			//$tmp = $se->getVideo($key[videoID]);
+			$img = "<img src = \"  \">"; //$tmp[Preview]
 			$div = $div."<div style=\"border:1px solid #999999; height: auto; margin: 3px; height: 140px; width: auto;\">
 			<div style=\"float:left; border-right: 1px solid #999999; width: auto; \">$img</div> 
 			<div style=\"float: left; height: auto; padding: 10px ;\"> $key[title] \n <br /> 
@@ -61,7 +61,11 @@ switch (count($parameters))
 			</div>
 			</div>";
 		}
-		return $div;
+		$smarty=new SmartyExst();
+		$smarty->assign("searchResults", $div);
+		return $smarty->fetch("video.user.tpl");
+		
+		//return $div;
 	}
 
 	function add2my($postParams) 
