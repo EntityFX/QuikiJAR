@@ -6,13 +6,16 @@
 * @version 0.9 Beta
 * @copyright Idel Media Group: Developers Team (Solopiy Artem, Jusupziyanov Timur)
 */
-    
+
+
+require_once 'classLoader.php';
+
     /**
     * Выполняет загрузку модулей и передаёт управление им
     * @package kernel
     * @author Solopiy Artem 
     */
-require_once 'classLoader.php';
+
     class ModuleLoader
     {
         /**

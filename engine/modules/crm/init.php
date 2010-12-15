@@ -3,7 +3,7 @@
 	require_once "engine/modules/user/User.php";
 	require_once 'engine/modules/loader/Loader.php';
 	
-	Loader::loadClass("");
+	//Loader::loadClass("");
 	$parameters = $data["parameters"];
 	switch (count($parameters)) 
 	{

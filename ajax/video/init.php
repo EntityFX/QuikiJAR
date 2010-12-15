@@ -2,7 +2,7 @@
 
 //require_once '../../engine/modules/user/UserRegister.php';
 
-require_once '../../engine/kernel/classLoader.php';
+require_once '../../engine/kernel/classLoader.php';//это в любом случае на первом месте само собой
 /*
  * было так
  * require_once "../../engine/libs/mysql/MySQLConnector.php";
