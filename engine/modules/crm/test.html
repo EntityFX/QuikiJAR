@@ -62,6 +62,16 @@
         	$('#myDivId').val("hello world");
         	alert("he");
         }
+
+        function addVideo(videoId, title)
+        {
+			$.post("/ajax/video/init.php", {type: "add",  vId : videoId, vT: title}, function(data)
+					{
+						$('#added'+videoId).html(data);
+						$('#addVideo'+videoId).attr('disabled', true);
+					});
+        }
+        
     </script>
 </head>
 <body>
@@ -102,6 +112,12 @@
 	</li>
 	
 </ul>
+<br />
+__________________-
 
+<br />
+<input type="text" name="name" />
+<input type="button" value="Submit Comment" onClick="addVideo('1322','222')"/>
+<div id="added1322">ddd</div>
 </body>
 </html>

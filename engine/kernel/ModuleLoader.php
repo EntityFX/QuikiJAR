@@ -12,6 +12,7 @@
     * @package kernel
     * @author Solopiy Artem 
     */
+require_once 'classLoader.php';
     class ModuleLoader
     {
         /**

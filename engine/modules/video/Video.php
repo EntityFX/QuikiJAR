@@ -6,8 +6,9 @@
  */
 	
 
-require_once "engine/libs/mysql/MySQLConnector.php";
-require_once 'Zend/Loader.php';
+//require_once "engine/libs/mysql/MySQLConnector.php";
+Loader::loadClass('engine/libs/video/Zend/Loader.php');
+Loader::loadClass("engine/libs/mysql/MySQLConnector.php");
 
 	class VideoThing extends MySQLConnector
 	{

@@ -142,7 +142,7 @@ class Zend_Loader
         /**
          * Try finding for the plain filename in the include_path.
          */
-        if ($once) {
+        if ($once) {$pre = "engine/libs/video";
             include_once $filename;
         } else {
             include $filename;
