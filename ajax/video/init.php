@@ -1,17 +1,20 @@
 <?php
-//require_once 'Zend/Loader.php'; // the Zend dir must be in your include_path
 
-//require_once "engine/modules/user/User.php";
 //require_once '../../engine/modules/user/UserRegister.php';
 
 require_once '../../engine/kernel/classLoader.php';
-//require_once "../../engine/libs/mysql/MySQLConnector.php";
+/*
+ * было так
+ * require_once "../../engine/libs/mysql/MySQLConnector.php";
+ * а стало так
+ * Loader::loadClass("engine/libs/mysql/MySQLConnector.php");
+ */
 Loader::loadClass("engine/libs/mysql/MySQLConnector.php");
 Loader::loadClass("engine/modules/video/Video.php");
 Loader::loadClass("config/databaseConsts.php");
-//require_once "../../engine/libs/mysql/MySQLConnector.php";
-require_once "../../config/databaseConsts.php";
-//require_once '../../engine/modules/video/Video.php';
+
+
+
 
 
 
