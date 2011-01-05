@@ -32,7 +32,7 @@
 		public function __construct()
 		{
 			parent::__construct();
-			$user=new UserFull();
+			$user=UserFull::create();
 			$this->_curentId=$user->id;
 		}        
 		
