@@ -148,7 +148,14 @@
 			//$smarty->caching=true;
 			//$smarty->debugging=true;
 			//var_dump($out);
-			include_once("engine/init.php");
+			$smarty->assign("TEXT_VAR",$this->_out["text"]);
+			$smarty->assign("TITLE",$this->_out["title"]); 
+			$menu=new LinksList($this->_arr["id"]);
+			$smarty->assign("MENU",$menu->makeMenu());
+			$smarty->assign("CHILDREN_MENU",$menu->getMenuChildren());
+			$smarty->assign("PATH",$menu->getPath()); 
+			$subSections=$menu->getSubSection();
+			$smarty->assign("SUB_SECTIONS",$subSections);
 			try
 			{
 				$smarty->display($templatePath);
