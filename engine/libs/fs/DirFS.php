@@ -3,12 +3,14 @@
 	class DirFS
 	{
 		public $_currentDir;
+		public $_siteMainPath;
+		
 		
 		public function createPath($path) 
 		{
 			$path = FS::modifyPath($path);
 			$pathArr = explode("/",$path);
-			$this->_currentDir = FS::SITE_MAIN_PATH;
+			$this->_currentDir = $_SERVER["DOCUMENT_ROOT"];
 			foreach ($pathArr as $index => $value) 
 			{
 				if($value!="")

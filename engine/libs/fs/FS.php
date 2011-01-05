@@ -5,7 +5,6 @@ require_once "FileFS.php";
 
 	class FS
 	{
-		const SITE_MAIN_PATH = "/home/timur/www/quki.ru";
 		public $_d;
 		public $_f;
 		
@@ -17,7 +16,7 @@ require_once "FileFS.php";
 		
 		public function getCurrenrDir()
 		{
-			$r = FS::SITE_MAIN_PATH;
+			$r = $_SERVER["DOCUMENT_ROOT"];
 			$currentPath = getcwd(); 
 			$ret = str_replace($r,"", $currentPath); 
 			return $ret;
@@ -25,7 +24,7 @@ require_once "FileFS.php";
 		
 		public function modifyPath($path) 
 		{
-			$r = FS::SITE_MAIN_PATH; 
+			$r = $_SERVER["DOCUMENT_ROOT"];
 			$ret = str_replace($r,"", $path);
 			return $ret;
 		}
@@ -33,7 +32,7 @@ require_once "FileFS.php";
 		public function getFullPath($path)
 		{//die($path);
 			$path = self::modifyPath($path);
-			$path = FS::SITE_MAIN_PATH.$path;
+			$path = $_SERVER["DOCUMENT_ROOT"].$path;
 			$path = self::validateString($path);
 			return $path;
 		}
