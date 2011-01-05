@@ -94,6 +94,7 @@
 		public function __construct($id=NULL)
 		{
 			parent::__construct();
+			secureStartSession(); 
 			if ($id==NULL || $id==$_SESSION["user"]["id"])
 			{
 				$this->setData($_SESSION["user"]);
@@ -122,7 +123,7 @@
 		private function getDataFromDb($id)
 		{
 			$res=$this->_sql->query("SELECT `id` , `mail` , `name` , `second_name` , `photo` , `country` , `region` , `city` , `update_time` FROM `SITE_USERS` WHERE `id`=$id");
-			$resArray=$this->_sql->GetRows($res);
+			$resArray=$this->_sql->GetRows($res); 
 			$resArray=$resArray[0];
 			return $resArray;
 		}
