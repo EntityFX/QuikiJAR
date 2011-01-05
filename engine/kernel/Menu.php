@@ -6,160 +6,167 @@
 * @version 0.9 Beta
 * @copyright Idel Media Group: Developers Team (Solopiy Artem, Jusupziyanov Timur) © 2010 
 */
-    
-    /**
-    * Выполняет роль построения списка ссылок основного меню, список ссылок от корневого раздела к текущему,
-    * список подразделов
-    * @package kernel
-    * @author Solopiy Artem   
-    * @final
-    */
-    final class LinksList
-    {
-        /**
-        * Экземпляр для работы с БД 
-        * 
-        * @var MySQL 
-        */
-        private $_sql;
-        
-        /**
-        * URL адрес ввиде массива разделов
-        *   
-        * @var Array 
-        */
-        private $_urlPath;
-        
-        /**
-        * ID текущего раздела
-        * 
-        * @var mixed
-        */
-        private $_currentID;
+	
+	/**
+	* Выполняет роль построения списка ссылок основного меню, список ссылок от корневого раздела к текущему,
+	* список подразделов
+	* @package kernel
+	* @author Solopiy Artem   
+	* @final
+	*/
+	final class LinksList
+	{
+		/**
+		* Экземпляр для работы с БД 
+		* 
+		* @var MySQL 
+		*/
+		private $_sql;
 		
-        /**
-        * Конструктор
-        * 
-        * @param Integer $curSectionID ID текцщего раздела
-        */
-        public function __construct($curSectionID)
-        {
-            $this->_currentID=$curSectionID;
-            $this->_sql=MySQL::creator(DB_SERVER,DB_USER,DB_PASSWORD);
-            $this->_sql->selectDB(DB_NAME);            
-        }
-        
-        /**
-        * Возращает массив Главного меню
-        * 
-        * @return Array
-        */
-        private function getMenuTable()
-        {
-            $resource=$this->_sql->query("SELECT b.`title`, b.`section_id`, b.`show_sub` FROM `URL` a, `MainMenu` b WHERE a.`id`=b.`section_id`");
-            return $this->_sql->GetRows($resource);
-        } 
-        
-        
-        public function makeMenu()
-        {
-            $res=NULL;
-            $menuArray=$this->getMenuTable();
+		/**
+		* URL адрес ввиде массива разделов
+		*   
+		* @var Array 
+		*/
+		private $_urlPath;
+		
+		/**
+		* ID текущего раздела
+		* 
+		* @var mixed
+		*/
+		private $_currentID;
+		
+		/**
+		* Конструктор
+		* 
+		* @param Integer $curSectionID ID текцщего раздела
+		*/
+		public function __construct($curSectionID)
+		{
+			$this->_currentID=$curSectionID;
+			try
+			{
+				$this->_sql=MySQL::creator("5.131.95.121","test","testtest");
+			}
+			catch(Exception $ex)
+			{
+				$this->_sql=MySQL::creator(DB_SERVER,DB_USER,DB_PASSWORD); 
+			}
+			$this->_sql->selectDB(DB_NAME);            
+		}
+		
+		/**
+		* Возращает массив Главного меню
+		* 
+		* @return Array
+		*/
+		private function getMenuTable()
+		{
+			$resource=$this->_sql->query("SELECT b.`title`, b.`section_id`, b.`show_sub` FROM `URL` a, `MainMenu` b WHERE a.`id`=b.`section_id`");
+			return $this->_sql->GetRows($resource);
+		} 
+		
+		
+		public function makeMenu()
+		{
+			$res=NULL;
+			$menuArray=$this->getMenuTable();
 			if ($menuArray!=NULL)
 			{
 				foreach($menuArray as $value)
 				{
 					$href=$this->restoreBackLink($value["section_id"]);
-                    $res[]=array("title" => $value["title"], "href" => $href);
+					$res[]=array("title" => $value["title"], "href" => $href);
 				}
-			    $str.="</ul>";
+				$str.="</ul>";
 			}
-            return $res;
-        } 
-        
-        /**
-        * Формирует ссылку текущего раздела
-        * 
-        * @param Integer $sectionId ID раздела
-        * @return String
-        */
-        public function restoreBackLink($sectionId)     
-        {
-            $this->_sql->selAllWhere("URL","`id`=$sectionId");
-            $res=$this->_sql->getTable();
-            if ($res[0]["module"]!=0)
-            {
-                $urlPath[]=$res[0]["link"];
-                $urlFull[]=$res[0];
-            }
-            $pid=$res[0]["pid"];
-            while ($pid!=0)
-            {
-                $this->_sql->selAllWhere("URL","`id`=$pid");
-                $subRes=$this->_sql->getTable();
-                if ($subRes[0]["module"]!=0)
-                {
-                    $urlPath[]=$subRes[0]["link"];
-                    $urlFull[]=$subRes[0];
-                }               
-                $pid=$subRes[0]["pid"];
-            }
-            for($index=count($urlPath)-2;$index>=0;--$index)
-            {
-                $link.=$urlPath["$index"]."/";
-            }
-            if ($sectionId==$this->_currentID) $this->_urlPath=$urlFull; 
-            return "/".$link;
-        }
-        
-        /**
-        * Получает путь от корневого раздела до текущего
-        * 
-        * @return Array
-        */
-        public function getPath()
-        {
-            if ($this->_urlPath==NULL)
-            {
-                $this->restoreBackLink($this->_currentID);    
-            }
-            $res=NULL;
-            $link="";
-            foreach(array_reverse($this->_urlPath) as $uValue)
-            {
-                $link.=$uValue["link"];
-                if ($link!="/")
-                {
-                    $link.="/";
-                }
-                $res[]=array("title" => $uValue["title"], "link" => $link);
-            }
-            return $res;    
-        }
-        
-        /**
-        * Получает список дочерних разделов с учётом поля show_sub таблицы URL
-        * 
-        * @return Array
-        */
-        public function getMenuChildren()
-        {
-            $r=$this->_sql->query("SELECT `show_sub` FROM `MainMenu` WHERE `section_id`=$this->_currentID");
-            $t=$this->_sql->GetRows($r); 
-            $tOne=$t[0];
-            if ($tOne["show_sub"]==1)
-            {
-                $q=$this->_sql->query("SELECT `title`,`link` FROM `URL` WHERE `pid`=$this->_currentID AND `module`!=0");
-                $res=$this->_sql->GetRows($q);
-            }
-            return $res;
-        }
+			return $res;
+		} 
 		
-        /**
-        * Получает список дочерних разделов с учётом поля show_sub таблицы URL
-        * 
-        * @return Array
-        */
+		/**
+		* Формирует ссылку текущего раздела
+		* 
+		* @param Integer $sectionId ID раздела
+		* @return String
+		*/
+		public function restoreBackLink($sectionId)     
+		{
+			$this->_sql->selAllWhere("URL","`id`=$sectionId");
+			$res=$this->_sql->getTable();
+			if ($res[0]["module"]!=0)
+			{
+				$urlPath[]=$res[0]["link"];
+				$urlFull[]=$res[0];
+			}
+			$pid=$res[0]["pid"];
+			while ($pid!=0)
+			{
+				$this->_sql->selAllWhere("URL","`id`=$pid");
+				$subRes=$this->_sql->getTable();
+				if ($subRes[0]["module"]!=0)
+				{
+					$urlPath[]=$subRes[0]["link"];
+					$urlFull[]=$subRes[0];
+				}               
+				$pid=$subRes[0]["pid"];
+			}
+			for($index=count($urlPath)-2;$index>=0;--$index)
+			{
+				$link.=$urlPath["$index"]."/";
+			}
+			if ($sectionId==$this->_currentID) $this->_urlPath=$urlFull; 
+			return "/".$link;
+		}
+		
+		/**
+		* Получает путь от корневого раздела до текущего
+		* 
+		* @return Array
+		*/
+		public function getPath()
+		{
+			if ($this->_urlPath==NULL)
+			{
+				$this->restoreBackLink($this->_currentID);    
+			}
+			$res=NULL;
+			$link="";
+			foreach(array_reverse($this->_urlPath) as $uValue)
+			{
+				$link.=$uValue["link"];
+				if ($link!="/")
+				{
+					$link.="/";
+				}
+				$res[]=array("title" => $uValue["title"], "link" => $link);
+			}
+			return $res;    
+		}
+		
+		/**
+		* Получает список дочерних разделов с учётом поля show_sub таблицы URL
+		* 
+		* @return Array
+		*/
+		public function getMenuChildren()
+		{
+			$r=$this->_sql->query("SELECT `show_sub` FROM `MainMenu` WHERE `section_id`=$this->_currentID");
+			$t=$this->_sql->GetRows($r); 
+			$tOne=$t[0];
+			if ($tOne["show_sub"]==1)
+			{
+				$q=$this->_sql->query("SELECT `title`,`link` FROM `URL` WHERE `pid`=$this->_currentID AND `module`!=0");
+				$res=$this->_sql->GetRows($q);
+			}
+			return $res;
+		}
+		
+		/**
+		* Получает список дочерних разделов с учётом поля show_sub таблицы URL
+		* 
+		* @return Array
+		*/
 		public function getSubSection()
 		{
 			$r=$this->_sql->query("SELECT `link`,`title` FROM `URL` WHERE `pid`=$this->_currentID AND `module`!=0");
@@ -175,5 +182,5 @@
 			}
 			return $resArr;
 		}
-    }
+	}
 ?>
