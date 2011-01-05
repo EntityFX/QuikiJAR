@@ -444,7 +444,7 @@
     	
     	$formAdd = "$linkBlock 
     	<br />
-    	<form action=\"$editGalAddPhoto\" method=\"post\" enctype=\"multipart/form-data\"
+    	<form action=\"$editGalAddPhoto\" method=\"post\" enctype=\"multipart/form-data\">
 <input type=\"file\" name=\"uploadFile\">
 <input type=\"submit\" value=\"Send\">
 </form>";
