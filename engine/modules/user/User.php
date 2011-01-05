@@ -174,7 +174,8 @@
 		*/
 		private function getLastUpdate()
 		{
-			$this->_sql->query("SELECT `update_time` FROM `SITE_USERS` WHERE `id`=$this->id");
+			$id=$this->id;
+			$this->_sql->query("SELECT `update_time` FROM `SITE_USERS` WHERE `id`=$id");
 			$array=$this->_sql->GetRows();
 			return $array[0]["update_time"];
 		}
