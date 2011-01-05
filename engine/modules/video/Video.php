@@ -24,9 +24,10 @@ Loader::loadClass("engine/libs/mysql/MySQLConnector.php");
 		 */
 		function __construct() 
 		{
-			$rootdir = $_SERVER["DOCUMENT_ROOT"];
+			$rootdir = $_SERVER["DOCUMENT_ROOT"]; 
+			substr($rootdir, -1) == "/" ? $rootdir : $rootdir= $rootdir."/";
 			$clientLibraryPath = 'engine/libs/video';
-			$oldPath = set_include_path($rootdir . "/" . $clientLibraryPath);
+			$oldPath = set_include_path($rootdir . $clientLibraryPath);
 			Zend_Loader::loadClass('Zend_Gdata_YouTube');
 			parent::__construct();
 			$string = "CREATE TABLE IF NOT EXISTS `Videos` (

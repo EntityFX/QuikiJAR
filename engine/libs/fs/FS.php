@@ -30,9 +30,9 @@ require_once "FileFS.php";
 		}
 		
 		public function getFullPath($path)
-		{//die($path);
+		{
 			$path = self::modifyPath($path);
-			$path = $_SERVER["DOCUMENT_ROOT"].$path;
+			$path = $_SERVER["DOCUMENT_ROOT"].$path;die($path);
 			$path = self::validateString($path);
 			return $path;
 		}
