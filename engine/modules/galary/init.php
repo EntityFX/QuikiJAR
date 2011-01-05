@@ -19,15 +19,10 @@
 	$showComments4OneGalary_get = $_GET["g"];
 	$listNum = $_GET["l"]; 
 	
-    try 
-    {
-    	$userSession=new User(); //die(var_dump($_SESSION));
-    	$visitor=$userSession->id;
-    } 
-    catch (Exception $e) 
-    {
-    	echo "юзер из нот афторизед! \n <br />";
-    }
+
+    $userSession=new User();
+    $visitor=$userSession->id;
+    //die(var_dump($visitor));
 	
 	try
     {

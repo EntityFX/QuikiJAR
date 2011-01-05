@@ -73,7 +73,7 @@ Loader::loadClass("engine/libs/mysql/MySQLConnector.php");
 		 */
 		function searchOnYT($searchString, $startID=0) 
 		{			
-			$yt = new Zend_Gdata_YouTube();
+			$yt = new Zend_Gdata_YouTube($this->authYT($username, $password));
 			$query = $yt->newVideoQuery();
 			$query->videoQuery = $searchString;
 			$query->startIndex = $startID;
@@ -130,7 +130,7 @@ Loader::loadClass("engine/libs/mysql/MySQLConnector.php");
 		 */
 		public function getVideo($videoId)
 		{
-			$yt = new Zend_Gdata_YouTube();
+			$yt = new Zend_Gdata_YouTube($this->authYT($username, $password));
 			$videoEntry = $yt->getVideoEntry($videoId);
 			$resArr = $this->getVideoInfo($videoEntry);
 			return $resArr;
