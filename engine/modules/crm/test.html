@@ -71,6 +71,15 @@
 						$('#addVideo'+videoId).attr('disabled', true);
 					});
         }
+
+        function delVideo(vId)
+        {
+			$.post("/ajax/video/init.php", {type: "del",  id : vId}, function(data)
+					{
+						$('#video'+vId).html(data);
+						//$('#addVideo'+videoId).attr('disabled', true);
+					});
+        }
         
     </script>
 </head>
@@ -116,8 +125,10 @@
 __________________-
 
 <br />
-<input type="text" name="name" />
-<input type="button" value="Submit Comment" onClick="addVideo('1322','222')"/>
-<div id="added1322">ddd</div>
+<div id="video1">
+	<input type="text" name="name" />
+	<input type="button" value="check deleting" onClick="delVideo('1')"/>
+	<div id="added1322">ddd</div>
+</div>
 </body>
 </html>

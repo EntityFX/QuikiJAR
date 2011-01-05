@@ -9,23 +9,21 @@ require_once '../../engine/kernel/classLoader.php';//это в любом случае на перво
  * а стало так
  * Loader::loadClass("engine/libs/mysql/MySQLConnector.php");
  */
+
+//Loader::loadClass("engine/modules/user/UserFull.php");
 Loader::loadClass("engine/libs/mysql/MySQLConnector.php");
 Loader::loadClass("engine/modules/video/Video.php");
 Loader::loadClass("config/databaseConsts.php");
 
-
-
-
-
-
-$se = new VideoThing();
 
 switch ($_POST["type"]) 
 {
 	case "add":
 		die(add2my($_POST));
 		break;
-	
+	case "del":
+		die(delVideo($_POST));
+		break;
 	default:
 		;
 		break;
@@ -45,6 +43,10 @@ switch ($_POST["type"])
 		return $div;
 	}
 
+	/**
+	 * Добавление видео.
+	 * @param $postParams
+	 */
 	function add2my($postParams) 
 	{
 		/*$user=new User();
@@ -56,6 +58,23 @@ switch ($_POST["type"])
 		return iconv( "windows-1251","utf-8",$se->add2myVideos($uID, $videoID, $videoTitle) ? "Добавлено":"Ошибка");
 	}
 
-
+	function delVideo($postParams) 
+	{
+		//$user = new UserFull();
+		//$userId = $user->id;
+		$userId = 13;
+		$se = new VideoThing();
+		$vId = $postParams["id"];
+		$visitor = $postParams["userId"];
+		if ($visitor==$userId)
+		{
+			$state = $se->deleteFromMyvideos($userId, $vId) ? "Удалено." : "Ошибка.";
+		}
+		else 
+		{
+			$state = "Ошибка удаления.";
+		}
+		return iconv( "windows-1251","utf-8",$state);
+	}
 
 ?>
