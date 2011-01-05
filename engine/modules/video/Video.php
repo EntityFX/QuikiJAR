@@ -24,6 +24,10 @@ Loader::loadClass("engine/libs/mysql/MySQLConnector.php");
 		 */
 		function __construct() 
 		{
+			$rootdir = $_SERVER["DOCUMENT_ROOT"];
+			$clientLibraryPath = 'engine/libs/video';
+			//var_dump(get_include_path());
+			$oldPath = set_include_path($rootdir . "/" . $clientLibraryPath);
 			Zend_Loader::loadClass('Zend_Gdata_YouTube');
 			parent::__construct();
 			$string = "CREATE TABLE IF NOT EXISTS `Videos` (
@@ -158,6 +162,11 @@ Loader::loadClass("engine/libs/mysql/MySQLConnector.php");
 			return $lists;
 		}
 		
+		/**
+		 * Показавть список файлов пользователя
+		 * @param integer $user id пользователя
+		 * @param integer $startIndex индекс с какого файла начинать показывать
+		 */
 		public function showMyVideos($user, $startIndex=0)
 		{
 			$maxRes = VideoThing::FILES_COUNT;
@@ -169,6 +178,23 @@ Loader::loadClass("engine/libs/mysql/MySQLConnector.php");
 				$res[] = $tmp;
 			}
 			return $res;
+		}
+		
+		public function authYT($username, $password)
+		{
+			Zend_Loader::loadClass('Zend_Gdata_AuthSub');
+			Zend_Loader::loadClass('Zend_Gdata_ClientLogin'); 
+			$authenticationURL= 'https://www.google.com/youtube/accounts/ClientLogin';
+			$httpClient = Zend_Gdata_ClientLogin::getHttpClient(
+				$username = 'gtimur666@gmail.com',
+				$password = 'nnbgfcrf',
+				$service = 'youtube',
+				$client = null,
+				$source = 'quki.ru', // a short string identifying your application
+				$loginToken = null,
+				$loginCaptcha = null,
+				$authenticationURL);
+			return $httpClient;
 		}
 	}
 ?>

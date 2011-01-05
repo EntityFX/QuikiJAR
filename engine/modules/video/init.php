@@ -7,7 +7,9 @@ require_once 'engine/modules/user/UserFull.php';
 require_once 'engine/libs/mysql/MySQLConnector.php';
 require_once "config/databaseConsts.php";
 $parameters = $data["parameters"];
-
+//$v = new VideoThing();
+//$v->authYT();
+//var_dump($_SERVER["DOCUMENT_ROOT"]);
 switch (count($parameters)) 
 {
 	case 0: // /video  -- show my video files
