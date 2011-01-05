@@ -126,7 +126,7 @@
 		{
 			if (self::$instance!=true)
 			{
-				throw new UserException(UserException::CREATION);
+				throw new UserException(UserException::CREATION,0);
 			}
 			MySQLConnector::__construct();
 			secureStartSession();

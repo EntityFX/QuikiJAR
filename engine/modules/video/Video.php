@@ -26,7 +26,6 @@ Loader::loadClass("engine/libs/mysql/MySQLConnector.php");
 		{
 			$rootdir = $_SERVER["DOCUMENT_ROOT"];
 			$clientLibraryPath = 'engine/libs/video';
-			//var_dump(get_include_path());
 			$oldPath = set_include_path($rootdir . "/" . $clientLibraryPath);
 			Zend_Loader::loadClass('Zend_Gdata_YouTube');
 			parent::__construct();
@@ -179,15 +178,19 @@ Loader::loadClass("engine/libs/mysql/MySQLConnector.php");
 			}
 			return $res;
 		}
-		
+		/**
+		 * Авторизация на YT
+		 * @param string $username
+		 * @param string $password
+		 */
 		public function authYT($username, $password)
 		{
 			Zend_Loader::loadClass('Zend_Gdata_AuthSub');
 			Zend_Loader::loadClass('Zend_Gdata_ClientLogin'); 
 			$authenticationURL= 'https://www.google.com/youtube/accounts/ClientLogin';
 			$httpClient = Zend_Gdata_ClientLogin::getHttpClient(
-				$username = 'gtimur666@gmail.com',
-				$password = 'nnbgfcrf',
+				$username = 'quki.ru@gmail.com',
+				$password = 'quki.ru.video.file.service',
 				$service = 'youtube',
 				$client = null,
 				$source = 'quki.ru', // a short string identifying your application
@@ -195,6 +198,61 @@ Loader::loadClass("engine/libs/mysql/MySQLConnector.php");
 				$loginCaptcha = null,
 				$authenticationURL);
 			return $httpClient;
+		}
+		
+		public function uploadOnYT()
+		{
+			$httpClient = $this->authYT($username, $password);
+			$yt = new Zend_Gdata_YouTube($httpClient);
+			// create a new Zend_Gdata_YouTube_VideoEntry object
+			$myVideoEntry = new Zend_Gdata_YouTube_VideoEntry();
+			
+			// create a new Zend_Gdata_App_MediaFileSource object
+			$filesource = $yt->newMediaFileSource('mytestmovie.mov');
+			$filesource->setContentType('video/quicktime');
+			// set slug header
+			$filesource->setSlug('mytestmovie.mov');
+			
+			// add the filesource to the video entry
+			$myVideoEntry->setMediaSource($filesource);
+			
+			// create a new Zend_Gdata_YouTube_MediaGroup object
+			$mediaGroup = $yt->newMediaGroup();
+			$mediaGroup->title = $yt->newMediaTitle()->setText('My Test Movie');
+			$mediaGroup->description = $yt->newMediaDescription()->setText('My description');
+			
+			// the category must be a valid YouTube category
+			// optionally set some developer tags (see Searching by Developer Tags for more details)
+			$mediaGroup->category = array(  
+			  $yt->newMediaCategory()->setText('Autos')->setScheme('http://gdata.youtube.com/schemas/2007/categories.cat'), 
+			  $yt->newMediaCategory()->setText('mydevelopertag')->setScheme('http://gdata.youtube.com/schemas/2007/developertags.cat'),
+			  $yt->newMediaCategory()->setText('anotherdevelopertag')->setScheme('http://gdata.youtube.com/schemas/2007/developertags.cat')
+			  );
+
+			// set keywords
+			$mediaGroup->keywords = $service->newMediaKeywords()->setText('cars, funny');
+			$myVideoEntry->mediaGroup = $mediaGroup;
+			
+			// set video location
+			$yt->registerPackage('Zend_Gdata_Geo');
+			$yt->registerPackage('Zend_Gdata_Geo_Extension');
+			$where = $yt->newGeoRssWhere();
+			$position = $yt->newGmlPos('37.0 -122.0');
+			$where->point = $yt->newGmlPoint($position);
+			$entry->setWhere($where);
+			
+			
+			// upload URL for the currently authenticated user
+			$uploadUrl = 'http://uploads.gdata.youtube.com/feeds/users/default/uploads';
+			
+			try 
+			{
+			$newEntry = $yt->insertEntry($myVideoEntry, $uploadUrl, 'Zend_Gdata_YouTube_VideoEntry');
+			} 
+			catch (Zend_Gdata_App_Exception $e) 
+			{
+			echo $e->getMessage();
+			}
 		}
 	}
 ?>
