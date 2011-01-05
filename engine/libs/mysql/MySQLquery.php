@@ -77,10 +77,8 @@
 		protected function __construct($server,$user,$password)
 		{
 			$this->rows=array();
-			$connection=mysql_connect($server,$user,$password);
-			if (!$connection)
+			if (!@mysql_connect($server,$user,$password))
 			{
-				die("FUCKING SERVER!!!");
 				throw new Exception(NO_CONNECTION);                
 			}
 			$this->_server=$server;
