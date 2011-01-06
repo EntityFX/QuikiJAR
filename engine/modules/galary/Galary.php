@@ -385,6 +385,7 @@ class Galary extends MySQLConnector
 
 		$fss = new FS();
 		$fss->_d->createPath("/photos/$user/mini/");
+		$fss->_d->createPath("/photos/$user/galary/");
 		$result=$this->_sql->query("SELECT MAX(`pos`) FROM `galary_list` WHERE `user`='$user'");
 		$maxPos=$this->_sql->fetchArr($result);
 		$pos=$maxPos["MAX(`pos`)"]+1;

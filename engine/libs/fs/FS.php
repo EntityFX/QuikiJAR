@@ -17,6 +17,7 @@ require_once "FileFS.php";
 		public function getCurrenrDir()
 		{
 			$r = $_SERVER["DOCUMENT_ROOT"];
+			substr($r, -1) == "/" ? $r = substr($r, 0,-1) : $r = $r;
 			$currentPath = getcwd(); 
 			$ret = str_replace($r,"", $currentPath); 
 			return $ret;
@@ -25,6 +26,7 @@ require_once "FileFS.php";
 		public function modifyPath($path) 
 		{
 			$r = $_SERVER["DOCUMENT_ROOT"];
+			substr($r, -1) == "/" ? $r = substr($r, 0,-1) : $r = $r;
 			$ret = str_replace($r,"", $path);
 			return $ret;
 		}
@@ -32,7 +34,9 @@ require_once "FileFS.php";
 		public function getFullPath($path)
 		{
 			$path = self::modifyPath($path);
-			$path = $_SERVER["DOCUMENT_ROOT"].$path;die($path);
+			$r = $_SERVER["DOCUMENT_ROOT"];
+			substr($r, -1) == "/" ? $r = substr($r, 0,-1) : $r = $r;
+			$path = $r.$path;
 			$path = self::validateString($path);
 			return $path;
 		}
