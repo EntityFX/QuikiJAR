@@ -498,7 +498,7 @@ html, body {
 
 		/* стиль кнопок отдельного сообщения | button_style_single_message */
 		.button_message_one {
-			margin: 15px 0 25px;
+			margin: 15px 0 0;
 			width: 495px;
 			text-align: right;
 			}
@@ -860,7 +860,7 @@ html, body {
 	.full_report {
 		position: relative;
 		margin: 10px 0;
-		padding: 0 15px;
+		padding: 0 15px 25px;
 		border: 1px solid #f2c687;
 		}
 
@@ -931,13 +931,11 @@ html, body {
 			}
 
 		.reply dt {
-			position: relative;
 			float: none;
 			margin: 0 0 10px;
 			}
 
 		.reply dd textarea {
-			position: relative;
 			width: 450px;
 			height: 100px;
 			background-color: #fff;
@@ -945,7 +943,6 @@ html, body {
 			}
 
 		.smilie {
-			position: relative;
 			width: 450px;
 			margin: 20px 40px;
 			}
