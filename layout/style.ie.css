@@ -1,0 +1,30 @@
+
+.album_page ul li {
+	display: inline;
+	}
+
+.select_all_messages input, .select_all_messages_bot input, .select_a_message input {
+	position: absolute;
+	top: -4px;
+	left: -4px;
+	}
+
+.select_all_addresses {
+	top: 30px;
+	right: 22px;
+	border: 0;
+	}
+
+.select_all_addresses_bot {
+	top: 10px;
+	right: 22px;
+	border: 0;
+	}
+
+.bottom_navigation_address {
+	top: -5px;
+	}
+
+#block_uploads_status div {
+	margin: -10px auto 10px;
+	}

@@ -1,0 +1,369 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Quki</title>
+		<link rel="shortcut icon" href="images/quki.ico" />
+		<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+		<link type="text/css" href="custom-theme/jquery-ui-1.8.5.custom.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="style_private_office.css" />		
+		<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.5.custom.min.js"></script>
+		<script type="text/javascript">
+		/*<![CDATA[*/
+			$(function(){
+				$('#tabs').tabs();
+				$('input:submit').button();
+			});
+		/*]]>*/
+		</script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="header">
+				<div class="top">
+					<div class="logo">
+						<a href="#">
+							<img src="images/parts/logo.png" alt="Quki" />
+						</a>
+					</div>
+					<div class="banner_top">
+						<a href="#">
+							<img src="images/banners/banner_LCD.jpg" alt="Баннер" />
+						</a>
+					</div>
+				</div>
+				<div class="user_name">
+					Алексеев Алекс&#x301;ей
+				</div>
+				<div class="presence">
+					<span class="online">Online</span>
+					<span class="last_visiting">Был: 25.09.2010</span>
+				</div>
+				<form action="#">
+					<div class="status">
+						<a href="block_uploads_status.html">Война... Война никогда не меняется (Fallout)</a>
+					</div>
+				</form>
+				<form action="#">
+					<div class="exit_button">
+						<input id="end" name="end" value="Выход" type="submit" />
+					</div>
+				</form>
+			</div>
+			<div id="nav">
+				<div class="avatar">
+					<img src="images/private_office/1/avatar.jpg" alt="Аватар" />
+				</div>
+				<div class="menu_user">
+					<ul>
+						<li class="b"><a href="private_office.html">Страница кабинета</a></li>
+						<li><a href="messages.html">Сообщения</a><span>10000&nbsp;/&nbsp;<a href="messages.html">2000</a></span></li>
+						<li><a href="message.html">Написать сообщение</a></li>
+						<li><a href="#">Подарки</a></li>
+						<li><a href="#">Отправить подарок</a></li>
+						<li><a href="frends.html">Друзья</a></li>
+						<li><a href="organizer.html">Органайзер</a></li>
+						<li><a href="photo_gallery.html">Фотоальбомы</a></li>
+						<li><a href="my_video.html">Видеозаписи</a></li>
+						<li><a href="settings.html">Настройки</a></li>
+					</ul>
+				</div>
+				<div class="birthday_man">
+					<div class="panel">
+						<div class="tip"></div>
+						<div class="plashka"></div>
+						<h6>Дни рождения</h6>
+					</div>
+					<ul>
+						<li><a href="private_office_other_user.html">Иванов Иван Ибн Ван Д' Конел Пан Иван</a></li>
+						<li><a href="private_office_other_user.html">Екатерина Иванова</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="aside">
+				<div class="banner_right">
+					<a href="#">
+						<img src="images/banners/banner_Fantasy.jpg" alt="Банер" />
+					</a>
+				</div>
+				<div class="calendar_list">
+					<div class="calendar-top"></div>
+					<div class="date">
+						<span>20 сентября
+						понедельник</span>
+					</div>
+					<div class="event">
+						<a href="organizer.html">встреча в парке в 18:00</a>
+					</div>
+					<div class="daily_log">
+						<a href="organizer.html">Ежедневник</a>
+						<ul>
+							<li>Купить молоко</li>
+							<li>Найти Крочи</li>
+							<li>Спасти мир</li>
+						</ul>
+					</div>
+					<div class="calendar">
+						<a href="organizer.html" class="today">20</a>|<a href="organizer.html" class="usual_day">21</a>|<a href="organizer.html" class="usual_day">22</a>|<a href="organizer.html" class="the_planned_events">23</a>|<a href="organizer.html" class="usual_day">24</a>|<a href="organizer.html" class="the_planned_events">25</a>|<a href="organizer.html" class="holidays" title="День машиностроителя">26</a>
+					</div>
+				</div>
+			</div>
+
+			<div id="content">
+				<div id="tabs">
+					<ul class="tabs">
+						<li><a href="#tabs-1" class="tabs_activ">Основные</a></li>
+						<li><a href="#tabs-2" class="tabs">Личное</a></li>
+						<li><a href="#tabs-3" class="tabs">Черный список</a></li>
+						<li><a href="#tabs-3" class="tabs">Остальные</a></li>
+					</ul>
+					<form action="#">
+						<div id="tabs-1">
+							<div class="main_settings">
+								<div class="change_password">
+									<h4>Смена пароля</h4>
+									<dl>
+										<dt>
+											<label for="old_password">Старый пароль</label>
+										</dt>
+										<dd>
+											<input id="old_password" name="old_password" type="password" value="" maxlength="0" size="50" />
+											<p>
+											Убедитесь, что не включена 
+											кнопка CAPS-Lock. Пароль должен 
+											быть не менее 6 символов в длину.
+											Ещё лучше - использовать и буквы, 
+											и цифры. 'kNOpKA' и 'knopka' 
+											- разные пароли
+											</p>
+										</dd>
+										<dt>
+											<label for="new_password">Новый пароль</label>
+										</dt>
+										<dd>
+											<input id="new_password" name="new_password" type="password" value="" maxlength="0" size="50" />
+										</dd>
+										<dt>
+											<label for="confirm_password">Подтверждение пароля</label>
+										</dt>
+										<dd>
+											<input id="confirm_password" name="confirm_password" type="password" value="" maxlength="0" size="50" />
+											<p>
+											На вашу почту будет отправлен новый 
+											пароль и ключ подтверждения. Потом 
+											скопируйте с почты ключ и пароль 
+											заходите обратно на сайт, где появляется 
+											окно в которое вводете только ключ.
+											</p>
+										</dd>
+									</dl>
+									<div class="button_settings">
+										<input id="to_change_password" name="to_change_password" type="submit" value="Принять" />
+									</div>
+								</div>
+								<div class="access_level">
+									<h4>Уровень доступа</h4>
+									<dl>
+										<dt>
+											<label for="change_access_level">Смена уровня доступа</label>
+										</dt>
+										<dd>
+											<select id="change_access_level" name="change_access_level">
+												<option selected="selected">Всем</option>
+												<option>Только друзьям</option>
+												<option>Никому</option>
+											</select>
+											<p>
+											Оповещение уровня его доступности. 
+											Можно отправлять сообщение.
+											</p>
+										</dd>
+									</dl>
+									<div class="button_settings">
+										<input id="to_change_access_level" name="to_change_access_level" type="submit" value="Принять" />
+									</div>
+								</div>
+								<div class="change_time_zone">
+									<h4>Смена часового пояса</h4>
+									<dl>
+										<dt>
+											<label for="change_time_zone">Смена часового пояса</label>
+										</dt>
+										<dd>
+											<select id="change_time_zone" name="change_time_zone">
+												<option selected="selected">Северный полюс</option>
+												<option>Южный полюс</option>
+											</select>
+										</dd>
+									</dl>
+									<div class="button_settings">
+										<input id="to_change_time_zone" name="to_change_time_zone" type="submit" value="Принять" />
+									</div>
+								</div>
+								<div class="button_settings">
+									<input id="save_changes_to_basic" name="save_changes_to_basic" type="submit" value="Сохранить" />
+								</div>
+							</div>
+						</div>
+					</form>
+
+					<form action="#">
+						<div id="tabs-2">
+							<div class="personal_settings">
+								<div class="upload_photo">
+									<h4>Сменить фотографию</h4>
+									<dl>
+										<dt>
+											<label>Фотография</label>
+										</dt>
+										<dd>
+											<input name="loading_user_avatar" type="file" size="22" />
+										</dd>
+									</dl>
+									<div class="button_settings">
+										<input id="to_change_avatar" name="to_change_avatar" type="submit" value="Принять" />
+									</div>
+								</div>
+								<div class="сhange_of_name_surname">
+									<h4>Смена имени/фамилии</h4>
+									<dl>
+										<dt>
+											<label for="change_name">Имя</label>
+										</dt>
+										<dd>
+											<input id="change_name" name="change_name" type="text" value="" maxlength="50" size="50" />
+										</dd>
+										<dt>
+											<label for="change_surname">Фамилия</label>
+										</dt>
+										<dd>
+											<input id="change_surname" name="change_surname" type="text" value="" maxlength="50" size="50" />
+										</dd>
+										<dt>
+											<label for="sex_change_user">Пол</label>
+										</dt>
+										<dd>
+											<select id="sex_change_user" name="sex_change_user">
+												<option selected="selected">женский</option>
+												<option>мужской</option>
+											</select>
+										</dd>
+										<dt>
+											<label for="changing_date_of_birth">Дата рождения</label>
+										</dt>
+										<dd>
+											<input id="changing_date_of_birth" name="changing_date_of_birth" type="text" value="" maxlength="0" size="50" />
+										</dd>
+									</dl>
+									<div class="button_settings">
+										<input id="to_change_name_surname" name="to_change_name_surname" type="submit" value="Принять" />
+									</div>
+								</div>
+								<div class="сhange_residence">
+									<h4>Место проживания</h4>
+									<dl>
+										<dt>
+											<label for="change_country_user">Страна</label>
+										</dt>
+										<dd>
+											<select id="change_country_user" name="change_country_user">
+												<option selected="selected">Атлантида</option>
+												<option>Бурухтания</option>
+												<option>Мордор</option>
+											</select>
+										</dd>
+										<dt>
+											<label for="change_region_user">Регион</label>
+										</dt>
+										<dd>
+											<select id="change_region_user" name="change_region_user">
+												<option selected="selected">Набу</option>
+												<option>Ширр</option>
+											</select>
+										</dd>
+										<dt>
+											<label for="change_city_user">Город</label>
+										</dt>
+										<dd>
+											<select id="change_city_user" name="change_city_user">
+												<option selected="selected">City-17</option>
+												<option>Коросант</option>
+												<option>Зион</option>
+												<option>Минас-Тирит</option>
+											</select>
+										</dd>
+									</dl>
+									<div class="button_settings">
+										<input id="to_change_count_reg_city" name="to_change_count_reg_city" type="submit" value="Принять" />
+									</div>
+								</div>
+								<div class="marital_status">
+									<dl>
+										<dt>
+											<label for="marital_status">Семейное положение</label>
+										</dt>
+										<dd>
+											<select id="marital_status" name="marital_status">
+												<option selected="selected">Холост / Не замужем</option>
+												<option>Есть пара</option>
+												<option>Женат / За мужем</option>
+												<option>Ничего</option>
+											</select>
+										</dd>
+									</dl>
+									<div class="button_settings">
+										<input id="to_change_marital_status" name="to_change_marital_status" type="submit" value="Принять" />
+									</div>
+								</div>
+								<div class="change_additional_categories">
+									<h4>Дополнительные категории</h4>
+									<p>
+										Здесь вы можете добавить дополниетельно свою 
+										категорию (номер телефона, место учебы, место 
+										работы, хобби и т. д.) и ее описание.
+									</p>
+									<dl>
+										<dt>
+											<label for="create_a_category">Название категории</label>
+										</dt>
+										<dd>
+											<input id="create_a_category" name="create_a_category" type="text" value="" maxlength="30" size="50" />
+										</dd>
+										<dt>
+											<label for="change_writing">Описание категории</label>
+										</dt>
+										<dd>
+											<input id="change_writing" name="change_writing" type="text" value="" maxlength="150" size="50" />
+										</dd>
+									</dl>
+									<div class="button_settings">
+										<input id="take_additional_category" name="take_additional_category" type="submit" value="Создать" />
+									</div>
+								</div>
+								<div class="button_settings">
+									<input id="save_changes_to_personal" name="save_changes_to_personal" type="submit" value="Сохранить" />
+								</div>
+							</div>
+						</div>
+					</form>
+						
+					<div id="tabs-3">
+						<div class="main_settings">
+							
+						</div>
+					</div>
+					<div id="tabs-4">
+						<div class="main_settings">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfloat"></div>
+			<div class="empty_footer"></div>
+		</div>
+		<div id="footer">
+			<a href="#">2011&nbsp;Quki</a> · <a href="registraciya_1.html">Регистрация</a> · <a href="#">Служба поддержки</a> · <a href="#">Все проекты</a> · <a href="#">Реклама на Quki.ru</a> · <a href="#">Вакансии</a> · <a href="#">Обратная связь</a> · <a href="#">Карта сайта</a>
+		</div>
+	</body>
+</html>

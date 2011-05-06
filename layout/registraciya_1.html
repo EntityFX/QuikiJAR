@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Quki</title>
+		<link rel="shortcut icon" href="images/quki.ico" />
+		<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+		<link type="text/css" href="custom-theme/jquery-ui-1.8.5.custom.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="style_registraciya.css" />		
+		<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.5.custom.min.js"></script>
+		<script type="text/javascript">
+		/*<![CDATA[*/
+			$(function(){
+				$('input:submit').button();
+			});
+		/*]]>*/
+		</script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="header">
+				<div class="top">
+					<div class="logo">
+						<a href="#"><img src="images/parts/logo.png" alt="Quki" /></a>
+					</div>
+					<div class="banner_top">
+						<a href="#"><img src="images/banners/banner_LCD.jpg" alt="Баннер" /></a>
+					</div>
+				</div>
+			</div>
+			<div id="content">
+				<div class="registration">
+					<p class="heading">Регистрация</p>
+					<div class="step">Шаг 1 <span>2 3</span></div>
+					<dl>
+						<dd class="explanatory">Символом <span>*</span> отмечены поля, обязательные для заполнения</dd>
+						<dt>
+							<label for="email">Почта <span>*</span></label>
+						</dt>
+						<dd>
+							<input id="email" name="email" maxlength="100" type="text" />
+						</dd>
+						<dt>
+							<label for="password">Пароль <span>*</span></label>
+						</dt>
+						<dd>
+							<input id="password" name="password" type="password" />
+						</dd>
+						<dt>
+							<label for="confirm_password">Подтвердите пароль <span>*</span></label>
+						</dt>
+						<dd>
+							<input id="confirm_password" name="confirm_password" type="password" />
+						</dd>
+						<dt>
+							<label for="name_user">Имя <span>*</span></label>
+						</dt>
+						<dd>
+							<input id="name_user" name="name_user" maxlength="50" type="text" />
+						</dd>
+						<dt>
+							<label for="surname_user">Фамилия <span>*</span></label>
+						</dt>
+						<dd>
+							<input id="surname_user" name="surname_user" maxlength="50" type="text" />
+						</dd>
+						<dt>
+							<label for="gender_user">Пол <span>*</span></label>
+						</dt>
+						<dd>
+							<select id="gender_user" name="gender_user">
+								<option value="1">Женский</option>
+								<option value="0">Мужской</option>
+							</select>
+						</dd>
+						<dt>
+							<label for="burthdayid_user">Дата рождения <span>*</span></label>
+						</dt>
+						<dd>
+							<input id="burthdayid_user" name="burthdayid_user" type="text" readonly="readonly" />
+						</dd>
+						<dt>
+							<label for="country_user">Страна <span>*</span></label>
+						</dt>
+						<dd>
+							<select id="country_user" name="country_user">
+								<option value="1">Нагорно-Карабахская Республика</option>
+								<option value="0">Ордусь</option>
+							</select>
+						</dd>
+						<dt>
+							<label for="region_user">Регион <span>*</span></label>
+						</dt>
+						<dd>
+							<select id="region_user" name="region_user">
+								<option value="1">Регион Хомячков</option>
+								<option value="0">Регион Енотов</option>
+								<option value="0">Регион Манулов</option>
+							</select>
+						</dd>
+						<dt>
+							<label for="city_user">Город <span>*</span></label>
+						</dt>
+						<dd>
+							<select id="city_user" name="city_user">
+								<option value="1">Метрополис</option>
+								<option value="0">Китеж-сити</option>
+							</select>
+						</dd>
+					</dl>
+					<div class="button_next">
+						<input id="joined_on_lv1" name="joined_on_lv1" type="submit" value="Далее &gt;&gt;" />
+					</div>
+				</div>
+				<div class="banner_bottom">
+					<a href="#">
+						<img src="images/banners/banner_LCD2.jpg" alt="Баннер LCD" />
+					</a>
+				</div>
+			</div>
+			<div class="clearfloat"></div>
+			<div class="empty_footer"></div>
+		</div>
+		<div id="footer">
+			<a href="#">2011&nbsp;Quki</a> · <a href="registraciya_1.html">Регистрация</a> · <a href="#">Служба поддержки</a> · <a href="#">Все проекты</a> · <a href="#">Реклама на Quki.ru</a> · <a href="#">Вакансии</a> · <a href="#">Обратная связь</a> · <a href="#">Карта сайта</a>
+		</div>
+	</body>
+</html>

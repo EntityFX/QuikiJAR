@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Quki</title>
+		<link rel="shortcut icon" href="images/quki.ico" />
+		<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+		<link type="text/css" href="custom-theme/jquery-ui-1.8.5.custom.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="style_private_office.css" />
+		<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.5.custom.min.js"></script>
+		<script type="text/javascript">
+		/*<![CDATA[*/
+			$(function(){
+				$('input:submit').button();
+			});
+		/*]]>*/
+		</script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="header">
+				<div class="top">
+					<div class="logo">
+						<a href="#">
+							<img src="images/parts/logo.png" alt="Quki" />
+						</a>
+					</div>
+					<div class="banner_top">
+						<a href="#">
+							<img src="images/banners/banner_LCD.jpg" alt="Баннер" />
+						</a>
+					</div>
+				</div>
+				<div class="user_name">
+					Алексеев Алекс&#x301;ей
+				</div>
+				<div class="presence">
+					<span class="online">Online</span>
+					<span class="last_visiting">Был: 25.09.2010</span>
+				</div>
+				<form action="#">
+					<div class="status">
+						<a href="block_uploads_status.html">Война... Война никогда не меняется (Fallout)</a>
+					</div>
+				</form>
+				<form action="#">
+					<div class="exit_button">
+						<input id="end" name="end" value="Выход" type="submit" />
+					</div>
+				</form>
+			</div>
+			<div id="nav">
+				<div class="avatar">
+					<img src="images/private_office/1/avatar.jpg" alt="Аватар" />
+				</div>
+				<div class="menu_user">
+					<ul>
+						<li class="b"><a href="private_office.html">Страница кабинета</a></li>
+						<li><a href="messages.html">Сообщения</a><span>10000&nbsp;/&nbsp;<a href="messages.html">2000</a></span></li>
+						<li><a href="message.html">Написать сообщение</a></li>
+						<li><a href="#">Подарки</a></li>
+						<li><a href="#">Отправить подарок</a></li>
+						<li><a href="frends.html">Друзья</a></li>
+						<li><a href="organizer.html">Органайзер</a></li>
+						<li><a href="photo_gallery.html">Фотоальбомы</a></li>
+						<li><a href="my_video.html">Видеозаписи</a></li>
+						<li><a href="settings.html">Настройки</a></li>
+					</ul>
+				</div>
+				<div class="birthday_man">
+					<div class="panel">
+						<div class="tip"></div>
+						<div class="plashka"></div>
+						<h6>Дни рождения</h6>
+					</div>
+					<ul>
+						<li><a href="private_office_other_user.html">Иванов Иван Ибн Ван Д' Конел Пан Иван</a></li>
+						<li><a href="private_office_other_user.html">Екатерина Иванова</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="aside">
+				<div class="banner_right">
+					<a href="#">
+						<img src="images/banners/banner_Fantasy.jpg" alt="Банер" />
+					</a>
+				</div>
+				<div class="calendar_list">
+					<div class="calendar-top"></div>
+					<div class="date">
+						<span>20 сентября
+						понедельник</span>
+					</div>
+					<div class="event">
+						<a href="organizer.html">встреча в парке в 18:00</a>
+					</div>
+					<div class="daily_log">
+						<a href="organizer.html">Ежедневник</a>
+						<ul>
+							<li>Купить молоко</li>
+							<li>Найти Крочи</li>
+							<li>Спасти мир</li>
+						</ul>
+					</div>
+					<div class="calendar">
+						<a href="organizer.html" class="today">20</a>|<a href="organizer.html" class="usual_day">21</a>|<a href="organizer.html" class="usual_day">22</a>|<a href="organizer.html" class="the_planned_events">23</a>|<a href="organizer.html" class="usual_day">24</a>|<a href="organizer.html" class="the_planned_events">25</a>|<a href="organizer.html" class="holidays" title="День машиностроителя">26</a>
+					</div>
+				</div>
+			</div>
+
+			<div id="content">
+				<form action="#">
+					<div class="top_navigation_add_reminder">
+						<ul id="lists">
+							<li><a href="organizer.html">Напоминание</a> &gt;&nbsp;</li>
+							<li>Добавить напоминание</li>
+						</ul>
+					</div>
+					<div class="block_add_reminder">
+						<div class="adding_reminders">
+							<dl>
+								<dt>
+									<label for="adding_date_reminders">Дата</label>
+								</dt>
+								<dd>
+									<input id="adding_date_reminders" name="adding_date_reminders" type="text" readonly="readonly"/><span class="add_data_rem"><a href="#"><img src="images/add.png" alt="" /></a></span>
+								</dd>
+								<dt>
+									<label for="adding_time_reminders">Время</label>
+								</dt>
+								<dd>
+									<span class="reminder_time">час.&nbsp;&nbsp;
+										<select id="adding_time_reminders" name="adding_time_reminders">
+											<option selected="selected">00</option>
+											<option>01</option>
+											<option>02</option>
+											<option>03</option>
+											<option>04</option>
+											<option>05</option>
+											<option>06</option>
+											<option>07</option>
+											<option>08</option>
+											<option>09</option>
+											<option>10</option>
+											<option>11</option>
+											<option>12</option>
+											<option>13</option>
+											<option>14</option>
+											<option>15</option>
+											<option>16</option>
+											<option>17</option>
+											<option>18</option>
+											<option>19</option>
+											<option>20</option>
+											<option>21</option>
+											<option>22</option>
+											<option>23</option>
+										</select>&nbsp;
+										мин.&nbsp;&nbsp;
+										<select name="adding_time_reminders">
+											<option selected="selected">00</option>
+											<option>01</option>
+											<option>02</option>
+											<option>03</option>
+											<option>04</option>
+											<option>05</option>
+											<option>06</option>
+											<option>07</option>
+											<option>08</option>
+											<option>09</option>
+											<option>10</option>
+											<option>11</option>
+											<option>12</option>
+											<option>13</option>
+											<option>14</option>
+											<option>15</option>
+											<option>16</option>
+											<option>17</option>
+											<option>18</option>
+											<option>19</option>
+											<option>20</option>
+											<option>21</option>
+											<option>22</option>
+											<option>23</option>
+											<option>24</option>
+											<option>25</option>
+											<option>26</option>
+											<option>27</option>
+											<option>28</option>
+											<option>29</option>
+											<option>30</option>
+											<option>31</option>
+											<option>32</option>
+											<option>33</option>
+											<option>34</option>
+											<option>35</option>
+											<option>36</option>
+											<option>37</option>
+											<option>38</option>
+											<option>39</option>
+											<option>40</option>
+											<option>41</option>
+											<option>42</option>
+											<option>43</option>
+											<option>44</option>
+											<option>45</option>
+											<option>46</option>
+											<option>47</option>
+											<option>48</option>
+											<option>49</option>
+											<option>50</option>
+											<option>51</option>
+											<option>52</option>
+											<option>53</option>
+											<option>54</option>
+											<option>55</option>
+											<option>56</option>
+											<option>57</option>
+											<option>58</option>
+											<option>59</option>
+										</select>
+									</span>
+								</dd>
+								<dt>
+									<label for="add_alert_reminders">Оповещать за</label>
+								</dt>
+								<dd>
+									<select id="add_alert_reminders" name="add_alert_reminders">
+										<option selected="selected">15 минут</option>
+										<option>30 минут</option>
+										<option>45 минут</option>
+										<option>1 час</option>
+										<option>2 час</option>
+										<option>3 час</option>
+										<option>1 день</option>
+										<option>3 дня</option>
+									</select>
+								</dd>
+								<dt>
+									<label for="add_write_reminder">Текст напоминания</label>
+								</dt>
+								<dd>
+									<textarea id="add_write_reminder" name="add_write_reminder" cols="60" rows="4"></textarea>
+								</dd>
+							</dl>
+							<div class="button_add_reminder">
+								<input id="stop_adding_reminders" name="stop_adding_reminders" value="Отмена" type="submit" />&nbsp;&nbsp;<input id="adding_reminders" name="adding_reminders" value="Добавить" type="submit" />
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="clearfloat"></div>
+			<div class="empty_footer"></div>
+		</div>
+		<div id="footer">
+			<a href="#">2011&nbsp;Quki</a> · <a href="registraciya_1.html">Регистрация</a> · <a href="#">Служба поддержки</a> · <a href="#">Все проекты</a> · <a href="#">Реклама на Quki.ru</a> · <a href="#">Вакансии</a> · <a href="#">Обратная связь</a> · <a href="#">Карта сайта</a>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,469 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Quki</title>
+		<link rel="shortcut icon" href="images/quki.ico" />
+		<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+		<link rel="stylesheet" type="text/css" href="custom-theme/jquery-ui-1.8.5.custom.css" />
+		<link rel="stylesheet" type="text/css" href="style_private_office.css" />
+		<!--[if lte IE 7]>
+		<link rel="stylesheet" type="text/css" href="style.ie.css" />
+		<![endif]-->
+		<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.5.custom.min.js"></script>
+		<script type="text/javascript">
+		/*<![CDATA[*/
+			$(function(){
+				$('#tabs').tabs();
+				$('input:submit').button();
+			});
+		/*]]>*/
+		</script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="header">
+				<div class="top">
+					<div class="logo">
+						<a href="#">
+							<img src="images/parts/logo.png" alt="Quki" />
+						</a>
+					</div>
+					<div class="banner_top">
+						<a href="#">
+							<img src="images/banners/banner_LCD.jpg" alt="Баннер" />
+						</a>
+					</div>
+				</div>
+				<div class="user_name">
+					Алексеев Алекс&#x301;ей
+				</div>
+				<div class="presence">
+					<span class="online">Online</span>
+					<span class="last_visiting">Был: 25.09.2010</span>
+				</div>
+				<form action="#">
+					<div class="status">
+						<a href="block_uploads_status.html">Война... Война никогда не меняется (Fallout)</a>
+					</div>
+				</form>
+				<form action="#">
+					<div class="exit_button">
+						<input id="end" name="end" value="Выход" type="submit" />
+					</div>
+				</form>
+			</div>
+			<div id="nav">
+				<div class="avatar">
+					<img src="images/private_office/1/avatar.jpg" alt="Аватар" />
+				</div>
+				<div class="menu_user">
+					<ul>
+						<li class="b"><a href="private_office.html">Страница кабинета</a></li>
+						<li><a href="messages.html">Сообщения</a><span>10000&nbsp;/&nbsp;<a href="messages.html">2000</a></span></li>
+						<li><a href="message.html">Написать сообщение</a></li>
+						<li><a href="#">Подарки</a></li>
+						<li><a href="#">Отправить подарок</a></li>
+						<li><a href="frends.html">Друзья</a></li>
+						<li><a href="organizer.html">Органайзер</a></li>
+						<li><a href="photo_gallery.html">Фотоальбомы</a></li>
+						<li><a href="my_video.html">Видеозаписи</a></li>
+						<li><a href="settings.html">Настройки</a></li>
+					</ul>
+				</div>
+				<div class="birthday_man">
+					<div class="panel">
+						<div class="tip"></div>
+						<div class="plashka"></div>
+						<h6>Дни рождения</h6>
+					</div>
+					<ul>
+						<li><a href="private_office_other_user.html">Иванов Иван Ибн Ван Д' Конел Пан Иван</a></li>
+						<li><a href="private_office_other_user.html">Екатерина Иванова</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="aside">
+				<div class="banner_right">
+					<a href="#">
+						<img src="images/banners/banner_Fantasy.jpg" alt="Банер" />
+					</a>
+				</div>
+				<div class="calendar_list">
+					<div class="calendar-top"></div>
+					<div class="date">
+						<span>20 сентября
+						понедельник</span>
+					</div>
+					<div class="event">
+						<a href="organizer.html">встреча в парке в 18:00</a>
+					</div>
+					<div class="daily_log">
+						<a href="organizer.html">Ежедневник</a>
+						<ul>
+							<li>Купить молоко</li>
+							<li>Найти Крочи</li>
+							<li>Спасти мир</li>
+						</ul>
+					</div>
+					<div class="calendar">
+						<a href="organizer.html" class="today">20</a>|<a href="organizer.html" class="usual_day">21</a>|<a href="organizer.html" class="usual_day">22</a>|<a href="organizer.html" class="the_planned_events">23</a>|<a href="organizer.html" class="usual_day">24</a>|<a href="organizer.html" class="the_planned_events">25</a>|<a href="organizer.html" class="holidays" title="День машиностроителя">26</a>
+					</div>
+				</div>
+			</div>
+
+			<div id="content">
+				<div id="tabs">
+					<ul>
+						<li><a href="#tabs-1">Адресная книга</a></li>
+						<li><a href="#tabs-2">Напоминания</a></li>
+						<li><a href="#tabs-3">Ежедневник</a></li>				
+					</ul>
+					<form action="#">
+						<div id="tabs-1">
+							<div class="top_navigation_address">
+								<span class="number_addresses">Контактов: 8</span>
+								<span class="add_address">
+									<a href="add_address.html">Добавить адрес</a>
+								</span>
+								<ul title="страница адресов">
+									<li><a href="#">1…8</a></li>
+								</ul>
+								<div class="button_delete_address">
+									<input value="Удалить" type="submit" />
+								</div>
+								<div class="select_all_addresses">
+									<input name="select_all_addresses" title="Выделить все сообщения на странице" type="checkbox" />
+								</div>
+							</div>
+							<div class="block_organizer">
+								<div class="address_block">
+									<div class="NOS_other">
+										<div class="NOS_other_block">
+											<a href="private_office_other_user.html">Анастасия Селезнева Викторовна</a>
+										</div>
+									</div>
+									<div class="phone_friend">
+										<span>сот. 89078787878</span>
+										<span>дом. 2248902</span>
+										<span>раб. 2287634</span>
+									</div>
+									<div class="all_information_block">
+										<input name="ChkBox_Unchcked" title="Отметить для удаления" type="checkbox" />
+										<div class="all_information">
+											<a href="contact_record_01.html">Вся информация</a>
+										</div>
+									</div>
+								</div>
+								<div class="address_block">
+									<div class="NOS_other">
+										<div class="NOS_other_block">
+											<a href="private_office_other_user.html">Александр Валентинович Геравко</a>
+										</div>
+									</div>
+									<div class="phone_friend">
+										<span>сот. 89078787878</span>
+										<span>дом. 2248902</span>
+									</div>
+									<div class="all_information_block">
+										<input name="ChkBox_Unchcked" title="Отметить для удаления" type="checkbox" />
+										<div class="all_information">
+											<a href="contact_record_01.html">Вся информация</a>
+										</div>
+									</div>
+								</div>
+								<div class="address_block">
+									<div class="NOS_other">
+										<div class="NOS_other_block">
+											<a href="private_office_other_user.html">Веньямин Яковлевич Алдашев</a>
+										</div>
+									</div>
+									<div class="phone_friend">
+										<span>сот. 89078787878</span>
+										<span>дом. 2248902</span>
+										<span>раб. 2287634</span>
+									</div>
+									<div class="all_information_block">
+										<input name="ChkBox_Unchcked" title="Отметить для удаления" type="checkbox" />
+										<div class="all_information">
+											<a href="contact_record_01.html">Вся информация</a>
+										</div>
+									</div>
+								</div>
+								<div class="address_block">
+									<div class="NOS_other">
+										<div class="NOS_other_block">
+											<a href="private_office_other_user.html">Виталий Савельевич Петров</a>
+										</div>
+									</div>
+									<div class="phone_friend">
+										<span>сот. 89078787878</span>
+										<span>дом. 2248902</span>
+										<span>раб. 2287634</span>
+									</div>
+									<div class="all_information_block">
+										<input name="ChkBox_Unchcked" title="Отметить для удаления" type="checkbox" />
+										<div class="all_information">
+											<a href="contact_record_01.html">Вся информация</a>
+										</div>
+									</div>
+								</div>
+								<div class="address_block">
+									<div class="NOS_other">
+										<div class="NOS_other_block">
+											<a href="private_office_other_user.html">Георгий Вахтангович Кикабидзе</a>
+										</div>
+									</div>
+									<div class="phone_friend">
+										<span>сот. 89078787878</span>
+									</div>
+									<div class="all_information_block">
+										<input name="ChkBox_Unchcked" title="Отметить для удаления" type="checkbox" />
+										<div class="all_information">
+											<a href="contact_record_01.html">Вся информация</a>
+										</div>
+									</div>
+								</div>
+								<div class="address_block">
+									<div class="NOS_other">
+										<div class="NOS_other_block">
+											<a href="private_office_other_user.html">Дарья Викторовна Волкова</a>
+										</div>
+									</div>
+									<div class="phone_friend">
+										<span>сот. 89078787878</span>
+										<span>дом. 2248902</span>
+										<span>раб. 2287634</span>
+									</div>
+									<div class="all_information_block">
+										<input name="ChkBox_Unchcked" title="Отметить для удаления" type="checkbox" />
+										<div class="all_information">
+											<a href="contact_record_01.html">Вся информация</a>
+										</div>
+									</div>
+								</div>
+								<div class="address_block">
+									<div class="NOS_other">
+										<div class="NOS_other_block">
+											<a href="private_office_other_user.html">Игорь Кравченкович Кошкин</a>
+										</div>
+									</div>
+									<div class="phone_friend">
+										<span>сот. 89078787878</span>
+										<span>дом. 2248902</span>
+									</div>
+									<div class="all_information_block">
+										<input name="ChkBox_Unchcked" title="Отметить для удаления" type="checkbox" />
+										<div class="all_information">
+											<a href="contact_record_01.html">Вся информация</a>
+										</div>
+									</div>
+								</div>
+								<div class="address_block">
+									<div class="NOS_other">
+										<div class="NOS_other_block">
+											<a href="private_office_other_user.html">Ильнар Дамирович Гарипов</a>
+										</div>
+									</div>
+									<div class="phone_friend">
+										<span>сот. 89078787878</span>
+										<span>дом. 2248902</span>
+									</div>
+									<div class="all_information_block">
+										<input name="ChkBox_Unchcked" title="Отметить для удаления" type="checkbox" />
+										<div class="all_information">
+											<a href="contact_record_01.html">Вся информация</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="bottom_navigation_address">
+								<ul title="страница адресов">
+									<li><a href="#">1…8</a></li>
+								</ul>
+								<div class="button_delete_address_bot">
+									<input value="Удалить" type="submit" />
+								</div>
+								<div class="select_all_addresses_bot">
+									<input name="select_all_addresses_bot" title="Выделить все сообщения на странице" type="checkbox" />
+								</div>
+							</div>
+						</div>
+					</form>
+
+					<form action="#">
+						<div id="tabs-2">
+							<div class="top_navigation_address">
+								<span class="number_addresses">Напоминаний: 8</span>
+								<span class="add_reminder">
+									<a href="add_reminder.html">Добавить напоминание</a>
+								</span>
+								<ul title="страница напоминаний">
+									<li><a href="#">1…4</a></li>
+								</ul>
+							</div>
+							<div class="block_organizer">
+								<div class="reminders_block_new">
+									<div class="date_reminder">
+										<div class="date_reminder_block">
+											20.09.2011
+										</div>
+									</div>
+									<div class="text_reminder">
+										<p>встреча в парке в 18:00 с одногруппниками для похода куда-нибудь)</p>
+									</div>
+									<div class="button_satisfied_block">
+										<div class="button_satisfied">
+											<input value="Удалить" type="submit" />
+										</div>
+									</div>
+								</div>
+								<div class="reminders_block">
+									<div class="date_reminder">
+										<div class="date_reminder_block">
+											13.09.2011
+										</div>
+									</div>
+									<div class="text_reminder">
+										<p>Принять участие в Дозоре</p>
+									</div>
+									<div class="button_satisfied_block">
+										<div class="button_satisfied">
+											<input value="Удалить" type="submit" />
+										</div>
+									</div>
+								</div>
+								<div class="reminders_block">
+									<div class="date_reminder">
+										<div class="date_reminder_block">
+											05.09.2011
+										</div>
+									</div>
+									<div class="text_reminder">
+										<p>Пойти к Игорьку помочь переустановить винду</p>
+									</div>
+									<div class="button_satisfied_block">
+										<div class="button_satisfied">
+											<input value="Удалить" type="submit" />
+										</div>
+									</div>
+								</div>
+								<div class="reminders_block">
+									<div class="date_reminder">
+										<div class="date_reminder_block">
+											28.08.2011
+										</div>
+									</div>
+									<div class="text_reminder">
+										<p>Поехать с друзьями в Маркваши</p>
+									</div>
+									<div class="button_satisfied_block">
+										<div class="designation_of_execution">
+											Удалено
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="bottom_navigation_address">
+								<ul title="страница напоминаний">
+									<li><a href="#">1…4</a></li>
+								</ul>
+							</div>
+						</div>
+					</form>
+
+					<form action="#">
+						<div id="tabs-3">
+							<div class="block_user_diary">
+								<div class="calendar_of_affairs">
+									<img src="images/reminder.png" alt="" />
+									<span>
+										<a href="adding_cases_in_diary.html">Добавить дела</a>
+									</span>
+								</div>
+								<!--<div class="affairs_unit_day">
+									<div class="heading_list_cases">
+										<input name="ChkBox_Unchcked" title="Отметить для выполнения" type="checkbox" />
+										<div class="button_business_performance">
+											<input value="Выполнено" type="submit" />
+										</div>
+										<span>Дела на этот день</span>
+									</div>
+									<div class="block_case">
+										<div class="checkbox_choice">
+											<input name="ChkBox_Unchcked" title="Отметить для выполнения" type="checkbox" />
+										</div>
+										<div class="text_case">
+											<p>Купить молоко</p>
+										</div>
+										<div class="button_business_performance_2">
+											<input value="Выполнено" type="submit" />
+										</div>
+									</div>
+									<div class="heading_list_cases">
+										<input name="ChkBox_Unchcked" title="Отметить для выполнения" type="checkbox" />
+										<div class="button_business_performance">
+											<input value="Выполнено" type="submit" />
+										</div>
+									</div>
+								</div>-->
+								<table class="affairs_unit_day">
+									<thead>
+										<tr>
+											<th>
+												<input name="ChkBox_Unchcked" title="Отметить для выполнения" type="checkbox" />
+												<div class="button_business_performance">
+													<input value="Выполнено" type="submit" />
+												</div>
+												<span>Дела на этот день</span>
+											</th>
+										</tr>
+									</thead>
+									<tfoot>
+										<tr>
+											<td>
+												<input name="ChkBox_Unchcked" title="Отметить для выполнения" type="checkbox" />
+												<div class="button_business_performance">
+													<input value="Выполнено" type="submit" />
+												</div>
+											</td>
+										</tr>
+									</tfoot>
+									<tbody>
+										<tr>
+											<td class="note_to_perform">
+												<input name="ChkBox_Unchcked" title="Отметить для выполнения" type="checkbox" />
+											</td>
+											<td class="text_diary">
+												Купить молоко
+											</td>
+											<td>
+												<input value="Выполнено" type="submit" />
+											</td>
+										</tr>
+										<tr>
+											<td style="width: 20px;">
+												<input name="ChkBox_Unchcked" title="Отметить для выполнения" type="checkbox" />
+											</td>
+											<td class="text_diary">
+												Найти Крочи
+											</td>
+											<td>
+												<input value="Выполнено" type="submit" />
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="clearfloat"></div>
+			<div class="empty_footer"></div>
+		</div>
+		<div id="footer">
+			<a href="#">2011&nbsp;Quki</a> · <a href="registraciya_1.html">Регистрация</a> · <a href="#">Служба поддержки</a> · <a href="#">Все проекты</a> · <a href="#">Реклама на Quki.ru</a> · <a href="#">Вакансии</a> · <a href="#">Обратная связь</a> · <a href="#">Карта сайта</a>
+		</div>
+	</body>
+</html>

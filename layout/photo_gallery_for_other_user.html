@@ -1,0 +1,688 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Quki</title>
+		<link rel="shortcut icon" href="images/quki.ico" />
+		<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+		<link type="text/css" href="custom-theme/jquery-ui-1.8.5.custom.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="style_private_office.css" />
+		<!--[if lte IE 7]>
+		<link rel="stylesheet" type="text/css" href="style.ie.css" />
+		<![endif]-->		
+		<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.5.custom.min.js"></script>
+		<script type="text/javascript">
+		/*<![CDATA[*/
+			$(function(){
+				$('#tabs').tabs();
+				$('input:submit').button();
+			});
+		/*]]>*/
+		</script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="header">
+				<div class="top">
+					<div class="logo">
+						<a href="#">
+							<img src="images/parts/logo.png" alt="Quki" />
+						</a>
+					</div>
+					<div class="banner_top">
+						<a href="#">
+							<img src="images/banners/banner_LCD.jpg" alt="Баннер" />
+						</a>
+					</div>
+				</div>
+				<div class="user_name">
+					Алексеев Алекс&#x301;ей
+				</div>
+				<div class="presence">
+					<span class="online">Online</span>
+					<span class="last_visiting">Был: 25.09.2010</span>
+				</div>
+				<form action="#">
+					<div class="status">
+						<a href="#">Война... Война никогда не меняется (Fallout)</a>
+					</div>
+				</form>
+				<form action="#">
+					<div class="exit_button">
+						<input id="end" name="end" value="Выход" type="submit" />
+					</div>
+				</form>
+			</div>
+			<div id="nav">
+				<div class="small_menu">
+					<div class="panel">
+						<div class="tip"></div>
+						<div class="plashka"></div>
+						<h6>Мой кабинет</h6>
+					</div>
+					<ul>
+						<li><a href="private_office.html">Личный кабинет</a></li>
+						<li><a href="messages.html">Сообщения</a><span>10000&nbsp;/&nbsp;<a href="messages.html">2000</a></span></li>
+						<li><a href="message.html">Написать сообщение</a></li>
+					</ul>
+				</div>
+				<div class="avatar">
+					<img src="images/private_office/1/avatar.jpg" alt="Аватар" />
+				</div>
+				<div class="menu_user">
+					<ul>
+						<li class="b"><a href="private_office_for_other_user.html">Страница кабинета</a></li>
+						<li><a href="#">Добавить в друзья</a></li>
+						<li><a href="message.html">Написать сообщение</a></li>
+						<li><a href="#">Отправить подарок</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="aside">
+				<div class="banner_right">
+					<a href="#">
+						<img src="images/banners/banner_Fantasy.jpg" alt="Банер" />
+					</a>
+				</div>
+				<div class="calendar_list">
+					<div class="calendar-top"></div>
+					<div class="date">
+						<span>20 сентября
+						понедельник</span>
+					</div>
+					<div class="event">
+						<a href="organizer.html">встреча в парке в 18:00</a>
+					</div>
+					<div class="daily_log">
+						<a href="organizer.html">Ежедневник</a>
+						<ul>
+							<li>Купить молоко</li>
+							<li>Найти Крочи</li>
+							<li>Спасти мир</li>
+						</ul>
+					</div>
+					<div class="calendar">
+						<a href="organizer.html" class="today">20</a>|<a href="organizer.html" class="usual_day">21</a>|<a href="organizer.html" class="usual_day">22</a>|<a href="organizer.html" class="the_planned_events">23</a>|<a href="organizer.html" class="usual_day">24</a>|<a href="organizer.html" class="the_planned_events">25</a>|<a href="organizer.html" class="holidays" title="День машиностроителя">26</a>
+					</div>
+				</div>
+			</div>
+
+			<div id="content">
+				<div id="tabs">
+					<ul class="tabs">
+						<li><a href="#tabs-1" class="tabs_activ">Мои фотографии</a></li>
+						<li><a href="#tabs-2" class="tabs">Избранное</a></li>
+						<li><a href="#tabs-3" class="tabs">Отмеченный другом</a></li>
+						<li><a href="#tabs-4" class="tabs">Конкурсное</a></li>
+					</ul>
+					<form action="#">
+						<div id="tabs-1">
+							<div class="top_navigation">
+								<div class="balls_photos">
+									<p>Баллов: <span class="ball">5670670</span> | Фотоальбомов: 42</p>
+								</div>
+								<ul title="страница с альбомами">
+									<li><a href="#">1…15</a></li>
+									<li><a href="#">16…30</a></li>
+									<li><a href="#">31…45</a></li>
+									<li><a href="#">46…60</a></li>
+									<li><a href="#" title="следующая страница"><img src="images/parts/next.png" alt="" /></a></li>
+									<li><a href="#" title="последняя страница"><img src="images/parts/end.png" alt="" /></a></li>
+								</ul>
+							</div>
+							<div class="area_albums">						
+								<div class="block_album">
+									<div class="area_photo">
+										<a href="album_01_for_other_user.html">
+											<img src="images/photo/photo_albums/my_photos/01/1.jpg" alt="Фотография" />
+										</a>
+									</div>
+									<span class="name_album_user">
+										<a href="album_01_for_other_user.html">Объект и свет</a>
+									</span>
+									<span class="date_album">Создан: 12.08.2010 | Обновлен: 22.08.2010</span>
+									<span class="quantity_photo">Фотографий: 112000</span>
+									<span class="comments_photo">Комментариев: 444000</span>
+									<span class="albums_balls">Баллов: <span class="ball">427</span></span>
+									<span class="text_album_user">Объект и свет</span>
+									<div class="button_album">
+										<a href="#">Показать друзьям</a>
+									</div>
+								</div>
+								<div class="block_album">
+									<div class="area_photo">
+										<a href="album_01_for_other_user.html">
+											<img src="images/photo/photo_albums/my_photos/01/2.jpg" alt="Фотография" />
+										</a>
+									</div>
+									<div class="name_album_user">
+										<a href="album_01_for_other_user.html">Питер (12.08.2010)</a>
+									</div>
+									<span class="date_album">Создан: 12.08.2010 | Обновлен: 22.08.2010</span>
+									<span class="quantity_photo">Фотографий: 112000</span>
+									<span class="comments_photo">Комментариев: 444000</span>
+									<span class="albums_balls">Баллов: <span class="ball">427</span></span>
+									<span class="text_album_user">Из поездки в Питер. Различные закаулки, малопосещаемые и просто интересные места.</span>
+									<div class="button_album">
+										<a href="#">Показать друзьям</a>
+									</div>
+								</div>
+								<div class="block_album">
+									<div class="area_photo">
+										<a href="album_01_for_other_user.html">
+											<img src="images/photo/photo_albums/my_photos/01/3.jpg" alt="Фотография" />
+										</a>
+									</div>
+									<div class="name_album_user">
+										<a href="album_01_for_other_user.html">Все по RE</a>
+									</div>
+									<span class="date_album">Создан: 12.08.2010 | Обновлен: 22.08.2010</span>
+									<span class="quantity_photo">Фотографий: 112000</span>
+									<span class="comments_photo">Комментариев: 444000</span>
+									<span class="albums_balls">Баллов: <span class="ball">427</span></span>
+									<div class="button_album">
+										<a href="#">Показать друзьям</a>
+									</div>
+								</div>
+								<div class="block_album">
+									<div class="area_photo">
+										<a href="album_01_for_other_user.html">
+											<img src="images/photo/photo_albums/my_photos/01/4.jpg" alt="Фотография" />
+										</a>
+									</div>
+									<div class="name_album_user">
+										<a href="album_01_for_other_user.html">Скляночки</a>
+									</div>
+									<span class="date_album">Создан: 12.08.2010 | Обновлен: 22.08.2010</span>
+									<span class="quantity_photo">Фотографий: 112000</span>
+									<span class="comments_photo">Комментариев: 444000</span>
+									<span class="albums_balls">Баллов: <span class="ball">427</span></span>
+									<span class="text_album_user">Различные атрибуты биологии и химии)</span>
+									<div class="button_album">
+										<a href="#">Показать друзьям</a>
+									</div>
+								</div>
+								<div class="block_album">
+									<div class="area_photo">
+										<a href="album_01_for_other_user.html">
+											<img src="images/photo/photo_albums/my_photos/01/5.jpg" alt="Фотография" />
+										</a>
+									</div>
+									<div class="name_album_user">
+										<a href="album_01_for_other_user.html">Прогулки по крыще (30.07.2010)</a>
+									</div>
+									<span class="date_album">Создан: 12.08.2010 | Обновлен: 22.08.2010</span>
+									<span class="quantity_photo">Фотографий: 112000</span>
+									<span class="comments_photo">Комментариев: 444000</span>
+									<span class="albums_balls">Баллов: <span class="ball">427</span></span>
+									<span class="text_album_user">Объект и свет Объект и свет Объект и свет Объект и свет Объект и свет Объект и свет Объект и свет ...</span>
+									<div class="button_album">
+										<a href="#">Показать друзьям</a>
+									</div>
+								</div>
+								<div class="block_album">
+									<div class="area_photo">
+										<a href="album_01.html">
+											<img src="images/photo/photo_albums/my_photos/01/6.jpg" alt="Фотография" />
+										</a>
+									</div>
+									<div class="name_album_user">
+										<a href="album_01_for_other_user.html">Киберготизм)</a>
+									</div>
+									<span class="date_album">Создан: 12.08.2010 | Обновлен: 22.08.2010</span>
+									<span class="quantity_photo">Фотографий: 112000</span>
+									<span class="comments_photo">Комментариев: 444000</span>
+									<span class="albums_balls">Баллов: <span class="ball">427</span></span>
+									<div class="button_album">
+										<a href="#">Показать друзьям</a>
+									</div>
+								</div>
+								<div class="block_album">
+									<div class="area_photo">
+										<a href="album_01_for_other_user.html">
+											<img src="images/photo/photo_albums/my_photos/01/7.jpg" alt="Фотография" />
+										</a>
+									</div>
+									<div class="name_album_user">
+										<a href="album_01_for_other_user.html">Очередная прогулка по крыше)</a>
+									</div>
+									<span class="date_album">Создан: 12.08.2010 | Обновлен: 22.08.2010</span>
+									<span class="quantity_photo">Фотографий: 112000</span>
+									<span class="comments_photo">Комментариев: 444000</span>
+									<span class="albums_balls">Баллов: <span class="ball">427</span></span>
+									<div class="button_album">
+										<a href="#">Показать друзьям</a>
+									</div>
+								</div>
+								<div class="block_album">
+									<div class="area_photo">
+										<a href="album_01_for_other_user.html">
+											<img src="images/photo/photo_albums/my_photos/01/8.jpg" alt="Фотография" />
+										</a>
+									</div>
+									<div class="name_album_user">
+										<a href="album_01_for_other_user.html">Vault-boy</a>
+									</div>
+									<span class="date_album">Создан: 12.08.2010 | Обновлен: 22.08.2010</span>
+									<span class="quantity_photo">Фотографий: 112000</span>
+									<span class="comments_photo">Комментариев: 444000</span>
+									<span class="albums_balls">Баллов: <span class="ball">427</span></span>
+									<span class="text_album_user">Объект и свет Объект и свет Объект и свет Объект и свет Объект и свет Объект и свет Объект и свет ...</span>
+									<div class="button_album">
+										<a href="#">Показать друзьям</a>
+									</div>
+								</div>
+								<div class="block_album">
+									<div class="area_photo">
+										<a href="album_01_for_other_user.html">
+											<img src="images/photo/photo_albums/my_photos/01/9.jpg" alt="Фотография" />
+										</a>
+									</div>
+									<div class="name_album_user">
+										<a href="album_01_for_other_user.html">S.T.A.L.K.E.R.: предтеча Меченных стрелков</a>
+									</div>
+									<span class="date_album">Создан: 12.08.2010 | Обновлен: 22.08.2010</span>
+									<span class="quantity_photo">Фотографий: 112000</span>
+									<span class="comments_photo">Комментариев: 444000</span>
+									<span class="albums_balls">Баллов: <span class="ball">427</span></span>
+									<span class="text_album_user">Все связанное с нашей ролевкой в июле сего года по одноименной игре и миру. Под Харьковым.</span>
+									<div class="button_album">
+										<a href="#">Показать друзьям</a>
+									</div>
+								</div>
+								<div class="block_album">
+									<div class="area_photo">
+										<a href="album_01_for_other_user.html">
+											<img src="images/photo/photo_albums/my_photos/01/10.jpg" alt="Фотография" />
+										</a>
+									</div>
+									<div class="name_album_user">
+										<a href="album_01_for_other_user.html">Ролевка по Fallout </a>
+									</div>
+									<span class="date_album">Создан: 12.08.2010 | Обновлен: 22.08.2010</span>
+									<span class="quantity_photo">Фотографий: 112000</span>
+									<span class="comments_photo">Комментариев: 444000</span>
+									<span class="albums_balls">Баллов: <span class="ball">427</span></span>
+									<span class="text_album_user">Подмосковье (19 — 21 июня 2009)</span>
+									<div class="button_album">
+										<a href="#">Показать друзьям</a>
+									</div>
+								</div>
+								<div class="block_album">
+									<div class="area_photo">
+										<a href="album_01_for_other_user.html">
+											<img src="images/photo/photo_albums/my_photos/01/11.jpg" alt="Фотография" />
+										</a>
+									</div>
+									<div class="name_album_user">
+										<a href="album_01_for_other_user.html">Киберпанковщина</a>
+									</div>
+									<span class="date_album">Создан: 12.08.2010 | Обновлен: 22.08.2010</span>
+									<span class="quantity_photo">Фотографий: 112000</span>
+									<span class="comments_photo">Комментариев: 444000</span>
+									<span class="albums_balls">Баллов: <span class="ball">427</span></span>
+									<div class="button_album">
+										<a href="#">Показать друзьям</a>
+									</div>
+								</div>
+								<div class="block_album">
+									<div class="area_photo">
+										<a href="album_01_for_other_user.html">
+											<img src="images/photo/photo_albums/my_photos/01/12.jpg" alt="Фотография" />
+										</a>
+									</div>
+									<div class="name_album_user">
+										<a href="album_01_for_other_user.html">Авиация</a>
+									</div>
+									<span class="date_album">Создан: 12.08.2010 | Обновлен: 22.08.2010</span>
+									<span class="quantity_photo">Фотографий: 112000</span>
+									<span class="comments_photo">Комментариев: 444000</span>
+									<span class="albums_balls">Баллов: <span class="ball">427</span></span>
+									<div class="button_album">
+										<a href="#">Показать друзьям</a>
+									</div>
+								</div>
+								<div class="block_album">
+									<div class="area_photo">
+										<a href="album_01_for_other_user.html">
+											<img src="images/photo/photo_albums/my_photos/01/13.jpg" alt="Фотография" />
+										</a>
+									</div>
+									<div class="name_album_user">
+										<a href="album_01_for_other_user.html">Просто красивые фотки</a>
+									</div>
+									<span class="date_album">Создан: 12.08.2010 | Обновлен: 22.08.2010</span>
+									<span class="quantity_photo">Фотографий: 112000</span>
+									<span class="comments_photo">Комментариев: 444000</span>
+									<span class="albums_balls">Баллов: <span class="ball">427</span></span>
+									<div class="button_album">
+										<a href="#">Показать друзьям</a>
+									</div>
+								</div>
+								<div class="block_album">
+									<div class="area_photo">
+										<a href="album_01_for_other_user.html">
+											<img src="images/photo/photo_albums/my_photos/01/14.jpg" alt="Фотография" />
+										</a>
+									</div>
+									<div class="name_album_user">
+										<a href="album_01_for_other_user.html">Механизмики</a>
+									</div>
+									<span class="date_album">Создан: 12.08.2010 | Обновлен: 22.08.2010</span>
+									<span class="quantity_photo">Фотографий: 112000</span>
+									<span class="comments_photo">Комментариев: 444000</span>
+									<span class="albums_balls">Баллов: <span class="ball">427</span></span>
+									<div class="button_album">
+										<a href="#">Показать друзьям</a>
+									</div>
+								</div>
+								<div class="block_album">
+									<div class="area_photo">
+										<a href="album_01_for_other_user.html">
+											<img src="images/photo/photo_albums/my_photos/01/15.jpg" alt="Фотография" />
+										</a>
+									</div>
+									<span class="name_album_user">
+										<a href="album_01_for_other_user.html">Матрица</a>
+									</span>
+									<span class="date_album">Создан: 12.08.2010 | Обновлен: 22.08.2010</span>
+									<span class="quantity_photo">Фотографий: 112000</span>
+									<span class="comments_photo">Комментариев: 444000</span>
+									<span class="albums_balls">Баллов: <span class="ball">427</span></span>
+									<div class="button_album">
+										<a href="#">Показать друзьям</a>
+									</div>
+								</div>
+							</div>
+							<div class="bottom_navigation">
+								<ul title="страница с альбомами">
+									<li><a href="#">1…15</a></li>
+									<li><a href="#">16…30</a></li>
+									<li><a href="#">31…45</a></li>
+									<li><a href="#">46…60</a></li>
+									<li><a href="#" title="следующая страница"><img src="images/parts/next.png" alt="" /></a></li>
+									<li><a href="#" title="последняя страница"><img src="images/parts/end.png" alt="" /></a></li>
+								</ul>
+							</div>
+						</div>
+					</form>
+
+					<form action="#">
+						<div id="tabs-2">
+							<div class="top_navigation_photo_gallery">
+								<div class="balls_photos">
+									<p>Баллов: <span class="ball">670</span> | Фотографий: 45</p>
+								</div>
+								<ul title="страница с фотографиями">
+									<li><a href="#">1…15</a></li>
+									<li><a href="#">16…30</a></li>
+									<li><a href="#">31…45</a></li>
+									<li><a href="#">46…60</a></li>
+									<li><a href="#" title="следующая страница"><img src="images/parts/next.png" alt="" /></a></li>
+									<li><a href="#" title="последняя страница"><img src="images/parts/end.png" alt="" /></a></li>
+								</ul>
+							</div>
+							<div class="album_page">
+								<ul>
+									<li>
+										<div class="info_about_photo">
+											<span class="date_photo">12.02.2011</span>
+											<a href="photo_01_for_other_user.html">
+												<img src="images/photo/photo_albums/favorites/01/1.jpg" alt="Фотография" />
+											</a>
+											<span class="photo_name">Хеллуин, такой Хеллуин</span>
+										</div>
+									</li>
+									<li>
+										<div class="info_about_photo">
+											<span class="date_photo">12.02.2011</span>
+											<a href="photo_01_for_other_user.html">
+												<img src="images/photo/photo_albums/favorites/01/2.jpg" alt="Фотография" />
+											</a>
+											<span class="photo_name">Меж двух огней</span>
+										</div>
+									</li>
+									<li>
+										<div class="info_about_photo">
+											<span class="date_photo">12.02.2011</span>
+											<a href="photo_01_for_other_user.html">
+												<img src="images/photo/photo_albums/favorites/01/3.jpg" alt="Фотография" />
+											</a>
+											<span class="photo_name">Нечто</span>
+										</div>
+									</li>
+									<li>
+										<div class="info_about_photo">
+											<span class="date_photo">12.02.2011</span>
+											<a href="photo_01_for_other_user.html">
+												<img src="images/photo/photo_albums/favorites/01/4.jpg" alt="Фотография" />
+											</a>
+											<span class="photo_name">Любовь не знает границ</span>
+										</div>
+									</li>
+									<li>
+										<div class="info_about_photo">
+											<span class="date_photo">12.02.2011</span>
+											<a href="photo_01_for_other_user.html">
+												<img src="images/photo/photo_albums/favorites/01/5.jpg" alt="Фотография" />
+											</a>
+											<span class="photo_name">Киберготизм</span>
+										</div>
+									</li>
+									<li>
+										<div class="info_about_photo">
+											<span class="date_photo">12.02.2011</span>
+											<a href="photo_01_for_other_user.html">
+												<img src="images/photo/photo_albums/favorites/01/6.jpg" alt="Фотография" />
+											</a>
+											<span class="photo_name">Супермяу</span>
+										</div>
+									</li>
+									<li>
+										<div class="info_about_photo">
+											<span class="date_photo">12.02.2011</span>
+											<a href="photo_01_for_other_user.html">
+												<img src="images/photo/photo_albums/favorites/01/7.jpg" alt="Фотография" />
+											</a>
+											<span class="photo_name">Работы Виктора Антонова</span>
+										</div>
+									</li>
+									<li>
+										<div class="info_about_photo">
+											<span class="date_photo">12.02.2011</span>
+											<a href="photo_01_for_other_user.html">
+												<img src="images/photo/photo_albums/favorites/01/8.jpg" alt="Фотография" />
+											</a>
+											<span class="photo_name">Работы Виктора Антонова</span>
+										</div>
+									</li>
+									<li>
+										<div class="info_about_photo">
+											<span class="date_photo">12.02.2011</span>
+											<a href="photo_01_for_other_user.html">
+												<img src="images/photo/photo_albums/favorites/01/9.jpg" alt="Фотография" />
+											</a>
+											<span class="photo_name">Пес Аликс</span>
+										</div>
+									</li>
+									<li>
+										<div class="info_about_photo">
+											<span class="date_photo">12.02.2011</span>
+											<a href="photo_01_for_other_user.html">
+												<img src="images/photo/photo_albums/favorites/01/10.jpg" alt="Фотография" />
+											</a>
+											<span class="photo_name">Френк Херриган</span>
+										</div>
+									</li>
+									<li>
+										<div class="info_about_photo">
+											<span class="date_photo">12.02.2011</span>
+											<a href="photo_01_for_other_user.html">
+												<img src="images/photo/photo_albums/favorites/01/11.jpg" alt="Фотография" />
+											</a>
+											<span class="photo_name">Странник из убежища 13</span>
+										</div>
+									</li>
+									<li>
+										<div class="info_about_photo">
+											<span class="date_photo">12.02.2011</span>
+											<a href="photo_01_for_other_user.html">
+												<img src="images/photo/photo_albums/favorites/01/12.jpg" alt="Фотография" />
+											</a>
+											<span class="photo_name">Шкатулка с сюрпризом</span>
+										</div>
+									</li>
+									<li>
+										<div class="info_about_photo">
+											<span class="date_photo">12.02.2011</span>
+											<a href="photo_01_for_other_user.html">
+												<img src="images/photo/photo_albums/favorites/01/13.jpg" alt="Фотография" />
+											</a>
+										</div>
+									</li>
+									<li>
+										<div class="info_about_photo">
+											<span class="date_photo">12.02.2011</span>
+											<a href="photo_01_for_other_user.html">
+												<img src="images/photo/photo_albums/favorites/01/14.jpg" alt="Фотография" />
+											</a>
+										</div>
+									</li>
+									<li>
+										<div class="info_about_photo">
+											<span class="date_photo">12.02.2011</span>
+											<a href="photo_01_for_other_user.html">
+												<img src="images/photo/photo_albums/favorites/01/15.jpg" alt="Фотография" />
+											</a>
+											<span class="photo_name">Взрывоопасная красота</span>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div class="bottom_navigation_album">
+								<ul title="страница с фотографиями">
+									<li><a href="#">1…15</a></li>
+									<li><a href="#">16…30</a></li>
+									<li><a href="#">31…45</a></li>
+									<li><a href="#">46…60</a></li>
+									<li><a href="#" title="следующая страница"><img src="images/parts/next.png" alt="" /></a></li>
+									<li><a href="#" title="последняя страница"><img src="images/parts/end.png" alt="" /></a></li>
+								</ul>
+							</div>
+						</div>
+					</form>
+
+					<form action="#">
+						<div id="tabs-3">
+							<div class="top_navigation_photo_gallery">
+								<div class="balls_photos">
+									<p>Баллов: <span class="ball">120</span> | Фотографий: 5</p>
+								</div>
+								<ul title="страница с фотографиями">
+									<li><a href="#">1…5</a></li>
+								</ul>
+							</div>
+							<div class="album_page">
+								<ul>
+									<li>
+										<div class="info_about_photo">
+											<span class="date_photo">12.02.2011</span>
+											<a href="photo_01_for_other_user.html">
+												<img src="images/photo/photo_albums/marked_another/01/1.jpg" alt="Фотография" />
+											</a>
+											<span class="photo_name">Прогулка по крыше</span>
+										</div>
+									</li>
+									<li>
+										<div class="info_about_photo">
+											<span class="date_photo">12.02.2011</span>
+											<a href="photo_01_for_other_user.html">
+												<img src="images/photo/photo_albums/marked_another/01/2.jpg" alt="Фотография" />
+											</a>
+											<span class="photo_name">Прогулка по крыше</span>
+										</div>
+									</li>
+									<li>
+										<div class="info_about_photo">
+											<span class="date_photo">12.02.2011</span>
+											<a href="photo_01_for_other_user.html">
+												<img src="images/photo/photo_albums/marked_another/01/3.jpg" alt="Фотография" />
+											</a>
+											<span class="photo_name">Прогулка по крыше</span>
+										</div>
+									</li>
+									<li>
+										<div class="info_about_photo">
+											<span class="date_photo">12.02.2011</span>
+											<a href="photo_01_for_other_user.html">
+												<img src="images/photo/photo_albums/marked_another/01/4.jpg" alt="Фотография" />
+											</a>
+											<span class="photo_name">Прогулка по крыше</span>
+										</div>
+									</li>
+									<li>
+										<div class="info_about_photo">
+											<span class="date_photo">12.02.2011</span>
+											<a href="photo_01_for_other_user.html">
+												<img src="images/photo/photo_albums/marked_another/01/5.jpg" alt="Фотография" />
+											</a>
+											<span class="photo_name">В поддержку альбома Lesnikov-16</span>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div class="bottom_navigation_album">
+								<ul title="страница с фотографиями">
+									<li><a href="#">1…5</a></li>
+								</ul>
+							</div>
+						</div>
+					</form>
+
+					<form action="#">
+						<div id="tabs-4">
+							<div class="top_navigation">
+								<div class="balls_photos">
+									<p>Баллов: <span class="ball">5</span> | Фотоальбомов: 1</p>
+								</div>
+								<ul title="страница с альбомами">
+									<li><a href="#">1…1</a></li>
+								</ul>
+							</div>
+							<div class="area_albums">						
+								<div class="block_album">
+									<div class="area_photo">
+										<a href="photo_01_for_other_user.html">
+											<img src="images/photo/photo_albums/bid/01/1.jpg" alt="Фотография" />
+										</a>
+									</div>
+									<span class="name_album_user">
+										<a href="photo_01_for_other_user.html">Объект и свет</a>
+									</span>
+									<span class="date_album">Создан: 12.08.2010 | Обновлен: 22.08.2010</span>
+									<span class="quantity_photo">Фотографий: 112000</span>
+									<span class="comments_photo">Комментариев: 444000</span>
+									<span class="albums_balls">Баллов: <span class="ball">427</span></span>
+									<span class="text_album_user">Объект и свет</span>
+									<div class="button_album">
+										<a href="#">Показать друзьям</a>
+									</div>
+								</div>
+							</div>
+							<div class="bottom_navigation">
+								<ul title="страница с альбомами">
+									<li><a href="#">1…1</a></li>
+								</ul>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="clearfloat"></div>
+			<div class="empty_footer"></div>
+		</div>
+		<div id="footer">
+			<a href="#">2011&nbsp;Quki</a> · <a href="registraciya_1.html">Регистрация</a> · <a href="#">Служба поддержки</a> · <a href="#">Все проекты</a> · <a href="#">Реклама на Quki.ru</a> · <a href="#">Вакансии</a> · <a href="#">Обратная связь</a> · <a href="#">Карта сайта</a>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,213 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html, body {
+	height: 100%;
+	}
+
+* html #container {
+	height: 100%;
+	}
+
+#container {
+	position: relative;
+	width: 994px;
+	min-height: 100%;
+	background-color: #fff;
+	color: #656861;
+	margin: 0 auto;
+	font-size: 12px;
+	font-family: Verdana, sans-serif;
+	}
+
+	#header {
+		position: relative;
+		margin: 0 0 10px;
+		width: 994px;
+		height: 131px;
+	}
+
+		.top {
+			position: relative;
+			height: 112px;
+			margin: 0 0 15px;
+			}
+
+		.logo {
+			width: 190px;
+			height: 112px;
+			float: left;
+			background: #fff;
+		}
+
+		.banner_top {
+			width: 750px;
+			height: 108px;
+			margin-top: 10px;
+			float: right;
+			}
+
+		a:link, a:visited, a:active {
+			color: #a3a486; /* ÷вет ссылок */
+			}
+
+		a:hover {
+			color: #d57101;
+			}
+
+		a img {
+			border: none;
+			}
+
+		input, select {
+			background-color: #fff;
+			border: 1px solid #dedede;
+			outline: none;
+			font-size: 12px;
+			overflow: auto;
+			}
+
+		a {
+			outline-style: none;
+			text-decoration: none;
+			}
+
+	#content {
+		position: relative;
+	}
+
+		.registration {
+			width: 550px;
+			margin: 50px 230px;
+		}
+
+		.heading {
+			font-size: 25px; 
+			text-align: center;
+			color: #e99101;
+		}
+
+		.step {
+			font-size: 20px; 
+			text-align: left;
+			color: #e99101;
+			margin: 20px 0;
+		}
+
+		.step span {
+			color: #979797;
+			font-size: 16px;     
+		}
+
+		dd.explanatory, div.explanatory {
+			width: 390px;
+			position: relative;
+			left: 80px;
+			text-align: center;
+			font-size: 11px;
+			color: #979797;
+		}
+
+		.registration dt {
+			float: left;
+			width: 180px;
+			text-align: right;
+			margin: 2px 10px 2px 0;
+		}
+
+		.registration dd {
+			margin: 15px 0;
+			}
+
+			.registration dd input, .registration dd select {
+				width: 160px;
+				}
+
+			.registration dd input {	
+				height: 16px;
+				}
+
+			.registration dd input.file_loading {
+				width: 160px;
+				height: 22px;
+				}
+				
+		.button_next {
+			text-align: right;
+			}
+
+		.button_end {
+			text-align: center;
+			}
+
+		.registration dt span, .registration dd span {
+			color: red;
+		}
+		
+		.registration dd input.ChkBox {
+			position: relative;
+			left: 10px;
+			width: 20px;
+		}
+
+		.registration dd input.loading {
+			width: 90px;
+			height: 26px;
+			left: 50px;
+			}
+
+		.contact, .etucation {
+			width: 550px;
+			margin: 0 0 10px;
+			text-align: center;
+			font-size: 11px;
+			color: #979797;
+			font-weight: bold;
+		}
+
+		.info {
+			width: 550px;
+			text-align: center;
+			margin: 15px 120px 30px;
+		}
+
+		.registration table {
+			text-align: left;
+			width: 400px;
+			height: 500px;
+			margin: 10px 110px;
+		}
+
+		td {
+			width: 120px;
+		}
+
+		td.Chk {
+			width: 20px;
+		}
+
+		.banner_bottom {
+			width: 732px;
+			height: 108px;
+			position: relative;
+			margin: 60px auto;
+		}
+
+	.clearfloat {
+		clear: both;
+		}
+
+	.empty_footer {
+		height: 30px;
+		}
+
+	#footer {
+		position: relative;
+		height: 30px;
+		margin-top: -30px;
+		font-size: 11px;
+		text-align: center;
+		font-family: Verdana, sans-serif;
+		}

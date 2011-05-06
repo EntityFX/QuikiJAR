@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>	
+		<title>Quki</title>
+		<link rel="shortcut icon" href="images/quki.ico" />
+		<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+		<link type="text/css" href="custom-theme/jquery-ui-1.8.5.custom.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="style_incoming_message.css" />	
+		<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.5.custom.min.js"></script>
+		<script type="text/javascript">
+		/*<![CDATA[*/
+			$(function(){
+				$('input:submit').button();
+			});
+		/*]]>*/
+		</script>
+	</head>
+	<body>
+		<form action="#">
+			<div id="window_mesage">
+				<div class="panel">
+					<div class="tip"></div>
+					<div class="plashka"></div>
+					<h6>Написать сообщение</h6>
+				</div>
+				<div class="sending">
+					<dl>
+						<dt>
+							<label for="select_recipient_message">Выберете получателя</label>
+						</dt>
+						<dd>
+							<select id="select_recipient_message" name="select_recipient_message">
+								<option selected="selected">Анастасия Селезнева Анастасия Селезнева Анастасия</option>	
+								<option>Иванов Иван</option>
+								<option>Петр Иванов</option>
+								<option>Любовь Орлова</option>
+								<option>Георгий Данелия</option>
+								<option>Семен Стругачев</option>
+								<option>Ринат Юсупов</option>
+							</select>
+						</dd>
+					</dl>
+				</div>
+				<div class="menu_choice">
+					<input name="select_type_recipient[]" value="rb1" type="radio" checked="checked" />Друзья&nbsp;&nbsp;&nbsp;
+					<input name="select_type_recipient[]" value="rb2" type="radio" />Списки друзей
+				</div>
+				<div class="to_whom">
+					<span>Кому:</span>
+					<ul>
+						<li>Анастасия Селезнева Анастасия Селезнева Анастасия </li>
+						<li>Иванов Иван</li>
+						<li>Петр Иванов</li>
+						<li>Любовь Орлова</li>
+						<li>Георгий Данелия</li>
+						<li>Семен Стругачев</li>
+						<li>Ринат Юсупов</li>
+					</ul>
+				</div>
+				<div class="write_message">
+					<dl>
+						<dt>
+							<label for="theme_write_message">Тема</label>
+						</dt>
+						<dd>
+							<input id="theme_write_message" name="theme_write_message" value="" type="text" maxlength="100" size="50" />
+						</dd>
+						<dt class="message">
+							<label for="text_write_message">Сообщение</label>
+						</dt>
+						<dd class="message">
+							<textarea id="text_write_message" name="text_write_message" cols="60" rows="7"></textarea>
+						</dd>
+					</dl>
+				</div>
+				<div class="smilie">
+					<a href="#">
+						<img src="images/icons/1.png" alt="icon" title="улыбка" />
+					</a>
+					<a href="#">
+						<img src="images/icons/17.png" alt="icon" title="подмигивание" />
+					</a>
+					<a href="#">
+						<img src="images/icons/18.png" alt="icon" title="ухмылка" />
+					</a>
+					<a href="#">
+						<img src="images/icons/2.png" alt="icon" title="плач" />
+					</a>
+					<a href="#">
+						<img src="images/icons/3.png" alt="icon" title="безразличие" />
+					</a>
+					<a href="#">
+						<img src="images/icons/14.png" alt="icon" title="злость" />
+					</a>
+					<a href="#">
+						<img src="images/icons/13.png" alt="icon" title="печаль" />
+					</a>
+					<a href="#">
+						<img src="images/icons/5.png" alt="icon" title="депресия" />
+					</a>
+					<a href="#">
+						<img src="images/icons/12.png" alt="icon" title="замешательство" />
+					</a>
+					<a href="#">
+						<img src="images/icons/19.png" alt="icon" title="удивление" />
+					</a>
+					<a href="#">
+						<img src="images/icons/6.png" alt="icon" title="сумашествие" />
+					</a>
+					<a href="#">
+						<img src="images/icons/7.png" alt="icon" title="убит" />
+					</a>
+					<a href="#">
+						<img src="images/icons/15.png" alt="icon" title="сон" />
+					</a>
+					<a href="#">
+						<img src="images/icons/8.png" alt="icon" title="святой" />
+					</a>
+					<a href="#">
+						<img src="images/icons/9.png" alt="icon" title="взбешен" />
+					</a>
+					<a href="#">
+						<img src="images/icons/16.png" alt="icon" title="любовь" />
+					</a>
+					<a href="#">
+						<img src="images/icons/10.png" alt="icon" title="крутизна" />
+					</a>
+					<a href="#">
+						<img src="images/icons/4.png" alt="icon" title="прослушивает музыку" />
+					</a>
+				</div>
+				<div class="button">
+					<input id="save_write_message" name="save_write_message" value="Сохранить" type="submit" />&nbsp;&nbsp;
+					<input id="send_write_message" name="send_write_message" value="Отправить" type="submit" />
+				</div>
+			</div>
+		</form>
+	</body>
+</html>

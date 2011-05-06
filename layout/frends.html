@@ -1,0 +1,846 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Quki</title>
+		<link rel="shortcut icon" href="images/quki.ico" />
+		<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+		<link type="text/css" href="custom-theme/jquery-ui-1.8.5.custom.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="style_private_office.css" />		
+		<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.5.custom.min.js"></script>
+		<script type="text/javascript">
+		/*<![CDATA[*/
+			$(function(){
+				$('#tabs').tabs();
+				$('input:submit').button();
+			});
+		/*]]>*/
+		</script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="header">
+				<div class="top">
+					<div class="logo">
+						<a href="#">
+							<img src="images/parts/logo.png" alt="Quki" />
+						</a>
+					</div>
+					<div class="banner_top">
+						<a href="#">
+							<img src="images/banners/banner_LCD.jpg" alt="Баннер" />
+						</a>
+					</div>
+				</div>
+				<div class="user_name">
+					Алексеев Алекс&#x301;ей
+				</div>
+				<div class="presence">
+					<span class="online">Online</span>
+					<span class="last_visiting">Был: 25.09.2010</span>
+				</div>
+				<form action="#">
+					<div class="status">
+						<a href="block_uploads_status.html">Война... Война никогда не меняется (Fallout)</a>
+					</div>
+				</form>
+				<form action="#">
+					<div class="exit_button">
+						<input id="end" name="end" value="Выход" type="submit" />
+					</div>
+				</form>
+			</div>
+			<div id="nav">
+				<div class="avatar">
+					<img src="images/private_office/1/avatar.jpg" alt="Аватар" />
+				</div>
+				<div class="menu_user">
+					<ul>
+						<li class="b"><a href="private_office.html">Страница кабинета</a></li>
+						<li><a href="messages.html">Сообщения</a><span>10000&nbsp;/&nbsp;<a href="messages.html">2000</a></span></li>
+						<li><a href="message.html">Написать сообщение</a></li>
+						<li><a href="#">Подарки</a></li>
+						<li><a href="#">Отправить подарок</a></li>
+						<li><a href="frends.html">Друзья</a></li>
+						<li><a href="organizer.html">Органайзер</a></li>
+						<li><a href="photo_gallery.html">Фотоальбомы</a></li>
+						<li><a href="my_video.html">Видеозаписи</a></li>
+						<li><a href="settings.html">Настройки</a></li>
+					</ul>
+				</div>
+				<div class="birthday_man">
+					<div class="panel">
+						<div class="tip"></div>
+						<div class="plashka"></div>
+						<h6>Дни рождения</h6>
+					</div>
+					<ul>
+						<li><a href="private_office_other_user.html">Иванов Иван Ибн Ван Д' Конел Пан Иван</a></li>
+						<li><a href="private_office_other_user.html">Екатерина Иванова</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="aside">
+				<div class="banner_right">
+					<a href="#">
+						<img src="images/banners/banner_Fantasy.jpg" alt="Банер" />
+					</a>
+				</div>
+				<div class="calendar_list">
+					<div class="calendar-top"></div>
+					<div class="date">
+						<span>20 сентября
+						понедельник</span>
+					</div>
+					<div class="event">
+						<a href="organizer.html">встреча в парке в 18:00</a>
+					</div>
+					<div class="daily_log">
+						<a href="organizer.html">Ежедневник</a>
+						<ul>
+							<li>Купить молоко</li>
+							<li>Найти Крочи</li>
+							<li>Спасти мир</li>
+						</ul>
+					</div>
+					<div class="calendar">
+						<a href="organizer.html" class="today">20</a>|<a href="organizer.html" class="usual_day">21</a>|<a href="organizer.html" class="usual_day">22</a>|<a href="organizer.html" class="the_planned_events">23</a>|<a href="organizer.html" class="usual_day">24</a>|<a href="organizer.html" class="the_planned_events">25</a>|<a href="organizer.html" class="holidays" title="День машиностроителя">26</a>
+					</div>
+				</div>
+			</div>
+
+			<div id="content">
+				<div id="tabs">
+					<ul class="tabs">
+						<li><a href="#tabs-1" class="tabs_activ">Друзья</a></li>
+						<li><a href="#tabs-2" class="tabs">Друзья в сети</a></li>
+						<li><a href="#tabs-3" class="tabs">Списки друзей</a></li>
+					</ul>
+					<form action="#">
+						<div id="tabs-1">
+							<div class="top_navigation_frends">
+								<span class="number_frends">Друзей: 155.000</span>
+								<span class="search_for_friends">
+									<a href="find_friends.html">Поиск друзей</a>
+								</span>
+								<ul title="страница с друзьями">
+									<li><a href="#" title="последняя страница"><img src="images/parts/end_2.png" alt="" /></a></li>
+									<li><a href="#" title="следующая страница"><img src="images/parts/next_2.png" alt="" /></a></li>
+									<li><a href="#">1…15</a></li>
+									<li><a href="#">16…30</a></li>
+									<li><a href="#">31…45</a></li>
+									<li><a href="#">46…60</a></li>
+									<li><a href="#" title="следующая страница"><img src="images/parts/next.png" alt="" /></a></li>
+									<li><a href="#" title="последняя страница"><img src="images/parts/end.png" alt="" /></a></li>
+								</ul>
+							</div>
+							<div class="area_frends">								
+								<div class="area_frend">
+									<div class="avatar_frends">
+										<a href="#"><img src="images/private_office/1/ava_3.jpg" alt="Аватар" /></a>
+									</div>
+									<span class="name_user">
+										<a href="#">Анастасия Селезнева Анастасия Селезнева Анастасия Селезнева</a>
+									</span>
+									<span class="city_frend">
+										<a href="#">Нижний Новгород</a>
+									</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать из друзей</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<div class="avatar_frends">
+										<a href="#">
+											<img src="images/private_office/1/ava_14.jpg" alt="Аватар" />
+										</a>
+									</div>
+									<span class="name_user">
+										<a href="#">Александр Геравко</a>
+									</span>
+									<span class="city_frend">
+										<a href="#">Казань</a>
+									</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать из друзей</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<div class="avatar_frends">
+										<a href="#"><img src="images/private_office/1/ava_9.jpg" alt="Аватар" /></a>
+									</div>
+									<div class="name_user">
+										<a href="#">Веньямин Алдашев</a>
+									</div>
+									<div class="city_frend">
+										<a href="#">Санкт-Петербург</a>
+									</div>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать из друзей</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<div class="avatar_frends">
+										<a href="#"><img src="images/private_office/1/ava_11.jpg" alt="Аватар" /></a>
+									</div>
+									<span class="name_user">
+										<a href="#">Виталий Петров</a>
+									</span>
+									<span class="city_frend">
+										<a href="#">Казань</a>
+									</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать из друзей</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<div class="avatar_frends">
+										<a href="#"><img src="images/private_office/1/ava_8.jpg" alt="Аватар" /></a>
+									</div>
+									<span class="name_user">
+										<a href="#">Георгий Кикабидзе</a>
+									</span>
+									<span class="city_frend">
+										<a href="#">Казань</a>
+									</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать из друзей</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<div class="avatar_frends">
+										<a href="#"><img src="images/private_office/1/ava_15.jpg" alt="Аватар" /></a>
+									</div>
+									<span class="name_user">
+										<a href="#">Дарья Волкова</a>
+									</span>
+									<span class="city_frend">
+										<a href="#">Казань</a>
+									</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать из друзей</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<div class="avatar_frends">
+										<a href="#"><img src="images/private_office/1/ava_1.jpg" alt="Аватар" /></a>
+									</div>
+									<span class="name_user">
+										<a href="#">Евгений Гудзь</a>
+									</span>
+									<span class="city_frend">
+										<a href="#">Нью-Йорк</a>
+									</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать из друзей</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<div class="avatar_frends">
+										<a href="#"><img src="images/private_office/1/ava_4.jpg" alt="Аватар" /></a>
+									</div>
+									<span class="name_user">
+										<a href="#">Игорь Кошкин</a>
+									</span>
+									<span class="city_frend">
+										<a href="#">Казань</a>
+									</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать из друзей</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<div class="avatar_frends">
+										<a href="#"><img src="images/private_office/1/ava_2.jpg" alt="Аватар" /></a>
+									</div>
+									<span class="name_user">
+										<a href="#">Ильнар Гарипов</a>
+									</span>
+									<span class="city_frend">
+										<a href="#">Казань</a>
+									</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать из друзей</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<div class="avatar_frends">
+										<a href="#"><img src="images/private_office/1/ava_12.jpg" alt="Аватар" /></a>
+									</div>
+									<span class="name_user">
+										<a href="#">Ильнар Кроликов</a>
+									</span>
+									<span class="city_frend">
+										<a href="#">Казань</a>
+									</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать из друзей</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<div class="avatar_frends">
+										<a href="#"><img src="images/private_office/1/ava_5.jpg" alt="Аватар" /></a>
+									</div>
+									<span class="name_user">
+										<a href="#">Светлана Зейналова</a>
+									</span>
+									<span class="city_frend">
+										<a href="#">Москва</a>
+									</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать из друзей</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<div class="avatar_frends">
+										<a href="#"><img src="images/private_office/1/ava_7.jpg" alt="Аватар" /></a>
+									</div>
+									<span class="name_user">
+										<a href="#">Радик Асхадулин</a>
+									</span>
+									<span class="city_frend">
+										<a href="#">Казань</a>
+									</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать из друзей</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<div class="avatar_frends">
+										<a href="#"><img src="images/private_office/1/ava_6.jpg" alt="Аватар" /></a>
+									</div>
+									<span class="name_user">
+										<a href="#">Сидорова Мария</a>
+									</span>
+									<span class="city_frend">
+										<a href="#">Альметьевск</a>
+									</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать из друзей</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<div class="avatar_frends">
+										<a href="#"><img src="images/private_office/1/ava_13.jpg" alt="Аватар" /></a>
+									</div>
+									<span class="name_user">
+										<a href="#">Карима Гематоген</a>
+									</span>
+									<span class="city_frend">
+										<a href="#">Санкт-Петербург</a>
+									</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать из друзей</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<div class="avatar_frends">
+										<a href="#"><img src="images/private_office/1/ava_10.jpg" alt="Аватар" /></a>
+									</div>
+									<span class="name_user">
+										<a href="#">Константин Лебедев</a>
+									</span>
+									<span class="city_frend">
+										<a href="#">Нижнекамск</a>
+									</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать из друзей</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="bottom_navigation">
+								<ul title="страница с друзьями">
+									<li><a href="#">1…15</a></li>
+									<li><a href="#">16…30</a></li>
+									<li><a href="#">31…45</a></li>
+									<li><a href="#">46…60</a></li>
+									<li><a href="#" title="следующая страница"><img src="images/parts/next.png" alt="" /></a></li>
+									<li><a href="#" title="последняя страница"><img src="images/parts/end.png" alt="" /></a></li>
+								</ul>
+							</div>
+						</div>
+					</form>
+
+					<form action="#">
+						<div id="tabs-2">
+							<div class="top_navigation_frends">
+								<span class="number_frends">Друзей: 42</span>
+								<span class="search_for_friends">
+									<a href="find_friends.html">Поиск друзей</a>
+								</span>
+								<ul title="страница с друзьями">
+									<li><a href="#">1…15</a></li>
+									<li><a href="#">16…30</a></li>
+									<li><a href="#">31…42</a></li>
+								</ul>
+							</div>
+							<div class="area_frends">								
+								<div class="area_frend">
+									<div class="avatar_frends">
+										<a href="#"><img src="images/private_office/1/ava_3.jpg" alt="Аватар" /></a>
+									</div>
+									<span class="name_user">
+										<a href="#">Анастасия Селезнева</a>
+									</span>
+									<span class="city_frend">
+										<a href="#">Нижний Новгород</a>
+									</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать из друзей</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<div class="avatar_frends">
+										<a href="#"><img src="images/private_office/1/ava_14.jpg" alt="Аватар" /></a>
+									</div>
+									<span class="name_user">
+										<a href="#">Александр Геравко</a>
+									</span>
+									<span class="city_frend">
+										<a href="#">Казань</a>
+									</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать из друзей</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<div class="avatar_frends">
+										<a href="#"><img src="images/private_office/1/ava_18.jpg" alt="Аватар" /></a>
+									</div>
+									<span class="name_user">
+										<a href="#">Алексей Плетнев</a>
+									</span>
+									<span class="city_frend">
+										<a href="#">Набережные Челны</a>
+									</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать из друзей</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<div class="avatar_frends">
+										<a href="#"><img src="images/private_office/1/ava_11.jpg" alt="Аватар" /></a>
+									</div>
+									<span class="name_user">
+										<a href="#">Борис Шарапов</a>
+									</span>
+									<span class="city_frend">
+										<a href="#">Астана</a>
+									</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать из друзей</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<div class="avatar_frends">
+										<a href="#"><img src="images/private_office/1/ava_8.jpg" alt="Аватар" /></a>
+									</div>
+									<span class="name_user">
+										<a href="#">Георгий Кикабидзе</a>
+									</span>
+									<span class="city_frend">
+										<a href="#">Казань</a>
+									</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать из друзей</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<div class="avatar_frends">
+										<a href="#"><img src="images/private_office/1/ava_15.jpg" alt="Аватар" /></a>
+									</div>
+									<span class="name_user">
+										<a href="#">Гульнара Мингалеева</a>
+									</span>
+									<span class="city_frend">
+										<a href="#">Казань</a>
+									</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать из друзей</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<div class="avatar_frends">
+										<a href="#"><img src="images/private_office/1/ava_1.jpg" alt="Аватар" /></a>
+									</div>
+									<span class="name_user">
+										<a href="#">Дарья Волкова</a>
+									</span>
+									<span class="city_frend">
+										<a href="#">Казань</a>
+									</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать из друзей</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<div class="avatar_frends">
+										<a href="#"><img src="images/private_office/1/ava_4.jpg" alt="Аватар" /></a>
+									</div>
+									<span class="name_user">
+										<a href="#">Евгений Гудзь</a>
+									</span>
+									<span class="city_frend">
+										<a href="#">Нью-Йорк</a>
+									</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать из друзей</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<div class="avatar_frends">
+										<a href="#"><img src="images/private_office/1/ava_2.jpg" alt="Аватар" /></a>
+									</div>
+									<span class="name_user">
+										<a href="#">Ильнар Гарипов</a>
+									</span>
+									<span class="city_frend">
+										<a href="#">Казань</a>
+									</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать из друзей</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<div class="avatar_frends">
+										<a href="#"><img src="images/private_office/1/ava_12.jpg" alt="Аватар" /></a>
+									</div>
+									<span class="name_user">
+										<a href="#">Ильнар Кроликов</a>
+									</span>
+									<span class="city_frend">
+										<a href="#">Казань</a>
+									</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать из друзей</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<div class="avatar_frends">
+										<a href="#"><img src="images/private_office/1/ava_5.jpg" alt="Аватар" /></a>
+									</div>
+									<span class="name_user">
+										<a href="#">Светлана Зейналова</a>
+									</span>
+									<span class="city_frend">
+										<a href="#">Москва</a>
+									</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать из друзей</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<div class="avatar_frends">
+										<a href="#"><img src="images/private_office/1/ava_7.jpg" alt="Аватар" /></a>
+									</div>
+									<span class="name_user">
+										<a href="#">Сидорова Мария</a>
+									</span>
+									<span class="city_frend">
+										<a href="#">Альметьевск</a>
+									</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать из друзей</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<div class="avatar_frends">
+										<a href="#"><img src="images/private_office/1/ava_6.jpg" alt="Аватар" /></a>
+									</div>
+									<span class="name_user">
+										<a href="#">Татьяна Костина</a>
+									</span>
+									<span class="city_frend">
+										<a href="#">Казань</a>
+									</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать из друзей</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<div class="avatar_frends">
+										<a href="#"><img src="images/private_office/1/ava_13.jpg" alt="Аватар" /></a>
+									</div>
+									<span class="name_user">
+										<a href="#">Карима Гематоген</a>
+									</span>
+									<span class="city_frend">
+										<a href="#">Санкт-Петербург</a>
+									</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать из друзей</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<div class="avatar_frends">
+										<a href="#"><img src="images/private_office/1/ava_10.jpg" alt="Аватар" /></a>
+									</div>
+									<span class="name_user">
+										<a href="#">Константин Лебедев</a>
+									</span>
+									<span class="city_frend">
+										<a href="#">Нижнекамск</a>
+									</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать из друзей</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="bottom_navigation">
+								<ul title="страница с друзьями">
+									<li><a href="#">1…15</a></li>
+									<li><a href="#">16…30</a></li>
+									<li><a href="#">31…42</a></li>
+								</ul>
+							</div>
+						</div>
+					</form>
+
+					<form action="#">
+						<div id="tabs-3">
+							<div class="top_navigation_frends">
+								<span class="number_frends">Списков: 7</span>
+								<span class="to_create_list">
+									<a href="#">Создать список</a>
+								</span>
+								<ul title="страница со списками друзей">
+									<li><a href="#">1…7</a></li>
+								</ul>
+							</div>
+							<div class="area_frends">
+								<div class="area_frend">
+									<span class="name_list">
+										<a href="page_lists_of_friends.html">Мои одноклассники</a>
+									</span>
+									<span class="quantity_frends">Количество друзей: <span>7</span></span>
+									<span class="text_list">Все мои однокашники.</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать список</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<span class="name_list">
+										<a href="page_lists_of_friends.html">Мои одногруппники</a>
+									</span>
+									<span class="quantity_frends">Количество друзей: <span>18</span></span>
+									<span class="text_list">Мои дорогие и незаурядные человеки с которыми мне посчастливилось учиться)</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать список</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<span class="name_list">
+										<a href="page_lists_of_friends.html">Поток</a>
+									</span>
+									<span class="quantity_frends">Количество друзей: <span>41</span></span>
+									<span class="text_list">Весь поток универовских друзей</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать список</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<span class="name_list">
+										<a href="page_lists_of_friends.html">СТАЛКЕРЫ</a>
+									</span>
+									<span class="quantity_frends">Количество друзей: <span>27</span></span>
+									<span class="text_list">Соратники по великому делу исследования пустоши и всего необычного) Клуб, секта, братство и множество других названий)</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать список</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<span class="name_list">
+										<a href="page_lists_of_friends.html">Однополчане по ролевке</a>
+									</span>
+									<span class="quantity_frends">Количество друзей: <span>9</span></span>
+									<span class="text_list">Тоже, что и СТАЛКЕРЫ, но на практике.</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать список</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<span class="name_list">
+										<a href="page_lists_of_friends.html">Походники</a>
+									</span>
+									<span class="quantity_frends">Количество друзей: <span>6</span></span>
+									<span class="text_list">Те с кем штурмую уголки природы.</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать список</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="area_frend">
+									<span class="name_list">
+										<a href="page_lists_of_friends.html">Кибер-стим-генно-гото-посто-панкеры</a>
+									</span>
+									<span class="quantity_frends">Количество друзей: <span>7</span></span>
+									<span class="text_list">Новое движение созданное мной)</span>
+									<div class="button_frend">
+										<ul>
+											<li><a href="#">Отправить сообщение</a></li>
+											<li><a href="#">Отправить подарок</a></li>
+											<li><a href="#">Убрать список</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="bottom_navigation">
+								<ul title="страница со списками друзей">
+									<li><a href="#">1…7</a></li>
+								</ul>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="clearfloat"></div>
+			<div class="empty_footer"></div>
+		</div>
+		<div id="footer">
+			<a href="#">2011&nbsp;Quki</a> · <a href="registraciya_1.html">Регистрация</a> · <a href="#">Служба поддержки</a> · <a href="#">Все проекты</a> · <a href="#">Реклама на Quki.ru</a> · <a href="#">Вакансии</a> · <a href="#">Обратная связь</a> · <a href="#">Карта сайта</a>
+		</div>
+	</body>
+</html>

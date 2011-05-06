@@ -1,0 +1,581 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Quki</title>
+		<link rel="shortcut icon" href="images/quki.ico" />
+		<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+		<link type="text/css" href="custom-theme/jquery-ui-1.8.5.custom.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="style_private_office.css" />		
+		<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.5.custom.min.js"></script>
+		<script type="text/javascript">
+		/*<![CDATA[*/
+			$(function(){
+				$('#tabs').tabs();
+				$('input:submit').button();
+			});
+		/*]]>*/
+		</script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="header">
+				<div class="top">
+					<div class="logo">
+						<a href="#">
+							<img src="images/parts/logo.png" alt="Quki" />
+						</a>
+					</div>
+					<div class="banner_top">
+						<a href="#">
+							<img src="images/banners/banner_LCD.jpg" alt="Баннер" />
+						</a>
+					</div>
+				</div>
+				<div class="user_name">
+					Алексеев Алекс&#x301;ей
+				</div>
+				<div class="presence">
+					<span class="online">Online</span>
+					<span class="last_visiting">Был: 25.09.2010</span>
+				</div>
+				<form action="#">
+					<div class="status">
+						<a href="#">Война... Война никогда не меняется (Fallout)</a>
+					</div>
+				</form>
+				<form action="#">
+					<div class="exit_button">
+						<input id="end" name="end" value="Выход" type="submit" />
+					</div>
+				</form>
+			</div>
+			<div id="nav">
+				<div class="small_menu">
+					<div class="panel">
+						<div class="tip"></div>
+						<div class="plashka"></div>
+						<h6>Мой кабинет</h6>
+					</div>
+					<ul>
+						<li><a href="private_office.html">Личный кабинет</a></li>
+						<li><a href="messages.html">Сообщения</a><span>10000&nbsp;/&nbsp;<a href="messages.html">2000</a></span></li>
+						<li><a href="message.html">Написать сообщение</a></li>
+					</ul>
+				</div>
+				<div class="avatar">
+					<img src="images/private_office/1/avatar.jpg" alt="Аватар" />
+				</div>
+				<div class="menu_user">
+					<ul>
+						<li class="b"><a href="private_office_for_other_user.html">Страница кабинета</a></li>
+						<li><a href="#">Добавить в друзья</a></li>
+						<li><a href="message.html">Написать сообщение</a></li>
+						<li><a href="#">Отправить подарок</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="aside">
+				<div class="banner_right">
+					<a href="#">
+						<img src="images/banners/banner_Fantasy.jpg" alt="Банер" />
+					</a>
+				</div>
+				<div class="calendar_list">
+					<div class="calendar-top"></div>
+					<div class="date">
+						<span>20 сентября
+						понедельник</span>
+					</div>
+					<div class="event">
+						<a href="organizer.html">встреча в парке в 18:00</a>
+					</div>
+					<div class="daily_log">
+						<a href="organizer.html">Ежедневник</a>
+						<ul>
+							<li>Купить молоко</li>
+							<li>Найти Крочи</li>
+							<li>Спасти мир</li>
+						</ul>
+					</div>
+					<div class="calendar">
+						<a href="organizer.html" class="today">20</a>|<a href="organizer.html" class="usual_day">21</a>|<a href="organizer.html" class="usual_day">22</a>|<a href="organizer.html" class="the_planned_events">23</a>|<a href="organizer.html" class="usual_day">24</a>|<a href="organizer.html" class="the_planned_events">25</a>|<a href="organizer.html" class="holidays" title="День машиностроителя">26</a>
+					</div>
+				</div>
+			</div>
+
+			<div id="content">
+				<div id="tabs">
+					<ul class="tabs">
+						<li><a href="#tads-1" class="tabs_activ">Мое видео</a></li>
+						<li><a href="#tads-2" class="tabs">Избранное</a></li>
+						<li><a href="#tads-3" class="tabs">Конкурсное</a></li>
+					</ul>
+					<form action="#">
+						<div id="tads-1">
+							<div class="top_navigation">
+								<div class="quantity_balls_videos">
+									<p>Баллов: <span class="ball">1485</span> | Видео: 10.000</p>
+								</div>
+								<div class="video_loading">
+									<a href="video_loading.html">Загрузить видео</a>
+								</div>
+								<ul title="страница с видеозаписями">
+									<li><a href="#">1…15</a></li>
+									<li><a href="#">16…30</a></li>
+									<li><a href="#">31…45</a></li>
+									<li><a href="#">46…60</a></li>
+									<li><a href="#" title="следующая страница"><img src="images/parts/next.png" alt="" /></a></li>
+									<li><a href="#" title="последняя страница"><img src="images/parts/end.png" alt="" /></a></li>
+								</ul>
+							</div>
+							<div class="area_videos">						
+								<div class="block_video">
+									<div class="area_video">
+										<a href="video_01_for_other_user.html">
+											<img src="images/video/video_user/my_video/1.jpg" alt="Фотография" />
+											<span class="video_time">0:15</span>
+										</a>
+									</div>
+									<div class="name_video_user">
+										<a href="video_01_for_other_user.html">За то что не погладил кота!</a>
+									</div>
+									<span class="date_video_user">Дата загрузки: 12.09.2010</span>
+									<span class="comments_video">Комментариев: 6</span>
+									<span class="video_balls">Баллов: <span class="ball">99</span></span>
+									<span class="text_video_user">=)</span>
+								</div>
+								<div class="block_video">
+									<div class="area_video">
+										<a href="video_01_for_other_user.html">
+											<img src="images/video/video_user/my_video/2.jpg" alt="Фотография" />
+											<span class="video_time">18:10</span>
+										</a>
+									</div>
+									<div class="name_video_user">
+										<a href="video_01_for_other_user.html">В студии Blizzard</a>
+									</div>
+									<span class="date_video_user">Дата загрузки: 12.09.2010</span>
+									<span class="comments_video">Комментариев: 7</span>
+									<span class="video_balls">Баллов: <span class="ball">99</span></span>
+									<span class="text_video_user">Игромания, в лице Александра Кузьменко и Антона Логвинова посетили бастион самой игровой студии... </span>
+								</div>
+								<div class="block_video">
+									<div class="area_video">
+										<a href="video_01_for_other_user.html">
+											<img src="images/video/video_user/my_video/3.jpg" alt="Фотография" />
+											<span class="video_time">15:23</span>
+										</a>
+									</div>
+									<div class="name_video_user">
+										<a href="video_01_for_other_user.html">В завтрашний путь</a>
+									</div>
+									<span class="date_video_user">Дата загрузки: 12.09.2010</span>
+									<span class="comments_video">Комментариев: 7</span>
+									<span class="video_balls">Баллов: <span class="ball">99</span></span>
+									<span class="text_video_user">Потрясающая короткометражка в жанре постапокалипсис, созданная стараниями любителей из...</span>
+								</div>
+								<div class="block_video">
+									<div class="area_video">
+										<a href="video_01_for_other_user.html">
+											<img src="images/video/video_user/my_video/4.jpg" alt="Фотография" />
+											<span class="video_time">10:45</span>
+										</a>
+									</div>
+									<div class="name_video_user">
+										<a href="video_01_for_other_user.html">Первый полет ПАК ФА</a>
+									</div>
+									<span class="date_video_user">Дата загрузки: 12.09.2010</span>
+									<span class="comments_video">Комментариев: 7</span>
+									<span class="video_balls">Баллов: <span class="ball">99</span></span>
+									<span class="text_video_user">Долгожданное испытание нового российского многоцелевого истребителя 5-го поколения.</span>
+								</div>
+								<div class="block_video">
+									<div class="area_video">
+										<a href="video_01_for_other_user.html">
+											<img src="images/video/video_user/my_video/5.jpg" alt="Фотография" />
+											<span class="video_time">3:00</span>
+										</a>
+									</div>
+									<div class="name_video_user">
+										<a href="video_01_for_other_user.html">Тибет - Вегас)</a>
+									</div>
+									<span class="date_video_user">Дата загрузки: 12.09.2010</span>
+									<span class="comments_video">Комментариев: 7</span>
+									<span class="video_balls">Баллов: <span class="ball">99</span></span>
+									<span class="text_video_user">Жители одной из тибетских деревень устроилиигры в покер и бильярд на открытом месте.</span>
+								</div>
+								<div class="block_video">
+									<div class="area_video">
+										<a href="video_01_for_other_user.html">
+											<img src="images/video/video_user/my_video/6.jpg" alt="Фотография" />
+											<span class="video_time">7:25</span>
+										</a>
+									</div>
+									<div class="name_video_user">
+										<a href="video_01_for_other_user.html">Кокон</a>
+									</div>
+									<span class="date_video_user">Дата загрузки: 12.09.2010</span>
+									<span class="comments_video">Комментариев: 7</span>
+									<span class="video_balls">Баллов: <span class="ball">99</span></span>
+									<span class="text_video_user">Короткометражный мультфильм автора к заставок к фильму “Изображая жертву”.</span>
+								</div>
+								<div class="block_video">
+									<div class="area_video">
+										<a href="video_01_for_other_user.html">
+											<img src="images/video/video_user/my_video/7.jpg" alt="Фотография" />
+											<span class="video_time">6:05</span>
+										</a>
+									</div>
+									<div class="name_video_user">
+										<a href="video_01_for_other_user.html">Интерьвью Цоя после концерта.</a>
+									</div>
+									<span class="date_video_user">Дата загрузки: 12.09.2010</span>
+									<span class="comments_video">Комментариев: 7</span>
+									<span class="video_balls">Баллов: <span class="ball">99</span></span>
+									<span class="text_video_user">198..</span>
+								</div>
+								<div class="block_video">
+									<div class="area_video">
+										<a href="video_01_for_other_user.html">
+											<img src="images/video/video_user/my_video/8.jpg" alt="Фотография" />
+											<span class="video_time">14:35</span>
+										</a>
+									</div>
+									<div class="name_video_user">
+										<a href="video_01_for_other_user.html">Апокалипсис сегодня.</a>
+									</div>
+									<span class="date_video_user">Дата загрузки: 12.09.2010</span>
+									<span class="comments_video">Комментариев: 7</span>
+									<span class="video_balls">Баллов: <span class="ball">99</span></span>
+									<span class="text_video_user">Фрагмент док. фильм о заброшенных человеком городах и селенях.</span>
+								</div>
+								<div class="block_video">
+									<div class="area_video">
+										<a href="video_01.html">
+											<img src="images/video/video_user/my_video/9.jpg" alt="Фотография" />
+											<span class="video_time">2:45</span>
+										</a>
+									</div>
+									<div class="name_video_user">
+										<a href="video_01.html">Кот богатырь</a>
+									</div>
+									<span class="date_video_user">Дата загрузки: 12.09.2010</span>
+									<span class="comments_video">Комментариев: 7</span>
+									<span class="video_balls">Баллов: <span class="ball">99</span></span>
+								</div>
+								<div class="block_video">
+									<div class="area_video">
+										<a href="video_01_for_other_user.html">
+											<img src="images/video/video_user/my_video/10.jpg" alt="Фотография" />
+											<span class="video_time">3:55</span>
+										</a>
+									</div>
+									<div class="name_video_user">
+										<a href="video_01_for_other_user.html">Новый клип группы Машины времени.</a>
+									</div>
+									<span class="date_video_user">Дата загрузки: 12.09.2010</span>
+									<span class="comments_video">Комментариев: 7</span>
+									<span class="video_balls">Баллов: <span class="ball">99</span></span>
+								</div>
+								<div class="block_video">
+									<div class="area_video">
+										<a href="video_01_for_other_user.html">
+											<img src="images/video/video_user/my_video/11.jpg" alt="Фотография" />
+											<span class="video_time">30:18</span>
+										</a>
+									</div>
+									<div class="name_video_user">
+										<a href="video_01_for_other_user.html">Крах эпохи.</a>
+									</div>
+									<span class="date_video_user">Дата загрузки: 12.09.2010</span>
+									<span class="comments_video">Комментариев: 7</span>
+									<span class="video_balls">Баллов: <span class="ball">99</span></span>
+									<span class="text_video_user">Новый документальный фильм проекта “Венера”, создателей нашумевшего фильма “Дух времени”.</span>
+								</div>
+								<div class="block_video">
+									<div class="area_video">
+										<a href="video_01_for_other_user.html">
+											<img src="images/video/video_user/my_video/12.jpg" alt="Фотография" />
+											<span class="video_time">1:15</span>
+										</a>
+									</div>
+									<div class="name_video_user">
+										<a href="video_01_for_other_user.html">Богиня ночи!</a>
+									</div>
+									<span class="date_video_user">Дата загрузки: 12.09.2010</span>
+									<span class="comments_video">Комментариев: 7</span>
+									<span class="video_balls">Баллов: <span class="ball">99</span></span>
+									<span class="text_video_user">Милый косплейчик)</span>
+								</div>
+								<div class="block_video">
+									<div class="area_video">
+										<a href="video_01_for_other_user.html">
+											<img src="images/video/video_user/my_video/13.jpg" alt="Фотография" />
+											<span class="video_time">5:25</span>
+										</a>
+									</div>
+									<div class="name_video_user">
+										<a href="video_01_for_other_user.html">GBYR</a>
+									</div>
+									<span class="date_video_user">Дата загрузки: 12.09.2010</span>
+									<span class="comments_video">Комментариев: 7</span>
+									<span class="video_balls">Баллов: <span class="ball">99</span></span>
+									<span class="text_video_user">клип по песни Джейна</span>
+								</div>
+								<div class="block_video">
+									<div class="area_video">
+										<a href="video_01_for_other_user.html">
+											<img src="images/video/video_user/my_video/14.jpg" alt="Фотография" />
+											<span class="video_time">10:12</span>
+										</a>
+									</div>
+									<div class="name_video_user">
+										<a href="video_01_for_other_user.html">О создании фильма Аватар</a>
+									</div>
+									<span class="date_video_user">Дата загрузки: 12.09.2010</span>
+									<span class="comments_video">Комментариев: 7</span>
+									<span class="video_balls">Баллов: <span class="ball">99</span></span>
+								</div>
+								<div class="block_video">
+									<div class="area_video">
+										<a href="video_01_for_other_user.html">
+											<img src="images/video/video_user/my_video/15.jpg" alt="Фотография" />
+											<span class="video_time">29:15</span>
+										</a>
+									</div>
+									<div class="name_video_user">
+										<a href="video_01_for_other_user.html">BBC. Перед катастрофой.</a>
+									</div>
+									<span class="date_video_user">Дата загрузки: 12.09.2010</span>
+									<span class="comments_video">Комментариев: 7</span>
+									<span class="video_balls">Баллов: <span class="ball">99</span></span>
+									<span class="text_video_user">документальный фильм о возможных катастрофах, который могут постигнуть нашу Землю.</span>
+								</div>
+							</div>
+							<div class="bottom_navigation">
+								<ul title="страница с видеозаписями">
+									<li><a href="#">1…15</a></li>
+									<li><a href="#">16…30</a></li>
+									<li><a href="#">31…45</a></li>
+									<li><a href="#">46…60</a></li>
+									<li><a href="#" title="следующая страница"><img src="images/parts/next.png" alt="" /></a></li>
+									<li><a href="#" title="последняя страница"><img src="images/parts/end.png" alt="" /></a></li>
+								</ul>
+							</div>
+						</div>
+					</form>
+
+					<form action="#">
+						<div id="tads-2">
+							<div class="top_navigation">
+								<div class="quantity_balls_videos">
+									<p>Баллов: <span class="ball">1485</span> | Видео: 9</p>
+								</div>
+								<ul title="страница с видеозаписями">
+									<li><a href="#">1…9</a></li>
+								</ul>
+							</div>
+							<div class="area_videos">						
+								<div class="block_video">
+									<div class="area_video">
+										<a href="video_01_for_other_user.html">
+											<img src="images/video/video_user/favorites/1.jpg" alt="Фотография" />
+											<span class="video_time">0:15</span>
+										</a>
+									</div>
+									<div class="name_video_user">
+										<a href="video_01_for_other_user.html">За то что не погладил кота!</a>
+									</div>
+									<span class="date_video_user">Дата загрузки: 12.09.2010</span>
+									<span class="comments_video">Комментариев: 6</span>
+									<span class="video_balls">Баллов: <span class="ball">99</span></span>
+									<span class="text_video_user">=)</span>
+								</div>
+								<div class="block_video">
+									<div class="area_video">
+										<a href="video_01_for_other_user.html">
+											<img src="images/video/video_user/favorites/2.jpg" alt="Фотография" />
+											<span class="video_time">18:10</span>
+										</a>
+									</div>
+									<div class="name_video_user">
+										<a href="video_01_for_other_user.html">В студии Blizzard</a>
+									</div>
+									<span class="date_video_user">Дата загрузки: 12.09.2010</span>
+									<span class="comments_video">Комментариев: 7</span>
+									<span class="video_balls">Баллов: <span class="ball">99</span></span>
+									<span class="text_video_user">Игромания, в лице Александра Кузьменко и Антона Логвинова посетили бастион самой игровой студии... </span>
+								</div>
+								<div class="block_video">
+									<div class="area_video">
+										<a href="video_01_for_other_user.html">
+											<img src="images/video/video_user/favorites/3.jpg" alt="Фотография" />
+											<span class="video_time">15:23</span>
+										</a>
+									</div>
+									<div class="name_video_user">
+										<a href="video_01_for_other_user.html">В завтрашний путь</a>
+									</div>
+									<span class="date_video_user">Дата загрузки: 12.09.2010</span>
+									<span class="comments_video">Комментариев: 7</span>
+									<span class="video_balls">Баллов: <span class="ball">99</span></span>
+									<span class="text_video_user">Потрясающая короткометражка в жанре постапокалипсис, созданная стараниями любителей из...</span>
+								</div>
+								<div class="block_video">
+									<div class="area_video">
+										<a href="video_01.html">
+											<img src="images/video/video_user/favorites/4.jpg" alt="Фотография" />
+											<span class="video_time">10:45</span>
+										</a>
+									</div>
+									<div class="name_video_user">
+										<a href="video_01.html">Первый полет ПАК ФА</a>
+									</div>
+									<span class="date_video_user">Дата загрузки: 12.09.2010</span>
+									<span class="comments_video">Комментариев: 7</span>
+									<span class="video_balls">Баллов: <span class="ball">99</span></span>
+									<span class="text_video_user">Долгожданное испытание нового российского многоцелевого истребителя 5-го поколения.</span>
+								</div>
+								<div class="block_video">
+									<div class="area_video">
+										<a href="video_01_for_other_user.html">
+											<img src="images/video/video_user/favorites/5.jpg" alt="Фотография" />
+											<span class="video_time">3:00</span>
+										</a>
+									</div>
+									<div class="name_video_user">
+										<a href="video_01_for_other_user.html">Тибет - Вегас)</a>
+									</div>
+									<span class="date_video_user">Дата загрузки: 12.09.2010</span>
+									<span class="comments_video">Комментариев: 7</span>
+									<span class="video_balls">Баллов: <span class="ball">99</span></span>
+									<span class="text_video_user">Жители одной из тибетских деревень устроилиигры в покер и бильярд на открытом месте.</span>
+								</div>
+								<div class="block_video">
+									<div class="area_video">
+										<a href="video_01_for_other_user.html">
+											<img src="images/video/video_user/favorites/6.jpg" alt="Фотография" />
+											<span class="video_time">7:15</span>
+										</a>
+									</div>
+									<div class="name_video_user">
+										<a href="video_01_for_other_user.html">Кокон</a>
+									</div>
+									<span class="date_video_user">Дата загрузки: 12.09.2010</span>
+									<span class="comments_video">Комментариев: 7</span>
+									<span class="video_balls">Баллов: <span class="ball">99</span></span>
+									<span class="text_video_user">Короткометражный мультфильм автора к заставок к фильму “Изображая жертву”.</span>
+								</div>
+								<div class="block_video">
+									<div class="area_video">
+										<a href="video_01.html">
+											<img src="images/video/video_user/favorites/7.jpg" alt="Фотография" />
+											<span class="video_time">6:05</span>
+										</a>
+									</div>
+									<div class="name_video_user">
+										<a href="video_01.html">Интерьвью Цоя после концерта.</a>
+									</div>
+									<span class="date_video_user">Дата загрузки: 12.09.2010</span>
+									<span class="comments_video">Комментариев: 7</span>
+									<span class="video_balls">Баллов: <span class="ball">99</span></span>
+									<span class="text_video_user">198..</span>
+								</div>
+								<div class="block_video">
+									<div class="area_video">
+										<a href="video_01_for_other_user.html">
+											<img src="images/video/video_user/favorites/8.jpg" alt="Фотография" />
+											<span class="video_time">14:35</span>
+										</a>
+									</div>
+									<div class="name_video_user">
+										<a href="video_01_for_other_user.html">Апокалипсис сегодня.</a>
+									</div>
+									<span class="date_video_user">Дата загрузки: 12.09.2010</span>
+									<span class="comments_video">Комментариев: 7</span>
+									<span class="video_balls">Баллов: <span class="ball">99</span></span>
+									<span class="text_video_user">Фрагмент док. фильм о заброшенных человеком городах и селений.</span>
+								</div>
+								<div class="block_video">
+									<div class="area_video">
+										<a href="video_01_for_other_user.html">
+											<img src="images/video/video_user/favorites/9.jpg" alt="Фотография" />
+											<span class="video_time">2:45</span>
+										</a>
+									</div>
+									<div class="name_video_user">
+										<a href="video_01_for_other_user.html">Кот богатырь</a>
+									</div>
+									<span class="date_video_user">Дата загрузки: 12.09.2010</span>
+									<span class="comments_video">Комментариев: 7</span>
+									<span class="video_balls">Баллов: <span class="ball">99</span></span>
+								</div>
+							</div>
+							<div class="bottom_navigation">
+								<ul title="страница с видеозаписями">
+									<li><a href="#">1…9</a></li>
+								</ul>
+							</div>
+						</div>
+					</form>
+
+					<form action="#">
+						<div id="tads-3">
+							<div class="top_navigation">
+								<div class="quantity_balls_videos">
+									<p>Баллов: <span class="ball">1485</span> | Видео: 2</p>
+								</div>
+								<ul title="страница с видеозаписями">
+									<li><a href="#">1…2</a></li>
+								</ul>
+							</div>
+							<div class="area_videos">						
+								<div class="block_video">
+									<div class="area_video">
+										<a href="video_01_for_other_user.html">
+											<img src="images/video/video_user/bid/1.jpg" alt="Фотография" />
+											<span class="video_time">5:35</span>
+										</a>
+									</div>
+									<div class="name_video_user">
+										<a href="video_01_for_other_user.html">Орех</a>
+									</div>
+									<span class="date_video_user">Дата загрузки: 12.09.2010</span>
+									<span class="comments_video">Комментариев: 6</span>
+									<span class="video_balls">Баллов: <span class="ball">99</span></span>
+									<span class="text_video_user">Фильм о том как мы можем найти свою вторую половину, при необычном стечении обстоятельств.</span>
+								</div>
+								<div class="block_video">
+									<div class="area_video">
+										<a href="video_01_for_other_user.html">
+											<img src="images/video/video_user/bid/2.jpg" alt="Фотография" />
+											<span class="video_time">20:15</span>
+										</a>
+									</div>
+									<div class="name_video_user">
+										<a href="video_01_for_other_user.html">Возраждение Запада</a>
+									</div>
+									<span class="date_video_user">Дата загрузки: 12.09.2010</span>
+									<span class="comments_video">Комментариев: 7</span>
+									<span class="video_balls">Баллов: <span class="ball">99</span></span>
+									<span class="text_video_user">Короткометражка по миру Fallout, режиссером которой я выступил, расскажет о возраждении цивилизации...</span>
+								</div>
+							</div>
+							<div class="bottom_navigation">
+								<ul title="страница с видеозаписями">
+									<li><a href="#">1…2</a></li>
+								</ul>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="clearfloat"></div>
+			<div class="empty_footer"></div>
+		</div>
+		<div id="footer">
+			<a href="#">2011&nbsp;Quki</a> · <a href="registraciya_1.html">Регистрация</a> · <a href="#">Служба поддержки</a> · <a href="#">Все проекты</a> · <a href="#">Реклама на Quki.ru</a> · <a href="#">Вакансии</a> · <a href="#">Обратная связь</a> · <a href="#">Карта сайта</a>
+		</div>
+	</body>
+</html>

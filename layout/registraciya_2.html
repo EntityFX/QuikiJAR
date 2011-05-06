@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Quki</title>
+		<link rel="shortcut icon" href="images/quki.ico" />
+		<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+		<link type="text/css" href="custom-theme/jquery-ui-1.8.5.custom.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="style_registraciya.css" />		
+		<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.5.custom.min.js"></script>
+		<script type="text/javascript">
+		/*<![CDATA[*/
+			$(function(){
+				$('input:submit').button();
+			});
+		/*]]>*/
+		</script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="header">
+				<div class="top">
+					<div class="logo">
+						<a href="#">
+							<img src="images/parts/logo.png" alt="Quki" />
+						</a>
+					</div>
+					<div class="banner_top">
+						<a href="#"><img src="images/banners/banner_LCD.jpg" alt="Баннер" /></a>
+					</div>
+				</div>
+			</div>
+			<div id="content">
+				<div class="registration">
+					<p class="heading">Регистрация</p>
+					<div class="step">
+						Шаг <span>1</span> 2 <span>3</span>
+					</div>
+					<dl>
+						<dd class="explanatory">Загружаемая фотография должна быть размером 200x300 пикселей и объемом не более 300k.</dd>
+						<dt>
+							<label for="avatar_user">Фотография </label>
+						</dt>
+						<dd>
+							<input id="avatar_user" name="avatar_user" class="file_loading" type="file" size="22" /><input id="user_upload_avatars" name="user_upload_avatars" class="loading" type="submit" value="Загрузить"/>
+						</dd>
+						<dt>
+							<label for="marital_status">Семейное положение </label></dt>
+						<dd>
+							<select id="marital_status" name="marital_status">
+								<option value="1">Холост / Не замужем</option>
+								<option value="0">Есть пара</option>
+								<option value="0">Женат / За мужем</option>
+								<option value="0">Ничего</option>
+							</select>
+							<input class="ChkBox" name="for_display_on_server[]" type="checkbox" checked="checked" />
+						</dd>
+						<dd class="contact">Контактная инфомация</dd>
+						<dt>
+							<label for="mobile_phone">Сотовый телефон</label>
+						</dt>
+						<dd>
+							<input id="mobile_phone" name="mobile_phone" maxlength="30" type="text" />
+							<input class="ChkBox" name="for_display_on_server[]" type="checkbox" checked="checked" />
+						</dd>
+						<dt>
+							<label for="icq">ISQ</label>
+						</dt>
+						<dd>
+							<input id="icq" name="icq" type="text" />
+							<input class="ChkBox" name="for_display_on_server[]" type="checkbox" checked="checked" />
+						</dd>
+						<dt>
+							<label for="skype">Skype</label>
+						</dt>
+						<dd>
+							<input id="skype" name="skype" type="text" />
+							<input class="ChkBox" name="for_display_on_server[]" maxlength="50" type="checkbox" checked="checked" />
+						</dd>
+						<dd class="etucation">Образование</dd>
+						<dt>
+							<label for="school">Школа</label>
+						</dt>
+						<dd>
+							<input id="school" name="school" maxlength="100" type="text" />
+							<input class="ChkBox" name="for_display_on_server[]" type="checkbox" checked="checked" />
+						</dd>
+						<dt>
+							<label for="college">Училище, техникум</label>
+						</dt>
+						<dd>
+							<input id="college" name="college" maxlength="100" type="text" />
+							<input class="ChkBox" name="for_display_on_server[]" type="checkbox" checked="checked" />
+						</dd>
+						<dt>
+							<label for="vuz">ВУЗ</label>
+						</dt>
+						<dd>
+							<input id="vuz" name="vuz" maxlength="100" type="text" />
+							<input class="ChkBox" name="for_display_on_server[]" type="checkbox" checked="checked" />
+						</dd>					
+						<dt>
+							<label for="work">Работа</label>
+						</dt>
+						<dd>
+							<input id="work" name="work" maxlength="100" type="text" />
+							<input class="ChkBox" name="for_display_on_server[]" type="checkbox" checked="checked" />
+						</dd>
+						<dd class="info">Отображать эту информацию на сервере<input class="ChkBox" name="for_display_on_server[]" type="checkbox" checked="checked" /></dd>								
+					</dl>
+					<div class="button_next">
+						<input id="joined_on_lv2" name="joined_on_lv2" type="submit" value="Далее &gt;&gt;" />
+					</div>
+				</div>
+				<div class="banner_bottom">
+					<a href="#">
+						<img src="images/banners/banner_LCD2.jpg" alt="Баннер LCD" />
+					</a>
+				</div>
+			</div>
+			<div class="clearfloat"></div>
+			<div class="empty_footer"></div>
+		</div>
+		<div id="footer">
+			<a href="#">2011&nbsp;Quki</a> · <a href="registraciya_1.html">Регистрация</a> · <a href="#">Служба поддержки</a> · <a href="#">Все проекты</a> · <a href="#">Реклама на Quki.ru</a> · <a href="#">Вакансии</a> · <a href="#">Обратная связь</a> · <a href="#">Карта сайта</a>
+		</div>
+	</body>
+</html>

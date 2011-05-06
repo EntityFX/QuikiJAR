@@ -1,0 +1,977 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Quki</title>
+		<link rel="shortcut icon" href="images/quki.ico" />
+		<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+		<link type="text/css" href="custom-theme/jquery-ui-1.8.5.custom.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="style_private_office.css" />
+		<!--[if lte IE 7]>
+		<link rel="stylesheet" type="text/css" href="style.ie.css" />
+		<![endif]-->
+		<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.5.custom.min.js"></script>
+		<script type="text/javascript">
+		/*<![CDATA[*/
+			$(function(){
+				$('#tabs').tabs();
+				$('input:submit').button();
+			});
+		/*]]>*/
+		</script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="header">
+				<div class="top">
+					<div class="logo">
+						<a href="#">
+							<img src="images/parts/logo.png" alt="Quki" />
+						</a>
+					</div>
+					<div class="banner_top">
+						<a href="#">
+							<img src="images/banners/banner_LCD.jpg" alt="Баннер" />
+						</a>
+					</div>
+				</div>
+				<div class="user_name">
+					Алексеев Алекс&#x301;ей
+				</div>
+				<div class="presence">
+					<span class="online">Online</span>
+					<span class="last_visiting">Был: 25.09.2010</span>
+				</div>
+				<form action="#">
+					<div class="status">
+						<a href="block_uploads_status.html">Война... Война никогда не меняется (Fallout)</a>
+					</div>
+				</form>
+				<form action="#">
+					<div class="exit_button">
+						<input id="end" name="end" value="Выход" type="submit" />
+					</div>
+				</form>
+			</div>
+			<div id="nav">
+				<div class="avatar">
+					<img src="images/private_office/1/avatar.jpg" alt="Аватар" />
+				</div>
+				<div class="menu_user">
+					<ul>
+						<li class="b"><a href="private_office.html">Страница кабинета</a></li>
+						<li><a href="messages.html">Сообщения</a><span>10000&nbsp;/&nbsp;<a href="messages.html">2000</a></span></li>
+						<li><a href="message.html">Написать сообщение</a></li>
+						<li><a href="#">Подарки</a></li>
+						<li><a href="#">Отправить подарок</a></li>
+						<li><a href="frends.html">Друзья</a></li>
+						<li><a href="organizer.html">Органайзер</a></li>
+						<li><a href="photo_gallery.html">Фотоальбомы</a></li>
+						<li><a href="my_video.html">Видеозаписи</a></li>
+						<li><a href="settings.html">Настройки</a></li>
+					</ul>
+				</div>
+				<div class="birthday_man">
+					<div class="panel">
+						<div class="tip"></div>
+						<div class="plashka"></div>
+						<h6>Дни рождения</h6>
+					</div>
+					<ul>
+						<li><a href="private_office_other_user.html">Иванов Иван Ибн Ван Д' Конел Пан Иван</a></li>
+						<li><a href="private_office_other_user.html">Екатерина Иванова</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="aside">
+				<div class="banner_right">
+					<a href="#">
+						<img src="images/banners/banner_Fantasy.jpg" alt="Банер" />
+					</a>
+				</div>
+				<div class="calendar_list">
+					<div class="calendar-top"></div>
+					<div class="date">
+						<span>20 сентября
+						понедельник</span>
+					</div>
+					<div class="event">
+						<a href="organizer.html">встреча в парке в 18:00</a>
+					</div>
+					<div class="daily_log">
+						<a href="organizer.html">Ежедневник</a>
+						<ul>
+							<li>Купить молоко</li>
+							<li>Найти Крочи</li>
+							<li>Спасти мир</li>
+						</ul>
+					</div>
+					<div class="calendar">
+						<a href="organizer.html" class="today">20</a>|<a href="organizer.html" class="usual_day">21</a>|<a href="organizer.html" class="usual_day">22</a>|<a href="organizer.html" class="the_planned_events">23</a>|<a href="organizer.html" class="usual_day">24</a>|<a href="organizer.html" class="the_planned_events">25</a>|<a href="organizer.html" class="holidays" title="День машиностроителя">26</a>
+					</div>
+				</div>
+			</div>
+
+			<div id="content">
+				<div id="tabs">
+					<ul>
+						<li><a href="#tabs-1">Входящие</a></li>
+						<li><a href="#tabs-2">Исходящие</a></li>
+						<li><a href="#tabs-3">Черновики</a></li>				
+					</ul>
+					<form action="#">
+						<div id="tabs-1">
+							<div class="top_navigation">
+								<span class="number_message">
+									Сообщений: <span class="number_new_message">2</span>/115
+								</span>
+								<ul title="страница сообщений">
+									<li><a href="#" title="последняя страница"><img src="images/parts/end_2.png" alt="" /></a></li>
+									<li><a href="#" title="следующая страница"><img src="images/parts/next_2.png" alt="" /></a></li>
+									<li><a href="#">1…15</a></li>
+									<li><a href="#">16…30</a></li>
+									<li><a href="#">31…45</a></li>
+									<li><a href="#">46…60</a></li>
+									<li><a href="#" title="следующая страница"><img src="images/parts/next.png" alt="" /></a></li>
+									<li><a href="#" title="последняя страница"><img src="images/parts/end.png" alt="" /></a></li>
+								</ul>
+								<div class="delete_all_messages">
+									<a href="#">Удалить входящие</a>
+								</div>
+								<div class="button_delete_messages">
+									<input id="removal_incoming_messages" name="removal_incoming_messages" value="Удалить" type="submit" />
+								</div>
+								<div class="select_all_messages">
+									<input name="select_sheet_incoming[]" title="Выделить все сообщения на странице" type="checkbox" />
+								</div>
+							</div>
+							<div class="area_messages">					
+								<div class="message_new">
+									<div class="avatar_message">
+										<a href="#"><img src="images/private_office/1/ava_3.jpg" alt="Аватар" /></a>
+									</div>
+									<div class="select_a_message">
+										<input name="select_a_incoming_1[]" title="Отметить для удаления" type="checkbox" />
+									</div>
+									<span class="sender">
+										<a href="#">Анастасия Селезнева Анастасия Селезнева Селезнева Анастасия Селезнева Анастасия Селезнева Селезнева </a>
+									</span>
+									<span class="date_message">Сегодня в 00:10</span>
+									<span class="offline_message">Offline</span>
+									<span class="theme_message">
+										<a href="full_report.html">Добрый вечер Добрый вечер Добрый вечер Добрый вечер  Добрый вечер</a>
+									</span>
+									<span class="text_message">
+										<a href="full_report.html">Приветик. Чего не спится? Приветик. Чего не спится? Приветик. Чего не спится?</a>
+									</span>
+									<div class="button_message_incoming">
+										<ul>
+											<li><a href="#">Переслать</a></li>
+											<li><a href="#">Ответить</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="message_new">
+									<div class="avatar_message">
+										<a href="#"><img src="images/private_office/1/ava_6.jpg" alt="Аватар" /></a>
+									</div>
+									<div class="select_a_message">
+										<input name="select_a_incoming_2[]" title="Отметить для удаления" type="checkbox" />
+									</div>
+									<span class="sender">
+										<a href="#">Сидорова Мария</a>
+									</span>
+									<span class="date_message">Сегодня в 00:10</span>
+									<span class="online_message">Online</span>
+									<span class="theme_message">
+										<a href="full_report.html">RE: L…</a>
+									</span>
+									<span class="text_message">
+										<a href="full_report.html">Спасибо) У меня телефон глюканул как всегда и все номера удалились;)</a>
+									</span>
+									<div class="button_message_incoming">
+										<ul>
+											<li><a href="#">Переслать</a></li>
+											<li><a href="#">Ответить</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="message">
+									<div class="avatar_message">
+										<a href="#"><img src="images/private_office/1/ava_6.jpg" alt="Аватар" /></a>
+									</div>
+									<div class="select_a_message">
+										<input name="select_a_incoming_3[]" title="Отметить для удаления" type="checkbox" />
+									</div>
+									<span class="sender">
+										<a href="#">Сидорова Мария</a>
+									</span>
+									<span class="date_message">Сегодня в 00:10</span>
+									<span class="online_message">Online</span>
+									<span class="theme_message">
+										<a href="full_report.html">RE: L…</a>
+									</span>
+									<span class="text_message">
+										<a href="full_report.html">Слушай пришли свой номер сотового.</a>
+									</span>
+									<div class="button_message_incoming">
+										<ul>
+											<li><a href="#">Переслать</a></li>
+											<li><a href="#">Ответить</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="message">
+									<div class="avatar_message">
+										<a href="#"><img src="images/private_office/1/ava_6.jpg" alt="Аватар" /></a>
+									</div>
+									<div class="select_a_message">
+										<input name="select_a_incoming_4[]" title="Отметить для удаления" type="checkbox" />
+									</div>
+									<span class="sender">
+										<a href="#">Сидорова Мария</a>
+									</span>
+									<span class="date_message">Сегодня в 00:10</span>
+									<span class="online_message">Online</span>
+									<span class="theme_message">
+										<a href="full_report.html">RE: L…</a>
+									</span>
+									<span class="text_message">
+										<a href="full_report.html">Было бы интересно глянуть на сей шедевр потом тоже)</a>
+									</span>
+									<div class="button_message_incoming">
+										<ul>
+											<li><a href="#">Переслать</a></li>
+											<li><a href="#">Ответить</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="message">
+									<div class="avatar_message">
+										<a href="#"><img src="images/private_office/1/ava_6.jpg" alt="Аватар" /></a>
+									</div>
+									<div class="select_a_message">
+										<input name="select_a_incoming_5[]" title="Отметить для удаления" type="checkbox" />
+									</div>
+									<span class="sender">
+										<a href="#">Сидорова Мария</a>
+									</span>
+									<span class="date_message">Сегодня в 00:10</span>
+									<span class="online_message">Online</span>
+									<span class="theme_message">
+										<a href="full_report.html">RE: L…</a>
+									</span>
+									<div class="text_message">
+										<a href="full_report.html">Обязательно допишу и покажу вам в торжественной обстановке^_^</a>
+									</div>
+									<div class="button_message_incoming">
+										<ul>
+											<li><a href="#">Переслать</a></li>
+											<li><a href="#">Ответить</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="message">
+									<div class="avatar_message">
+										<a href="#"><img src="images/private_office/1/ava_6.jpg" alt="Аватар" /></a>
+									</div>
+									<div class="select_a_message">
+										<input name="select_a_incoming_6[]" title="Отметить для удаления" type="checkbox" />
+									</div>
+									<span class="sender">
+										<a href="#">Сидорова Мария</a>
+									</span>
+									<span class="date_message">Сегодня в 00:10</span>
+									<span class="online_message">Online</span>
+									<div class="theme_message">
+										<a href="full_report.html">RE: L…</a>
+									</div>
+									<div class="text_message">
+										<a href="full_report.html">Да делаю потихоньку, только по МИРу библиографическое описание сделать всех томов ...</a>
+									</div>
+									<div class="button_message_incoming">
+										<ul>
+											<li><a href="#">Переслать</a></li>
+											<li><a href="#">Ответить</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="message">
+									<div class="avatar_message">
+										<a href="#"><img src="images/private_office/1/ava_6.jpg" alt="Аватар" /></a>
+									</div>
+									<div class="select_a_message">
+										<input name="select_a_incoming_7[]" title="Отметить для удаления" type="checkbox" />
+									</div>
+									<span class="sender">
+										<a href="#">Сидорова Мария</a>
+									</span>
+									<span class="date_message">Сегодня в 00:10</span>
+									<span class="online_message">Online</span>
+									<div class="theme_message">
+										<a href="full_report.html">RE: L…</a>
+									</div>
+									<div class="text_message">
+										<a href="full_report.html">Кассовые сборы, их никто не отменял!)</a>
+									</div>
+									<div class="button_message_incoming">
+										<ul>
+											<li><a href="#">Переслать</a></li>
+											<li><a href="#">Ответить</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="message">
+									<div class="avatar_message">
+										<a href="#"><img src="images/private_office/1/ava_6.jpg" alt="Аватар" /></a>
+									</div>
+									<div class="select_a_message">
+										<input name="select_a_incoming_8[]" title="Отметить для удаления" type="checkbox" />
+									</div>
+									<span class="sender">
+										<a href="#">Сидорова Мария</a>
+									</span>
+									<span class="date_message">Сегодня в 00:10</span>
+									<span class="online_message">Online</span>
+									<div class="theme_message">
+										<a href="full_report.html">RE: L…</a>
+									</div>
+									<div class="text_message">>
+										<a href="full_report.html">В чем то ты прав. Но все таки не все же такие ценители атмосферы пустынных шоссе, недостроенных заводов …</a>
+									</div>
+									<div class="button_message_incoming">
+										<ul>
+											<li><a href="#">Переслать</a></li>
+											<li><a href="#">Ответить</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="message">
+									<div class="avatar_message">
+										<a href="#"><img src="images/private_office/1/ava_6.jpg" alt="Аватар" /></a>
+									</div>
+									<div class="select_a_message">
+										<input name="select_a_incoming_9[]" title="Отметить для удаления" type="checkbox" />
+									</div>
+									<span class="sender">
+										<a href="#">Сидорова Мария</a>
+									</span>
+									<span class="date_message">Сегодня в 00:10</span>
+									<span class="online_message">Online</span>
+									<div class="theme_message">
+										<a href="full_report.html">RE: L…</a>
+									</div>
+									<div class="text_message">
+										<a href="full_report.html">Это такой художественный прием) Да и вообще люди должны, в первую, очередь смотрят на игру актеров …</a>
+									</div>
+									<div class="button_message_incoming">
+										<ul>
+											<li><a href="#">Переслать</a></li>
+											<li><a href="#">Ответить</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="message">
+									<div class="avatar_message">
+										<a href="#"><img src="images/private_office/1/ava_6.jpg" alt="Аватар" /></a>
+									</div>
+									<div class="select_a_message">
+										<input name="select_a_incoming_10[]" title="Отметить для удаления" type="checkbox" />
+									</div>
+									<span class="sender">
+										<a href="#">Сидорова Мария</a>
+									</span>
+									<span class="date_message">Сегодня в 00:10</span>
+									<span class="online_message">Online</span>
+									<div class="theme_message">
+										<a href="full_report.html">RE: L…</a>
+									</div>
+									<div class="text_message">
+										<a href="full_report.html">Ну в Лосте есть оправдание, так как они около океана тусовались. Можно постирать одежду и помыться ...</a>
+									</div>
+									<div class="button_message_incoming">
+										<ul>
+											<li><a href="#">Переслать</a></li>
+											<li><a href="#">Ответить</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="message">
+									<div class="avatar_message">
+										<a href="#"><img src="images/private_office/1/ava_6.jpg" alt="Аватар" /></a>
+									</div>
+									<div class="select_a_message">
+										<input name="select_a_incoming_11[]" title="Отметить для удаления" type="checkbox" />
+									</div>
+									<span class="sender">
+										<a href="#">Сидорова Мария</a>
+									</span>
+									<span class="date_message">Сегодня в 00:10</span>
+									<span class="online_message">Online</span>
+									<div class="theme_message">
+										<a href="full_report.html">RE: L…</a>
+									</div>
+									<div class="text_message">
+										<a href="full_report.html">А что там такого ухоженного? Везде пустошь, развалины и обломки машин.</a>
+									</div>
+									<div class="button_message_incoming">
+										<ul>
+											<li><a href="#">Переслать</a></li>
+											<li><a href="#">Ответить</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="message">
+									<div class="avatar_message">
+										<a href="#"><img src="images/private_office/1/ava_6.jpg" alt="Аватар" /></a>
+									</div>
+									<div class="select_a_message">
+										<input name="select_a_incoming_12[]" title="Отметить для удаления" type="checkbox" />
+									</div>
+									<span class="sender">
+										<a href="#">Сидорова Мария</a>
+									</span>
+									<span class="date_message">Сегодня в 00:10</span>
+									<span class="online_message">Online</span>
+									<div class="theme_message">
+										<a href="full_report.html">RE: L…</a>
+									</div>
+									<div class="text_message">
+										<a href="full_report.html">С книгой самый интересный момент вышел, согласна) Да и герой харизматичный вышел)</a>
+									</div>
+									<div class="button_message_incoming">
+										<ul>
+											<li><a href="#">Переслать</a></li>
+											<li><a href="#">Ответить</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="message">
+									<div class="avatar_message">
+										<a href="#"><img src="images/private_office/1/ava_6.jpg" alt="Аватар" /></a>
+									</div>
+									<div class="select_a_message">
+										<input name="select_a_incoming_13[]" title="Отметить для удаления" type="checkbox" />
+									</div>
+									<span class="sender">
+										<a href="#">Сидорова Мария</a>
+									</span>
+									<span class="date_message">Сегодня в 00:10</span>
+									<span class="online_message">Online</span>
+									<div class="theme_message">
+										<a href="full_report.html">RE: L…</a>
+									</div>
+									<div class="text_message">
+										<a href="full_report.html">Да, здоровский фильм) И Гипсон такой молодой и горячий!) А я недавно посмотрела фильм "Книга Илая" ...</a>
+									</div>
+									<div class="button_message_incoming">
+										<ul>
+											<li><a href="#">Переслать</a></li>
+											<li><a href="#">Ответить</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="message">
+									<div class="avatar_message">
+										<a href="#"><img src="images/private_office/1/ava_6.jpg" alt="Аватар" /></a>
+									</div>
+									<div class="select_a_message">
+										<input name="select_a_incoming_14[]" title="Отметить для удаления" type="checkbox" />
+									</div>
+									<span class="sender">
+										<a href="#">Сидорова Мария</a>
+									</span>
+									<span class="date_message">Сегодня в 00:10</span>
+									<span class="online_message">Online</span>
+									<div class="theme_message">
+										<a href="full_report.html">RE: L…</a>
+									</div>
+									<div class="text_message">
+										<a href="full_report.html">Поздравляю;)</a>
+									</div>
+									<div class="button_message_incoming">
+										<ul>
+											<li><a href="#">Переслать</a></li>
+											<li><a href="#">Ответить</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="message">
+									<div class="avatar_message">
+										<a href="#"><img src="images/private_office/1/ava_6.jpg" alt="Аватар" /></a>
+									</div>
+									<div class="select_a_message">
+										<input name="select_a_incoming_15[]" title="Отметить для удаления" type="checkbox" />
+									</div>
+									<span class="sender">
+										<a href="#">Сидорова Мария</a>
+									</span>
+									<span class="date_message">Сегодня в 00:10</span>
+									<span class="online_message">Online</span>
+									<div class="theme_message">
+										<a href="full_report.html">RE: L…</a>
+									</div>
+									<div class="text_message">
+										<a href="full_report.html">Тебе обязательно в Чернобыль надо съездить)</a>
+									</div>
+									<div class="button_message_incoming">
+										<ul>
+											<li><a href="#">Переслать</a></li>
+											<li><a href="#">Ответить</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="bottom_navigation">
+								<ul title="страница сообщений">
+									<li><a href="#" title="последняя страница"><img src="images/parts/end_2.png" alt="" /></a></li>
+									<li><a href="#" title="следующая страница"><img src="images/parts/next_2.png" alt="" /></a></li>
+									<li><a href="#">1…15</a></li>
+									<li><a href="#">16…30</a></li>
+									<li><a href="#">31…45</a></li>
+									<li><a href="#">46…60</a></li>
+									<li><a href="#" title="следующая страница"><img src="images/parts/next.png" alt="" /></a></li>
+									<li><a href="#" title="последняя страница"><img src="images/parts/end.png" alt="" /></a></li>
+								</ul>
+								<div class="button_delete_messages_bot">
+									<input id="removal_incoming_messages_bot" name="removal_incoming_messages_bot" value="Удалить" type="submit" />
+								</div>
+								<div class="select_all_messages_bot">
+									<input name="select_sheet_incoming[]" title="Выделить все сообщения на странице" type="checkbox" />
+								</div>
+							</div>
+						</div>
+					</form>
+
+					<form action="#">
+						<div id="tabs-2">
+							<div class="top_navigation">
+								<span class="number_message">Сообщений: 115</span>
+								<ul title="страница сообщений">
+									<li><a href="#">1…15</a></li>
+									<li><a href="#">16…30</a></li>
+									<li><a href="#">31…45</a></li>
+									<li><a href="#">46…60</a></li>
+									<li><a href="#" title="следующая страница"><img src="images/parts/next.png" alt="" /></a></li>
+									<li><a href="#" title="последняя страница"><img src="images/parts/end.png" alt="" /></a></li>
+								</ul>
+								<div class="delete_all_messages">
+									<a href="#">Удалить исходящие</a>
+								</div>
+								<div class="button_delete_messages">
+									<input id="removal_outgoing_messages" name="removal_outgoing_messages" value="Удалить" type="submit" />
+								</div>
+								<div class="select_all_messages">
+									<input name="select_sheet_outbound[]" title="Выделить все сообщения на странице" type="checkbox" />
+								</div>
+							</div>
+							<div class="area_messages">						
+								<div class="message">
+									<div class="avatar_message">
+										<a href="#"><img src="images/private_office/1/ava_3.jpg" alt="Аватар" /></a>
+									</div>
+									<div class="select_a_message">
+										<input name="select_a_outgoing_1[]" title="Отметить для удаления" type="checkbox" />
+									</div>
+									<span class="sender">
+										<a href="#">Анастасия Селезнева</a>
+									</span>
+									<span class="date_message">Сегодня в 00:10</span>
+									<span class="offline_message">Offline</span>
+									<div class="theme_message">
+										<a href="full_report.html">RE: </a>
+									</div>
+									<div class="text_message">
+										<a href="full_report.html">Нормально) Да переписываться решил со всеми) Давно, кстати, с тобой не виделся) Чего сама поделываешь?</a>
+									</div>
+									<div class="button_message_outbox">
+										<a href="#">Переслать</a>
+									</div>
+								</div>
+								<div class="message">
+									<div class="avatar_message">
+										<a href="#"><img src="images/private_office/1/ava_6.jpg" alt="Аватар" /></a>
+									</div>
+									<div class="select_a_message">
+										<input name="select_a_outgoing_2[]" title="Отметить для удаления" type="checkbox" />
+									</div>
+									<span class="sender"><a href="#">Сидорова Мария</a></span>
+									<span class="date_message">Сегодня в 00:10</span>
+									<span class="online_message">Online</span>
+									<div class="theme_message">
+										<a href="full_report.html">RE: L…</a>
+									</div>
+									<div class="text_message">
+										<a href="full_report.html">Печально(</a>
+									</div>
+									<div class="button_message_outbox">
+										<a href="#">Переслать</a>
+									</div>
+								</div>
+								<div class="message">
+									<div class="avatar_message">
+										<a href="#"><img src="images/private_office/1/ava_6.jpg" alt="Аватар" /></a>
+									</div>
+									<div class="select_a_message">
+										<input name="select_a_outgoing_3[]" title="Отметить для удаления" type="checkbox" />
+									</div>
+									<span class="sender"><a href="#">Сидорова Мария</a></span>
+									<span class="date_message">Сегодня в 00:10</span>
+									<span class="online_message">Online</span>
+									<div class="theme_message">
+										<a href="full_report.html">RE: L…</a>
+									</div>
+									<div class="text_message">
+										<a href="full_report.html">Лови номер 89050894581</a>
+									</div>
+									<div class="button_message_outbox">
+										<a href="#">Переслать</a>
+									</div>
+								</div>
+								<div class="message">
+									<div class="avatar_message">
+										<a href="#"><img src="images/private_office/1/ava_6.jpg" alt="Аватар" /></a>
+									</div>
+									<div class="select_a_message">
+										<input name="select_a_outgoing_4[]" title="Отметить для удаления" type="checkbox" />
+									</div>
+									<span class="sender"><a href="#">Сидорова Мария</a></span>
+									<span class="date_message">Сегодня в 00:10</span>
+									<span class="online_message">Online</span>
+									<div class="theme_message">
+										<a href="full_report.html">RE: L…</a>
+									</div>
+									<div class="text_message">
+										<a href="full_report.html">Надо, кстати, свой ресуночек с Дюком тоже дорисовать)</a>
+									</div>
+									<div class="button_message_outbox">
+										<a href="#">Переслать</a>
+									</div>
+								</div>
+								<div class="message">
+									<div class="avatar_message">
+										<a href="#"><img src="images/private_office/1/ava_6.jpg" alt="Аватар" /></a>
+									</div>
+									<div class="select_a_message">
+										<input name="select_a_outgoing_5[]" title="Отметить для удаления" type="checkbox" />
+									</div>
+									<span class="sender"><a href="#">Сидорова Мария</a></span>
+									<span class="date_message">Сегодня в 00:10</span>
+									<span class="online_message">Online</span>
+									<div class="theme_message">
+										<a href="full_report.html">RE: L…</a>
+									</div>
+									<div class="text_message">
+										<a href="full_report.html">Жду недождусь) Не забрасывай это.</a>
+									</div>
+									<div class="button_message_outbox">
+										<a href="#">Переслать</a>
+									</div>
+								</div>
+								<div class="message">
+									<div class="avatar_message">
+										<a href="#"><img src="images/private_office/1/ava_6.jpg" alt="Аватар" /></a>
+									</div>
+									<div class="select_a_message">
+										<input name="select_a_outgoing_6[]" title="Отметить для удаления" type="checkbox" />
+									</div>
+									<span class="sender"><a href="#">Сидорова Мария</a></span>
+									<span class="date_message">Сегодня в 00:10</span>
+									<span class="online_message">Online</span>
+									<div class="theme_message">
+										<a href="full_report.html">RE: L…</a>
+									</div>
+									<div class="text_message">
+										<a href="full_report.html">Как твоя картина, скоро будет готова?</a>
+									</div>
+									<div class="button_message_outbox">
+										<a href="#">Переслать</a>
+									</div>
+								</div>
+								<div class="message">
+									<div class="avatar_message">
+										<a href="#"><img src="images/private_office/1/ava_6.jpg" alt="Аватар" /></a>
+									</div>
+									<div class="select_a_message">
+										<input name="select_a_outgoing_7[]" title="Отметить для удаления" type="checkbox" />
+									</div>
+									<span class="sender"><a href="#">Сидорова Мария</a></span>
+									<span class="date_message">Сегодня в 00:10</span>
+									<span class="online_message">Online</span>
+									<div class="theme_message">
+										<a href="full_report.html">RE: L…</a>
+									</div>
+									<div class="text_message">
+										<a href="full_report.html">Продюссер может все)!</a>
+									</div>
+									<div class="button_message_outbox">
+										<a href="#">Переслать</a>
+									</div>
+								</div>
+								<div class="message">
+									<div class="avatar_message">
+										<a href="#"><img src="images/private_office/1/ava_6.jpg" alt="Аватар" /></a>
+									</div>
+									<div class="select_a_message">
+										<input name="select_a_outgoing_8[]" title="Отметить для удаления" type="checkbox" />
+									</div>
+									<span class="sender"><a href="#">Сидорова Мария</a></span>
+									<span class="date_message">Сегодня в 00:10</span>
+									<span class="online_message">Online</span>
+									<div class="theme_message">
+										<a href="full_report.html">RE: L…</a>
+									</div>
+									<div class="text_message">
+										<a href="full_report.html">Да, понимаю, художественый прием, но все же раз мне показывают мир после большого П, то выглядить он ...</a>
+									</div>
+									<div class="button_message_outbox">
+										<a href="#">Переслать</a>
+									</div>
+								</div>
+								<div class="message">
+									<div class="avatar_message">
+										<a href="#"><img src="images/private_office/1/ava_6.jpg" alt="Аватар" /></a>
+									</div>
+									<div class="select_a_message">
+										<input name="select_a_outgoing_9[]" title="Отметить для удаления" type="checkbox" />
+									</div>
+									<span class="sender"><a href="#">Сидорова Мария</a></span>
+									<span class="date_message">Сегодня в 00:10</span>
+									<span class="online_message">Online</span>
+									<div class="theme_message">
+										<a href="full_report.html">RE: L…</a>
+									</div>
+									<div class="text_message">
+										<a href="full_report.html">В Лосте еще ладно, но где из упомянутых мною фильмов, персонажи находят воду в Аризонской пустыни, чтобы ...</a>
+									</div>
+									<div class="button_message_outbox">
+										<a href="#">Переслать</a>
+									</div>
+								</div>
+								<div class="message">
+									<div class="avatar_message">
+										<a href="#"><img src="images/private_office/1/ava_6.jpg" alt="Аватар" /></a>
+									</div>
+									<div class="select_a_message">
+										<input name="select_a_outgoing_10[]" title="Отметить для удаления" type="checkbox" />
+									</div>
+									<span class="sender"><a href="#">Сидорова Мария</a></span>
+									<span class="date_message">Сегодня в 00:10</span>
+									<span class="online_message">Online</span>
+									<div class="theme_message">
+										<a href="full_report.html">RE: L…</a>
+									</div>
+									<div class="text_message">
+										<a href="full_report.html">Ну в основном в одежде. Пригледись к персонажам, они же просто благаухают и одеты по моде. В Лосте тоже ...</a>
+									</div>
+									<div class="button_message_outbox">
+										<a href="#">Переслать</a>
+									</div>
+								</div>
+								<div class="message">
+									<div class="avatar_message">
+										<a href="#"><img src="images/private_office/1/ava_6.jpg" alt="Аватар" /></a>
+									</div>
+									<div class="select_a_message">
+										<input name="select_a_outgoing_11[]" title="Отметить для удаления" type="checkbox" />
+									</div>
+									<span class="sender"><a href="#">Сидорова Мария</a></span>
+									<span class="date_message">Сегодня в 00:10</span>
+									<span class="online_message">Online</span>
+									<div class="theme_message">
+										<a href="full_report.html">RE: L…</a>
+									</div>
+									<div class="text_message">
+										<a href="full_report.html">Заметил тенденцию, что последних фильмах с постапокалипсисом, все как то чистень и ухоженно ...</a>
+									</div>
+									<div class="button_message_outbox">
+										<a href="#">Переслать</a>
+									</div>
+								</div>
+								<div class="message">
+									<div class="avatar_message">
+										<a href="#"><img src="images/private_office/1/ava_6.jpg" alt="Аватар" /></a>
+									</div>
+									<div class="select_a_message">
+										<input name="select_a_outgoing_12[]" title="Отметить для удаления" type="checkbox" />
+									</div>
+									<span class="sender"><a href="#">Сидорова Мария</a></span>
+									<span class="date_message">Сегодня в 00:10</span>
+									<span class="online_message">Online</span>
+									<div class="theme_message">
+										<a href="full_report.html">RE: L…</a>
+									</div>
+									<div class="text_message">
+										<a href="full_report.html">Да, Книга Илая неплохой фильм, по атмосфере покрайней мере, но все таки на троичку. Хотя в конце с книгой ...</a>
+									</div>
+									<div class="button_message_outbox">
+										<a href="#">Переслать</a>
+									</div>
+								</div>
+								<div class="message">
+									<div class="avatar_message">
+										<a href="#"><img src="images/private_office/1/ava_6.jpg" alt="Аватар" /></a>
+									</div>
+									<div class="select_a_message">
+										<input name="select_a_outgoing_13[]" title="Отметить для удаления" type="checkbox" />
+									</div>
+									<span class="sender"><a href="#">Сидорова Мария</a></span>
+									<span class="date_message">Сегодня в 00:10</span>
+									<span class="online_message">Online</span>
+									<div class="theme_message">
+										<a href="full_report.html">RE: L…</a>
+									</div>
+									<div class="text_message">
+										<a href="full_report.html">Кстати, недавно глянул наконец таки Безумный Макс 2. Клево) Теперь понятно, откуда некоторые вещи в ...</a>
+									</div>
+									<div class="button_message_outbox">
+										<a href="#">Переслать</a>
+									</div>
+								</div>
+								<div class="message">
+									<div class="avatar_message">
+										<a href="#"><img src="images/private_office/1/ava_6.jpg" alt="Аватар" /></a>
+									</div>
+									<div class="select_a_message">
+										<input name="select_a_outgoing_14[]" title="Отметить для удаления" type="checkbox" />
+									</div>
+									<span class="sender"><a href="#">Сидорова Мария</a></span>
+									<span class="date_message">Сегодня в 00:10</span>
+									<span class="online_message">Online</span>
+									<div class="theme_message">
+										<a href="full_report.html">RE: L…</a>
+									</div>
+									<div class="text_message">
+										<a href="full_report.html">Упс.. Вышел из здания, где все нормаль до этого было и попал в аномалию;)</a>
+									</div>
+									<div class="button_message_outbox">
+										<a href="#">Переслать</a>
+									</div>
+								</div>
+								<div class="message">
+									<div class="avatar_message">
+										<a href="#"><img src="images/private_office/1/ava_6.jpg" alt="Аватар" /></a>
+									</div>
+									<div class="select_a_message">
+										<input name="select_a_outgoing_15[]" title="Отметить для удаления" type="checkbox" />
+									</div>
+									<span class="sender"><a href="#">Сидорова Мария</a></span>
+									<span class="date_message">Сегодня в 00:10</span>
+									<span class="online_message">Online</span>
+									<div class="theme_message">
+										<a href="full_report.html">RE: L…</a>
+									</div>
+									<div class="text_message">
+										<a href="full_report.html">Пришел и сел играть в S.T.A.L.K.E.R)</a>
+									</div>
+									<div class="button_message_outbox">
+										<a href="#">Переслать</a>
+									</div>
+								</div>
+							</div>
+							<div class="bottom_navigation">
+								<ul title="страница сообщений">
+									<li><a href="#">1…15</a></li>
+									<li><a href="#">16…30</a></li>
+									<li><a href="#">31…45</a></li>
+									<li><a href="#">46…60</a></li>
+									<li><a href="#" title="следующая страница"><img src="images/parts/next.png" alt="" /></a></li>
+									<li><a href="#" title="последняя страница"><img src="images/parts/end.png" alt="" /></a></li>
+								</ul>
+								<div class="button_delete_messages_bot">
+									<input id="removal_outgoing_messages_bot" name="removal_outgoing_messages_bot" value="Удалить" type="submit" />
+								</div>
+								<div class="select_all_messages_bot">
+									<input name="select_sheet_outbound[]" title="Выделить все сообщения на странице" type="checkbox" />
+								</div>
+							</div>
+						</div>
+					</form>
+
+					<form action="#">
+						<div id="tabs-3">
+							<div class="top_navigation">
+								<span class="number_message">Черновиков: 3</span>
+								<ul title="страница сообщений">
+									<li><a href="#">1…3</a></li>
+								</ul>
+								<div class="delete_all_messages">
+									<a href="#">Удалить черновики</a>
+								</div>
+								<div class="button_delete_messages">
+									<input id="remove_drafts" name="remove_drafts" value="Удалить" type="submit" />
+								</div>
+								<div class="select_all_messages">
+									<input name="select_sheet_drafts[]" title="Выделить все черновики на странице" type="checkbox" />
+								</div>
+							</div>
+							<div class="area_messages">						
+								<div class="message">
+									<div class="select_a_message">
+										<input name="select_a_draft_1[]" title="Отметить для удаления" type="checkbox" />
+									</div>
+									<span class="date_draft">01.10.1917</span>
+									<span class="theme_draft">
+										<a href="#">Митинг против повышения плыты за обучение</a>
+									</span>
+									<span class="text_message_draft">
+										<a href="#">Давайте не будем оставаться в стороне. Нужно отстоять свои права. Собираемся на площади Свободы 22 апреля в 9:00 часов.</a>
+									</span>
+									<div class="button_message_draft">
+										<a href="#">Переслать</a>
+									</div>
+								</div>
+								<div class="message">
+									<div class="select_a_message">
+										<input name="select_a_draft_2[]" title="Отметить для удаления" type="checkbox" />
+									</div>
+									<span class="date_draft">Сегодня в 00:10</span>
+									<span class="theme_draft">
+										<a href="#">Анно Хидеаки (Евангелион)</a>
+									</span>
+									<span class="text_message_draft">
+										<a href="#">"Я старался включить в Neon Genesis Evangelion всего себя - сломавшегося человека, четыре года не пытавшегося ничего изменить.</a>
+									</span>
+									<div class="button_message_draft">
+										<a href="#">Переслать</a>
+									</div>
+								</div>
+								<div class="message">
+									<div class="select_a_message">
+										<input name="select_a_draft_3[]" title="Отметить для удаления" type="checkbox" />
+									</div>
+									<span class="date_draft">Сегодня в 00:10</span>
+									<span class="theme_draft">
+										<a href="#">RE: L…</a>
+									</span>
+									<span class="text_message_draft">
+										<a href="#">Лови номер 89050894581</a>
+									</span>
+									<div class="button_message_draft">
+										<a href="#">Переслать</a>
+									</div>
+								</div>
+							</div>
+							<div class="bottom_navigation">
+								<ul title="страница сообщений">
+									<li><a href="#">1…3</a></li>
+								</ul>
+								<div class="button_delete_messages_bot">
+									<input id="remove_drafts_bot" name="remove_drafts_bot" value="Удалить" type="submit" />
+								</div>
+								<div class="select_all_messages_bot">
+									<input name="select_sheet_drafts[]" title="Выделить все черновики на странице" type="checkbox" />
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="clearfloat"></div>
+			<div class="empty_footer"></div>
+		</div>
+		<div id="footer">
+			<a href="#">2011&nbsp;Quki</a> · <a href="registraciya_1.html">Регистрация</a> · <a href="#">Служба поддержки</a> · <a href="#">Все проекты</a> · <a href="#">Реклама на Quki.ru</a> · <a href="#">Вакансии</a> · <a href="#">Обратная связь</a> · <a href="#">Карта сайта</a>
+		</div>
+	</body>
+</html>

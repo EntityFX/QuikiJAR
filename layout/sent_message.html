@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+		<title>Quki</title>
+		<link rel="shortcut icon" href="images/quki.ico" />
+		<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+		<link type="text/css" href="custom-theme/jquery-ui-1.8.5.custom.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="style_incoming_message.css" />		
+		<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.5.custom.min.js"></script>
+		<script type="text/javascript">
+		/*<![CDATA[*/
+			$(function(){
+				$('input:submit').button();
+			});
+		/*]]>*/
+		</script>
+	</head>
+	<body>
+		<div id="sent_message">
+			<div class="panel">
+				<div class="tip"></div>
+				<div class="plashka"></div>
+				<h6>Сообщение отправлено</h6>
+			</div>
+			<p class="notice">Сообщение <a href="private_office_other_user.html">Екатерине Ивановой</a> отправлено</p>
+			<span class="button2">
+				<input id="notification_message_is_sent" name="notification_message_is_sent" value="OK" type="submit" />
+			</span>
+			<div class="new_message">
+				<a href="message.html" class="new_message">Новое сообщение</a>
+			</div>
+			<div class="banner3">
+				<a href="#"><img src="images/banners/banner_LCD3.jpg" alt="banner_LCD" /></a>
+			</div>
+		</div>
+	</body>
+</html>

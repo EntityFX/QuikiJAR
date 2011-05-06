@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Quki</title>
+		<link rel="shortcut icon" href="images/quki.ico" />
+		<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+		<link type="text/css" href="custom-theme/jquery-ui-1.8.5.custom.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="style_block_uploads_status.css" />
+		<!--[if lte IE 7]>
+		<link rel="stylesheet" type="text/css" href="style.ie.css" />
+		<![endif]-->
+		<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.5.custom.min.js"></script>
+		<script type="text/javascript">
+		/*<![CDATA[*/
+			$(function(){
+				$('input:submit').button();
+			});
+		/*]]>*/
+		</script>
+	</head>
+	<body>
+		<form action="#">
+			<div id="block_uploads_status">
+				<dl>
+					<dt>
+						<label for="user_status">Текст статуса</label>
+					</dt>
+					<dd>
+						<textarea id="user_status" name="user_status" cols="35" rows="0"></textarea>
+					</dd>
+				</dl>
+				<div>
+					<input id="add_user_status" name="add_user_status" value="Добавить" type="submit" />
+				</div>
+			</div>
+		</form>
+	</body>
+</html>

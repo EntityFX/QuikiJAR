@@ -1,0 +1,153 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html, body {
+	height: 100%;
+	}
+
+* html #container {
+	height: 100%;
+	}
+
+#container {
+	position: relative;
+	width: 994px;
+	min-height: 100%;
+	background-color: #fff;
+	color: #656861;
+	margin: 0 auto;
+	font-size: 12px;
+	font-family: Verdana, sans-serif;
+	}
+
+	a {
+		outline-style: none;
+		text-decoration: none;
+		}
+
+	#header {
+		margin: 0 0 10px;
+		width: 994px;
+		height: 131px;
+		position: relative;
+	}
+
+		.top {
+			height: 112px;
+			position: relative;
+			margin: 0 0 15px;
+		}
+
+		.logo {
+			width: 190px;
+			height: 112px;
+			float: left;
+			margin: 5px 0 0;
+			background: #fff;
+		}
+
+		.banner_top {
+			width: 750px;
+			height: 108px;
+			margin-top: 10px;
+			float: right;
+			}
+
+		a:link, a:visited, a:active {
+			color: #a3a486; /* ÷вет ссылок */
+			}
+
+		a:hover {
+			color: #d57101;
+			}
+
+		a img {
+			border: none;
+			}
+
+		input, select {
+			background-color: #fff;
+			border: 1px solid #dedede;
+			outline: none;
+			font-size: 12px;
+			overflow: auto;
+			}
+
+	#content {
+	}
+
+		.heading {
+			font-size: 25px; 
+			text-align: center;
+			color: #e99101;
+			margin: 0 0 20px;
+			}
+
+		.entrance {
+			position: absolute;
+			width: 300px;
+			height: 150px;
+			top: 40%;
+			left: 50%;
+			margin: -80px 0 0 -150px;
+			padding: 25px 15px 35px;
+			border: 2px solid #dedede;
+			border-radius: 40px; /* ƒл€ Opera и IE9 */
+			-moz-border-radius: 40px; /* ƒл€ Firefox */
+			-webkit-border-radius: 40px; /* ƒл€ Safari и Chrome */
+			-khtml-border-radius: 40px;
+			}
+
+		.entrance dl {
+			margin: 0 auto;
+			width: 230px;
+			}
+
+		.entrance dt {
+			float: left;
+			width: 60px;
+			text-align: right;
+			margin: 0 10px 0 0;
+			font-weight: bold;
+			font-size: 14px;
+			}
+
+		.entrance dd {
+			margin: 15px 0;
+			}
+			
+		.entrance dd input {
+			width: 150px;
+			height: 16px;
+			}
+
+		.exile_entrance {
+			width: 320px;
+			text-align: center;
+			margin: 15px 0;
+			}
+
+		.button {
+			position: relative;
+			text-align: center;
+		}
+
+	.clearfloat {
+		clear: both;
+		}
+
+	.empty_footer {
+		height: 30px;
+		}
+
+	#footer {
+		position: relative;
+		height: 30px;
+		margin: -30px auto 0;
+		font-size: 11px;
+		text-align: center;
+		clear: both;
+		font-family: Verdana, sans-serif;
+		}	
