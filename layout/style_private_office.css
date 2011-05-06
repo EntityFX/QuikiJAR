@@ -479,7 +479,7 @@ html, body {
 				top: 7px;
 				}
 
-		.button_message_incoming ul, .button_message_outbox, .button_message_draft, .button_voted {
+		.button_message_incoming, .button_message_outbox, .button_message_draft, .button_frend, .button_voted {
 			width: 70px;
 			position: absolute;
 			right: 20px;
@@ -488,6 +488,12 @@ html, body {
 
 		.button_message_outbox, .button_message_draft {
 			top: 45px;
+			}
+			
+		.button_frend {
+			width: 155px;
+			top: 15px;
+			right: 10px;
 			}
 
 		/* стиль кнопок отдельного сообщени€ | button_style_single_message */
@@ -503,18 +509,11 @@ html, body {
 		.button_delete_coment a:hover,
 		.button_delete_address a:hover,
 		.button_delete_address_bot a:hover,
-		.button_frend ul a:hover, 
+		.button_frend a:hover, 
 		.button_voted a:hover,
 		.button_album a:hover {
 			text-decoration: underline;
 			}
-
-			.button_frend ul {
-				position: relative;
-				width: 155px;
-				top: 15px;
-				right: 10px;
-				}
 
 				.button_message_incoming ul li {
 					margin: 10px 0;
@@ -781,6 +780,7 @@ html, body {
 		background-color: #fff;
 		padding: 10px;
 		border: 1px solid #f2c687;
+		overflow: hidden;
 		}
 
 	.message_new {
@@ -953,35 +953,35 @@ html, body {
 	/* —“»Ћ№ –ј«ƒ≈Ћј ƒ–”«№я | style_frends */
 
 		.name_user, .city_frend {
-			margin: 5px 0 0 85px;
+			margin-left: 85px;
 			width: 290px;
 			display: block;
 			font-weight: bold;
 			}
 
 		.city_frend {
-			top: 45px;
+			margin-top: 15px;
 			font-weight: normal;
 			}
 
 		.name_list {
-			top: 10px;
-			left: 15px;
+			margin-left: 10px;
 			font-weight: bold;
+			display: block;
 			}
 
 		.quantity_frends {
-			top: 28px;
-			left: 15px;
+			margin: 5px 0 0 10px;
 			color: #9b968e;
 			font-size: 11px;
+			display: block;
 			}
 
 		.text_list {
 			width: 350px;
-			top: 45px;
-			left: 15px;
+			margin: 5px 0 0 10px;
 			font-size: 11px;
+			display: block;
 			}
 
 		.new_actions {
