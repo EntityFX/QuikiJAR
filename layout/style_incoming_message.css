@@ -155,37 +155,35 @@ body {
 #sent_message {
 	height: 225px;
 	margin: -110px 0 0 -235px;
+	text-align: center;
 }
 
-	span.notice {
-		position: relative;
-		width: 440px;
+	.notice {
+		position: absolute;
+		width: 480px;
+		margin: 15px 20px 10px;
 		text-align: center;
-		margin: 15px 0px 10px;
+		font-weight: bold;
 		}
 
 	.button2, .button3 {
-		position: absolute;
-		margin: 50px 0 0;
-		width: 520px;
-		text-align: center;
+		display: block;
+		margin: 55px 0 0;
 		}
 
 	.new_message a {
-		position: absolute;
-		width: 520px;
-		text-align: center;
-		margin: 85px 0 10px;
+		display: block;
+		margin: 10px 0;
 		}
 
 	.new_message a:hover  {
 		text-decoration: underline;
 		}
 
-	.banner3 {
+	.banner_notices {
 		width: 500px;
 		height: 83px;
-		margin: 110px 10px 0;
+		margin: 0px 10px 0;
 		}
 
 		a:link, a:visited, a:active {
