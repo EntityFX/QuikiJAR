@@ -161,7 +161,9 @@ body {
 	.notice {
 		position: absolute;
 		width: 480px;
-		margin: 15px 20px 10px;
+		top: 40px;
+		left: 20px;
+		/*margin: 15px 20px 10px;*/
 		text-align: center;
 		font-weight: bold;
 		}
