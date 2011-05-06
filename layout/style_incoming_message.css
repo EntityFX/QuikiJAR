@@ -145,7 +145,7 @@ body {
 		left: 55px;
 		}
 
-	.button {
+	.button_message {
 		position: absolute;
 		width: 230px;
 		bottom: 20px;
@@ -163,12 +163,11 @@ body {
 		width: 480px;
 		top: 40px;
 		left: 20px;
-		/*margin: 15px 20px 10px;*/
 		text-align: center;
 		font-weight: bold;
 		}
 
-	.button2, .button3 {
+	.button_notices_ok, .button_notices_back {
 		display: block;
 		margin: 55px 0 0;
 		}
