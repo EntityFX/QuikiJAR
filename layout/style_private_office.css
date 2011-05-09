@@ -1944,20 +1944,23 @@ html, body {
 					/*overflow: hidden;*/
 					}
 
+					table.affairs_unit_day thead tr th {
+						width: 550px;
+						}
+
 					table.affairs_unit_day thead tr th input {
-						position: relative;
 						margin: 15px 0 0 15px;
 						float: left;
 						}
 
-					table.affairs_unit_day thead tr th span {
-						position: relative;
-						margin: 15px 0 0 105px;
+					input.button_business_performance {
+						top: 5px;
+						float: left;
 						}
 
-					input.button_business_performance {
-						position: relative;
-						margin: 15px 0 0 105px;
+					table.affairs_unit_day thead tr th span {
+						margin: 15px 0 0 15px;
+						width: 200px;
 						}
 
 					table.affairs_unit_day tbody tr {
@@ -1967,64 +1970,17 @@ html, body {
 						background-color: #fff;
 						}
 
-						table.affairs_unit_day tbody tr td.note_to_perform {
+						td div.note_to_perform {
 							width: 20px !important;
 							}
 
-						table.affairs_unit_day tbody tr td.text_diary {
-							width: 305px;
+						td div.text_diary {
+							width: 320px;
 							padding: 12px 0;
 							border-left: 2 solid #eeeeee; 
 							border-right: 2 solid #eeeeee;
 							}
 
-				/*.heading_list_cases {
-					position: relative;
-					padding: 8px 15px;
-					}
-					
-				.heading_list_cases input {
-					float: left;
-					}
-
-				.button_business_performance {
-					position: relative;
-					left: 0px;
-					}
-
-				.heading_list_cases span {
-					margin: 12px 0 0 80px;
-					font-weight: bold;
-					}
-
-				.block_case {
-					position: relative;
-					border-top: 1px solid #bbb2b8;
-					border-bottom: 1px solid #bbb2b8;
-					background-color: #fff;
-					}
-
-				.checkbox_choice {
-					width: 30px;
-					height: 30px;
-					margin: 0;
-					float: left;
-					}
-
-					.text_case {
-						position: relative;
-						width: 300px;
-						float: left;
-						left: 10px;
-						border-left: 2px solid #efefef;
-						border-right: 2px solid #efefef;
-						padding: 10px;
-						}
-					
-				.button_business_performance_2 {
-					
-					}*/
-					
 	#aside {
 		width: 200px;
 		float: right;
