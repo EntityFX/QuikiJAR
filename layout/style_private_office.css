@@ -651,7 +651,7 @@ html, body {
 
 	.top_navigation_voted,
 	.top_navigation_album {
-		height: 85px;
+		height: 65px;
 		}
 
 	.top_navigation_message,
@@ -673,6 +673,7 @@ html, body {
 
 	.top_navigation ul,
 	.top_navigation_address ul,
+	.top_navigation_list_frends ul,
 	.top_navigation_photo_gallery ul,
 	.top_navigation_find_friends_result ul {
 		position: absolute;
@@ -688,15 +689,13 @@ html, body {
 		left: 135px;
 		top: 10px;
 		width: 310px;
-		text-align: center;
 		}
 
-	.top_navigation_list_frends ul,
 	.top_navigation_voted ul,
 	.top_navigation_album ul {
 		position: absolute;
-		left: 155px;
-		top: 55px;
+		left: 150px;
+		top: 35px;
 		}
 
 	.top_navigation ul li,
