@@ -1,6 +1,15 @@
+#block_uploads_status div {
+	margin: -10px auto 10px;
+	}
 
-.album_page ul li {
+/* סעטכü ך אכüבמלאל נאחהוכא װמעמאכüבמלû */
+.album_page, .home_favorites, .page_marked_another {
+	padding: 10px 1px;
+	}
+
+.album_page ul li, .home_favorites ul li, .page_marked_another ul li {
 	display: inline;
+	margin: 0 15px;
 	}
 
 .select_all_messages input, .select_all_messages_bot input, .select_a_message input {
@@ -23,8 +32,4 @@
 
 .bottom_navigation_address {
 	top: -5px;
-	}
-
-#block_uploads_status div {
-	margin: -10px auto 10px;
 	}
